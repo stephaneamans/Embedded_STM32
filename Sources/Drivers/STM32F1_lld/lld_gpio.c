@@ -2,13 +2,13 @@
  *        lld_gpio.c
  *
  *    Created on: Apr 12, 2019
- *    Author: Stéphane Amans
+ *    Author: Stï¿½phane Amans
  */
 
 /* Include files.        */
 #include "lld_gpio.h"
 
-#if defined(GPIO_PA0) || defined(GPIO_PA1) || defined(GPIO_PA2) || defined(GPIO_PA8) || defined(GPIO_PA9) || defined(GPIO_PB7) || defined(GPIO_PB9) || defined(GPIO_PC13)
+#if defined(GPIO_PA0) || defined(GPIO_PA1) || defined(GPIO_PA2) || defined(GPIO_PA6) || defined(GPIO_PA8) || defined(GPIO_PA9) || defined(GPIO_PB7) || defined(GPIO_PB9) || defined(GPIO_PC13)
 
 
 /** Enable an GPIO port clock.

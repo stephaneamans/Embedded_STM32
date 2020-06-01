@@ -90,7 +90,7 @@
 /* TIM_3 configuration                     */
 #define TIM3_TIME_FREQUENCY        1 MSEC
 #define TIM3_CH1_ENABLE            enable
-#define TIM3_CH1_PERCENT_PWM       10
+#define TIM3_CH1_PERCENT_PWM       25
 #define TIM3_CH1_POLARITY          0
 #define TIM3_CH1_TIM_MUX           ccx_channel_output
 #define TIM3_CH1_MODE              output_compare

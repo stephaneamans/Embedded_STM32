@@ -161,7 +161,7 @@ uint8_t timer_init(t_timer_cfg *cfg)
     uint32_t clock = get_apb2_clock();
     uint32_t apb2_period_ns = 0;
     uint16_t prescaler = 1;
-    uint32_t autoreload = 1;
+    uint32_t autoreload = 0;
     uint8_t channel_index = 0;
 
     apb2_period_ns = ((1000 MHZ)/ clock);
@@ -173,13 +173,38 @@ uint8_t timer_init(t_timer_cfg *cfg)
 
     autoreload = cfg->time_frequency / apb2_period_ns;
 
+    //while((autoreload / (prescaler)) > 0xFFFF)
+    //{
+    //    prescaler++;
+    //}
 
-    while((autoreload / prescaler) > 0xFFFF)
+    //if(autoreload > 0xFFFF)
+        while((prescaler * 0x7FFF) < autoreload)
+	    {
+		    prescaler++;
+	    }
+   // }
+
+
+    //cfg->timer->PSC = prescaler + 1;
+    //cfg->timer->ARR =	 (uint16_t)(autoreload / (prescaler - 1));
+
+    //autoreload = 62414;
+    //prescaler = 6;
+
+    cfg->timer->PSC = prescaler - 1;
+
+    if(prescaler % 2 != 0)
     {
-        prescaler++;
+    	cfg->timer->ARR = (uint16_t)((autoreload * 2) / prescaler);
     }
-    cfg->timer->PSC = prescaler;
-    cfg->timer->ARR = (uint16_t)(autoreload / prescaler);
+    else
+    {
+    	cfg->timer->ARR = (uint16_t)(autoreload / (prescaler / 2));
+    }
+
+    //float presc = (float)prescaler / 2;
+
 
     uint8_t timer_index = 0;
     if(cfg->timer == TIM2)
@@ -233,10 +258,7 @@ uint8_t timer_init(t_timer_cfg *cfg)
 
             else if(cfg->channel[channel_index].timer_mode == output_compare || cfg->channel[channel_index].timer_mode == pwm_output)
             {
-            	//uint32_t pwm_coeff = (autoreload / prescaler) * (100 - cfg->channel[channel_index].percent_pwm) / 100;
-            	//cfg->timer->CCR1 = (uint16_t)pwm_coeff;
-
-            	cfg->timer->CCR1 = (uint16_t)((autoreload / prescaler) * (100 - cfg->channel[channel_index].percent_pwm) / 100);
+            	cfg->timer->CCR1 = (uint16_t)((cfg->timer->ARR) * (100 - cfg->channel[channel_index].percent_pwm) / 100);
 
                 cfg->timer->BDTR |= 0x8800; /* Enables master output and configure inactive state. */
                 cfg->timer->RCR = 2;
@@ -307,13 +329,8 @@ uint8_t tim_stop(TIM_TypeDef *timer)
 
 uint8_t tim_wait(TIM_TypeDef *timer, uint8_t channel)
 {
-    uint8_t timer_index;
-    for(timer_index = 0; timer_index < 3; timer_index++)
-    {
-        if(tim_driver[timer_index].timer == timer){break;}
-    }
-    timer->SR &= (~0x2) << channel;  /* Clear event flags. */
-    while((timer->SR & (0x2 << channel)) == 0){}
+    timer->SR &= (~0x1) << channel;  /* Clear event flags. */
+    while((timer->SR & (0x1 << channel)) == 0){}
 
     return OK;
 }
@@ -322,8 +339,8 @@ uint8_t tim_wait(TIM_TypeDef *timer, uint8_t channel)
 uint16_t tim_wait_input_capture(TIM_TypeDef *timer, uint8_t channel)
 {
 	uint16_t local_return_value;
-    timer->SR &= (~0x22) << channel;  /* Clear event flags. */
-    while((timer->SR & (0x2 << channel)) == 0){}
+    timer->SR &= (~0x11) << channel;  /* Clear event flags. */
+    while((timer->SR & (0x1 << channel)) == 0){}
 
     if(channel == 1)
     {
@@ -341,7 +358,7 @@ uint16_t tim_wait_input_capture(TIM_TypeDef *timer, uint8_t channel)
     {
         local_return_value = timer->CCR4;
     }
-    timer->SR &= (~0x22) << channel;  /* Clear event flags. */
+    timer->SR &= (~0x11) << channel;  /* Clear event flags. */
     return local_return_value;
 }
 
