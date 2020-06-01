@@ -63,9 +63,9 @@ typedef enum
 typedef enum
 {
     mode_input        = 0x00,
-    mode_output_10mhz = 0x01,
-    mode_output_2mhz  = 0x02,
-    mode_output_50mhz = 0x03
+    mode_output_10MHz = 0x01,
+    mode_output_2MHz  = 0x02,
+    mode_output_50MHz = 0x03
 }mode_gpio;
 
 
@@ -92,86 +92,86 @@ typedef struct
  *
  * \param gpio: Pointer to the gpio register base.
  * \param pin: Pin number.
- * \param cfg : Configuration structure.
+ * \param cfg: Configuration structure.
  *
- * \return : Error code or 0 if OK.
+ * \return: Error code or 0 if OK.
  *
  */
-uint8_t gpio_init(t_gpio_cfg *cfg);
+t_error_handling gpio_init(t_gpio_cfg *cfg);
 
 
 /** Outputs the EVENTOUT Cortex's output on the selected pin and port.
 *
-* \param eventOutEn : Enables the functionality.
-* \param port : Port selection (see .h for possibilities).
-* \param pin : Pin number selection (between 0 and MAX_GPIO_PIN).
+* \param eventOutEn: Enables the functionality.
+* \param port: Port selection (see .h for possibilities).
+* \param pin: Pin number selection (between 0 and MAX_GPIO_PIN).
 *
-* \return : Error code or 0 if OK.
+* \return: Error code or 0 if OK.
 *
 */
-uint8_t gpio_init_event_ctrl(uint8_t event_out_en, uint8_t port, uint8_t pin);
+t_error_handling gpio_init_event_ctrl(uint8_t event_out_en, uint8_t port, uint8_t pin);
 
 
 /** Set a GPIO.
 *
-* \param gpio : Pointer to the GPIO base adress.
-* \param pin : Pin number (u8 between 0 and MAX_GPIO_PIN).
+* \param gpio: Pointer to the GPIO base adress.
+* \param pin: Pin number (u8 between 0 and MAX_GPIO_PIN).
 *
-* \return : Error code or 0 if OK.
+* \return: Error code or 0 if OK.
 *
 */
-uint8_t gpio_set(GPIO_TypeDef *gpio, uint16_t pin);
+t_error_handling gpio_set(GPIO_TypeDef *gpio, uint16_t pin);
 
 
 /**  Set all GPIOs on the port.
 *
-* \param gpio : Pointer to the GPIO base adress.
-* \param pin : Pin number.
+* \param gpio: Pointer to the GPIO base adress.
+* \param pin: Pin number.
 *
-* \return : Error code or 0 if OK.
+* \return: Error code or 0 if OK.
 *
 */
-uint8_t gpio_set_all(GPIO_TypeDef *gpio);
+t_error_handling gpio_set_all(GPIO_TypeDef *gpio);
 
 
 /** Clear a GPIO.
 *
-* \param gpio : Pointer to the GPIO base adress.
-* \param pin : Pin number (u8 between 0 and MAX_GPIO_PIN).
+* \param gpio: Pointer to the GPIO base adress.
+* \param pin: Pin number (u8 between 0 and MAX_GPIO_PIN).
 *
-* \return : Error code or 0 if OK.
+* \return: Error code or 0 if OK.
 *
 */
-uint8_t gpio_clear(GPIO_TypeDef *gpio, uint8_t pin);
+t_error_handling gpio_clear(GPIO_TypeDef *gpio, uint8_t pin);
 
 
 /** Clear all GPIOs on the port.
 *
-* \param gpio : Pointer to the GPIO base address.
+* \param gpio: Pointer to the GPIO base address.
 *
-* \return : Error code or 0 if OK.
+* \return: Error code or 0 if OK.
 *
 */
-uint8_t gpio_clear_all(GPIO_TypeDef *gpio);
+t_error_handling gpio_clear_all(GPIO_TypeDef *gpio);
 
 
 /** Toggle a GPIO.
 *
-* \param gpio : Pointer to the GPIO base address.
-* \param pin : Pin number (u8 between 0 a1d MAX_GPIO_PIN).
+* \param gpio: Pointer to the GPIO base address.
+* \param pin: Pin number (u8 between 0 a1d MAX_GPIO_PIN).
 *
-* \return : Error code or 0 if OK.
+* \return: Error code or 0 if OK.
 *
 */
-uint8_t gpio_toggle(GPIO_TypeDef *gpio, uint8_t pin);
+t_error_handling gpio_toggle(GPIO_TypeDef *gpio, uint8_t pin);
 
 
 /** Read a GPIO.
 *
-* \param gpio : Pointer to the GPIO base address.
-* \param pin : Pin number (u8 between 0 and MAX_GPIO_PIN).
+* \param gpio: Pointer to the GPIO base address.
+* \param pin: Pin number (u8 between 0 and MAX_GPIO_PIN).
 *
-* \return : return the pin value.
+* \return: return the pin value.
 *
 */
 uint8_t gpio_read(GPIO_TypeDef *gpio, uint8_t pin);
@@ -179,21 +179,21 @@ uint8_t gpio_read(GPIO_TypeDef *gpio, uint8_t pin);
 
 /** Disable an GPIO port clock.
  *
- * \param gpio : address of the GPIO port to unclock.
+ * \param gpio: address of the GPIO port to unclock.
  *
- * \return : Error code or OK.
+ * \return: Error code or OK.
  *
  */
-uint8_t gpio_disable_clock(GPIO_TypeDef *gpio);
+t_error_handling gpio_disable_clock(GPIO_TypeDef *gpio);
 
 
 /** Set the remapping of the different peripherals.
 *
-* \param remap : Structure containing all remap parameters (defined in GPIO header).
+* \param remap: Structure containing all remap parameters (defined in GPIO header).
 *
-* \return : Error code or 0 if OK.
+* \return: Error code or 0 if OK.
 */
-uint8_t gpio_pin_remap(PERIPH_REMAP remap);
+t_error_handling gpio_pin_remap(PERIPH_REMAP remap);
 
 
 /* Pointer callback function table prototype	*/

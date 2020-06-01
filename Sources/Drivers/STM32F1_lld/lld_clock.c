@@ -2,7 +2,7 @@
  *        lld_clock.c
  *
  *    Created on: Apr 20, 2019
- *    Author: Stéphane Amans
+ *    Author: Stï¿½phane Amans
  */
 
 /* Include files.        */
@@ -22,7 +22,7 @@ static t_clock_cfg clock_drv;
  * \return: Error code or OK.
  *
  */
-static uint8_t init_activate_PLL(uint32_t sys_clk, int source);
+static t_error_handling init_activate_PLL(uint32_t sys_clk, int source);
 
 
 /** Initialize AHB clock.
@@ -33,7 +33,7 @@ static uint8_t init_activate_PLL(uint32_t sys_clk, int source);
  * \return: Error code or OK.
  *
  */
-static uint8_t init_AHB(uint32_t sys_clk, uint32_t AHB_clk);
+static t_error_handling init_AHB(uint32_t sys_clk, uint32_t AHB_clk);
 
 
 /** Initialize APB1 clock.
@@ -44,7 +44,7 @@ static uint8_t init_AHB(uint32_t sys_clk, uint32_t AHB_clk);
  * \return: Error code or OK.
  *
  */
-static uint8_t init_APB1(uint32_t AHB_clk, uint32_t APB1_clk);
+static t_error_handling init_APB1(uint32_t AHB_clk, uint32_t APB1_clk);
 
 
 /** Initialize APB2 clock.
@@ -55,7 +55,7 @@ static uint8_t init_APB1(uint32_t AHB_clk, uint32_t APB1_clk);
  * \return: Error code or OK.
  *
  */
-static uint8_t init_APB2(uint32_t AHB_clk, uint32_t APB2_clk);
+static t_error_handling init_APB2(uint32_t AHB_clk, uint32_t APB2_clk);
 
 
 /** Set flash latency.
@@ -65,7 +65,7 @@ static uint8_t init_APB2(uint32_t AHB_clk, uint32_t APB2_clk);
  * \return: Error code or OK.
  *
  */
-static uint8_t set_flash_latency(uint32_t sys_clk);
+static t_error_handling set_flash_latency(uint32_t sys_clk);
 
 
 /** Start oscillator.
@@ -75,7 +75,7 @@ static uint8_t set_flash_latency(uint32_t sys_clk);
  * \return: Error code or OK.
  *
  */
-static uint8_t start_oscillator(int source);
+static t_error_handling start_oscillator(int source);
 
 
 /** Stop oscillator.
@@ -85,7 +85,7 @@ static uint8_t start_oscillator(int source);
  * \return: Error code or OK.
  *
  */
-static uint8_t stop_oscillator(int source);
+static t_error_handling stop_oscillator(int source);
 
 
 /** Switch the system clock source.
@@ -95,10 +95,10 @@ static uint8_t stop_oscillator(int source);
  * \return: Error code or OK.
  *
  */
-static uint8_t switch_system_clk(int source);
+static t_error_handling switch_system_clk(int source);
 
 
-uint8_t clock_init(t_clock_cfg *cfg)
+t_error_handling clock_init(t_clock_cfg *cfg)
 {
     uint8_t error = OK; /* Error flag, will be returned at the end of the function. */
 
@@ -154,7 +154,7 @@ uint8_t clock_init(t_clock_cfg *cfg)
 }
 
 
-uint8_t clock_select_clock_to_output(int source)
+t_error_handling clock_select_clock_to_output(int source)
 {
     uint32_t local_MCO_mask = 0x07000000;
 
@@ -193,12 +193,12 @@ uint32_t get_sys_clock(void)
 }
 
 
-static uint8_t init_activate_PLL(uint32_t sys_clk, int source)
+static t_error_handling init_activate_PLL(uint32_t sys_clk, int source)
 {
     uint8_t PLL_mult[15] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
     uint32_t temp_Pll_mul = 0;                     /* Local variable to compute the PLL multiplier coefficient.     */
     uint32_t temp_clk_freq_MHZ = CLOCK_FREQ_MHZ;   /* Local var to modify the CLOCK_FREQ_MHZ function of divisions. */
-    uint8_t temp_error = ERROR_WRONG_CLOCK_SET;    /* Local variable to return the complete value of the function.  */
+    uint8_t error = ERROR_WRONG_CLOCK_SET;    /* Local variable to return the complete value of the function.  */
 
     RCC->CR &= ~(0x01000000);                      /* PLLON = 0, disable PLL.                                       */
     while((RCC->CR & 0x02000000) != 0x00000000){}  /* Wait for PLLRDY = 0, PLL is disabled.                         */
@@ -234,15 +234,15 @@ static uint8_t init_activate_PLL(uint32_t sys_clk, int source)
             /* Wait for PLLRDY = 1, PLL is stable. */
             RCC->CR |= 0x01000000;
             while((RCC->CR & 0x02000000) != 0x02000000){}
-            temp_error = OK;
+            error = OK;
             break;
         }
     }
-    return temp_error;
+    return error;
 }
 
 
-static uint8_t init_AHB(uint32_t sys_clk, uint32_t AHB_clk)
+static t_error_handling init_AHB(uint32_t sys_clk, uint32_t AHB_clk)
 {
     uint16_t AHB_prescaler[9] = {1, 2, 4, 8, 16, 64, 128, 256, 512};
 
@@ -268,7 +268,7 @@ static uint8_t init_AHB(uint32_t sys_clk, uint32_t AHB_clk)
 }
 
 
-static uint8_t init_APB1(uint32_t AHB_clk, uint32_t APB1_clk)
+static t_error_handling init_APB1(uint32_t AHB_clk, uint32_t APB1_clk)
 {
     uint8_t APB_prescaler[5] = {1, 2, 4, 8, 16};
 
@@ -294,7 +294,7 @@ static uint8_t init_APB1(uint32_t AHB_clk, uint32_t APB1_clk)
 }
 
 
-static uint8_t init_APB2(uint32_t AHB_clk, uint32_t APB2_clk)
+static t_error_handling init_APB2(uint32_t AHB_clk, uint32_t APB2_clk)
 {
     uint8_t APB_prescaler[5] = {1, 2, 4, 8, 16};
 
@@ -320,7 +320,7 @@ static uint8_t init_APB2(uint32_t AHB_clk, uint32_t APB2_clk)
 }
 
 
-static uint8_t set_flash_latency(uint32_t sys_clk)
+static t_error_handling set_flash_latency(uint32_t sys_clk)
 {
     uint32_t temp_flash_ACR = 0;
     start_oscillator(HSI_OSC);
@@ -355,7 +355,7 @@ static uint8_t set_flash_latency(uint32_t sys_clk)
 }
 
 
-static uint8_t start_oscillator(int source)
+static t_error_handling start_oscillator(int source)
 {
     if((source == HSI_OSC) || (source == PLL_HSI))
     {
@@ -383,7 +383,7 @@ static uint8_t start_oscillator(int source)
 }
 
 
-static uint8_t stop_oscillator(int source)
+static t_error_handling stop_oscillator(int source)
 {
     if(source == HSI_OSC)
     {
@@ -401,7 +401,7 @@ static uint8_t stop_oscillator(int source)
 }
 
 
-static uint8_t switch_system_clk(int source)
+static t_error_handling switch_system_clk(int source)
 {
     uint8_t local_source = (RCC->CFGR & 0x0C) >> 2;
 

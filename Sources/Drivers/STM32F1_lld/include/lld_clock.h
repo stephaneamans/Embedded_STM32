@@ -57,29 +57,29 @@ typedef struct
 
 /** Configure all SOC clocks.
  *
- * \param cfg : Confuguration structure.
+ * \param cfg: Confuguration structure.
  *
- * \return : Error code or OK.
+ * \return: Error code or OK.
  *
  */
-uint8_t clock_init(t_clock_cfg *cfg);
+t_error_handling clock_init(t_clock_cfg *cfg);
 
 
 /** Select the clock to output on the dedicated pin.
  *
- * \param source : Source clock to output.
+ * \param source: Source clock to output.
  *
- * \return : Error code or OK.
+ * \return: Error code or OK.
  *
  */
-uint8_t clock_select_clock_to_output(int source);
+t_error_handling clock_select_clock_to_output(int source);
 
 
 /** Get AHB clock frequency.
  *
- * \param void
+ * \param: void
  *
- * \return : AHB clock frequency.
+ * \return: AHB clock frequency.
  *
  */
 uint32_t get_ahb_clock(void);
@@ -87,9 +87,9 @@ uint32_t get_ahb_clock(void);
 
 /** Get APB1 clock frequency.
  *
- * \param void
+ * \param: void
  *
- * \return : APB1 clock frequency.
+ * \return: APB1 clock frequency.
  *
  */
 uint32_t get_apb1_clock(void);
@@ -97,9 +97,9 @@ uint32_t get_apb1_clock(void);
 
 /** Get APB2 clock frequency.
  *
- * \param void
+ * \param: void
  *
- * \return : APB2 clock frequency.
+ * \return: APB2 clock frequency.
  *
  */
 uint32_t get_apb2_clock(void);
@@ -107,9 +107,9 @@ uint32_t get_apb2_clock(void);
 
 /** Get system clock frequency.
  *
- * \param void
+ * \param: void
  *
- * \return : system clock frequency.
+ * \return: system clock frequency.
  *
  */
 uint32_t get_sys_clock(void);

@@ -13,12 +13,12 @@
 
 /** Enable an TIM port clock.
  *
- * \param timer : address of the TIM entity to clock.
+ * \param timer: address of the TIM entity to clock.
  *
- * \return : Error code or OK.
+ * \return: Error code or OK.
  *
  */
-static uint8_t timer_enable_clock(TIM_TypeDef *timer);
+static t_error_handling timer_enable_clock(TIM_TypeDef *timer);
 /*
 ##### How to use this driver #####
 ==============================================================================
@@ -155,7 +155,7 @@ write the counter while it is running.
 static t_timer_cfg tim_driver[3];
 
 
-uint8_t timer_init(t_timer_cfg *cfg)
+   t_error_handling timer_init(t_timer_cfg *cfg)
 {
     timer_enable_clock(cfg->timer);
     uint32_t clock = get_apb2_clock();
@@ -301,7 +301,7 @@ uint8_t timer_init(t_timer_cfg *cfg)
 }
 
 
-uint8_t tim_start(TIM_TypeDef *timer)
+t_error_handling tim_start(TIM_TypeDef *timer)
 {
     uint8_t timer_index;
     for(timer_index = 0; timer_index < 3; timer_index++)
@@ -315,7 +315,7 @@ uint8_t tim_start(TIM_TypeDef *timer)
 }
 
 
-uint8_t tim_stop(TIM_TypeDef *timer)
+t_error_handling tim_stop(TIM_TypeDef *timer)
 {
     uint8_t timer_index;
     for(timer_index = 0; timer_index < 3; timer_index++)
@@ -327,7 +327,7 @@ uint8_t tim_stop(TIM_TypeDef *timer)
 }
 
 
-uint8_t tim_wait(TIM_TypeDef *timer, uint8_t channel)
+t_error_handling tim_wait(TIM_TypeDef *timer, uint8_t channel)
 {
     timer->SR &= (~0x1) << channel;  /* Clear event flags. */
     while((timer->SR & (0x1 << channel)) == 0){}
@@ -336,7 +336,7 @@ uint8_t tim_wait(TIM_TypeDef *timer, uint8_t channel)
 }
 
 
-uint16_t tim_wait_input_capture(TIM_TypeDef *timer, uint8_t channel)
+t_error_handling tim_wait_input_capture(TIM_TypeDef *timer, uint8_t channel)
 {
 	uint16_t local_return_value;
     timer->SR &= (~0x11) << channel;  /* Clear event flags. */
@@ -363,7 +363,7 @@ uint16_t tim_wait_input_capture(TIM_TypeDef *timer, uint8_t channel)
 }
 
 
-static uint8_t timer_enable_clock(TIM_TypeDef *timer)
+static t_error_handling timer_enable_clock(TIM_TypeDef *timer)
 {
     if(timer == TIM1)
     {
@@ -381,7 +381,7 @@ static uint8_t timer_enable_clock(TIM_TypeDef *timer)
 }
 
 
-uint8_t timer_disable_clock(TIM_TypeDef *timer)
+t_error_handling timer_disable_clock(TIM_TypeDef *timer)
 {
 	if(timer == TIM1)
     {

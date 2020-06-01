@@ -11,7 +11,7 @@
 #include "lld_clock.h"
 #endif
 
-#if defined(GPIO_PA0) || defined(GPIO_PA1)|| defined(GPIO_PA2) || defined(GPIO_PA6) || defined(GPIO_PA8) || defined(GPIO_PA9) || defined(GPIO_PB7) || defined(GPIO_PB9) || defined(GPIO_PC13)
+#if defined(GPIO_PA0) || defined(GPIO_PA1)|| defined(GPIO_PA2) || defined(GPIO_PA6) || defined(GPIO_PA8) || defined(GPIO_PA9) || defined(GPIO_PA10) || defined(GPIO_PB7) || defined(GPIO_PB9) || defined(GPIO_PC13)
 #include "lld_gpio.h"
 #endif
 

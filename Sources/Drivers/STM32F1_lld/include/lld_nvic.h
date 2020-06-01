@@ -11,12 +11,13 @@
 /* Include files:        */
 #include <stdint.h>
 
+#include "globals.h"
 #include "configuration_module_activation.h"
 #include "regbase_nvic.h"
 
 
 /* Interruptions number enumeration definition:        */
-enum irq_id{
+typedef enum{
     // Reserved
     // Reset_Handler        Priority -3
     // NMI_Handler          Priority -2
@@ -93,11 +94,11 @@ enum irq_id{
     IRQ_DMA2_Channel2     = 57,    /* DMA2 Channel2 global interrupt                   */
     IRQ_DMA2_Channel3     = 58,    /* DMA2 Channel3 global interrupt                   */
     IRQ_DMA2_Channel4_5   = 59     /* DMA2 Channel4 and DMA2 Channel5 global interrupt */
-};
+}irq_id;
 
 
 /* Interruptions priority enumeration definition:        */
-enum irq_priority
+typedef enum irq_priority
 {
     prio0 = 0,    /* Priority level 0.    */
     prio1 = 1,    /* Priority level 1.    */
@@ -115,49 +116,49 @@ enum irq_priority
     prio13 = 13,  /* Priority level 13.   */
     prio14 = 14,  /* Priority level 14.   */
     prio15 = 15,  /* Priority level 15.   */
-};
+}irq_priority;
 
 
 /* Functions prototypes        */
 
 /** Set the NVIC register to unmask the IRQ
 *
-*:parameter `irq` : Interruption number.
+* \parameter irq: Interruption number.
 *
-*:return : No return value.
+* \return: Error code or 0 if OK.
 *
 */
-void enable_nvic_irq(uint8_t irq);
+t_error_handling enable_nvic_irq(uint8_t irq);
 
 
 /** Set the NVIC register to mask the IRQ
 *
-* \param irq : Interruption number.
+* \param irq: Interruption number.
 *
-* \return : No return value.
+* \return: Error code or 0 if OK.
 *
 */
-void disable_nvic_irq(uint8_t irq);
+t_error_handling disable_nvic_irq(uint8_t irq);
 
 
 /** Clear the NVIC pending IRQ
 *
-* \param irq : Interruption number.
+* \param irq: Interruption number.
 *
-* \return : No return value.
+* \return: Error code or 0 if OK.
 *
 */
-void clear_pending_nvic_irq(uint8_t irq);
+t_error_handling clear_pending_nvic_irq(uint8_t irq);
 
 
 /** Set the NVIC priority register to prioritize the IRQ.
 *
-* \param irq : Interruption number.
-* \param priority : Interruption priority.
+* \param irq: Interruption number.
+* \param priority: Interruption priority.
 *
-* \return : No return value.
+* \return: Error code or 0 if OK.
 *
 */
-void set_nvic_priority(uint8_t irq, uint8_t priority);
+t_error_handling set_nvic_priority(uint8_t irq, uint8_t priority);
 
 #endif /* LLD_NVIC_H_ */

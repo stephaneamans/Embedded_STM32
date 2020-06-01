@@ -2,12 +2,16 @@
  *        lld_usart.c
  *
  *    Created on: Apr 12, 2019
- *    Author: Stéphane Amans
+ *    Author: Stï¿½phane Amans
  */
 
 /* Include files        */
 #include "lld_usart.h"
 #if defined(USART_1) || defined(USART_2)
+
+
+/* Static driver structure. */
+static t_usart_drv usart_drv[2];
 
 
 /** Enable USART port clock.
@@ -50,15 +54,15 @@ place. Configure the DMA register as explained in multibuffer communication. STE
 6. Set the RE bit USART_CR1. This enables the receiver which begins searching for a
 start bit.
 When a character is received
-• The RXNE bit is set. It indicates that the content of the shift register is transferred to the
+ï¿½ The RXNE bit is set. It indicates that the content of the shift register is transferred to the
 RDR. In other words, data has been received and can be read (as well as its
 associated error flags).
-• An interrupt is generated if the RXNEIE bit is set.
-• The error flags can be set if a frame error, noise or an overrun error has been detected
+ï¿½ An interrupt is generated if the RXNEIE bit is set.
+ï¿½ The error flags can be set if a frame error, noise or an overrun error has been detected
 during reception.
-• In multibuffer, RXNE is set after every byte received and is cleared by the DMA read to
+ï¿½ In multibuffer, RXNE is set after every byte received and is cleared by the DMA read to
 the Data Register.
-• In single buffer mode, clearing the RXNE bit is performed by a software read to the
+ï¿½ In single buffer mode, clearing the RXNE bit is performed by a software read to the
 USART_DR register. The RXNE flag can also be cleared by writing a zero to it. The
 RXNE bit must be cleared before the end of the reception of the next character to avoid
 an overrun error.
@@ -115,13 +119,13 @@ controller generates an interrupt on the DMA channel interrupt vector.
  * \param bus_frequency: USART bus frequency value.
  *
  *
- * \return : Error code or OK.
+ * \return: Error code or OK.
  *
  */
-static uint16_t compute_baudrate_divider(uint32_t bus_frequency, uint32_t baudrate);
+static t_error_handling compute_baudrate_divider(uint32_t bus_frequency, uint32_t baudrate);
 
 
-uint8_t usart_init(t_usart_cfg *cfg)
+t_error_handling usart_init(t_usart_cfg *cfg)
 {
     uint16_t local_conf = 0;
     usart_enable_clock(cfg->usart);
@@ -130,41 +134,87 @@ uint8_t usart_init(t_usart_cfg *cfg)
     if(cfg->usart == USART1)
     {
 	    clock_frequency = get_apb2_clock();
+	    usart_drv[0].usart = USART1;
+	    usart_drv[0].baud_rate = cfg->baud_rate;
+	    usart_drv[0].irq.type = cfg->irq_dma.type;
+    }
+
+    if((cfg->irq_dma.type > 0) && (cfg->irq_dma.type < 0xC0))
+    {
+    	irq_id usart_irq_id = IRQ_USART1;
+        if(cfg->usart == USART2)
+        {
+            usart_irq_id = IRQ_USART2;
+        }
+        enable_nvic_irq(IRQ_USART1);
+        set_nvic_priority(IRQ_USART1, cfg->irq_dma.priority);
+        usart_callback[usart_irq_id - IRQ_USART1] = cfg->irq_dma.callback;
     }
 
     cfg->usart->BRR = compute_baudrate_divider(clock_frequency, cfg->baud_rate);
 
-    local_conf = (0x02 | cfg->length);                        /* Enables module and fix frame length.    */
-    local_conf = (local_conf << 1) | cfg->wake_up;            /* Wake up mode.                           */
-    local_conf = (local_conf << 2) | cfg->parity;             /* Select parity.                          */
-    local_conf = (local_conf << 5) | (cfg->irq.type >> 5);    /* Enables wanted interrupts.              */
-    local_conf = (local_conf << 2) | 0x03;                    /* Enables RX and TX modes.                */
+    local_conf = (0x02 | cfg->length);                                  /* Enables module and fix frame length.    */
+    local_conf = (local_conf << 1) | cfg->wake_up;                      /* Wake up mode.                           */
+    local_conf = (local_conf << 2) | cfg->parity;                       /* Select parity.                          */
+    local_conf = (local_conf << 5) | ((cfg->irq_dma.type & 0x3F)); /* Enables wanted interrupts (mask DMA).   */
+    local_conf = (local_conf << 2) | 0x03;                              /* Enables RX and TX modes.                */
     cfg->usart->CR1 = local_conf << 2;
 
-    local_conf = cfg->stop;                                   /* Configure stop bit length.              */
-    local_conf = (local_conf << 3) | cfg->clock_modes;        /* Configure clock modes.                  */
-    local_conf = (local_conf << 9);                           /* Shift to the good position.             */
+    local_conf = cfg->stop;                                             /* Configure stop bit length.              */
+    local_conf = (local_conf << 3) | cfg->clock_modes;                  /* Configure clock modes.                  */
+    local_conf = (local_conf << 9);                                     /* Shift to the good position.             */
     cfg->usart->CR2 = local_conf;
 
-    local_conf = (cfg->irq.type >> 1) & 0x02;                 /* Enables wanted interrupt.               */
-    local_conf = (local_conf << 2) | cfg->cts_rts;            /* Configure CTS and RTS.                  */
-    local_conf = (local_conf << 2) | cfg->dma;                /* Configure DMA.                          */
-    local_conf = (local_conf << 6) | (cfg->irq.type & 0x01);  /* Enables wanted interrupt.               */
+    local_conf = ((cfg->irq_dma.type & 0x3F) >> 1) & 0x02;              /* Enables wanted interrupt (mask DMA).    */
+    local_conf = (local_conf << 2) | cfg->cts_rts;                      /* Configure CTS and RTS.                  */
+    local_conf = (local_conf << 2) | ((cfg->irq_dma.type & 0xC0) >> 6); /* Enable DMA.                             */
     cfg->usart->CR3 = local_conf;
 
-    while(1)
-    {
-       	cfg->usart->DR = 0x55;
-       	for(int i = 0; i < 0xFFF; i++){}
-    }
-
-
-
-    return 0;
+    return OK;
 }
 
 
-uint8_t usart_disable_clock(USART_TypeDef *usart)
+static t_error_handling compute_baudrate_divider(uint32_t bus_frequency, uint32_t baudrate)
+{
+    uint32_t local_divider = baudrate * 16;
+    uint16_t mantissa = bus_frequency / local_divider;
+    uint8_t fraction = (uint8_t)(((bus_frequency % local_divider) * 100) / local_divider);
+    fraction = (fraction * 16) / 100;
+    return ((mantissa << 4) | (fraction & 0x0F));
+}
+
+
+t_error_handling usart_send(USART_TypeDef *usart, uint8_t data)
+{
+	t_error_handling error = OK;
+	if((usart->SR & 0x00C0) == 0x00C0)
+	{
+        usart->DR = data;
+        while((usart->SR & 0x00C0) != 0x00C0){}
+    }
+    else
+    {
+    	error = ERROR_USART_NOT_READY_TO_SEND;
+    }
+    return error;
+}
+
+
+static t_error_handling usart_enable_clock(USART_TypeDef *usart)
+{
+    if (usart == USART1)
+    {
+        RCC->APB2ENR |= 0x4000;
+    }
+    else if(usart == USART2)
+    {
+        RCC->APB1ENR |= 0x20000;
+    }
+    return OK;
+}
+
+
+t_error_handling usart_disable_clock(USART_TypeDef *usart)
 {
     if(usart == USART1)
     {
@@ -178,27 +228,40 @@ uint8_t usart_disable_clock(USART_TypeDef *usart)
 }
 
 
-static uint16_t compute_baudrate_divider(uint32_t bus_frequency, uint32_t baudrate)
+void usart_test(void)
 {
-    uint32_t local_divider = baudrate * 16;
-    uint16_t mantissa = bus_frequency / local_divider;
-    uint8_t fraction = (uint8_t)(((bus_frequency % local_divider) * 100) / local_divider);
-    fraction = (fraction * 16) / 100;
-    return ((mantissa << 4) | (fraction & 0x0F));
+	uint8_t debug = 0;
 }
 
 
-static uint8_t usart_enable_clock(USART_TypeDef *usart)
+
+void USART1_IRQHandler(void)        			/* USART1 global interrupt                          */
 {
-    if (usart == USART1)
-    {
-        RCC->APB2ENR |= 0x4000;
-    }
-    else if(usart == USART2)
-    {
-        RCC->APB1ENR |= 0x20000;
-    }
-    return OK;
+    /**	USART1 IRQ handler.
+    *
+    * \param void : No parameter.
+    *
+    * \return : No return value.
+    */
+
+    usart_callback[0]();         /* Call the GPIO4 subroutine.                  */
+    //clear_pending_nvic_irq(IRQ_EXTI4);  /* Clear any GPIO4 NVIC pending interrupt.     */
+    //EXTI->PR = 0xFFFFFFFF;              /* Clear all GPIO4 pending interrupt flags.    */
+}
+
+
+void USART2_IRQHandler(void)        			/* USART1 global interrupt                          */
+{
+    /**	USART1 IRQ handler.
+    *
+    * \param void : No parameter.
+    *
+    * \return : No return value.
+    */
+
+    usart_callback[1]();         /* Call the GPIO4 subroutine.                  */
+    //clear_pending_nvic_irq(IRQ_EXTI4);  /* Clear any GPIO4 NVIC pending interrupt.     */
+    //EXTI->PR = 0xFFFFFFFF;              /* Clear all GPIO4 pending interrupt flags.    */
 }
 
 #endif /* USART */

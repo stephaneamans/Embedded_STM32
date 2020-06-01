@@ -94,6 +94,19 @@ void soc_peripherals_configuration(void)
     gpio_init(&gpio_pa9_configuration);
 #endif
 
+#ifdef GPIO_PA10
+    t_gpio_cfg gpio_pa10_configuration;
+    gpio_pa10_configuration.gpio = PA10_GPIO_PORT;
+    gpio_pa10_configuration.pin = PA10_PIN;
+    gpio_pa10_configuration.mode = PA10_MODE;
+    gpio_pa10_configuration.config = PA10_CONFIG;
+    gpio_pa10_configuration.irq.active = PA10_IRQ_ENABLE;
+    gpio_pa10_configuration.irq.rising = PA10_IRQ_RISING;
+    gpio_pa10_configuration.irq.priority = PA10_IRQ_PRIORITY;
+    gpio_pa10_configuration.irq.callback = PA10_IRQ_CALLBACK;
+    gpio_init(&gpio_pa10_configuration);
+#endif
+
 #ifdef GPIO_PB7
     t_gpio_cfg gpio_pb7_configuration;
     gpio_pb7_configuration.gpio = PB7_GPIO_PORT;
@@ -143,15 +156,9 @@ void soc_peripherals_configuration(void)
     usart1_configuration.stop = USART1_STOP_BITS;
     usart1_configuration.clock_modes = USART1_CLOCK_MODES;
     usart1_configuration.cts_rts = USART1_RTS;
-    usart1_configuration.dma = USART1_DMA;
-    usart1_configuration.irq.type = USART1_IRQ_TYPE;
-    usart1_configuration.irq.callback_parity_err = USART1_IRQ_CALLBACK_PARITY;
-    usart1_configuration.irq.callback_tx_err = USART1_IRQ_CALLBACK_TX_ERR;
-    usart1_configuration.irq.callback_tx_complete_err = USART1_IRQ_CALLBACK_TX_COMPLETE_ERR;
-    usart1_configuration.irq.callback_rx_err = USART1_IRQ_CALLBACK_RX_ERR;
-    usart1_configuration.irq.callback_idle = USART1_IRQ_CALLBACK_IDLE;
-    usart1_configuration.irq.callback_cts = USART1_IRQ_CALLBACK_CTS;
-    usart1_configuration.irq.callback_error_irq = USART1_IRQ_CALLBACK_ERROR_IRQ;
+    usart1_configuration.irq_dma.type = USART1_IRQ_DMA_TYPE;
+    usart1_configuration.irq_dma.priority = USART1_IRQ_DMA_PRIORITY;
+    usart1_configuration.irq_dma.callback = USART1_IRQ_CALLBACK;
     usart_init(&usart1_configuration);
 #endif
 
@@ -165,15 +172,9 @@ void soc_peripherals_configuration(void)
     usart2_configuration.stop = USART2_STOP_BITS;
     usart2_configuration.clock_modes = USART2_CLOCK_MODES;
     usart2_configuration.cts_rts = USART2_RTS;
-    usart2_configuration.dma = USART2_DMA;
-    usart2_configuration.irq.type = USART2_IRQ_TYPE;
-    usart2_configuration.irq.callback_parity_err = USART2_IRQ_CALLBACK_PARITY;
-    usart2_configuration.irq.callback_tx_err = USART2_IRQ_CALLBACK_TX_ERR;
-    usart2_configuration.irq.callback_tx_complete_err = USART2_IRQ_CALLBACK_TX_COMPLETE_ERR;
-    usart2_configuration.irq.callback_rx_err = USART2_IRQ_CALLBACK_RX_ERR;
-    usart2_configuration.irq.callback_idle = USART2_IRQ_CALLBACK_IDLE;
-    usart2_configuration.irq.callback_cts = USART2_IRQ_CALLBACK_CTS;
-    usart2_configuration.irq.callback_error_irq = USART2_IRQ_CALLBACK_ERROR_IRQ;
+    usart2_configuration.irq_dma.type = USART2_IRQ_DMA_TYPE;
+    usart2_configuration.irq_dma.priority = USART2_IRQ_DMA_PRIORITY;
+    usart2_configuration.irq_dma.callback = USART2_IRQ_CALLBACK;
     usart_init(&usart2_configuration);
 #endif
 

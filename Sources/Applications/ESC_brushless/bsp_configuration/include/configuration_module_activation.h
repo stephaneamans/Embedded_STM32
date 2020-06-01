@@ -11,14 +11,15 @@
 //#define GPIO_PA2
 #define GPIO_PA6
 //#define GPIO_PA8
-//#define GPIO_PA9
+#define GPIO_PA9
+#define GPIO_PA10
 //#define GPIO_PB7
 //#define GPIO_PB9
 //#define GPIO_PC13
 //#define TIM_1
 //#define TIM_2
-#define TIM_3
-//#define USART_1
+//#define TIM_3
+#define USART_1
 //#define USART_2
 
 #endif /* CONFIGURATION_MODULE_ACTIVATION_H_ */

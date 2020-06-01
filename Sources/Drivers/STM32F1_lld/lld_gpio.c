@@ -2,26 +2,26 @@
  *        lld_gpio.c
  *
  *    Created on: Apr 12, 2019
- *    Author: St�phane Amans
+ *    Author: Stephane Amans
  */
 
 /* Include files.        */
 #include "lld_gpio.h"
 
-#if defined(GPIO_PA0) || defined(GPIO_PA1) || defined(GPIO_PA2) || defined(GPIO_PA6) || defined(GPIO_PA8) || defined(GPIO_PA9) || defined(GPIO_PB7) || defined(GPIO_PB9) || defined(GPIO_PC13)
+#if defined(GPIO_PA0) || defined(GPIO_PA1) || defined(GPIO_PA2) || defined(GPIO_PA6) || defined(GPIO_PA8) || defined(GPIO_PA9) || defined(GPIO_PA10) || defined(GPIO_PB7) || defined(GPIO_PB9) || defined(GPIO_PC13)
 
 
 /** Enable an GPIO port clock.
  *
- * \param gpio : address of the GPIO port to clock.
+ * \param gpio: address of the GPIO port to clock.
  *
- * \return : Error code or OK.
+ * \return: Error code or OK.
  *
  */
-static uint8_t gpio_enable_clock(GPIO_TypeDef *gpio);
+static t_error_handling gpio_enable_clock(GPIO_TypeDef *gpio);
 
 
-uint8_t gpio_init(t_gpio_cfg *cfg)
+t_error_handling gpio_init(t_gpio_cfg *cfg)
 {
     uint8_t local_cnf_mode = 0;
     uint32_t local_mask = 0; /* Local variable for masks operations. */
@@ -141,9 +141,9 @@ uint8_t gpio_init(t_gpio_cfg *cfg)
 }
 
 
-uint8_t gpio_init_event_ctrl(uint8_t event_out_en, uint8_t port, uint8_t pin)
+t_error_handling gpio_init_event_ctrl(uint8_t event_out_en, uint8_t port, uint8_t pin)
 {
-    uint8_t error = ERROR_WRONG_VALUE_PASSED;
+	t_error_handling error = ERROR_WRONG_VALUE_PASSED;
     if(pin < MAX_GPIO_PIN)
     {
         uint32_t local_setup = (((event_out_en << 3) + port) << 4) + pin; /* Concatenate all fields. */
@@ -154,9 +154,9 @@ uint8_t gpio_init_event_ctrl(uint8_t event_out_en, uint8_t port, uint8_t pin)
 }
 
 
-uint8_t gpio_set(GPIO_TypeDef *gpio, uint16_t pin)
+t_error_handling gpio_set(GPIO_TypeDef *gpio, uint16_t pin)
 {
-    uint8_t error = ERROR_WRONG_VALUE_PASSED;
+	t_error_handling error = ERROR_WRONG_VALUE_PASSED;
     if(pin < MAX_GPIO_PIN)
     {
         gpio->BSRR = 1 << pin;
@@ -166,16 +166,16 @@ uint8_t gpio_set(GPIO_TypeDef *gpio, uint16_t pin)
 }
 
 
-uint8_t gpio_set_all(GPIO_TypeDef *gpio)
+t_error_handling gpio_set_all(GPIO_TypeDef *gpio)
 {
     gpio->ODR = 0xFFFF;
     return OK;
 }
 
 
-uint8_t gpio_clear(GPIO_TypeDef *gpio, uint8_t pin)
+t_error_handling gpio_clear(GPIO_TypeDef *gpio, uint8_t pin)
 {
-    uint8_t error = ERROR_WRONG_VALUE_PASSED;
+	t_error_handling error = ERROR_WRONG_VALUE_PASSED;
     if(pin < MAX_GPIO_PIN)        /* Check if pin number don't exceeds max value.               */
     {
         gpio->BRR = 1 << pin;     /* Write 1 in the corresponding bit of set reset register.    */
@@ -185,16 +185,16 @@ uint8_t gpio_clear(GPIO_TypeDef *gpio, uint8_t pin)
 }
 
 
-uint8_t gpio_clear_all(GPIO_TypeDef *gpio)
+t_error_handling gpio_clear_all(GPIO_TypeDef *gpio)
 {
     gpio->ODR = 0x0000;    /* Write 0 in all bits of the data register.    */
     return OK;
 }
 
 
-uint8_t gpio_toggle(GPIO_TypeDef *gpio, uint8_t pin)
+t_error_handling gpio_toggle(GPIO_TypeDef *gpio, uint8_t pin)
 {
-    uint8_t error = ERROR_WRONG_VALUE_PASSED;
+	t_error_handling error = ERROR_WRONG_VALUE_PASSED;
     if(pin < MAX_GPIO_PIN)                    /* Check if pin number don't exceeds max value.    */
     {
         uint32_t local_mask = 1 << pin;
@@ -221,7 +221,7 @@ uint8_t gpio_read(GPIO_TypeDef *gpio, uint8_t pin)
 }
 
 
-uint8_t gpio_pin_remap(PERIPH_REMAP remap)
+t_error_handling gpio_pin_remap(PERIPH_REMAP remap)
 {
     /* Concatenate all fields in a same variable.    */
     uint32_t local_remap = (remap.swj_tag & 0x7);
@@ -244,7 +244,7 @@ uint8_t gpio_pin_remap(PERIPH_REMAP remap)
 }
 
 
-static uint8_t gpio_enable_clock(GPIO_TypeDef *gpio)
+static t_error_handling gpio_enable_clock(GPIO_TypeDef *gpio)
 {
     if(gpio == GPIOA)
     {
@@ -266,7 +266,7 @@ static uint8_t gpio_enable_clock(GPIO_TypeDef *gpio)
 }
 
 
-uint8_t gpio_disable_clock(GPIO_TypeDef *gpio)
+t_error_handling gpio_disable_clock(GPIO_TypeDef *gpio)
 {
 	if(gpio == GPIOA)
     {
@@ -292,8 +292,9 @@ extern void EXTI0_IRQHandler(void)
 {
     /** GPIO0 IRQ handler.
     *
-    * \param void : No parameter.
-    * \return : No return value.
+    * \param void: No parameter.
+    *
+    * \return: No return value.
     */
 
     gpio_callback[0](EXTI->PR);	       /* Call the GPIO0 subroutine.                  */
@@ -306,8 +307,9 @@ extern void EXTI1_IRQHandler(void)
 {
     /** GPIO1 IRQ handler.
     *
-    * \param void : No parameter.
-    * \return : No return value.
+    * \param void: No parameter.
+    *
+    * \return: No return value.
     */
 
     gpio_callback[1](EXTI->PR);	        /* Call the GPIO1 subroutine.                  */
@@ -320,7 +322,8 @@ extern void EXTI2_IRQHandler(void)
 {
     /** GPIO2 IRQ handler.
     *
-    * \param void : No parameter.
+    * \param void: No parameter.
+    *
     * \return : No return value.
     */
 
@@ -335,6 +338,7 @@ extern void EXTI3_IRQHandler(void)
     /**	GPIO3 IRQ handler.
     *
     * \param void : No parameter.
+    *
     * \return : No return value.
     */
 
@@ -349,6 +353,7 @@ extern void EXTI4_IRQHandler(void)
     /**	GPIO4 IRQ handler.
     *
     * \param void : No parameter.
+    *
     * \return : No return value.
     */
 

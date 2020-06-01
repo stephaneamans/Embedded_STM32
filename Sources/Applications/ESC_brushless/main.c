@@ -9,12 +9,12 @@ int main(void)
 	soc_peripherals_configuration();
 	//clock_select_clock_to_output(SYSCLOCK);
 
-    tim_start(TIM3);
-    tim_start(TIM2);
+    //tim_start(TIM3);
+    //tim_start(TIM2);
     while(1)
     {
 
-
+    	t_error_handling error = usart_send(USART1, 0x55);
     	//gpio_toggle(GPIOA, 8);
         //tim_wait(TIM3, 1);
 
@@ -30,3 +30,4 @@ int main(void)
         //}
     }
 }
+

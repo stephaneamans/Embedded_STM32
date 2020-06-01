@@ -92,7 +92,7 @@ typedef struct
     uint8_t percent_pwm;
 
     ic_oc_polarity polarity;
-        struct
+    struct
     {
         irq_dma_active active;
 //        uint8_t edge;
@@ -120,67 +120,67 @@ typedef struct
  * \param timer: Pointer to the timer register base.
  * \param cfg: Configuration structure.
  *
- * \return : Error code or 0 if OK.
+ * \return: Error code or 0 if OK.
  *
  */
-uint8_t timer_init(t_timer_cfg *cfg);
+t_error_handling timer_init(t_timer_cfg *cfg);
 
 
 /** Disable a timer port clock.
  *
- * \param timer : address of the TIM entity to unclock.
+ * \param timer: Address of the TIM entity to unclock.
  *
- * \return : Error code or OK.
+ * \return: Error code or OK.
  *
  */
-uint8_t timer_disable_clock(TIM_TypeDef *timer);
+t_error_handling timer_disable_clock(TIM_TypeDef *timer);
 
 
 /** Set timer prescaler.
  *
- * \param prescaler : Prescaler value for the timer.
+ * \param prescaler: Prescaler value for the timer.
  *
- * \return : Error code or OK.
+ * \return: Error code or OK.
  *
  */
-uint8_t timer_disable_clock(TIM_TypeDef *timer);
+t_error_handling timer_disable_clock(TIM_TypeDef *timer);
 
 
 /** Start timer.
  *
- * \param timer : address of the timer.
+ * \param timer: Address of the timer.
  *
- * \return : Error code or OK.
+ * \return: Error code or OK.
  *
  */
-uint8_t tim_start(TIM_TypeDef *timer);
+t_error_handling tim_start(TIM_TypeDef *timer);
 
 
 /** Stop timer.
  *
- * \param timer : address of the timer.
+ * \param timer: Address of the timer.
  *
- * \return : Error code or OK.
+ * \return: Error code or OK.
  *
  */
-uint8_t tim_stop(TIM_TypeDef *timer);
+t_error_handling tim_stop(TIM_TypeDef *timer);
 
 
 /** Wait timer end by polling.
  *
- * \param timer : address of the timer.
- * \param channel: number of the channel to start.
+ * \param timer: Address of the timer.
+ * \param channel: Number of the channel to start.
  *
- * \return : Error code or OK.
+ * \return: Error code or OK.
  *
  */
-uint8_t tim_wait(TIM_TypeDef *timer, uint8_t channel);
+t_error_handling tim_wait(TIM_TypeDef *timer, uint8_t channel);
 
 
 /** Wait for timer input capture acquisition.
  *
- * \param timer : address of the timer.
- * \param channel: number of the channel to get.
+ * \param timer: Address of the timer.
+ * \param channel: Number of the channel to get.
  *
  * \return : measured capture value.
  *
@@ -191,7 +191,6 @@ uint16_t tim_wait_input_capture(TIM_TypeDef *timer, uint8_t channel);
 
 /* Pointer callback function table prototype	*/
 void (*tim1_callback[4])(uint32_t pin_numb);
-
 
 
 #endif /* TIMER_H_ */
