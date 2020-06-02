@@ -141,14 +141,14 @@ t_error_handling usart_init(t_usart_cfg *cfg)
 
     if((cfg->irq_dma.type > 0) && (cfg->irq_dma.type < 0xC0))
     {
-    	irq_id usart_irq_id = IRQ_USART1;
+    	uint8_t usart_irq_id = IRQ_USART_1;
         if(cfg->usart == USART2)
         {
-            usart_irq_id = IRQ_USART2;
+            usart_irq_id = IRQ_USART_2;
         }
-        enable_nvic_irq(IRQ_USART1);
-        set_nvic_priority(IRQ_USART1, cfg->irq_dma.priority);
-        usart_callback[usart_irq_id - IRQ_USART1] = cfg->irq_dma.callback;
+        enable_nvic_irq(IRQ_USART_1);
+        set_nvic_priority(IRQ_USART_1, cfg->irq_dma.priority);
+        usart_callback[usart_irq_id - IRQ_USART_1] = cfg->irq_dma.callback;
     }
 
     cfg->usart->BRR = compute_baudrate_divider(clock_frequency, cfg->baud_rate);

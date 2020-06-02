@@ -298,7 +298,7 @@ extern void EXTI0_IRQHandler(void)
     */
 
     gpio_callback[0](EXTI->PR);	       /* Call the GPIO0 subroutine.                  */
-    clear_pending_nvic_irq(IRQ_EXTI0); /* Clear any GPIO0 NVIC pending interrupt.     */
+    clear_pending_nvic_irq(IRQ_EXTI_0); /* Clear any GPIO0 NVIC pending interrupt.     */
     EXTI->PR = 0xFFFFFFFF;             /* Clear all GPIO0 pending interrupt flags.    */
 }
 
@@ -313,7 +313,7 @@ extern void EXTI1_IRQHandler(void)
     */
 
     gpio_callback[1](EXTI->PR);	        /* Call the GPIO1 subroutine.                  */
-    clear_pending_nvic_irq(IRQ_EXTI1);  /* Clear any GPIO1 NVIC pending interrupt.     */
+    clear_pending_nvic_irq(IRQ_EXTI_1);  /* Clear any GPIO1 NVIC pending interrupt.     */
     EXTI->PR = 0xFFFFFFFF;              /* Clear all GPIO1 pending interrupt flags.    */
 }
 
@@ -328,7 +328,7 @@ extern void EXTI2_IRQHandler(void)
     */
 
     gpio_callback[2](EXTI->PR);         /* Call the GPIO2 subroutine.                  */
-    clear_pending_nvic_irq(IRQ_EXTI2);  /* Clear any GPIO2 NVIC pending interrupt.     */
+    clear_pending_nvic_irq(IRQ_EXTI_2);  /* Clear any GPIO2 NVIC pending interrupt.     */
     EXTI->PR = 0xFFFFFFFF;              /* Clear all GPIO2 pending interrupt flags.    */
 }
 
@@ -343,7 +343,7 @@ extern void EXTI3_IRQHandler(void)
     */
 
     gpio_callback[3](EXTI->PR);	        /* Call the GPIO3 subroutine.                  */
-    clear_pending_nvic_irq(IRQ_EXTI3);  /* Clear any GPIO3 NVIC pending interrupt.     */
+    clear_pending_nvic_irq(IRQ_EXTI_3);  /* Clear any GPIO3 NVIC pending interrupt.     */
     EXTI->PR = 0xFFFFFFFF;              /* Clear all GPIO3 pending interrupt flags.    */
 }
 
@@ -358,7 +358,7 @@ extern void EXTI4_IRQHandler(void)
     */
 
     gpio_callback[4](EXTI->PR);         /* Call the GPIO4 subroutine.                  */
-    clear_pending_nvic_irq(IRQ_EXTI4);  /* Clear any GPIO4 NVIC pending interrupt.     */
+    clear_pending_nvic_irq(IRQ_EXTI_4);  /* Clear any GPIO4 NVIC pending interrupt.     */
     EXTI->PR = 0xFFFFFFFF;              /* Clear all GPIO4 pending interrupt flags.    */
 }
 

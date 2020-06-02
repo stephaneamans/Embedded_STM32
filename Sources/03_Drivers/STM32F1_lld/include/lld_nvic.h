@@ -17,7 +17,7 @@
 
 
 /* Interruptions number enumeration definition:        */
-typedef enum{
+enum irq_id{
     // Reserved
     // Reset_Handler        Priority -3
     // NMI_Handler          Priority -2
@@ -40,11 +40,11 @@ typedef enum{
     IRQ_RTC               = 3,     /* RTC global interrupt                             */
     IRQ_FLASH             = 4,     /* Flash global interrupt                           */
     IRQ_RCC               = 5,     /* RCC global interrupt                             */
-    IRQ_EXTI0             = 6,     /* EXTI Line0 interrupt                             */
-    IRQ_EXTI1             = 7,     /* EXTI Line1 interrupt                             */
-    IRQ_EXTI2             = 8,     /* EXTI Line2 interrupt                             */
-    IRQ_EXTI3             = 9,     /* EXTI Line3 interrupt                             */
-    IRQ_EXTI4             = 10,    /* EXTI Line4 interrupt                             */
+    IRQ_EXTI_0            = 6,     /* EXTI Line0 interrupt                             */
+    IRQ_EXTI_1            = 7,     /* EXTI Line1 interrupt                             */
+    IRQ_EXTI_2            = 8,     /* EXTI Line2 interrupt                             */
+    IRQ_EXTI_3            = 9,     /* EXTI Line3 interrupt                             */
+    IRQ_EXTI_4            = 10,    /* EXTI Line4 interrupt                             */
     IRQ_DMA1_Channel1     = 11,    /* DMA1 Channel1 global interrupt                   */
     IRQ_DMA1_Channel2     = 12,    /* DMA1 Channel2 global interrupt                   */
     IRQ_DMA1_Channel3     = 13,    /* DMA1 Channel3 global interrupt                   */
@@ -71,15 +71,15 @@ typedef enum{
     IRQ_I2C2_ER           = 34,    /* I2C2 error interrupt                             */
     IRQ_SPI1              = 35,    /* SPI1 global interrupt                            */
     IRQ_SPI2              = 36,    /* SPI2 global interrupt                            */
-    IRQ_USART1            = 37,    /* USART1 global interrupt                          */
-    IRQ_USART2            = 38,    /* USART2 global interrupt                          */
-    IRQ_USART3            = 39,    /* USART3 global interrupt                          */
+    IRQ_USART_1           = 37,    /* USART1 global interrupt                          */
+    IRQ_USART_2           = 38,    /* USART2 global interrupt                          */
+    IRQ_USART_3           = 39,    /* USART3 global interrupt                          */
     IRQ_EXTI15_10         = 40,    /* EXTI Line[15:10] interrupts                      */
     IRQ_RTCAlarm          = 41,    /* RTC Alarms through EXTI line interrupt           */
     // Reserved           = 42,    /* Reserved                                         */
     IRQ_IM8_BRK           = 43,    /* TIM8 Break interrupt                             */
     IRQ_IM8_UP            = 44,    /* TIM8 Update interrupt                            */
-    IRQ_IM8_TRG_COM	  = 45,    /* TIM8 Trigger and Commutation interrupts          */
+    IRQ_IM8_TRG_COM	  = 45,        /* TIM8 Trigger and Commutation interrupts          */
     IRQ_TIM8_CC           = 46,    /* TIM8 Capture Compare interrupt                   */
     IRQ_ADC3              = 47,    /* ADC3 global interrupt                            */
     IRQ_FSMC              = 48,    /* FSMC global interrupt                            */
@@ -94,7 +94,7 @@ typedef enum{
     IRQ_DMA2_Channel2     = 57,    /* DMA2 Channel2 global interrupt                   */
     IRQ_DMA2_Channel3     = 58,    /* DMA2 Channel3 global interrupt                   */
     IRQ_DMA2_Channel4_5   = 59     /* DMA2 Channel4 and DMA2 Channel5 global interrupt */
-}irq_id;
+};
 
 
 /* Interruptions priority enumeration definition:        */
