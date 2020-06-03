@@ -16,7 +16,7 @@
 #define USART1_CLOCK_MODES                   low_and_first_edge
 #define USART1_RTS                           0
 #define USART1_DMA                           0
-#define USART1_IRQ_DMA_TYPE                  tx_complete_irq
+#define USART1_IRQ_DMA_TYPE                  no_usart_irq_dma
 #define USART1_IRQ_DMA_PRIORITY              prio4
 #define USART1_IRQ_CALLBACK                  usart_test
 
