@@ -1,8 +1,8 @@
 /*
- *        lld_clock.c
+ * lld_clock.c
  *
- *    Created on: Apr 20, 2019
- *    Author: St�phane Amans
+ * Created on: Apr 20, 2019
+ * Author: Stephane Amans
  */
 
 /* Include files.        */

@@ -1,8 +1,8 @@
 /*
- *        lld_timer.c
+ * lld_timer.c
  *
- *    Created on: Mar 17, 2020
- *    Author: Stéphane Amans
+ * Created on: Mar 17, 2020
+ * Author: Stephane Amans
  */
 
 /* Include files.        */

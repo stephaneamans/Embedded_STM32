@@ -1,8 +1,8 @@
 /*
- *        lld_usart.h
+ * lld_usart.h
  *
- *    Created on: Apr 12, 2019
- *    Author: St�phane Amans
+ * Created on: Apr 12, 2019
+ * Author: Stephane Amans
  */
 #ifndef LLD_USART_H_
 #define LLD_USART_H_

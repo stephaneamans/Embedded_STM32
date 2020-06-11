@@ -10,6 +10,7 @@ int main(void)
     soc_peripherals_configuration();
 
     test_result = test_queue();
+    test_result += test_dma();
 
     if(test_result == PASS)
     {

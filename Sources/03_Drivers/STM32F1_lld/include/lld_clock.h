@@ -1,8 +1,8 @@
 /*
- *        lld_clock.h
+ * lld_clock.h
  *
- *    Created on: Apr 20, 2019
- *    Author: Stephane Amans
+ * Created on: Apr 20, 2019
+ * Author: Stephane Amans
  */
 #ifndef LLD_CLOCK_H_
 #define LLD_CLOCK_H_

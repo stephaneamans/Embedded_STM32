@@ -1,8 +1,8 @@
 /*
- *        lld_gpio.h
+ * lld_gpio.h
  *
- *    Created on: Apr 12, 2019
- *    Author: St�phane Amans
+ * Created on: Apr 12, 2019
+ * Author: Stephane Amans
  */
 #ifndef LLD_GPIO_H_
 #define LLD_GPIO_H_
