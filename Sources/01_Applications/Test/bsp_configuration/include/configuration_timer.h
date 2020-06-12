@@ -1,11 +1,9 @@
 #ifndef CONFIGURATION_TIMER_H
 #define CONFIGURATION_TIMER_H
 
-
 /*********************************
  * TIM definitions
  ********************************/
-
 
 /* TIM_1 configuration                     */
 #define TIM1_TIME_FREQUENCY        1 MSEC
@@ -46,7 +44,6 @@
 #define TIM1_CH4_IRQ_DMA_PRIORITY  0
 #define TIM1_CH4_IRQ_DMA_CALLBACK  0
 
-
 /* TIM_2 configuration                     */
 #define TIM2_TIME_FREQUENCY        1 MSEC
 #define TIM2_CH1_ENABLE            disable
@@ -86,7 +83,6 @@
 #define TIM2_CH4_IRQ_DMA_PRIORITY  0
 #define TIM2_CH4_IRQ_DMA_CALLBACK  0
 
-
 /* TIM_3 configuration                     */
 #define TIM3_TIME_FREQUENCY        1 MSEC
 #define TIM3_CH1_ENABLE            enable
@@ -125,6 +121,5 @@
 #define TIM3_CH4_IRQ_DMA_ENABLE    0
 #define TIM3_CH4_IRQ_DMA_PRIORITY  0
 #define TIM3_CH4_IRQ_DMA_CALLBACK  0
-
 
 #endif /* CONFIGURATION_TIMER_H_ */

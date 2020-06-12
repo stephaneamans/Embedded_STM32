@@ -154,7 +154,7 @@ t_error_handling clock_init(t_clock_cfg *cfg)
 }
 
 
-t_error_handling clock_select_clock_to_output(int source)
+t_error_handling clock_select_clock_to_output(clock_sources source)
 {
     uint32_t local_MCO_mask = 0x07000000;
 

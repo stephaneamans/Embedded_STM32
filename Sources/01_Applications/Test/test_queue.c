@@ -11,6 +11,7 @@
 
 /* Defines */
 #define TOTAL_TEST_NUMBER   5
+#define BUFFER_LENGTH_64   64
 #define BUFFER_LENGTH_256   256
 
 
@@ -325,6 +326,67 @@ static t_error_handling test_synthesis(struct test_results *results)
 {
     uint8_t index = 0;
     t_error_handling result = OK;
+    char usart_buffer[BUFFER_LENGTH_64];       /* USART 8 bits buffer.   */
+    struct t_usart_driver *usart1 = usart_get_driver(1);
+
+    uint32_t string_length = sprintf(&usart_buffer[0], "QUEUE - Test 1, fill then read a half queue: ");
+    usart_send(usart1, (uint8_t*)&usart_buffer[0], string_length);
+    if(results->test[0]->result == OK)
+    {
+        string_length = sprintf(&usart_buffer[0], "PASS");
+    }
+    else
+    {
+        string_length = sprintf(&usart_buffer[0], "FAIL");
+    }
+    usart_send(usart1, (uint8_t*)&usart_buffer[0], string_length);
+    usart_buffer[0] = 0x0A;
+    usart_send(usart1, (uint8_t*)&usart_buffer[0], 1);
+
+    string_length = sprintf(&usart_buffer[0], "QUEUE - Test 2, fill then read a full queue: ");
+    usart_send(usart1, (uint8_t*)&usart_buffer[0], string_length);
+    if(results->test[1]->result == OK)
+    {
+        string_length = sprintf(&usart_buffer[0], "PASS");
+    }
+    else
+    {
+        string_length = sprintf(&usart_buffer[0], "FAIL");
+    }
+    usart_send(usart1, (uint8_t*)&usart_buffer[0], string_length);
+    usart_buffer[0] = 0x0A;
+    usart_send(usart1, (uint8_t*)&usart_buffer[0], 1);
+
+    string_length = sprintf(&usart_buffer[0], "QUEUE - Test 3, full fill the queue then read a full queue: ");
+    usart_send(usart1, (uint8_t*)&usart_buffer[0], string_length);
+    if(results->test[2]->result == OK)
+    {
+        string_length = sprintf(&usart_buffer[0], "PASS");
+    }
+    else
+    {
+        string_length = sprintf(&usart_buffer[0], "FAIL");
+    }
+    usart_send(usart1, (uint8_t*)&usart_buffer[0], string_length);
+    usart_buffer[0] = 0x0A;
+    usart_send(usart1, (uint8_t*)&usart_buffer[0], 1);
+
+    string_length = sprintf(&usart_buffer[0], "QUEUE - Test 4, randomly full and read the queue: ");
+    usart_send(usart1, (uint8_t*)&usart_buffer[0], string_length);
+    if(results->test[3]->result == OK)
+    {
+        string_length = sprintf(&usart_buffer[0], "PASS");
+    }
+    else
+    {
+        string_length = sprintf(&usart_buffer[0], "FAIL");
+    }
+    usart_send(usart1, (uint8_t*)&usart_buffer[0], string_length);
+    usart_buffer[0] = 0x0A;
+    usart_send(usart1, (uint8_t*)&usart_buffer[0], 1);
+    usart_buffer[0] = 0x0A;
+    usart_send(usart1, (uint8_t*)&usart_buffer[0], 1);
+
     while(results->test[index] != 0)
     {
         result += results->test[index]->result;

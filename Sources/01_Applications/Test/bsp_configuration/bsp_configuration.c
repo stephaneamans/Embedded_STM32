@@ -16,6 +16,146 @@ void soc_core_configuration(void)
 
 void soc_peripherals_configuration(void)
 {
+
+#ifdef DMA1_CH1
+	t_dma_channel_cfg dma1_ch1_configuration;
+	dma1_ch1_configuration.reg = DMA1_Ch1;
+	dma1_ch1_configuration.mem2mem = DMA1_CH1_MEM2MEM;
+	dma1_ch1_configuration.dma_priority = DMA1_CH1_PRIORITY;
+	dma1_ch1_configuration.mem_data_type = DMA1_CH1_MEM_DATA_TYPE;
+	dma1_ch1_configuration.memory_zone_size = DMA1_CH1_MEMORY_ZONE_SIZE;
+	dma1_ch1_configuration.memory_zone_address = DMA1_CH1_MEMORY_ZONE_ADDRESS;
+	dma1_ch1_configuration.peripheral_address = (uint32_t)DMA1_CH1_PERIPHERAL_ADDRESS;
+	dma1_ch1_configuration.periph_data_type = DMA1_CH1_PERIPH_DATA_TYPE;
+	dma1_ch1_configuration.memory_increment = DMA1_CH1_MEMORY_INCREMENT;
+	dma1_ch1_configuration.peripheral_increment = DMA1_CH1_PERIPHERAL_INCREMENT;
+	dma1_ch1_configuration.read_from_memory = DMA1_CH1_READ_FROM_MEMORY;
+	dma1_ch1_configuration.irq.transfer_error_interrupt = DMA1_CH1_IRQ_TRANSFER_ERROR;
+	dma1_ch1_configuration.irq.half_transfer_interrupt = DMA1_CH1_IRQ_HALF_TRANSFER;
+	dma1_ch1_configuration.irq.transfer_complete_interrupt = DMA1_CH1_IRQ_TRANSFER_COMPLETE;
+ 	dma_init(&dma_driver[0], &dma1_ch1_configuration);
+#endif
+
+#ifdef DMA1_CH2
+	t_dma_channel_cfg dma1_ch2_configuration;
+	dma1_ch2_configuration.reg = DMA1_Ch2;
+	dma1_ch2_configuration.mem2mem = DMA1_CH2_MEM2MEM;
+	dma1_ch2_configuration.dma_priority = DMA1_CH2_PRIORITY;
+	dma1_ch2_configuration.mem_data_type = DMA1_CH2_MEM_DATA_TYPE;
+	dma1_ch2_configuration.memory_zone_size = DMA1_CH2_MEMORY_ZONE_SIZE;
+	dma1_ch2_configuration.memory_zone_address = DMA1_CH2_MEMORY_ZONE_ADDRESS;
+	dma1_ch2_configuration.peripheral_address = DMA1_CH2_PERIPHERAL_ADDRESS;
+	dma1_ch2_configuration.periph_data_type = DMA1_CH2_PERIPH_DATA_TYPE;
+	dma1_ch2_configuration.memory_increment = DMA1_CH2_MEMORY_INCREMENT;
+	dma1_ch2_configuration.peripheral_increment = DMA1_CH2_PERIPHERAL_INCREMENT;
+	dma1_ch2_configuration.read_from_memory = DMA1_CH2_READ_FROM_MEMORY;
+	dma1_ch2_configuration.irq.transfer_error_interrupt = DMA1_CH2_IRQ_TRANSFER_ERROR;
+	dma1_ch2_configuration.irq.half_transfer_interrupt = DMA1_CH2_IRQ_HALF_TRANSFER;
+	dma1_ch2_configuration.irq.transfer_complete_interrupt = DMA1_CH2_IRQ_TRANSFER_COMPLETE;
+	dma1_ch2_configuration.irq.priority = DMA1_CH2_IRQ_PRIORITY;
+	dma_init(&dma_driver[1], &dma1_ch2_configuration);
+#endif
+
+#ifdef DMA1_CH3
+	t_dma_channel_cfg dma1_ch3_configuration;
+	dma1_ch3_configuration.reg = DMA1_Ch3;
+	dma1_ch3_configuration.mem2mem = DMA1_CH3_MEM2MEM;
+	dma1_ch3_configuration.dma_priority = DMA1_CH3_PRIORITY;
+	dma1_ch3_configuration.mem_data_type = DMA1_CH3_MEM_DATA_TYPE;
+	dma1_ch3_configuration.memory_zone_size = DMA1_CH3_MEMORY_ZONE_SIZE;
+	dma1_ch3_configuration.memory_zone_address = DMA1_CH3_MEMORY_ZONE_ADDRESS;
+	dma1_ch3_configuration.peripheral_address = DMA1_CH3_PERIPHERAL_ADDRESS;
+	dma1_ch3_configuration.periph_data_type = DMA1_CH3_PERIPH_DATA_TYPE;
+	dma1_ch3_configuration.memory_increment = DMA1_CH3_MEMORY_INCREMENT;
+	dma1_ch3_configuration.peripheral_increment = DMA1_CH3_PERIPHERAL_INCREMENT;
+	dma1_ch3_configuration.read_from_memory = DMA1_CH3_READ_FROM_MEMORY;
+	dma1_ch3_configuration.irq.transfer_error_interrupt = DMA1_CH3_IRQ_TRANSFER_ERROR;
+	dma1_ch3_configuration.irq.half_transfer_interrupt = DMA1_CH3_IRQ_HALF_TRANSFER;
+	dma1_ch3_configuration.irq.transfer_complete_interrupt = DMA1_CH3_IRQ_TRANSFER_COMPLETE;
+	dma1_ch3_configuration.irq.priority = DMA1_CH3_IRQ_PRIORITY;
+	dma_init(&dma_driver[2], &dma1_ch3_configuration);
+#endif
+
+#ifdef DMA1_CH4
+	t_dma_channel_cfg dma1_ch4_configuration;
+	dma1_ch4_configuration.reg = DMA1_Ch4;
+    dma1_ch4_configuration.mem2mem = DMA1_CH4_MEM2MEM;
+    dma1_ch4_configuration.dma_priority = DMA1_CH4_PRIORITY;
+	dma1_ch4_configuration.mem_data_type = DMA1_CH4_MEM_DATA_TYPE;
+	dma1_ch4_configuration.memory_zone_size = DMA1_CH4_MEMORY_ZONE_SIZE;
+	dma1_ch4_configuration.memory_zone_address = DMA1_CH4_MEMORY_ZONE_ADDRESS;
+	dma1_ch4_configuration.peripheral_address = DMA1_CH4_PERIPHERAL_ADDRESS;
+	dma1_ch4_configuration.periph_data_type = DMA1_CH4_PERIPH_DATA_TYPE;
+	dma1_ch4_configuration.memory_increment = DMA1_CH4_MEMORY_INCREMENT;
+	dma1_ch4_configuration.peripheral_increment = DMA1_CH4_PERIPHERAL_INCREMENT;
+	dma1_ch4_configuration.read_from_memory = DMA1_CH4_READ_FROM_MEMORY;
+	dma1_ch4_configuration.irq.transfer_error_interrupt = DMA1_CH4_IRQ_TRANSFER_ERROR;
+	dma1_ch4_configuration.irq.half_transfer_interrupt = DMA1_CH4_IRQ_HALF_TRANSFER;
+	dma1_ch4_configuration.irq.transfer_complete_interrupt = DMA1_CH4_IRQ_TRANSFER_COMPLETE;
+	dma1_ch4_configuration.irq.priority = DMA1_CH4_IRQ_PRIORITY;
+	dma_init(&dma_driver[3], &dma1_ch4_configuration);
+#endif
+
+#ifdef DMA1_CH5
+	t_dma_channel_cfg dma1_ch5_configuration;
+	dma1_ch5_configuration.reg = DMA1_Ch5;
+	dma1_ch5_configuration.mem2mem = DMA1_CH5_MEM2MEM;
+	dma1_ch5_configuration.dma_priority = DMA1_CH5_PRIORITY;
+	dma1_ch5_configuration.mem_data_type = DMA1_CH5_MEM_DATA_TYPE;
+	dma1_ch5_configuration.memory_zone_size = DMA1_CH5_MEMORY_ZONE_SIZE;
+	dma1_ch5_configuration.memory_zone_address = DMA1_CH5_MEMORY_ZONE_ADDRESS;
+	dma1_ch5_configuration.peripheral_address = DMA1_CH5_PERIPHERAL_ADDRESS;
+	dma1_ch5_configuration.periph_data_type = DMA1_CH5_PERIPH_DATA_TYPE;
+	dma1_ch5_configuration.memory_increment = DMA1_CH5_MEMORY_INCREMENT;
+	dma1_ch5_configuration.peripheral_increment = DMA1_CH5_PERIPHERAL_INCREMENT;
+	dma1_ch5_configuration.read_from_memory = DMA1_CH5_READ_FROM_MEMORY;
+	dma1_ch5_configuration.irq.transfer_error_interrupt = DMA1_CH5_IRQ_TRANSFER_ERROR;
+	dma1_ch5_configuration.irq.half_transfer_interrupt = DMA1_CH5_IRQ_HALF_TRANSFER;
+	dma1_ch5_configuration.irq.transfer_complete_interrupt = DMA1_CH5_IRQ_TRANSFER_COMPLETE;
+	dma1_ch5_configuration.irq.priority = DMA1_CH5_IRQ_PRIORITY;
+	dma_init(&dma_driver[4], &dma1_ch5_configuration);
+#endif
+
+#ifdef DMA1_CH6
+	t_dma_channel_cfg dma1_ch6_configuration;
+	dma1_ch6_configuration.reg = DMA1_Ch6;
+	dma1_ch6_configuration.mem2mem = DMA1_CH6_MEM2MEM;
+	dma1_ch6_configuration.dma_priority = DMA1_CH6_PRIORITY;
+	dma1_ch6_configuration.mem_data_type = DMA1_CH6_MEM_DATA_TYPE;
+	dma1_ch6_configuration.memory_zone_size = DMA1_CH6_MEMORY_ZONE_SIZE;
+	dma1_ch6_configuration.memory_zone_address = DMA1_CH6_MEMORY_ZONE_ADDRESS;
+	dma1_ch6_configuration.peripheral_address = DMA1_CH6_PERIPHERAL_ADDRESS;
+	dma1_ch6_configuration.periph_data_type = DMA1_CH6_PERIPH_DATA_TYPE;
+	dma1_ch6_configuration.memory_increment = DMA1_CH6_MEMORY_INCREMENT;
+	dma1_ch6_configuration.peripheral_increment = DMA1_CH6_PERIPHERAL_INCREMENT;
+	dma1_ch6_configuration.read_from_memory = DMA1_CH6_READ_FROM_MEMORY;
+	dma1_ch6_configuration.irq.transfer_error_interrupt = DMA1_CH6_IRQ_TRANSFER_ERROR;
+	dma1_ch6_configuration.irq.half_transfer_interrupt = DMA1_CH6_IRQ_HALF_TRANSFER;
+	dma1_ch6_configuration.irq.transfer_complete_interrupt = DMA1_CH6_IRQ_TRANSFER_COMPLETE;
+	dma1_ch6_configuration.irq.priority = DMA1_CH6_IRQ_PRIORITY;
+	dma_init(&dma_driver[5], &dma1_ch6_configuration);
+#endif
+
+#ifdef DMA1_CH7
+	t_dma_channel_cfg dma1_ch7_configuration;
+	dma1_ch7_configuration.reg = DMA1_Ch7;
+	dma1_ch7_configuration.mem2mem = DMA1_CH7_MEM2MEM;
+	dma1_ch7_configuration.dma_priority = DMA1_CH7_PRIORITY;
+	dma1_ch7_configuration.mem_data_type = DMA1_CH7_MEM_DATA_TYPE;
+	dma1_ch7_configuration.memory_zone_size = DMA1_CH7_MEMORY_ZONE_SIZE;
+	dma1_ch7_configuration.memory_zone_address = DMA1_CH7_MEMORY_ZONE_ADDRESS;
+	dma1_ch7_configuration.peripheral_address = DMA1_CH7_PERIPHERAL_ADDRESS;
+	dma1_ch7_configuration.periph_data_type = DMA1_CH7_PERIPH_DATA_TYPE;
+	dma1_ch7_configuration.memory_increment = DMA1_CH7_MEMORY_INCREMENT;
+	dma1_ch7_configuration.peripheral_increment = DMA1_CH7_PERIPHERAL_INCREMENT;
+	dma1_ch7_configuration.read_from_memory = DMA1_CH7_READ_FROM_MEMORY;
+	dma1_ch7_configuration.irq.transfer_error_interrupt = DMA1_CH7_IRQ_TRANSFER_ERROR;
+	dma1_ch7_configuration.irq.half_transfer_interrupt = DMA1_CH7_IRQ_HALF_TRANSFER;
+	dma1_ch7_configuration.irq.transfer_complete_interrupt = DMA1_CH7_IRQ_TRANSFER_COMPLETE;
+	dma1_ch7_configuration.irq.priority = DMA1_CH7_IRQ_PRIORITY;
+	dma_init(&dma_driver[6], &dma1_ch7_configuration);
+#endif
+
 #ifdef GPIO_PA0
     t_gpio_cfg gpio_pa0_configuration;
     gpio_pa0_configuration.gpio = PA0_GPIO_PORT;
@@ -147,35 +287,33 @@ void soc_peripherals_configuration(void)
 #endif
 
 #ifdef USART_1
-    t_usart_cfg usart1_configuration;
-    usart1_configuration.usart = USART1;
-    usart1_configuration.baud_rate = USART1_BAUDRATE;
+    struct t_usart_config usart1_configuration;
+    struct t_usart_driver *usart_driver1 = usart_get_driver(1);
+    usart1_configuration.reg = USART1_REGS;
+    usart1_configuration.baudrate = USART1_BAUDRATE;
     usart1_configuration.length = USART1_LENGTH;
-    usart1_configuration.wake_up = USART1_WAKEUP;
     usart1_configuration.parity = USART1_PARITY;
     usart1_configuration.stop = USART1_STOP_BITS;
-    usart1_configuration.clock_modes = USART1_CLOCK_MODES;
-    usart1_configuration.cts_rts = USART1_RTS;
-    usart1_configuration.irq_dma.type = USART1_IRQ_DMA_TYPE;
+    usart1_configuration.mode = USART1_MODE;
     usart1_configuration.irq_dma.priority = USART1_IRQ_DMA_PRIORITY;
-    usart1_configuration.irq_dma.callback = USART1_IRQ_CALLBACK;
-    usart_init(&usart1_configuration);
+    usart1_configuration.irq_dma.tx_dma_channel = USART1_DMA_DRIVER_TX;
+    usart1_configuration.irq_dma.rx_dma_channel = USART1_DMA_DRIVER_RX;
+    usart_init(usart_driver1, &usart1_configuration);
 #endif
 
 #ifdef USART_2
-    t_usart_cfg usart2_configuration;
-    usart2_configuration.usart = USART2;
-    usart2_configuration.baud_rate = USART2_BAUDRATE;
+    t_usart_config usart2_configuration;
+    struct t_usart_driver *usart_driver2 = usart_get_driver(2);
+    usart2_configuration.reg = USART2REGS;
+    usart2_configuration.baudrate = USART2_BAUDRATE;
     usart2_configuration.length = USART2_LENGTH;
-    usart2_configuration.wake_up = USART2_WAKEUP;
     usart2_configuration.parity = USART2_PARITY;
     usart2_configuration.stop = USART2_STOP_BITS;
-    usart2_configuration.clock_modes = USART2_CLOCK_MODES;
-    usart2_configuration.cts_rts = USART2_RTS;
-    usart2_configuration.irq_dma.type = USART2_IRQ_DMA_TYPE;
+    usart2_configuration.mode = USART2_MODE;
     usart2_configuration.irq_dma.priority = USART2_IRQ_DMA_PRIORITY;
-    usart2_configuration.irq_dma.callback = USART2_IRQ_CALLBACK;
-    usart_init(&usart2_configuration);
+    usart2_configuration.irq_dma.tx_dma_channel = USART2_DMA_DRIVER_TX;
+    usart2_configuration.irq_dma.rx_dma_channel = USART2_DMA_DRIVER_RX;
+    usart_init(usart_driver2, &usart1_configuration);
 #endif
 
 #ifdef TIM_1
@@ -372,7 +510,4 @@ void soc_peripherals_configuration(void)
     
     timer_init(&tim3_configuration);
 #endif
-
-
 }
-
