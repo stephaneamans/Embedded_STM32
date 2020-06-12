@@ -14,6 +14,7 @@ typedef enum{
     OK                            = 0,
     ERROR_WRONG_VALUE_PASSED      = 1,
     ERROR_WRONG_CLOCK_SET         = 2,
+	ERROR_DRIVER_NOT_INITIALIZED  = 3,
 	ERROR_USART_NOT_READY_TO_SEND = 10,
 
     ERROR_QUEUE_FULL              = 20,

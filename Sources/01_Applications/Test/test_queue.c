@@ -7,7 +7,6 @@
 
 /* Include files.        */
 #include "test.h"
-#include "queues.h"
 
 
 /* Defines */

@@ -1,8 +1,8 @@
 /*
- *        lld_timer.h
+ * lld_timer.h
  *
- *    Created on: Mar 17, 2020
- *    Author: St�phane Amans
+ * Created on: Mar 17, 2020
+ * Author: Stephane Amans
  */
 #ifndef TIMER_H_
 #define TIMER_H_

@@ -1,8 +1,8 @@
 /*
- *        lld_usart.c
+ * lld_usart.c
  *
- *    Created on: Apr 12, 2019
- *    Author: St�phane Amans
+ * Created on: Apr 12, 2019
+ * Author: Stephane Amans
  */
 
 /* Include files        */
@@ -156,7 +156,7 @@ t_error_handling usart_init(t_usart_cfg *cfg)
     local_conf = (0x02 | cfg->length);                                  /* Enables module and fix frame length.    */
     local_conf = (local_conf << 1) | cfg->wake_up;                      /* Wake up mode.                           */
     local_conf = (local_conf << 2) | cfg->parity;                       /* Select parity.                          */
-    local_conf = (local_conf << 5) | ((cfg->irq_dma.type & 0x3F)); /* Enables wanted interrupts (mask DMA).   */
+    local_conf = (local_conf << 5) | ((cfg->irq_dma.type & 0x3F));      /* Enables wanted interrupts (mask DMA).   */
     local_conf = (local_conf << 2) | 0x03;                              /* Enables RX and TX modes.                */
     cfg->usart->CR1 = local_conf << 2;
 

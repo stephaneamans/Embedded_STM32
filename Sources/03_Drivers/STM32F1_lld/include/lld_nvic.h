@@ -1,8 +1,8 @@
 /*
- *        lld_nvic.h
+ * lld_nvic.h
  *
- *    Created on: Nov 27, 2018
- *    Author: St�phane Amans
+ * Created on: Nov 27, 2018
+ * Author: Stephane Amans
  */
 #ifndef LLD_NVIC_H_
 #define LLD_NVIC_H_

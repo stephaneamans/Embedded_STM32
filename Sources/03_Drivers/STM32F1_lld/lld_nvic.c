@@ -1,8 +1,8 @@
 /*
- *        lld_nvic.c
+ * lld_nvic.c
  *
- *    Created on: Nov 27, 2018
- *    Author: Stéphane Amans
+ * Created on: Nov 27, 2018
+ * Author: Stéehane Amans
  */
 
 /* Include files        */

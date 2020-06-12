@@ -11,6 +11,8 @@
 /* Include files:        */
 #include <stdint.h>
 #include "globals.h"
+#include "lld_dma.h"
+#include "queues.h"
 
 
 /* Define test issue. */
@@ -31,6 +33,18 @@ typedef enum
  *
  */
 t_error_handling test_queue(void);
+
+
+/** Test the DMA in different ways.
+ *
+ * \param: void
+ *
+ * \return: Error code
+ *
+ */
+t_error_handling test_dma(void);
+
+
 
 
 #endif /* TEST_H_ */

@@ -1,8 +1,8 @@
 /*
- *        lld_gpio.c
+ * lld_gpio.c
  *
- *    Created on: Apr 12, 2019
- *    Author: Stephane Amans
+ * Created on: Apr 12, 2019
+ * Author: Stephane Amans
  */
 
 /* Include files.        */
