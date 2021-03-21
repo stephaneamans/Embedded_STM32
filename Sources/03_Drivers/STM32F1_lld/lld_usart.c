@@ -515,20 +515,65 @@ void USART1_IRQHandler(void)        			/* USART1 global interrupt               
 	{
 	}
 	clear_pending_nvic_irq(IRQ_USART_1); /* Clear any USART 1 NVIC pending interrupt.   */
-
 }
 
 void USART2_IRQHandler(void)
 {
-    /**	USART1 IRQ handler.
+    /**	USART2 IRQ handler.
     *
     * \param void : No parameter.
     *
     * \return : No return value.
     */
 
-   // usart_callback[1]();         /* Call the GPIO4 subroutine.                  */
-    clear_pending_nvic_irq(IRQ_USART_2);  /* Clear any USART2 NVIC pending interrupt.     */
+	uint8_t sr_register = usart_driver[1].reg->SR;
+	if((sr_register & PARITY_ERROR_FLAG) == PARITY_ERROR_FLAG)
+	{
+		usart_driver[1].priv->error = ERROR_USART_PARITY;
+	}
+	else if((sr_register & FRAMING_ERROR_FLAG) == FRAMING_ERROR_FLAG)
+	{
+		usart_driver[1].priv->error  = ERROR_USART_FRAMING;
+	}
+	else if((sr_register & NOISE_ERROR_FLAG) == NOISE_ERROR_FLAG)
+	{
+		usart_driver[1].priv->error  = ERROR_USART_NOISE;
+	}
+	else if((sr_register & OVERRUN_ERROR_FLAG) == OVERRUN_ERROR_FLAG)
+	{
+		usart_driver[1].priv->error  = ERROR_USART_OVERRUN;
+	}
+	else if((sr_register & RX_NOT_EMPTY_FLAG) == RX_NOT_EMPTY_FLAG)
+	{
+		*usart_driver[1].priv->data_buffer_rx = usart_driver[1].reg->DR;
+		priv->length_rx--;
+		if(priv->length_rx == 0)
+		{
+			usart_driver[1].reg->CR1 &= ~(ENABLE_IDLE_IRQ | RX_NOT_EMPTY_FLAG | ENABLE_PE_IRQ | RX_ENABLE);
+			usart_driver[1].priv->read_end = true;
+		}
+		else
+		{
+			usart_driver[1].priv->data_buffer_rx++;
+		}
+	}
+	else if(((sr_register & TXE_FLAG) == TXE_FLAG) &&
+			 (usart_driver[1].priv->length_tx > 0))
+	{
+		usart_driver[1].reg->DR = *usart_driver[1].priv->data_buffer_tx;
+		usart_driver[1].priv->data_buffer_tx++;
+		usart_driver[1].priv->length_tx--;
+	}
+	else if((sr_register & TC_FLAG) == TC_FLAG)
+	{
+		usart_driver[1].reg->CR1 &= ~TX_ENABLE;
+		usart_driver[1].reg->CR1 &= ~(ENABLE_IDLE_IRQ | ENABLE_TC_IRQ | ENABLE_TXE_IRQ | ENABLE_PE_IRQ);
+		usart_driver[1].priv->write_end = true;
+	}
+	else
+	{
+	}
+	clear_pending_nvic_irq(IRQ_USART_2); /* Clear any USART 1 NVIC pending interrupt.   */
 }
 
 #endif /* USART */
