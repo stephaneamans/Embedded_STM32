@@ -1,11 +1,17 @@
 #ifndef CONFIGURATION_MODULE_ACTIVATION_H
 #define CONFIGURATION_MODULE_ACTIVATION_H
 
-
 /*********************************
  * Peripheral activations
  ********************************/
 #define CLOCK_RESET
+//#define DMA1_CH1
+//#define DMA1_CH2
+//#define DMA1_CH3
+#define DMA1_CH4
+#define DMA1_CH5
+//#define DMA1_CH6
+//#define DMA1_CH7
 //#define GPIO_PA0
 //#define GPIO_PA1
 //#define GPIO_PA2

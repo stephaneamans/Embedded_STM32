@@ -7,8 +7,9 @@
 
 /* Include files.        */
 #include "lld_dma.h"
-
 //#if defined(GPIO_PA0) || defined(GPIO_PA1) || defined(GPIO_PA2) || defined(GPIO_PA6) || defined(GPIO_PA8) || defined(GPIO_PA9) || defined(GPIO_PA10) || defined(GPIO_PB7) || defined(GPIO_PB9) || defined(GPIO_PC13)
+
+struct t_dma_driver dma_driver[MAX_DMA_CHANNELS];
 
 /* Defines */
 #define PSIZE_MASK  0x0300
@@ -25,10 +26,12 @@
 static t_error_handling dma_enable_clock(DMA_TypeDef *dma);
 
 
-t_error_handling dma_init(t_dma_channel_cfg *cfg)
+t_error_handling dma_init(struct t_dma_driver *driver, t_dma_channel_cfg *cfg)
 {
     uint16_t local_conf = 0;
     uint8_t channel_id = 0;
+
+    memset(driver, 0, sizeof(struct t_dma_driver));
 
     if(cfg->reg == DMA1_Ch1)
     {
@@ -67,7 +70,14 @@ t_error_handling dma_init(t_dma_channel_cfg *cfg)
     }
 
     local_conf = 0;                                                         /* Clear configuration variable. */
-    cfg->reg->CCR = 0;                                        /* Clear DMA channel configurarion register.   */
+    cfg->reg->CCR = 0x00;                                     /* Clear DMA channel configurarion register.   */
+
+    /* Fill the driver structure:  */
+    int mem = cfg->memory_zone_size;
+    driver->memory_zone_size = cfg->memory_zone_size;
+    driver->memory_zone_address = cfg->memory_zone_address;
+    driver->peripheral_address = cfg->peripheral_address;
+    driver->reg = cfg->reg;
 
     local_conf |= cfg->mem2mem;                                               /* memory to memory enable.    */
     local_conf = ((local_conf << 2) | cfg->dma_priority);                     /* DMA channel priority.       */
@@ -76,19 +86,19 @@ t_error_handling dma_init(t_dma_channel_cfg *cfg)
     local_conf = ((local_conf << 1) | cfg->memory_increment);                 /* Memory increment value.     */
     local_conf = ((local_conf << 1) | cfg->peripheral_increment);             /* Periph increment value.     */
     local_conf = ((local_conf << 1));                                         /* Disable circular buffer.    */
-    local_conf = ((local_conf << 1) | cfg->read_from_memory);                 /* Datat transfert direction.  */
+    local_conf = ((local_conf << 1) | cfg->read_from_memory);                 /* Datat transfer direction.   */
     local_conf = ((local_conf << 1) | cfg->irq.transfer_error_interrupt);     /* Enable or not irq.          */
     local_conf = ((local_conf << 1) | cfg->irq.half_transfer_interrupt);      /* Enable or not irq.          */
-    local_conf = ((local_conf << 1) | cfg->irq.transfert_complete_interrupt); /* Enable or not irq.          */
+    local_conf = ((local_conf << 1) | cfg->irq.transfer_complete_interrupt); /* Enable or not irq.           */
     local_conf = (local_conf << 1);                                           /* Skip the enable field .     */
     cfg->reg->CCR = local_conf;                  /* Load the register with module configuration options.  */
-    cfg->reg->CNDTR = cfg->memory_zone_size;     /* Memory zone size.    */
-    cfg->reg->CMAR = cfg->memory_zone_address;   /* Memory zone address. */
-    cfg->reg->CPAR = cfg->peripheral_address;    /* Peripheral address.  */
+    cfg->reg->CNDTR = driver->memory_zone_size;     /* Memory zone size.    */
+    cfg->reg->CMAR = driver->memory_zone_address;   /* Memory zone address. */
+    cfg->reg->CPAR = driver->peripheral_address;    /* Peripheral address.  */
 
     /* If any interrupt enabled, enable nvic interrupt, set priority and assign callbacks: */
     if((cfg->irq.transfer_error_interrupt == 1) || (cfg->irq.half_transfer_interrupt == 1) ||
-       (cfg->irq.transfert_complete_interrupt == 1))
+       (cfg->irq.transfer_complete_interrupt == 1))
     {
         dma_callback[channel_id] = cfg->irq.callback;
         set_nvic_priority(IRQ_DMA1_Channel1 + channel_id, cfg->irq.priority);
@@ -97,52 +107,44 @@ t_error_handling dma_init(t_dma_channel_cfg *cfg)
     return OK;
 }
 
-
-t_error_handling dma_memcpy(t_dma_channel_cfg *driver, void *address_destination, void *address_source,
-                            dma_data_type data_type, uint16_t memory_zone_size)
+t_error_handling dma_memcpy(struct t_dma_driver *driver, void *address_destination, void *address_source,
+                            uint16_t memory_zone_size)
 {
     uint32_t local_conf = 0;
     dma_stop_transfer(driver);
     driver->reg->CMAR = (uint32_t)address_source;
     driver->reg->CPAR = (uint32_t)address_destination;
     driver->reg->CNDTR = memory_zone_size;
-
-    if(data_type != driver->mem_data_type)
-    {
-        local_conf = data_type;
-        local_conf |= ((local_conf << 2) | data_type);
-        local_conf <<= 8;
-        driver->reg->CCR &= ~PSIZE_MASK;
-        driver->reg->CCR &= ~MSIZE_MASK;
-        driver->reg->CCR |= local_conf;
-    }
     return OK;
 }
 
-
-t_error_handling dma_start_transfer(t_dma_channel_cfg *dma_channel)
+t_error_handling dma_start_transfer(struct t_dma_driver *driver)
 {
-    t_error_handling error = ERROR_DRIVER_NOT_INITIALIZED;
-    if(dma_channel != 0)
-    {
-        dma_channel->reg->CCR |= 1;      /* Enable the DMA channel .    */
-        error = OK;
-    }
-    return error;
+    driver->reg->CCR |= 1;      /* Enable the DMA channel .    */
+    return OK;
 }
 
-
-t_error_handling dma_stop_transfer(t_dma_channel_cfg *dma_channel)
+t_error_handling dma_stop_transfer(struct t_dma_driver *driver)
 {
-    t_error_handling error = ERROR_DRIVER_NOT_INITIALIZED;
-    if(dma_channel != 0)
-    {
-        dma_channel->reg->CCR &= ~1;            /* Disable the DMA channel .    */
-        error = OK;
-    }
-    return error;
+    driver->reg->CCR &= 0xFE;            /* Disable the DMA channel .    */
+    return OK;
 }
 
+t_error_handling dma_transfer(struct t_dma_driver *driver, void *mem_address, void *periph_address, uint16_t length)
+{
+	t_error_handling error;
+	error = dma_stop_transfer(driver);
+	driver->reg->CNDTR = length;                   /* Memory zone size.    */
+	driver->memory_zone_size = length;
+
+	if(driver->memory_zone_address != (uintptr_t)mem_address)
+	{
+		driver->reg->CMAR = (uint32_t)mem_address; /* Memory zone address. */
+		driver->reg->CPAR = (uint32_t)periph_address;
+		driver->memory_zone_address = (uintptr_t)mem_address;
+	}
+    return error;
+}
 
 static t_error_handling dma_enable_clock(DMA_TypeDef *dma)
 {
@@ -155,7 +157,6 @@ static t_error_handling dma_enable_clock(DMA_TypeDef *dma)
     return error;
 }
 
-
 t_error_handling dma_disable_clock(DMA_TypeDef *dma)
 {
     t_error_handling error = ERROR_WRONG_VALUE_PASSED;
@@ -166,7 +167,6 @@ t_error_handling dma_disable_clock(DMA_TypeDef *dma)
     }
     return error;
 }
-
 
 extern void DMA1_Channel1_IRQHandler(void)
 {
@@ -181,7 +181,6 @@ extern void DMA1_Channel1_IRQHandler(void)
     DMA1->IFCR = 0x0F;                             /* Clear DMA ISR interrupts flags.           */
     clear_pending_nvic_irq(IRQ_DMA1_Channel1);     /* Clear any DMA ch1 NVIC pending interrupt. */
 }
-
 
 extern void DMA1_Channel2_IRQHandler(void)
 {
@@ -198,7 +197,6 @@ extern void DMA1_Channel2_IRQHandler(void)
     DMA1->IFCR = 0xF0;                             /* Clear DMA ISR interrupts flags.           */
 }
 
-
 extern void DMA1_Channel3_IRQHandler(void)
 {
     /**	DMA1_Channel 3 IRQ handler.
@@ -213,7 +211,6 @@ extern void DMA1_Channel3_IRQHandler(void)
     clear_pending_nvic_irq(IRQ_DMA1_Channel3);     /* Clear any DMA ch3 NVIC pending interrupt. */
     DMA1->IFCR = 0xF00;                            /* Clear DMA ISR interrupts flags.           */
 }
-
 
 extern void DMA1_Channel4_IRQHandler(void)
 {
@@ -230,7 +227,6 @@ extern void DMA1_Channel4_IRQHandler(void)
     DMA1->IFCR = 0xF000;                           /* Clear DMA ISR interrupts flags.           */
 }
 
-
 extern void DMA1_Channel5_IRQHandler(void)
 {
     /**	DMA1_Channel 5 IRQ handler.
@@ -245,7 +241,6 @@ extern void DMA1_Channel5_IRQHandler(void)
     clear_pending_nvic_irq(IRQ_DMA1_Channel5);     /* Clear any DMA ch5 NVIC pending interrupt. */
     DMA1->IFCR = 0xF0000;                          /* Clear DMA ISR interrupts flags.           */
 }
-
 
 extern void DMA1_Channel6_IRQHandler(void)
 {
@@ -262,7 +257,6 @@ extern void DMA1_Channel6_IRQHandler(void)
     DMA1->IFCR = 0xF00000;                         /* Clear DMA ISR interrupts flags.           */
 }
 
-
 extern void DMA1_Channel7_IRQHandler(void)
 {
     /**	DMA1_Channel 7 IRQ handler.
@@ -277,6 +271,5 @@ extern void DMA1_Channel7_IRQHandler(void)
     clear_pending_nvic_irq(IRQ_DMA1_Channel7);     /* Clear any DMA ch7 NVIC pending interrupt. */
     DMA1->IFCR = 0xF000000;                        /* Clear DMA ISR interrupts flags.           */
 }
-
 
 //#endif /* DMA */

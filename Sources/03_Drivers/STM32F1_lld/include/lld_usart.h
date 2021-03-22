@@ -4,134 +4,132 @@
  * Created on: Apr 12, 2019
  * Author: Stephane Amans
  */
+
 #ifndef LLD_USART_H_
 #define LLD_USART_H_
 
-
 /* Include files:        */
 #include <stdint.h>
+#include <stdbool.h>
 
 #include "configuration_module_activation.h"
 #include "configuration_usart.h"
 #include "lld_clock.h"
-#include "regbase_usart.h"
+#include "lld_dma.h"
 #include "lld_nvic.h"
+#include "regbase_usart.h"
 
+#define USART_IP_NUMBER          2
 
-/*
-1. 1 stop bit: This is the default value.
-2. 2 stop bits: This is supported by normal USART, single-wire and modem modes.
-3. 0.5 stop bit: To be used when receiving data in Smartcard mode.
-4. 1.5 stop bits: To be used when transmitting and receiving data in Smartcard mode.
-*/
+#define USART_BUFFER_TX_LENGTH 256
+#define USART_BUFFER_RX_LENGTH 256
 
+#define USART_BUFFER_LENGTH 256
 
-typedef enum
+enum bits_data
 {
-    bits_data_8    = 0,
-    bits_data_9    = 1
-}bits_data;
+    bits_data_8    = 0x0000,
+    bits_data_9    = 0x1000
+};
 
-
-typedef enum
+enum parity_sel
 {
-    idle_line     = 0,
-    address_mark  = 1
-}wakeup_method;
+    parity_none = 0x0000,
+    parity_even = 0x0400,
+    parity_odd  = 0x0600
+};
 
-
-typedef enum
+enum stop_bits
 {
-    parity_none = 0x00,
-    parity_even = 0x02,
-    parity_odd  = 0x03
-}parity_sel;
+    one      = 0x0000,
+    half     = 0x0100,
+    two      = 0x0200,
+    one_half = 0x0300
+};
 
-
-typedef enum
+enum mode
 {
-    one      = 0x00,
-    half     = 0x01,
-    two      = 0x02,
-    one_half = 0x04
-}stop_bits;
+	usart_poll = 0,
+	usart_dma  = 1,
+	usart_irq = 2,
+};
 
-
-typedef enum
+/* USART configuration structure definition :        */
+struct t_usart_config
 {
-    low_and_first_edge   = 0x04,
-	low_and_second_edge  = 0x05,
-	high_and_first_edge  = 0x06,
-	high_and_second_edge = 0x07
-}clock;
-
-
-typedef enum
-{
-    rts     = 0x01,
-    cts     = 0x02,
-    rts_cts = 0x03
-}cts_rts;
-
-
-//typedef enum
-//{
-//	no_usart_irq_dma = 0x00,
-//    parity_err_irq   = 0x01,
-//    tx_err_irq       = 0x02,
-//    tx_complete_irq  = 0x04,
-//    rx_err_irq       = 0x08,
-//    idle_irq         = 0x10,
- //   cts_irq	         = 0x20,
-//    error_irq        = 0x40,
-//	dma_rx_tx        = 0x83
-//}irq_dma_type;
-
-
-typedef enum
-{
-	no_usart_irq_dma = 0x00,
-	idle_irq         = 0x01,
-	rx_not_empty_irq = 0x02,
-	tx_complete_irq  = 0x04,
-	tx_empty_irq     = 0x08,
-    parity_err_irq   = 0x10,
-	cts_irq	         = 0x20,
-    error_irq        = 0x40,
-	dma_rx_tx        = 0xC0
-}irq_dma_type;
-
-
-/* USART initialization structure definition :        */
-typedef struct
-{
-	USART_TypeDef *usart;
-    uint32_t baud_rate;
-    bits_data length;
-    wakeup_method wake_up;
-    parity_sel parity;
-    stop_bits stop;
-    clock clock_modes;
-    cts_rts cts_rts;
+	USART_TypeDef *reg;
+    uint32_t baudrate;
+    enum bits_data length;
+    enum parity_sel parity;
+    enum stop_bits stop;
+    enum mode mode;
     struct
     {
-    	irq_dma_type type;
-    	irq_priority priority;
-        void(*callback)(void);
+    	enum irq_priority priority;
+    	struct t_dma_driver *tx_dma_channel;
+    	struct t_dma_driver *rx_dma_channel;
     }irq_dma;
-}t_usart_cfg;
+};
 
-
-typedef struct
+/* USART driver structure definition :        */
+struct t_usart_driver
 {
-	USART_TypeDef *usart;
-    uint32_t baud_rate;
-    struct
-    {
-    	irq_dma_type type;
-    }irq;
-}t_usart_drv;
+	USART_TypeDef *reg;
+	uint8_t uart_number;
+	struct t_usart_private *priv;
+//};
 
+struct t_dma_methods
+{
+/** Pointer to send data via USART.
+ * This will call static functions send_usart_poll, send_usart_irq
+ * or send_usart_dma function of the configuration. This pointer is affected
+ * at the init of the driver.
+ *
+ * \param usart: address of the USART driver.
+ * \param data_buffer: Pointer to the data buffer to send.
+ * \param data_length: Data length.
+ *
+* \return: t_error_handling code or OK.
+ *
+ */
+    t_error_handling (*transmit)(struct t_usart_driver *driver, uint8_t *data_buffer, uint32_t data_length);
+
+/** Pointer to receive data via USART.
+ * This will call static functions receive_usart_poll, receive_usart_irq
+ * or receive_usart_dma function of the configuration. This pointer is affected
+ * at the init of the driver.
+ *
+ * \param usart: address of the USART driver.
+ * \param data_buffer: Pointer to the data receive buffer.
+ *
+ * \return: t_error_handling code or OK.
+ *
+ */
+    t_error_handling (*receive)(struct t_usart_driver *driver, uint8_t *data_buffer, uint32_t data_length);
+
+/** Get transmission complete flag in DMA mode.
+*
+* \param usart: Pointer to the USART driver.
+*
+*
+* \return: bool .
+*
+*/
+    bool (*tx_complete)(struct t_usart_driver *driver);
+
+/** Get reception complete flag in DMA mode.
+*
+* \param usart: Pointer to the USART driver.
+*
+*
+* \return: bool.
+*
+*/
+    bool (*rx_complete)(struct t_usart_driver *driver);
+
+}methods;
+};
 
 /* USARTx_CRx, Peripheral configuration register group definition:        */
 
@@ -145,38 +143,59 @@ typedef struct
 
 /** Configure USART (baudrate, interruptions, mode, ...):
  *
- * \param cfg: Configuration structure.
+ * \param driver: Driver structure
+ * \param config: Configuration structure.
  *
- * \return: Error code or 0 if OK.
- *
- */
-t_error_handling usart_init(t_usart_cfg *cfg);
-
-
-/** Send data via USART.
- *
- * \param usart: address of the USART to use for transfert.
- * \param data: data to send.
- *
- * \return: Error code or OK.
+ * \return: t_error_handling code or OK.
  *
  */
-t_error_handling usart_send(USART_TypeDef *usart, uint8_t data);
+t_error_handling usart_init(struct t_usart_driver *driver, struct t_usart_config *config);
 
+
+/** Get USART RX transfer status:
+ *
+ * \param driver: Driver structure.
+ *
+ * \return: bool : RX transfer status.
+ *
+ */
+bool usart_get_rx_transfer_status(struct t_usart_driver *driver);
+
+/** Get USART TX transfer status:
+ *
+ * \param driver: Driver structure.
+ *
+  * \return: bool : TX transfer status.
+ *
+ */
+bool usart_get_tx_transfer_status(struct t_usart_driver *driver);
+
+/** Get USART error status:
+ *
+ * \param driver: Driver structure.
+ *
+ * \return: t_error_handling code or OK.
+ *
+ */
+t_error_handling usart_get_error_status(struct t_usart_driver *driver);
+
+
+/** Return USART driver:
+ *
+ * \param usart_number: number of the usart driver, must be between 1 and the maximum number of usart IPs available in the IC.
+ *
+ * \return: Pointer to the driver or 0 if error.
+ *
+ */
+struct t_usart_driver *usart_get_driver(uint8_t usart_number);
 
 /** Disable USART port clock.
  *
  * \param usart: address of the USART to clock.
  *
- * \return: Error code or OK.
+ * \return: t_error_handling code or OK.
  *
  */
-t_error_handling usart_disable_clock(USART_TypeDef *usart);
-
-void usart_test(void);
-
-
-/* Pointer callback function table prototype	*/
-void (*usart_callback[3])(void);
+t_error_handling usart_disable_clock(struct t_usart_driver *driver);
 
 #endif /* LLD_USART_H_ */

@@ -30,7 +30,7 @@
 
 
 /* Source selection enumeration definition:        */
-enum clock_sources
+typedef enum
 {
     HSI_OSC     = 1,  /* High speed internal oscillator mask.    */
     SYSCLOCK    = 2,  /* System clock ID for output.             */
@@ -39,7 +39,7 @@ enum clock_sources
     PLL_HSI     = 5,  /* PLL clocked with HSI oscillator.        */
     PLL_HSE     = 6,  /* PLL clocked with HSE oscillator.        */
     PLL_HSE_BYP = 7   /* PLL clocked with HSE Bypass oscillator. */
-};
+}clock_sources;
 
 
 /* Clock initialization structure definition :        */
@@ -72,7 +72,7 @@ t_error_handling clock_init(t_clock_cfg *cfg);
  * \return: Error code or OK.
  *
  */
-t_error_handling clock_select_clock_to_output(int source);
+t_error_handling clock_select_clock_to_output(clock_sources source);
 
 
 /** Get AHB clock frequency.

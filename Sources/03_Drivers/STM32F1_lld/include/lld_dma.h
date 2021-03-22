@@ -17,6 +17,9 @@
 #include "lld_nvic.h"
 #include "regbase_dma.h"
 
+#define MAX_DMA_CHANNELS      7
+#define DMA_CHANNEL_ENABLE    0x01
+
 
 /* Option enable:        */
 typedef enum
@@ -64,23 +67,32 @@ typedef struct
     {
         mode_enable transfer_error_interrupt;
         mode_enable half_transfer_interrupt;
-        mode_enable transfert_complete_interrupt;
+        mode_enable transfer_complete_interrupt;
         irq_priority priority;
         void(*callback)(uint8_t*);
     }irq;
 }t_dma_channel_cfg;
 
+struct t_dma_driver
+{
+	DMA_Channel_TypeDef *reg;
+	uint16_t memory_zone_size;
+	uintptr_t memory_zone_address;
+    uintptr_t peripheral_address;
+};
+extern struct t_dma_driver dma_driver[7];
 
 /* Functions prototypes:                       */
 
 /** Configure DMA:
  *
+ * \param driver: DMA driver;
  * \param cfg: DMA configuration structure.
  *
  * \return: Error code or 0 if OK.
  *
  */
-t_error_handling dma_init(t_dma_channel_cfg *cfg);
+t_error_handling dma_init(struct t_dma_driver *driver, t_dma_channel_cfg *cfg);
 
 
 /** Memory copy with DMA
@@ -88,26 +100,23 @@ t_error_handling dma_init(t_dma_channel_cfg *cfg);
  * \param dma_channel: DMA channel configuration structure.
  * \param address_destination: Pointer to the destination address.
  * \param address_source: Pointer to the source address.
- * \param data_type: Data type (8, 16 or 32 bits)
  * \param memory_zone_size: Memory zone length.
  *
  * \return: Error code or 0 if OK.
  *
  */
-t_error_handling dma_memcpy(t_dma_channel_cfg *driver, void *address_destination,
-                            void *address_source, dma_data_type data_type,
-                            uint16_t memory_zone_size);
+t_error_handling dma_memcpy(struct t_dma_driver *driver, void *address_destination,
+                            void *address_source, uint16_t memory_zone_size);
 
 
 /** Start DMA transfer:
  *
- * \param dma_channel: DMA channel configuration structure.
+ * \param driver: DMA driver structure.
  *
  * \return: Error code or 0 if OK.
  *
  */
-t_error_handling dma_start_transfer(t_dma_channel_cfg *dma_channel);
-
+t_error_handling dma_start_transfer(struct t_dma_driver *driver);
 
 /** Stop DMA transfer:
  *
@@ -116,7 +125,17 @@ t_error_handling dma_start_transfer(t_dma_channel_cfg *dma_channel);
  * \return: Error code or 0 if OK.
  *
  */
-t_error_handling dma_stop_transfer(t_dma_channel_cfg *dma_channel);
+t_error_handling dma_stop_transfer(struct t_dma_driver *driver);
+
+
+/** Start DMA with new parameters if any changes:
+ *
+ * \param driver: DMA driver.
+ * \param mem_address: Memory address location.
+ * \param length: Transfer length.
+ *
+ */
+t_error_handling dma_transfer(struct t_dma_driver *driver, void *mem_address,void *periph_address, uint16_t length);
 
 
 /** Disable DMA clock.

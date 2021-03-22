@@ -10,9 +10,15 @@
 
 /* Include files:        */
 #include <stdint.h>
+#include <stdio.h>
+
 #include "globals.h"
 #include "lld_dma.h"
+#include "lld_usart.h"
 #include "queues.h"
+
+
+
 
 
 /* Define test issue. */
@@ -25,16 +31,6 @@ typedef enum
 
 /* Functions prototypes:                       */
 
-/** Test the queue in different ways.
- *
- * \param: void
- *
- * \return: Error code
- *
- */
-t_error_handling test_queue(void);
-
-
 /** Test the DMA in different ways.
  *
  * \param: void
@@ -45,6 +41,24 @@ t_error_handling test_queue(void);
 t_error_handling test_dma(void);
 
 
+/** Test the queue in different ways.
+ *
+ * \param: void
+ *
+ * \return: Error code
+ *
+ */
+t_error_handling test_queue(void);
+
+
+/** Print test header welcome message.
+ *
+ * \param: void
+ *
+ * \return: Error code
+ *
+ */
+t_error_handling print_test_header(void);
 
 
 #endif /* TEST_H_ */
