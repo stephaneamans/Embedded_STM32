@@ -1,0 +1,1412 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-exit.o)
+                              /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o (exit)
+/home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-impure.o)
+                              /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-exit.o) (_global_impure_ptr)
+/home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-init.o)
+                              /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o (__libc_init_array)
+/home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memcpy.o)
+                              /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o (memcpy)
+/home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memset.o)
+                              /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o (memset)
+/home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-strcmp.o)
+                              /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o (strcmp)
+/home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__call_atexit.o)
+                              /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-exit.o) (__call_exitprocs)
+/home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-atexit.o)
+                              /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__call_atexit.o) (atexit)
+/home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-fini.o)
+                              /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__call_atexit.o) (__libc_fini_array)
+/home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+                              /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__call_atexit.o) (__retarget_lock_acquire_recursive)
+/home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__atexit.o)
+                              /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-atexit.o) (__register_exitproc)
+
+Allocating common symbols
+Common symbol       size              file
+
+__lock___atexit_recursive_mutex
+                    0x1               /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+__lock___arc4random_mutex
+                    0x1               /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+dma_callback        0x1c              /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+__lock___env_recursive_mutex
+                    0x1               /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+__lock___sinit_recursive_mutex
+                    0x1               /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+gpio_callback       0x14              /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+__lock___malloc_recursive_mutex
+                    0x1               /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+dma_driver          0x70              /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+__lock___at_quick_exit_mutex
+                    0x1               /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+__lock___dd_hash_mutex
+                    0x1               /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+__lock___tz_mutex   0x1               /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+__lock___sfp_recursive_mutex
+                    0x1               /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crti.o
+ .data          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crti.o
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crti.o
+ .data          0x0000000000000000        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+ .text          0x0000000000000000       0x74 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o
+ .data          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o
+ .ARM.extab     0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o
+ .ARM.exidx     0x0000000000000000        0x8 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o
+ .ARM.attributes
+                0x0000000000000000       0x1b /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o
+ .text          0x0000000000000000       0x14 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/startup_stm32.o
+ .data          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/startup_stm32.o
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/startup_stm32.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .text          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .data          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .text.get_ahb_clock
+                0x0000000000000000       0x14 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .text.get_sys_clock
+                0x0000000000000000       0x14 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .text          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .data          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .text.dma_memcpy
+                0x0000000000000000       0x3a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .text.dma_disable_clock
+                0x0000000000000000       0x38 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000      0xa48 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x22 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x8e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x51 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0xef /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x6a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000      0x1df /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x5e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x18 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000      0x174 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x58 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x1f /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x43 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x20 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000      0x18e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000      0x330 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000      0x2a4 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x3a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000000000       0x28 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .text          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .data          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .text.gpio_init_event_ctrl
+                0x0000000000000000       0x48 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .text.gpio_set
+                0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .text.gpio_set_all
+                0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .text.gpio_clear
+                0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .text.gpio_clear_all
+                0x0000000000000000       0x1a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .text.gpio_toggle
+                0x0000000000000000       0x6c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .text.gpio_read
+                0x0000000000000000       0x30 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .text.gpio_pin_remap
+                0x0000000000000000       0xf0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .text.gpio_disable_clock
+                0x0000000000000000       0x80 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000      0xa48 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x22 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x8e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x51 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0xef /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x6a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000      0x1df /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x5e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x18 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000      0x174 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x58 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x1f /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x43 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x20 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000      0x18e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000      0x330 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000      0x2a4 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x3a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x28 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .text          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .data          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_macro   0x0000000000000000      0xa48 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_macro   0x0000000000000000       0x22 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_macro   0x0000000000000000       0x8e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_macro   0x0000000000000000       0x51 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_macro   0x0000000000000000       0xef /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_macro   0x0000000000000000       0x6a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_macro   0x0000000000000000      0x1df /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .text          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .data          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .text.usart_get_error_status
+                0x0000000000000000       0x18 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .text.usart_disable_clock
+                0x0000000000000000       0x4c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000      0xa48 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x22 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x8e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x51 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0xef /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x6a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000      0x1df /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x5e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x18 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000      0x174 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x58 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x1f /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x43 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x20 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000      0x18e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000      0x330 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000      0x2a4 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x3a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x28 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x70 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .text          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .data          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000      0xa48 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x22 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x8e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x51 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0xef /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x6a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000      0x1df /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000      0x1ea /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x3a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000      0x2a4 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x76 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x5e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x18 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000      0x174 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x58 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x1f /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x43 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x20 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000      0x18e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000      0x330 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x28 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x70 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x4c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x22 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x2e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x2b /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .text          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .data          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .text.initialize_driver
+                0x0000000000000000       0xc0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .text.test_dma
+                0x0000000000000000      0x1cc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_info    0x0000000000000000      0xdbb /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_abbrev  0x0000000000000000      0x244 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_aranges
+                0x0000000000000000       0x28 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_ranges  0x0000000000000000       0x18 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000      0x2b7 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000      0xa48 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x22 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x8e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x51 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0xef /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x6a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000      0x1df /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x5e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x18 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x16 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x97 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000      0x330 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0xfd /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x58 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x1f /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x43 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x20 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000      0x18e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x52 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x40 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x40 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0xd7 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x3d /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x16 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000      0x16f /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x16 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000      0x2a4 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x3a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x28 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x70 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x22 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x76 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x2e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x2b /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_line    0x0000000000000000      0x8b2 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_str     0x0000000000000000     0x9da6 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .comment       0x0000000000000000       0x80 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .debug_frame   0x0000000000000000       0x5c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .ARM.attributes
+                0x0000000000000000       0x33 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .text          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .data          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000      0xa48 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x22 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x8e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x51 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0xef /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x6a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000      0x1df /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x5e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x18 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x16 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x97 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000      0x330 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0xfd /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x58 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x1f /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x43 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x20 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000      0x18e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x52 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x40 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x40 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0xd7 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x3d /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x16 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000      0x16f /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x16 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000      0x2a4 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x3a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x28 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x70 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x22 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x76 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x2e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x2b /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .group         0x0000000000000000        0xc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .text          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .data          0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000      0xa48 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x22 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x8e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x51 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0xef /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x6a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000      0x1df /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000      0x280 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000      0x1ea /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x3a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000      0x2a4 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x76 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x5e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x18 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000      0x174 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x58 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x1f /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x43 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x20 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000      0x18e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000      0x330 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x28 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x70 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x4c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x22 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x2e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_macro   0x0000000000000000       0x2b /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .text          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-exit.o)
+ .data          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-exit.o)
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-exit.o)
+ .text.exit     0x0000000000000000       0x20 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-exit.o)
+ .debug_frame   0x0000000000000000       0x28 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-exit.o)
+ .ARM.attributes
+                0x0000000000000000       0x2d /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-exit.o)
+ .text          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-impure.o)
+ .data          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-impure.o)
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x0000000000000000        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-impure.o)
+ .text          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-init.o)
+ .data          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-init.o)
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-init.o)
+ .data          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memcpy.o)
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memcpy.o)
+ .text          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memset.o)
+ .data          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memset.o)
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memset.o)
+ .data          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-strcmp.o)
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-strcmp.o)
+ .text          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__call_atexit.o)
+ .data          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__call_atexit.o)
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__call_atexit.o)
+ .text.__call_exitprocs
+                0x0000000000000000       0xe8 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__call_atexit.o)
+ .text          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-atexit.o)
+ .data          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-atexit.o)
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-atexit.o)
+ .text          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-fini.o)
+ .data          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-fini.o)
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-fini.o)
+ .text          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+ .data          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_init
+                0x0000000000000000        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_init_recursive
+                0x0000000000000000        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_close
+                0x0000000000000000        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_close_recursive
+                0x0000000000000000        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_acquire
+                0x0000000000000000        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_try_acquire
+                0x0000000000000000        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_try_acquire_recursive
+                0x0000000000000000        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_release
+                0x0000000000000000        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+ .text          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__atexit.o)
+ .data          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__atexit.o)
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__atexit.o)
+ .text          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtend.o
+ .data          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtend.o
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtend.o
+ .eh_frame      0x0000000000000000        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtend.o
+ .ARM.attributes
+                0x0000000000000000       0x2d /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtend.o
+ .text          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
+ .data          0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
+ .bss           0x0000000000000000        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x0000000020000000 0x0000000000005000 xrw
+ROM              0x0000000008000000 0x0000000000010000 xr
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crti.o
+LOAD /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+LOAD /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o
+LOAD /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/startup_stm32.o
+LOAD /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+LOAD /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+LOAD /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+LOAD /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+LOAD /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+LOAD /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+LOAD /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_dma.o
+LOAD /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+LOAD /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+LOAD /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libm.a
+START GROUP
+LOAD /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/libgcc.a
+LOAD /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a
+END GROUP
+LOAD /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtend.o
+LOAD /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
+                0x0000000020005000                _estack = 0x20005000
+                0x0000000000000000                _Min_Heap_Size = 0x0
+                0x0000000000000400                _Min_Stack_Size = 0x400
+
+.isr_vector     0x0000000008000000      0x130
+                0x0000000008000000                . = ALIGN (0x4)
+ *(.isr_vector)
+ .isr_vector    0x0000000008000000      0x130 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/startup_stm32.o
+                0x0000000008000000                g_pfnVectors
+                0x0000000008000130                . = ALIGN (0x4)
+
+.text           0x0000000008000130     0x25e0
+                0x0000000008000130                . = ALIGN (0x4)
+ *(.text)
+ .text          0x0000000008000130       0x40 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+ .text          0x0000000008000170       0xec /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memcpy.o)
+                0x0000000008000170                memcpy
+ .text          0x000000000800025c      0x1bc /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-strcmp.o)
+                0x000000000800025c                strcmp
+ *(.text*)
+ .text.Reset_Handler
+                0x0000000008000418       0x50 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/startup_stm32.o
+                0x0000000008000418                Reset_Handler
+ .text.Default_Handler
+                0x0000000008000468        0x2 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/startup_stm32.o
+                0x0000000008000468                TIM8_TRG_COM_IRQHandler
+                0x0000000008000468                TIM8_CC_IRQHandler
+                0x0000000008000468                DebugMon_Handler
+                0x0000000008000468                TIM1_CC_IRQHandler
+                0x0000000008000468                HardFault_Handler
+                0x0000000008000468                TIM6_IRQHandler
+                0x0000000008000468                SysTick_Handler
+                0x0000000008000468                PVD_IRQHandler
+                0x0000000008000468                SDIO_IRQHandler
+                0x0000000008000468                PendSV_Handler
+                0x0000000008000468                NMI_Handler
+                0x0000000008000468                USB_HP_CAN_TX_IRQHandler
+                0x0000000008000468                I2C2_EV_IRQHandler
+                0x0000000008000468                UsageFault_Handler
+                0x0000000008000468                ADC1_2_IRQHandler
+                0x0000000008000468                SPI1_IRQHandler
+                0x0000000008000468                CAN_SCE_IRQHandler
+                0x0000000008000468                TAMPER_IRQHandler
+                0x0000000008000468                TIM8_UP_IRQHandler
+                0x0000000008000468                DMA2_Channel2_IRQHandler
+                0x0000000008000468                USART3_IRQHandler
+                0x0000000008000468                RTC_IRQHandler
+                0x0000000008000468                UART5_IRQHandler
+                0x0000000008000468                ADC3_IRQHandler
+                0x0000000008000468                TIM4_IRQHandler
+                0x0000000008000468                CAN_RX1_IRQHandler
+                0x0000000008000468                DMA2_Channel1_IRQHandler
+                0x0000000008000468                I2C1_EV_IRQHandler
+                0x0000000008000468                UART4_IRQHandler
+                0x0000000008000468                TIM3_IRQHandler
+                0x0000000008000468                RCC_IRQHandler
+                0x0000000008000468                TIM1_TRG_COM_IRQHandler
+                0x0000000008000468                Default_Handler
+                0x0000000008000468                EXTI15_10_IRQHandler
+                0x0000000008000468                TIM7_IRQHandler
+                0x0000000008000468                TIM5_IRQHandler
+                0x0000000008000468                EXTI9_5_IRQHandler
+                0x0000000008000468                SPI2_IRQHandler
+                0x0000000008000468                USB_LP_CAN_RX0_IRQHandler
+                0x0000000008000468                MemManage_Handler
+                0x0000000008000468                SVC_Handler
+                0x0000000008000468                FSMC_IRQHandler
+                0x0000000008000468                TIM1_UP_IRQHandler
+                0x0000000008000468                WWDG_IRQHandler
+                0x0000000008000468                TIM2_IRQHandler
+                0x0000000008000468                TIM1_BRK_IRQHandler
+                0x0000000008000468                RTCAlarm_IRQHandler
+                0x0000000008000468                DMA2_Channel4_5_IRQHandler
+                0x0000000008000468                I2C2_ER_IRQHandler
+                0x0000000008000468                TIM8_BRK_IRQHandler
+                0x0000000008000468                FLASH_IRQHandler
+                0x0000000008000468                BusFault_Handler
+                0x0000000008000468                SPI3_IRQHandler
+                0x0000000008000468                I2C1_ER_IRQHandler
+                0x0000000008000468                DMA2_Channel3_IRQHandler
+ *fill*         0x000000000800046a        0x2 
+ .text.clock_init
+                0x000000000800046c      0x1f0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+                0x000000000800046c                clock_init
+ .text.clock_select_clock_to_output
+                0x000000000800065c       0x94 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+                0x000000000800065c                clock_select_clock_to_output
+ .text.get_apb1_clock
+                0x00000000080006f0       0x14 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+                0x00000000080006f0                get_apb1_clock
+ .text.get_apb2_clock
+                0x0000000008000704       0x14 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+                0x0000000008000704                get_apb2_clock
+ .text.init_activate_PLL
+                0x0000000008000718      0x15c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .text.init_AHB
+                0x0000000008000874       0xa4 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .text.init_APB1
+                0x0000000008000918       0xa0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .text.init_APB2
+                0x00000000080009b8       0xa4 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .text.set_flash_latency
+                0x0000000008000a5c       0xa8 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .text.start_oscillator
+                0x0000000008000b04       0x94 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .text.stop_oscillator
+                0x0000000008000b98       0x54 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .text.switch_system_clk
+                0x0000000008000bec       0xb8 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .text.dma_init
+                0x0000000008000ca4      0x238 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+                0x0000000008000ca4                dma_init
+ .text.dma_start_transfer
+                0x0000000008000edc       0x24 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+                0x0000000008000edc                dma_start_transfer
+ .text.dma_stop_transfer
+                0x0000000008000f00       0x24 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+                0x0000000008000f00                dma_stop_transfer
+ .text.dma_transfer
+                0x0000000008000f24       0x50 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+                0x0000000008000f24                dma_transfer
+ .text.dma_enable_clock
+                0x0000000008000f74       0x38 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .text.DMA1_Channel1_IRQHandler
+                0x0000000008000fac       0x38 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+                0x0000000008000fac                DMA1_Channel1_IRQHandler
+ .text.DMA1_Channel2_IRQHandler
+                0x0000000008000fe4       0x3c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+                0x0000000008000fe4                DMA1_Channel2_IRQHandler
+ .text.DMA1_Channel3_IRQHandler
+                0x0000000008001020       0x40 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+                0x0000000008001020                DMA1_Channel3_IRQHandler
+ .text.DMA1_Channel4_IRQHandler
+                0x0000000008001060       0x40 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+                0x0000000008001060                DMA1_Channel4_IRQHandler
+ .text.DMA1_Channel5_IRQHandler
+                0x00000000080010a0       0x40 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+                0x00000000080010a0                DMA1_Channel5_IRQHandler
+ .text.DMA1_Channel6_IRQHandler
+                0x00000000080010e0       0x40 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+                0x00000000080010e0                DMA1_Channel6_IRQHandler
+ .text.DMA1_Channel7_IRQHandler
+                0x0000000008001120       0x40 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+                0x0000000008001120                DMA1_Channel7_IRQHandler
+ .text.gpio_init
+                0x0000000008001160      0x3e0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+                0x0000000008001160                gpio_init
+ .text.gpio_enable_clock
+                0x0000000008001540       0x80 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .text.EXTI0_IRQHandler
+                0x00000000080015c0       0x2c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+                0x00000000080015c0                EXTI0_IRQHandler
+ .text.EXTI1_IRQHandler
+                0x00000000080015ec       0x2c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+                0x00000000080015ec                EXTI1_IRQHandler
+ .text.EXTI2_IRQHandler
+                0x0000000008001618       0x2c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+                0x0000000008001618                EXTI2_IRQHandler
+ .text.EXTI3_IRQHandler
+                0x0000000008001644       0x2c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+                0x0000000008001644                EXTI3_IRQHandler
+ .text.EXTI4_IRQHandler
+                0x0000000008001670       0x2c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+                0x0000000008001670                EXTI4_IRQHandler
+ .text.enable_nvic_irq
+                0x000000000800169c       0x48 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+                0x000000000800169c                enable_nvic_irq
+ .text.disable_nvic_irq
+                0x00000000080016e4       0x4c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+                0x00000000080016e4                disable_nvic_irq
+ .text.clear_pending_nvic_irq
+                0x0000000008001730       0x4c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+                0x0000000008001730                clear_pending_nvic_irq
+ .text.set_nvic_priority
+                0x000000000800177c       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+                0x000000000800177c                set_nvic_priority
+ .text.tx_complete_irq
+                0x00000000080017b0       0x18 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .text.tx_complete_dma
+                0x00000000080017c8       0x46 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .text.rx_complete_irq
+                0x000000000800180e       0x18 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .text.rx_complete_dma
+                0x0000000008001826       0x46 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .text.receive_dma
+                0x000000000800186c       0x7e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .text.receive_irq
+                0x00000000080018ea       0x70 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .text.receive_poll
+                0x000000000800195a       0xe2 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .text.transmit_dma
+                0x0000000008001a3c       0x7e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ *fill*         0x0000000008001aba        0x2 
+ .text.transmit_irq
+                0x0000000008001abc       0x9c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .text.transmit_poll
+                0x0000000008001b58       0x90 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .text.usart_enable_clock
+                0x0000000008001be8       0x50 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .text.compute_baudrate_divider
+                0x0000000008001c38       0x66 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ *fill*         0x0000000008001c9e        0x2 
+ .text.usart_init
+                0x0000000008001ca0      0x1ec /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+                0x0000000008001ca0                usart_init
+ .text.usart_get_driver
+                0x0000000008001e8c       0x3c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+                0x0000000008001e8c                usart_get_driver
+ .text.USART1_IRQHandler
+                0x0000000008001ec8      0x130 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+                0x0000000008001ec8                USART1_IRQHandler
+ .text.USART2_IRQHandler
+                0x0000000008001ff8      0x130 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+                0x0000000008001ff8                USART2_IRQHandler
+ .text.main     0x0000000008002128       0x2e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+                0x0000000008002128                main
+ *fill*         0x0000000008002156        0x2 
+ .text.print_test_header
+                0x0000000008002158      0x1ac /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+                0x0000000008002158                print_test_header
+ .text.soc_core_configuration
+                0x0000000008002304       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+                0x0000000008002304                soc_core_configuration
+ .text.soc_peripherals_configuration
+                0x0000000008002338      0x1c8 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+                0x0000000008002338                soc_peripherals_configuration
+ .text.__libc_init_array
+                0x0000000008002500       0x48 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-init.o)
+                0x0000000008002500                __libc_init_array
+ .text.memset   0x0000000008002548       0x94 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memset.o)
+                0x0000000008002548                memset
+ .text.startup.register_fini
+                0x00000000080025dc       0x14 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__call_atexit.o)
+ .text.atexit   0x00000000080025f0        0xc /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-atexit.o)
+                0x00000000080025f0                atexit
+ .text.__libc_fini_array
+                0x00000000080025fc       0x34 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-fini.o)
+                0x00000000080025fc                __libc_fini_array
+ .text.__retarget_lock_acquire_recursive
+                0x0000000008002630        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+                0x0000000008002630                __retarget_lock_acquire_recursive
+ .text.__retarget_lock_release_recursive
+                0x0000000008002634        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+                0x0000000008002634                __retarget_lock_release_recursive
+ .text.__register_exitproc
+                0x0000000008002638       0xc0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__atexit.o)
+                0x0000000008002638                __register_exitproc
+ *(.glue_7)
+ .glue_7        0x00000000080026f8        0x0 linker stubs
+ *(.glue_7t)
+ .glue_7t       0x00000000080026f8        0x0 linker stubs
+ *(.eh_frame)
+ .eh_frame      0x00000000080026f8        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+ *(.init)
+ .init          0x00000000080026f8        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crti.o
+                0x00000000080026f8                _init
+ .init          0x00000000080026fc        0x8 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
+ *(.fini)
+ .fini          0x0000000008002704        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crti.o
+                0x0000000008002704                _fini
+ .fini          0x0000000008002708        0x8 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
+                0x0000000008002710                . = ALIGN (0x4)
+                0x0000000008002710                _etext = .
+
+.vfp11_veneer   0x0000000008002710        0x0
+ .vfp11_veneer  0x0000000008002710        0x0 linker stubs
+
+.v4_bx          0x0000000008002710        0x0
+ .v4_bx         0x0000000008002710        0x0 linker stubs
+
+.iplt           0x0000000008002710        0x0
+ .iplt          0x0000000008002710        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+
+.rodata         0x0000000008002710       0xd8
+                0x0000000008002710                . = ALIGN (0x4)
+ *(.rodata)
+ .rodata        0x0000000008002710       0x29 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ *fill*         0x0000000008002739        0x3 
+ .rodata        0x000000000800273c       0xa7 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ *(.rodata*)
+ *fill*         0x00000000080027e3        0x1 
+ .rodata._global_impure_ptr
+                0x00000000080027e4        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-impure.o)
+                0x00000000080027e4                _global_impure_ptr
+                0x00000000080027e8                . = ALIGN (0x4)
+
+.rel.dyn        0x00000000080027e8        0x0
+ .rel.iplt      0x00000000080027e8        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+
+.ARM.extab      0x00000000080027e8        0x0
+                0x00000000080027e8                . = ALIGN (0x4)
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x00000000080027e8                . = ALIGN (0x4)
+
+.ARM            0x00000000080027e8        0x0
+                0x00000000080027e8                . = ALIGN (0x4)
+                0x00000000080027e8                __exidx_start = .
+ *(.ARM.exidx*)
+                0x00000000080027e8                __exidx_end = .
+                0x00000000080027e8                . = ALIGN (0x4)
+
+.preinit_array  0x00000000080027e8        0x0
+                0x00000000080027e8                . = ALIGN (0x4)
+                0x00000000080027e8                PROVIDE (__preinit_array_start = .)
+ *(.preinit_array*)
+                0x00000000080027e8                PROVIDE (__preinit_array_end = .)
+                0x00000000080027e8                . = ALIGN (0x4)
+
+.init_array     0x00000000080027e8        0x8
+                0x00000000080027e8                . = ALIGN (0x4)
+                0x00000000080027e8                PROVIDE (__init_array_start = .)
+ *(SORT_BY_NAME(.init_array.*))
+ .init_array.00000
+                0x00000000080027e8        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__call_atexit.o)
+ *(.init_array*)
+ .init_array    0x00000000080027ec        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+                0x00000000080027f0                PROVIDE (__init_array_end = .)
+                0x00000000080027f0                . = ALIGN (0x4)
+
+.fini_array     0x00000000080027f0        0x4
+                0x00000000080027f0                . = ALIGN (0x4)
+                0x00000000080027f0                PROVIDE (__fini_array_start = .)
+ *(SORT_BY_NAME(.fini_array.*))
+ *(.fini_array*)
+ .fini_array    0x00000000080027f0        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+                0x00000000080027f4                PROVIDE (__fini_array_end = .)
+                0x00000000080027f4                . = ALIGN (0x4)
+                0x00000000080027f4                _sidata = LOADADDR (.data)
+
+.data           0x0000000020000000      0x42c load address 0x00000000080027f4
+                0x0000000020000000                . = ALIGN (0x4)
+                0x0000000020000000                _sdata = .
+ *(.data)
+ *(.data*)
+ .data.impure_data
+                0x0000000020000000      0x428 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-impure.o)
+ .data.__atexit_recursive_mutex
+                0x0000000020000428        0x4 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__call_atexit.o)
+                0x0000000020000428                __atexit_recursive_mutex
+                0x000000002000042c                . = ALIGN (0x4)
+                0x000000002000042c                _edata = .
+
+.igot.plt       0x000000002000042c        0x0 load address 0x0000000008002c20
+ .igot.plt      0x000000002000042c        0x0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+                0x000000002000042c                . = ALIGN (0x4)
+
+.bss            0x000000002000042c      0x16c load address 0x0000000008002c20
+                0x000000002000042c                _sbss = .
+                0x000000002000042c                __bss_start__ = _sbss
+ *(.bss)
+ .bss           0x000000002000042c       0x1c /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+ *(.bss*)
+ .bss.clock_drv
+                0x0000000020000448       0x14 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .bss.usart_driver
+                0x000000002000045c       0x38 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .bss.priv      0x0000000020000494       0x40 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ *(COMMON)
+ COMMON         0x00000000200004d4       0x8c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+                0x00000000200004d4                dma_callback
+                0x00000000200004f0                dma_driver
+ COMMON         0x0000000020000560       0x14 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+                0x0000000020000560                gpio_callback
+ COMMON         0x0000000020000574       0x21 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+                0x0000000020000574                __lock___atexit_recursive_mutex
+                0x0000000020000578                __lock___arc4random_mutex
+                0x000000002000057c                __lock___env_recursive_mutex
+                0x0000000020000580                __lock___sinit_recursive_mutex
+                0x0000000020000584                __lock___malloc_recursive_mutex
+                0x0000000020000588                __lock___at_quick_exit_mutex
+                0x000000002000058c                __lock___dd_hash_mutex
+                0x0000000020000590                __lock___tz_mutex
+                0x0000000020000594                __lock___sfp_recursive_mutex
+                0x0000000020000598                . = ALIGN (0x4)
+ *fill*         0x0000000020000595        0x3 
+                0x0000000020000598                _ebss = .
+                0x0000000020000598                __bss_end__ = _ebss
+
+._user_heap_stack
+                0x0000000020000598      0x400 load address 0x0000000008002c20
+                0x0000000020000598                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (end = .)
+                [!provide]                        PROVIDE (_end = .)
+                0x0000000020000598                . = (. + _Min_Heap_Size)
+                0x0000000020000998                . = (. + _Min_Stack_Size)
+ *fill*         0x0000000020000598      0x400 
+                0x0000000020000998                . = ALIGN (0x8)
+
+/DISCARD/
+ libc.a(*)
+ libm.a(*)
+ libgcc.a(*)
+
+.ARM.attributes
+                0x0000000000000000       0x29
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x0000000000000000       0x1d /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crti.o
+ .ARM.attributes
+                0x000000000000001d       0x2d /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+ .ARM.attributes
+                0x000000000000004a       0x21 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/startup_stm32.o
+ .ARM.attributes
+                0x000000000000006b       0x33 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .ARM.attributes
+                0x000000000000009e       0x33 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .ARM.attributes
+                0x00000000000000d1       0x33 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .ARM.attributes
+                0x0000000000000104       0x33 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .ARM.attributes
+                0x0000000000000137       0x33 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .ARM.attributes
+                0x000000000000016a       0x33 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .ARM.attributes
+                0x000000000000019d       0x33 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .ARM.attributes
+                0x00000000000001d0       0x33 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .ARM.attributes
+                0x0000000000000203       0x2d /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-impure.o)
+ .ARM.attributes
+                0x0000000000000230       0x2d /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-init.o)
+ .ARM.attributes
+                0x000000000000025d       0x1b /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memcpy.o)
+ .ARM.attributes
+                0x0000000000000278       0x2d /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memset.o)
+ .ARM.attributes
+                0x00000000000002a5       0x1b /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-strcmp.o)
+ .ARM.attributes
+                0x00000000000002c0       0x2d /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__call_atexit.o)
+ .ARM.attributes
+                0x00000000000002ed       0x2d /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-atexit.o)
+ .ARM.attributes
+                0x000000000000031a       0x2d /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-fini.o)
+ .ARM.attributes
+                0x0000000000000347       0x2d /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+ .ARM.attributes
+                0x0000000000000374       0x2d /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__atexit.o)
+ .ARM.attributes
+                0x00000000000003a1       0x1d /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
+OUTPUT(/home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/test_c.elf elf32-littlearm)
+
+.debug_info     0x0000000000000000     0x7149
+ .debug_info    0x0000000000000000      0xeb6 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_info    0x0000000000000eb6     0x114d /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_info    0x0000000000002003     0x1175 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_info    0x0000000000003178      0x354 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_info    0x00000000000034cc     0x146a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_info    0x0000000000004936      0xa95 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_info    0x00000000000053cb      0xc21 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_info    0x0000000000005fec     0x115d /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+
+.debug_abbrev   0x0000000000000000     0x1255
+ .debug_abbrev  0x0000000000000000      0x29f /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_abbrev  0x000000000000029f      0x2be /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_abbrev  0x000000000000055d      0x29a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_abbrev  0x00000000000007f7      0x12b /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_abbrev  0x0000000000000922      0x2ef /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_abbrev  0x0000000000000c11      0x1ed /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_abbrev  0x0000000000000dfe      0x215 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_abbrev  0x0000000000001013      0x242 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+
+.debug_aranges  0x0000000000000000      0x2f0
+ .debug_aranges
+                0x0000000000000000       0x88 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_aranges
+                0x0000000000000088       0x88 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_aranges
+                0x0000000000000110       0x98 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_aranges
+                0x00000000000001a8       0x38 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_aranges
+                0x00000000000001e0       0xa8 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_aranges
+                0x0000000000000288       0x20 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_aranges
+                0x00000000000002a8       0x20 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_aranges
+                0x00000000000002c8       0x28 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+
+.debug_ranges   0x0000000000000000      0x270
+ .debug_ranges  0x0000000000000000       0x78 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_ranges  0x0000000000000078       0x78 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_ranges  0x00000000000000f0       0x88 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_ranges  0x0000000000000178       0x28 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_ranges  0x00000000000001a0       0x98 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_ranges  0x0000000000000238       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_ranges  0x0000000000000248       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_ranges  0x0000000000000258       0x18 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+
+.debug_macro    0x0000000000000000     0x33ca
+ .debug_macro   0x0000000000000000      0x16a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x000000000000016a      0xa48 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000000bb2       0x22 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000000bd4       0x8e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000000c62       0x51 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000000cb3       0xef /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000000da2       0x6a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000000e0c      0x1df /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000000feb       0x5e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000001049       0x18 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000001061       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000001096       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x00000000000010ca      0x174 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x000000000000123e       0x58 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000001296       0x1f /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x00000000000012b5       0x43 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x00000000000012f8       0x20 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000001318      0x18e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x00000000000014a6      0x330 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x00000000000017d6       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x00000000000017e6       0x35 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x000000000000181b       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x000000000000184f      0x2a4 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000001af3       0x3a /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000001b2d       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000001b49       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000001b65       0x28 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_macro   0x0000000000001b8d      0x1a1 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000001d2e       0x34 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000001d62       0x70 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000001dd2       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_macro   0x0000000000001de2      0x1a2 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x0000000000001f84      0x1ea /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x000000000000216e       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x000000000000218a       0x4c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_macro   0x00000000000021d6       0x89 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_macro   0x000000000000225f      0x244 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x00000000000024a3       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x00000000000024b3       0x22 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x00000000000024d5       0x76 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x000000000000254b       0x2e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x0000000000002579       0x2b /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_macro   0x00000000000025a4      0x2f5 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000002899      0x280 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000002b19       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000002b35       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000002b45       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000002b55       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000002b71       0x52 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000002bc3       0x40 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000002c03       0x10 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000002c13       0x40 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000002c53       0xd7 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000002d2a       0x1c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000002d46       0x3d /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000002d83       0x16 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000002d99      0x16f /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_macro   0x0000000000002f08      0x2af /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_macro   0x00000000000031b7      0x213 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+
+.debug_line     0x0000000000000000     0x4182
+ .debug_line    0x0000000000000000      0x933 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_line    0x0000000000000933      0x806 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_line    0x0000000000001139      0x889 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_line    0x00000000000019c2      0x5bd /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_line    0x0000000000001f7f      0x948 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_line    0x00000000000028c7      0x898 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_line    0x000000000000315f      0x853 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_line    0x00000000000039b2      0x7d0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+
+.debug_str      0x0000000000000000     0xc0ce
+ .debug_str     0x0000000000000000     0x7a44 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+                                       0x7cbd (size before relaxing)
+ .debug_str     0x0000000000007a44      0xa78 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+                                       0x853f (size before relaxing)
+ .debug_str     0x00000000000084bc      0xb29 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+                                       0x89c4 (size before relaxing)
+ .debug_str     0x0000000000008fe5       0xdd /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+                                       0x40b5 (size before relaxing)
+ .debug_str     0x00000000000090c2      0xe9f /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+                                       0x9176 (size before relaxing)
+ .debug_str     0x0000000000009f61     0x1fb2 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+                                       0xafed (size before relaxing)
+ .debug_str     0x000000000000bf13       0x9e /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+                                       0x9c51 (size before relaxing)
+ .debug_str     0x000000000000bfb1      0x11d /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+                                       0x9d88 (size before relaxing)
+
+.comment        0x0000000000000000       0x7f
+ .comment       0x0000000000000000       0x7f /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+                                         0x80 (size before relaxing)
+ .comment       0x000000000000007f       0x80 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .comment       0x000000000000007f       0x80 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .comment       0x000000000000007f       0x80 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .comment       0x000000000000007f       0x80 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .comment       0x000000000000007f       0x80 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .comment       0x000000000000007f       0x80 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .comment       0x000000000000007f       0x80 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+
+.debug_frame    0x0000000000000000      0xd04
+ .debug_frame   0x0000000000000000      0x220 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_clock.o
+ .debug_frame   0x0000000000000220      0x21c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_dma.o
+ .debug_frame   0x000000000000043c      0x258 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_gpio.o
+ .debug_frame   0x0000000000000694       0xb0 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_nvic.o
+ .debug_frame   0x0000000000000744      0x2cc /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/lld_usart.o
+ .debug_frame   0x0000000000000a10       0x30 /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/main.o
+ .debug_frame   0x0000000000000a40       0x3c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/test_usart.o
+ .debug_frame   0x0000000000000a7c       0x5c /home/stephaneamans/dev/github_sa/stm32_software_library/Sources/build/objects/bsp_configuration.o
+ .debug_frame   0x0000000000000ad8       0x2c /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-init.o)
+ .debug_frame   0x0000000000000b04       0x38 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-memset.o)
+ .debug_frame   0x0000000000000b3c       0x34 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-strcmp.o)
+ .debug_frame   0x0000000000000b70       0x5c /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x0000000000000bcc       0x20 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-atexit.o)
+ .debug_frame   0x0000000000000bec       0x34 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-fini.o)
+ .debug_frame   0x0000000000000c20       0xb0 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-lock.o)
+ .debug_frame   0x0000000000000cd0       0x34 /home/stephaneamans/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86_64/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc.a(lib_a-__atexit.o)
