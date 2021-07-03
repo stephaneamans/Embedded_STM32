@@ -1,20 +1,4 @@
-
-#include <stdint.h>
-#include "configuration_module_activation.h"
-#include "configuration_clock.h"
-#include "configuration_dma.h"
-#include "configuration_gpio.h"
-#include "configuration_soc.h"
-#include "configuration_timer.h"
-#include "configuration_usart.h"
-
-#include "lld_clock.h"
-#include "lld_dma.h"
-
-#include "gpio.h"
-#include "usart.h"
-#include "timer.h"
-
+#include "bsp_configuration.h"
 
 const struct t_clock_config clock_config =
 {
@@ -806,6 +790,26 @@ struct t_timer_cfg timx_chanelx_cfg [TIMER_IP_NUMBER] =
 	},
 };
 
+static struct t_spi_config spi_config[SPI_IP_NUMBER] =
+{
+    [0] =
+    {
+        .instance = 0,
+        .base_address = SPI1_BASE,
+    },
+
+    [1] =
+    {
+        .instance = 1,
+        .base_address = SPI2_BASE,
+    },
+};
+
+/* Static driver structure. */
+struct t_spi_driver spi_driver[SPI_IP_NUMBER];
+
+
+
 void soc_core_configuration(void)
 {
 	clock_init(&clock_driver, &clock_config);
@@ -820,13 +824,18 @@ void soc_peripherals_configuration(void)
 
 	for(uint8_t index = 0; index < GPIO_PIN_NUMBER; index++)
 	{
-      gpio_init(&gpio_cfg[index]);
+      gpio_init(&gpio_driver[index], &gpio_cfg[index]);
 	}
 
 	struct t_usart_driver *usart_driver = usart_get_driver(1);
     usart_init(usart_driver, &usartx_cfg[0]);
     usart_driver = usart_get_driver(2);
     usart_init(usart_driver, &usartx_cfg[1]);
+
+    for(uint8_t index = 0; index < SPI_IP_NUMBER; index++)
+    {
+    	spi_init(&spi_driver[index], &spi_config[index]);
+    }
 
 //    timer_init(&timx_chanelx_cfg[0]);
 //    timer_init(&timx_chanelx_cfg[1]);

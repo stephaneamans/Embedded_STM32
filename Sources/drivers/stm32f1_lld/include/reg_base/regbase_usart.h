@@ -24,6 +24,6 @@ typedef struct
     volatile uint32_t CR2;
     volatile uint32_t CR3;
     volatile uint32_t GTPR;
-} USART_TypeDef;
+}USART_TypeDef;
 
 #endif /* USART_REGBASE_H_ */

@@ -21,6 +21,7 @@ TOOL_CHAIN = arm-none-eabi
 all: test_c.elf
 
 test_c.elf: $(OBJS) $(ROOT_DIR)/target/stm32f103c8tx/LinkerScript.ld
+	echo $(OBJS)
 	@$(LD) $(LDFLAGS) -o "$(BUILD_DIR)test_c.elf" $(OBJS) -lm
 	@echo 'Finished building target: $@'
 	@echo ' '

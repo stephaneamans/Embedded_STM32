@@ -10,6 +10,7 @@ int main(void)
 
 //    output_clock(SYSCLOCK);
 
-    print_test_header();
+//    print_test_header();
+    spi_test();
     while(1){}
 }

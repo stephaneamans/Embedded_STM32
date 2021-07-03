@@ -1,6 +1,25 @@
 #ifndef BSP_CONFIGURATION_H
 #define BSP_CONFIGURATION_H
 
+#include <stdint.h>
+
+#include "configuration_module_activation.h"
+#include "configuration_clock.h"
+#include "configuration_dma.h"
+#include "configuration_gpio.h"
+#include "configuration_soc.h"
+#include "configuration_timer.h"
+#include "configuration_usart.h"
+
+#include "lld_clock.h"
+#include "lld_dma.h"
+
+#include "gpio.h"
+#include "lld_spi.h"
+#include "usart.h"
+#include "timer.h"
+
+extern struct t_spi_driver spi_driver[SPI_IP_NUMBER];
 
 /** Configure core elements of the SoC.
  *

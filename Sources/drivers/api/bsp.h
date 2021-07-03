@@ -15,6 +15,8 @@ enum t_peripheral
 	PORTB,
 	PORTC,
 	PORTD,
+	SPI1,
+	SPI2,
 	TIM_1,
 	TIM_2,
 	TIM_3,
