@@ -49,7 +49,7 @@
 #define PA4_GPIO_PORT      GPIOA
 #define PA4_PIN            4
 #define PA4_MODE           mode_output_50MHz
-#define PA4_CONFIG         config_output_altpushpull
+#define PA4_CONFIG         config_output_outpushpull
 #define PA4_IRQ_ENABLE     0
 #define PA4_IRQ_RISING     0
 #define PA4_IRQ_PRIORITY   prio2
@@ -68,8 +68,8 @@
 /* PA6 configuration                      */
 #define PA6_GPIO_PORT      GPIOA
 #define PA6_PIN            6
-#define PA6_MODE           mode_output_50MHz
-#define PA6_CONFIG         config_output_altpushpull
+#define PA6_MODE           mode_input
+#define PA6_CONFIG         config_input_floating
 #define PA6_IRQ_ENABLE     0
 #define PA6_IRQ_RISING     0
 #define PA6_IRQ_PRIORITY   prio2
