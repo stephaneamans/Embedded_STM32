@@ -15,6 +15,7 @@
 #define TIMER_IP_NUMBER         3
 #define TIMER_CHANNELS_NUMBER   4
 #define SPI_IP_NUMBER           2
+#define I2C_IP_NUMBER           1
 
 /* Register map         */
 #define PERIPH_BASE        0x40000000U
@@ -28,6 +29,8 @@
 enum t_peripheral
 {
     DMA_1,
+    I2C_1,
+    I2C_2,
     PORT_A,
     PORT_B,
     PORT_C,

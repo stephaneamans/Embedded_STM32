@@ -7,7 +7,6 @@
 #ifndef BSP_H_
 #define BSP_H_
 
-
 /** Configure core elements of the SoC.
  *
  * \param: void

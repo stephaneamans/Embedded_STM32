@@ -18,46 +18,48 @@
 #include "configuration_soc.h"
 
 /* Bits masks */
-#define RCC_CR_HSION_BIT_MASK             0x1
-#define RCC_CR_HSIRDY_BIT_MASK            0x2
+#define RCC_CR_HSION_BIT_MASK         0x1
+#define RCC_CR_HSIRDY_BIT_MASK        0x2
 #define RCC_CR_HSEON_BIT_MASK         0x10000
 #define RCC_CR_HSERDY_BIT_MASK        0x20000
 #define RCC_CR_HSEBYP_BIT_MASK        0x40000
 #define RCC_CR_CSSON_BIT_MASK         0x80000
-#define RCC_CR_PLLON_BIT_MASK       0x1000000
-#define RCC_CR_PLLRDY_BIT_MASK      0x2000000
+#define RCC_CR_PLLON_BIT_MASK         0x1000000
+#define RCC_CR_PLLRDY_BIT_MASK        0x2000000
 
-#define RCC_CFGR_HSE_BIT_MASK             0x1
-#define RCC_CFGR_PLL_FIELD_MASK           0x2
-#define RCC_CFGR_SW_FIELD_MASK            0x3
-#define RCC_CFGR_SWS_FIELD_MASK           0xC
-#define RCC_CFGR_HPRE_FIELD_MASK         0xF0
-#define RCC_CFGR_PPRE1_FIELD_MASK       0x700
-#define RCC_CFGR_PPRE2_FIELD_MASK      0x3800
+#define RCC_CFGR_HSE_BIT_MASK         0x1
+#define RCC_CFGR_PLL_FIELD_MASK       0x2
+#define RCC_CFGR_SW_FIELD_MASK        0x3
+#define RCC_CFGR_SWS_FIELD_MASK       0xC
+#define RCC_CFGR_HPRE_FIELD_MASK      0xF0
+#define RCC_CFGR_PPRE1_FIELD_MASK     0x700
+#define RCC_CFGR_PPRE2_FIELD_MASK     0x3800
 #define RCC_CFGR_PLL_SRC_BIT_MASK     0x10000
 #define RCC_CFGR_PLLXTPRE_BIT_MASK    0x20000
-#define RCC_CFGR_SYCLK_OUT_BIT_MASK 0x4000000
-#define RCC_CFGR_HSI_OUT_BIT_MASK   0x5000000
-#define RCC_CFGR_HSE_OUT_BIT_MASK   0x6000000
-#define RCC_CFGR_PLL_OUT_BIT_MASK   0x7000000
+#define RCC_CFGR_SYCLK_OUT_BIT_MASK   0x4000000
+#define RCC_CFGR_HSI_OUT_BIT_MASK     0x5000000
+#define RCC_CFGR_HSE_OUT_BIT_MASK     0x6000000
+#define RCC_CFGR_PLL_OUT_BIT_MASK     0x7000000
 
-#define FLASH_ACR_LATENCY_FIELD_MASK      0x7
-#define FLASH_ACR_PRFTBE_BIT_MASK        0x10
-#define FLASH_ACR_PRFTBS_BIT_MASK        0x20
+#define FLASH_ACR_LATENCY_FIELD_MASK  0x7
+#define FLASH_ACR_PRFTBE_BIT_MASK     0x10
+#define FLASH_ACR_PRFTBS_BIT_MASK     0x20
 
-#define CLK_ENABLE_DMA1_BIT_MASK         0x01
-#define CLK_ENABLE_AFIO_BIT_MASK         0x01
-#define CLK_ENABLE_PORTA_BIT_MASK        0x04
-#define CLK_ENABLE_PORTB_BIT_MASK        0x08
-#define CLK_ENABLE_PORTC_BIT_MASK        0x10
-#define CLK_ENABLE_PORTD_BIT_MASK        0x20
-#define CLK_ENABLE_SPI1_BIT_MASK       0x1000
-#define CLK_ENABLE_SPI2_BIT_MASK       0x4000
-#define CLK_ENABLE_TIM1_BIT_MASK        0x800
-#define CLK_ENABLE_TIM2_BIT_MASK         0x01
-#define CLK_ENABLE_TIM3_BIT_MASK         0x02
-#define CLK_ENABLE_USART1_BIT_MASK     0x4000
+#define CLK_ENABLE_DMA1_BIT_MASK      0x1
+#define CLK_ENABLE_AFIO_BIT_MASK      0x1
+#define CLK_ENABLE_TIM2_BIT_MASK      0x1
+#define CLK_ENABLE_TIM3_BIT_MASK      0x2
+#define CLK_ENABLE_PORTA_BIT_MASK     0x4
+#define CLK_ENABLE_PORTB_BIT_MASK     0x8
+#define CLK_ENABLE_PORTC_BIT_MASK     0x10
+#define CLK_ENABLE_PORTD_BIT_MASK     0x20
+#define CLK_ENABLE_TIM1_BIT_MASK      0x800
+#define CLK_ENABLE_SPI1_BIT_MASK      0x1000
+#define CLK_ENABLE_SPI2_BIT_MASK      0x4000
+#define CLK_ENABLE_USART1_BIT_MASK    0x4000
 #define CLK_ENABLE_USART2_BIT_MASK    0x20000
+#define CLK_ENABLE_I2C1_BIT_MASK      0x200000
+#define CLK_ENABLE_I2C2_BIT_MASK      0x400000
 
 
 /* Static driver structure. */
@@ -373,6 +375,14 @@ void disable_clock(enum t_peripheral peripheral)
 		RCC->AHBENR &= ~CLK_ENABLE_DMA1_BIT_MASK;
 		break;
 
+	case I2C_1:
+        RCC->APB1ENR &= ~CLK_ENABLE_I2C1_BIT_MASK;
+        break;
+
+    case I2C_2:
+        RCC->APB1ENR &= ~CLK_ENABLE_I2C2_BIT_MASK;
+        break;
+
 	case PORT_A:
         RCC->APB2ENR &= ~CLK_ENABLE_PORTA_BIT_MASK;
         break;
@@ -441,10 +451,26 @@ t_error_handling enable_clock(enum t_peripheral peripheral)
     	}
     	break;
 
+    case I2C_1:
+    	RCC->APB1ENR |= CLK_ENABLE_I2C1_BIT_MASK;
+    	if((RCC->APB1ENR & CLK_ENABLE_I2C1_BIT_MASK) != CLK_ENABLE_I2C1_BIT_MASK)
+        {
+            error = ERROR_WRITTEN_VALUE_CORRUPTED;
+        }
+        break;
+
+    case I2C_2:
+        RCC->APB1ENR |= CLK_ENABLE_I2C2_BIT_MASK;
+        if((RCC->APB1ENR & CLK_ENABLE_I2C2_BIT_MASK) != CLK_ENABLE_I2C2_BIT_MASK)
+        {
+           error = ERROR_WRITTEN_VALUE_CORRUPTED;
+        }
+        break;
+
     case PORT_A:
-    	RCC->APB2ENR |= CLK_ENABLE_PORTA_BIT_MASK;
+        RCC->APB2ENR |= CLK_ENABLE_PORTA_BIT_MASK;
         RCC->APB2ENR |= CLK_ENABLE_AFIO_BIT_MASK;
-    	if(((RCC->APB2ENR & CLK_ENABLE_PORTA_BIT_MASK) != CLK_ENABLE_PORTA_BIT_MASK) ||
+        if(((RCC->APB2ENR & CLK_ENABLE_PORTA_BIT_MASK) != CLK_ENABLE_PORTA_BIT_MASK) ||
            ((RCC->APB2ENR & CLK_ENABLE_AFIO_BIT_MASK) != CLK_ENABLE_AFIO_BIT_MASK))
     	{
     	    error = ERROR_WRITTEN_VALUE_CORRUPTED;

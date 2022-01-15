@@ -3,6 +3,8 @@
 #include "test.h"
 #include <string.h>
 
+#include <stdint.h>
+
 #include "gpio.h"
 
 int main(void)
@@ -14,8 +16,9 @@ int main(void)
 
 //    print_test_header();
 //    spi_test();
+//  	i2c_read(data);
+//}
 
-    while(1)
-    {
-    };
+  //  print_test_header();
+    while(1){}
 }

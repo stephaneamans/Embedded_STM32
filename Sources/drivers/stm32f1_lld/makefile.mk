@@ -4,6 +4,7 @@ OBJS += \
 $(BUILD_OBJ_DIR)lld_clock.o \
 $(BUILD_OBJ_DIR)lld_dma.o \
 $(BUILD_OBJ_DIR)lld_gpio.o \
+$(BUILD_OBJ_DIR)lld_i2c.o \
 $(BUILD_OBJ_DIR)lld_nvic.o \
 $(BUILD_OBJ_DIR)lld_spi.o \
 $(BUILD_OBJ_DIR)lld_usart.o

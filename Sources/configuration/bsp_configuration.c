@@ -868,6 +868,17 @@ static struct t_spi_config spi_config[SPI_IP_NUMBER] =
     },
 };
 
+struct t_i2c_driver i2c_driver[I2C_IP_NUMBER] =
+{
+    [0] =
+    {
+        .base_address_i2c = I2C1_BASE,
+        .peripheral = I2C_1,
+        .instance = 1,
+    },
+};
+
+
 /* Static driver structures. */
 struct t_spi_driver spi_driver[SPI_IP_NUMBER];
 struct t_gpio_driver gpio_driver[GPIO_PIN_NUMBER];
@@ -923,6 +934,8 @@ struct t_dma_channel_driver *dma_ch5  = &dma_channel_driver[4];
 struct t_dma_channel_driver *dma_ch6  = &dma_channel_driver[5];
 struct t_dma_channel_driver *dma_ch7  = &dma_channel_driver[6];
 
+struct t_i2c_driver *i2c1 = &i2c_driver[0];
+
 void soc_core_configuration(void)
 {
 	clock_init(&clock_driver, &clock_config);
@@ -942,6 +955,12 @@ void soc_peripherals_configuration(void)
             dma_init(&dma_driver[index], &dma_channel_driver[index_channel]);
         }
     }
+
+    for(uint8_t index = 0; index < I2C_IP_NUMBER; index++)
+    {
+        i2c_init(&i2c_driver[index]);
+    }
+
 
 //	struct t_usart_driver *usart_driver = usart_get_driver(1);
 //    usart_init(usart_driver, &usartx_cfg[0]);

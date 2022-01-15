@@ -7,6 +7,7 @@
 #include "configuration_clock.h"
 #include "configuration_dma.h"
 #include "configuration_gpio.h"
+#include "configuration_i2c.h"
 #include "configuration_soc.h"
 #include "configuration_timer.h"
 #include "configuration_usart.h"
@@ -15,15 +16,16 @@
 #include "lld_clock.h"
 #include "lld_dma.h"
 #include "lld_exti.h"
+#include "lld_i2c.h"
 
 #include "gpio.h"
 #include "lld_spi.h"
 #include "usart.h"
 #include "timer.h"
 
-
-extern struct t_spi_driver spi_driver[SPI_IP_NUMBER];
 extern struct t_gpio_driver gpio_driver[GPIO_PIN_NUMBER];
+extern struct t_spi_driver spi_driver[SPI_IP_NUMBER];
+
 
 
 /** Configure core elements of the SoC.
