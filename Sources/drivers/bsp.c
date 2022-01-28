@@ -1,7 +1,7 @@
 #include "bsp.h"
 
 /* Include files:        */
-#include "bsp_configuration.h"
+//#include "bsp_configuration.h"
 #include "lld_clock.h"
 #include "lld_dma.h"
 #include "gpio.h"

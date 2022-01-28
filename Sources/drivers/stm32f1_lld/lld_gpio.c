@@ -9,14 +9,14 @@
 #include "bsp.h"
 #include "gpio.h"
 
-#include "configuration_soc.h"
+struct t_gpio_driver gpio_driver[GPIO_PIN_NUMBER];
 
 //#if defined(GPIO_PA0) || defined(GPIO_PA1) || defined(GPIO_PA2) || defined(GPIO_PA6) || defined(GPIO_PA8) || defined(GPIO_PA9) || defined(GPIO_PA10) || defined(GPIO_PB7) || defined(GPIO_PB9) || defined(GPIO_PC13)
 
 /* Pointer callback function table prototype	*/
 void (*gpio_callback[5])(uint32_t pin_numb);
 
-t_error_handling gpio_init(const struct t_gpio_config *cfg)
+t_error_handling gpio_init(struct t_gpio_driver *driver, const struct t_gpio_config *config)
 {
     uint8_t local_cnf_mode = 0;
     uint32_t local_mask = 0; /* Local variable for masks operations. */
@@ -27,111 +27,114 @@ t_error_handling gpio_init(const struct t_gpio_config *cfg)
     enable_clock(PORTC);
 	enable_clock(PORTD);
 
+    driver->gpio = config->gpio;
+    driver->pin = config->pin;
+
     /* Concatenate 2 bits config with 2 bits mode. */
-    if(cfg->config < 3){local_cnf_mode = ((cfg->config & 0x3) <<2) + (cfg->input_type & 0x3);}
-    else{local_cnf_mode = (((cfg->config - 1) & 0x3) << 2) + (cfg->input_type & 0x3);}
+    if(config->config < 3){local_cnf_mode = ((config->config & 0x3) <<2) + (config->input_type & 0x3);}
+    else{local_cnf_mode = (((config->config - 1) & 0x3) << 2) + (config->input_type & 0x3);}
 
     /* Set the localPort variable function of the port number. */
-    if(cfg->gpio == GPIOA)
+    if(config->gpio == GPIOA)
     {
         local_port = 1;
     }
-    else if(cfg->gpio == GPIOB)
+    else if(config->gpio == GPIOB)
     {
         local_port = 2;
     }
-    else if(cfg->gpio == GPIOC)
+    else if(config->gpio == GPIOC)
     {
         local_port = 3;
     }
-    else if(cfg->gpio == GPIOD)
+    else if(config->gpio == GPIOD)
     {
         local_port = 4;
     }
 
     /* Write in the low register for GPIO 0 to 7.    */
-    if(cfg->pin<=7)
+    if(config->pin<=7)
     {
-        local_mask = 0xF << (cfg->pin * 4);
-        cfg->gpio->CRL &= ~local_mask;
-        cfg->gpio->CRL |= local_cnf_mode << (cfg->pin * 4);
+        local_mask = 0xF << (config->pin * 4);
+        config->gpio->CRL &= ~local_mask;
+        config->gpio->CRL |= local_cnf_mode << (config->pin * 4);
     }
     /* Write in the high register for GPIO 8 to 15. */
-    else if(cfg->pin >= 8 && cfg->pin <= 15)
+    else if(config->pin >= 8 && config->pin <= 15)
     {
-        local_mask = 0xF << ((cfg->pin - 8) * 4);
-        cfg->gpio->CRH &= ~local_mask;
-        cfg->gpio->CRH |= local_cnf_mode<<((cfg->pin -8 ) * 4);
+        local_mask = 0xF << ((config->pin - 8) * 4);
+        config->gpio->CRH &= ~local_mask;
+        config->gpio->CRH |= local_cnf_mode<<((config->pin -8 ) * 4);
     }
 
     /* Set all parameters for a GPIO set in input. */
-    if(cfg->input_type == mode_input)
+    if(config->input_type == mode_input)
     {
-        local_mask = 0xF << ((cfg->pin % 4) * 4);
-        AFIO->EXTICR[cfg->pin / 4] &= ~local_mask; /* Clear the 4 bits corresponding to the port selection. */
+        local_mask = 0xF << ((config->pin % 4) * 4);
+        AFIO->EXTICR[config->pin / 4] &= ~local_mask; /* Clear the 4 bits corresponding to the port selection. */
 
         /* Set all patameters for an input GPIO interrupt driven. */
-        if(cfg->irq.active == 1)
+        if(config->irq.active == 1)
         {
-            AFIO->EXTICR[cfg->pin / 4] |= local_port << ((cfg->pin % 4) * 4);
-            EXTI->IMR |= 0x01 << cfg->pin; /* Unmask interrupt line. */
-            EXTI->EMR |= 0x01 << cfg->pin; /* Unmask event line.     */
+            AFIO->EXTICR[config->pin / 4] |= local_port << ((config->pin % 4) * 4);
+            EXTI->IMR |= 0x01 << config->pin; /* Unmask interrupt line. */
+            EXTI->EMR |= 0x01 << config->pin; /* Unmask event line.     */
 
             /* Associate the callbacks references. */
-            if(cfg->pin <= 4)
+            if(config->pin <= 4)
             {
-                enable_nvic_irq(cfg->pin + 6);
-                set_nvic_priority(cfg->pin + 6, cfg->irq.priority);
-                gpio_callback[cfg->pin] = cfg->irq.callback;
+                enable_nvic_irq(config->pin + 6);
+                set_nvic_priority(config->pin + 6, config->irq.priority);
+                gpio_callback[config->pin] = config->irq.callback;
             }
 
             /* Set all parameters to configure interrupts on rising edge.*/
-            if(cfg->irq.rising == 1)
+            if(config->irq.rising == 1)
             {
-                EXTI->RTSR |= 0x01 << cfg->pin;    /* Interrupt / event on rising edge.          */
-                EXTI->FTSR &= ~(0x01 << cfg->pin); /* Disable interrupt / event on falling edge. */
+                EXTI->RTSR |= 0x01 << config->pin;    /* Interrupt / event on rising edge.          */
+                EXTI->FTSR &= ~(0x01 << config->pin); /* Disable interrupt / event on falling edge. */
             }
 
             /* Set all parameters to configure interrupts on falling edge. */
             else
             {
-                EXTI->RTSR &= ~(0x01 << cfg->pin); /* Disable interrupt / event on rising edge. */
-                EXTI->FTSR |= 0x01 << cfg->pin;    /* Interrupt / event on falling edge.        */
-                disable_nvic_irq(cfg->pin + 6);
-                gpio_callback[cfg->pin] = 0;
+                EXTI->RTSR &= ~(0x01 << config->pin); /* Disable interrupt / event on rising edge. */
+                EXTI->FTSR |= 0x01 << config->pin;    /* Interrupt / event on falling edge.        */
+                disable_nvic_irq(config->pin + 6);
+                gpio_callback[config->pin] = 0;
             }
 
             /* Set input pullup. */
-            if(cfg->input_type == mode_input && cfg->config == config_input_pullup)
+            if(config->input_type == mode_input && config->config == config_input_pullup)
             {
-            	cfg->gpio->ODR |= 0x01 << cfg->pin;
+            	config->gpio->ODR |= 0x01 << config->pin;
             }
 
             /* Set input pulldown. */
-            else if(cfg->input_type == mode_input && cfg->config == config_input_pulldown)
+            else if(config->input_type == mode_input && config->config == config_input_pulldown)
             {
-            	cfg->gpio->ODR &= ~(0x01 << cfg->pin);
+            	config->gpio->ODR &= ~(0x01 << config->pin);
             }
         }
 
         /* Set all patameters for an input GPIO. */
-        else if(cfg->irq.active == 0)
+        else if(config->irq.active == 0)
         {
-            EXTI->IMR &= ~(0x01 << cfg->pin);  /* Mask interrupt line.                       */
-            EXTI->EMR &= ~(0x01 << cfg->pin);  /* Mask event line.                           */
-            EXTI->FTSR &= ~(0x01 << cfg->pin); /* Disable interrupt / event on falling edge. */
-            EXTI->RTSR &= ~(0x01 << cfg->pin); /* Disable interrupt / event on rising edge.  */
+            EXTI->IMR &= ~(0x01 << config->pin);  /* Mask interrupt line.                       */
+            EXTI->EMR &= ~(0x01 << config->pin);  /* Mask event line.                           */
+            EXTI->FTSR &= ~(0x01 << config->pin); /* Disable interrupt / event on falling edge. */
+            EXTI->RTSR &= ~(0x01 << config->pin); /* Disable interrupt / event on rising edge.  */
 
             /* Set input pullup. */
-            if(cfg->input_type == mode_input && cfg->config == config_input_pullup)
+            if(config->input_type == mode_input && config->config == config_input_pullup)
             {
-            	cfg->gpio->ODR |= 0x01 << cfg->pin;
+            	config->gpio->ODR |= 0x01 << config->pin;
             }
             
             /* Set input pulldown. */
-            else if(cfg->input_type == mode_input && cfg->config == config_input_pulldown)
+            else if(config->input_type == mode_input && config->config == config_input_pulldown)
             {
-            	cfg->gpio->ODR &= ~(0x01 << cfg->pin);
+            	config->gpio->ODR &= ~(0x01 << config->pin);
             }
         }
     }

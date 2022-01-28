@@ -11,6 +11,7 @@
 #include <stdint.h>
 
 #include "configuration_module_activation.h"
+#include "configuration_soc.h"
 #include "lld_clock.h"
 #include "lld_nvic.h"
 #include "regbase_exti.h"
@@ -67,7 +68,6 @@ typedef enum
     mode_output_50MHz = 0x03
 }io;
 
-
 /* GPIO initialization structure definition :        */
 struct t_gpio_config
 {
@@ -84,6 +84,14 @@ struct t_gpio_config
     }irq;
 };
 
+struct t_gpio_driver
+{
+    GPIO_TypeDef *gpio;
+    uint8_t pin;
+};
+extern struct t_gpio_driver gpio_driver[GPIO_PIN_NUMBER];
+
+
 /* Functions prototypes:                       */
 
 /** Configure GPIO (port, pin, in/out, mode, interruption):
@@ -95,7 +103,7 @@ struct t_gpio_config
  * \return: Error code or 0 if ERROR_OK.
  *
  */
-t_error_handling gpio_init(const struct t_gpio_config *cfg);
+t_error_handling gpio_init(struct t_gpio_driver *driver, const struct t_gpio_config *config);
 
 
 /** Outputs the EVENTOUT Cortex's output on the selected pin and port.
@@ -170,7 +178,7 @@ t_error_handling gpio_toggle(GPIO_TypeDef *gpio, uint8_t pin);
 * \param pin: Pin number (u8 between 0 and MAX_GPIO_PIN).
 *
 * \return: return the pin value.
-*
+*-+++
 */
 uint8_t gpio_read(GPIO_TypeDef *gpio, uint8_t pin);
 

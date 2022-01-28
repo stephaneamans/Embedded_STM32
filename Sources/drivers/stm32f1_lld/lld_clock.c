@@ -45,6 +45,20 @@
 #define FLASH_ACR_PRFTBE_BIT_MASK        0x10
 #define FLASH_ACR_PRFTBS_BIT_MASK        0x20
 
+#define CLK_ENABLE_DMA1_BIT_MASK         0x01
+#define CLK_ENABLE_PORTA_BIT_MASK        0x04
+#define CLK_ENABLE_PORTB_BIT_MASK        0x08
+#define CLK_ENABLE_PORTC_BIT_MASK        0x10
+#define CLK_ENABLE_PORTD_BIT_MASK        0x20
+#define CLK_ENABLE_SPI1_BIT_MASK       0x1000
+#define CLK_ENABLE_SPI2_BIT_MASK       0x4000
+#define CLK_ENABLE_TIM1_BIT_MASK        0x800
+#define CLK_ENABLE_TIM2_BIT_MASK         0x01
+#define CLK_ENABLE_TIM3_BIT_MASK         0x02
+#define CLK_ENABLE_USART1_BIT_MASK     0x4000
+#define CLK_ENABLE_USART2_BIT_MASK    0x20000
+
+
 /* Static driver structure. */
 struct t_clock_driver clock_driver;
 
@@ -355,43 +369,51 @@ void disable_clock(enum t_peripheral peripheral)
 	switch(peripheral)
 	{
 	case DMA_1:
-		RCC->AHBENR &= ~0x01;
+		RCC->AHBENR &= ~CLK_ENABLE_DMA1_BIT_MASK;
 		break;
 
 	case PORTA:
-        RCC->APB2ENR &= ~0x04;
+        RCC->APB2ENR &= ~CLK_ENABLE_PORTA_BIT_MASK;
         break;
 
 	case PORTB:
-		RCC->APB2ENR &= ~0x08;
+		RCC->APB2ENR &= ~CLK_ENABLE_PORTB_BIT_MASK;
 	    break;
 
 	case PORTC:
-        RCC->APB2ENR &= ~0x10;
+        RCC->APB2ENR &= ~CLK_ENABLE_PORTC_BIT_MASK;
 	    break;
 
 	case PORTD:
-        RCC->APB2ENR &= ~0x20;
+        RCC->APB2ENR &= ~CLK_ENABLE_PORTD_BIT_MASK;
+        break;
+
+	case SPI1:
+        RCC->APB2ENR &= ~CLK_ENABLE_SPI1_BIT_MASK;
+	    break;
+
+    case SPI2:
+        RCC->APB1ENR &= ~CLK_ENABLE_SPI2_BIT_MASK;
         break;
 
 	case TIM_1:
-        RCC->APB2ENR &= ~0x800;
+        RCC->APB2ENR &= ~CLK_ENABLE_TIM1_BIT_MASK;
         break;
 
     case TIM_2:
-        RCC->APB1ENR &= ~0x01;
+        RCC->APB1ENR &= ~CLK_ENABLE_TIM2_BIT_MASK;
         break;
 
     case TIM_3:
-        RCC->APB1ENR &= ~0x02;
+        RCC->APB1ENR &= ~CLK_ENABLE_TIM3_BIT_MASK;
         break;
 
     case USART_01:
-        RCC->APB2ENR &= (!0x4000);
+        RCC->APB2ENR &= (!CLK_ENABLE_USART1_BIT_MASK);
         break;
 
     case USART_02:
-        RCC->APB1ENR &= (!0x20000);
+        RCC->APB1ENR &= (!CLK_ENABLE_USART2_BIT_MASK);
         break;
 	}
 }
@@ -402,80 +424,96 @@ t_error_handling enable_clock(enum t_peripheral peripheral)
     switch(peripheral)
     {
     case DMA_1:
-    	RCC->AHBENR |= 0x01;
-    	if((RCC->AHBENR & 0x01) != 0x01)
+    	RCC->AHBENR |= CLK_ENABLE_DMA1_BIT_MASK;
+    	if((RCC->AHBENR & CLK_ENABLE_DMA1_BIT_MASK) != CLK_ENABLE_DMA1_BIT_MASK)
     	{
     		error = ERROR_WRITTEN_VALUE_CORRUPTED;
     	}
     	break;
 
     case PORTA:
-    	RCC->APB2ENR |= 0x04;
-    	if((RCC->APB2ENR & 0x04) != 0x04)
+    	RCC->APB2ENR |= CLK_ENABLE_PORTA_BIT_MASK;
+    	if((RCC->APB2ENR & CLK_ENABLE_PORTA_BIT_MASK) != CLK_ENABLE_PORTA_BIT_MASK)
     	{
     	    error = ERROR_WRITTEN_VALUE_CORRUPTED;
     	}
         break;
 
     case PORTB:
-        RCC->APB2ENR |= 0x08;
-        if((RCC->APB2ENR & 0x08) != 0x08)
+        RCC->APB2ENR |= CLK_ENABLE_PORTB_BIT_MASK;
+        if((RCC->APB2ENR & CLK_ENABLE_PORTB_BIT_MASK) != CLK_ENABLE_PORTB_BIT_MASK)
         {
             error = ERROR_WRITTEN_VALUE_CORRUPTED;
         }
         break;
 
     case PORTC:
-        RCC->APB2ENR |= 0x10;
-        if((RCC->APB2ENR & 0x10) != 0x10)
+        RCC->APB2ENR |= CLK_ENABLE_PORTC_BIT_MASK;
+        if((RCC->APB2ENR & CLK_ENABLE_PORTC_BIT_MASK) != CLK_ENABLE_PORTC_BIT_MASK)
         {
             error = ERROR_WRITTEN_VALUE_CORRUPTED;
         }
         break;
 
     case PORTD:
-        RCC->APB2ENR |= 0x20;
-        if((RCC->APB2ENR & 0x20) != 0x20)
+        RCC->APB2ENR |= CLK_ENABLE_PORTD_BIT_MASK;
+        if((RCC->APB2ENR & CLK_ENABLE_PORTD_BIT_MASK) != CLK_ENABLE_PORTD_BIT_MASK)
+        {
+            error = ERROR_WRITTEN_VALUE_CORRUPTED;
+        }
+        break;
+
+    case SPI1:
+        RCC->APB2ENR |= CLK_ENABLE_SPI1_BIT_MASK;
+        if((RCC->APB2ENR & CLK_ENABLE_SPI1_BIT_MASK) != CLK_ENABLE_SPI1_BIT_MASK)
+        {
+            error = ERROR_WRITTEN_VALUE_CORRUPTED;
+        }
+        break;
+
+    case SPI2:
+        RCC->APB1ENR |= CLK_ENABLE_SPI2_BIT_MASK;
+        if((RCC->APB1ENR & CLK_ENABLE_SPI2_BIT_MASK) != CLK_ENABLE_SPI2_BIT_MASK)
         {
             error = ERROR_WRITTEN_VALUE_CORRUPTED;
         }
         break;
 
     case TIM_1:
-        RCC->APB2ENR |= 0x800;
-        if((RCC->APB2ENR & 0x800) != 0x800)
+        RCC->APB2ENR |= CLK_ENABLE_TIM1_BIT_MASK;
+        if((RCC->APB2ENR & CLK_ENABLE_TIM1_BIT_MASK) != CLK_ENABLE_TIM1_BIT_MASK)
         {
             error = ERROR_WRITTEN_VALUE_CORRUPTED;
         }
         break;
 
     case TIM_2:
-        RCC->APB1ENR |= 0x01;
-        if((RCC->APB1ENR & 0x01) != 0x01)
+        RCC->APB1ENR |= CLK_ENABLE_TIM2_BIT_MASK;
+        if((RCC->APB1ENR & CLK_ENABLE_TIM2_BIT_MASK) != CLK_ENABLE_TIM2_BIT_MASK)
         {
             error = ERROR_WRITTEN_VALUE_CORRUPTED;
         }
         break;
 
     case TIM_3:
-        RCC->APB1ENR |= 0x02;
-        if((RCC->APB1ENR & 0x02) != 0x02)
+        RCC->APB1ENR |= CLK_ENABLE_TIM3_BIT_MASK;
+        if((RCC->APB1ENR & CLK_ENABLE_TIM3_BIT_MASK) != CLK_ENABLE_TIM3_BIT_MASK)
         {
             error = ERROR_WRITTEN_VALUE_CORRUPTED;
         }
         break;
 
     case USART_01:
-        RCC->APB2ENR |= 0x4000;
-        if((RCC->APB2ENR & 0x4000) != 0x4000)
+        RCC->APB2ENR |= CLK_ENABLE_USART1_BIT_MASK;
+        if((RCC->APB2ENR & CLK_ENABLE_USART1_BIT_MASK) != CLK_ENABLE_USART1_BIT_MASK)
         {
             error = ERROR_WRITTEN_VALUE_CORRUPTED;
         }
         break;
 
     case USART_02:
-        RCC->APB1ENR |= 0x20000;
-        if((RCC->APB1ENR & 0x20000) != 0x20000)
+        RCC->APB1ENR |= CLK_ENABLE_USART2_BIT_MASK;
+        if((RCC->APB1ENR & CLK_ENABLE_USART2_BIT_MASK) != CLK_ENABLE_USART2_BIT_MASK)
         {
             error = ERROR_WRITTEN_VALUE_CORRUPTED;
         }

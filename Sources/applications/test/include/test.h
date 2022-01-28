@@ -19,4 +19,7 @@
  */
 t_error_handling print_test_header(void);
 
+
+t_error_handling spi_test(void);
+
 #endif /* TEST_H_ */
