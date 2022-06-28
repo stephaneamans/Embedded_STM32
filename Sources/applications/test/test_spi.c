@@ -26,7 +26,7 @@ struct t_spi_slave component[3] =
     [0] =
     {
         .freq_khz = 4000,
-		.cs = GPIOA,
+		.cs = &gpio_driver[4],
         .frame_length = spi_frame_8_bits,
         .frame_direction = spi_frame_msb_first,
         .clock_phase = spi_clk_first,
@@ -36,7 +36,7 @@ struct t_spi_slave component[3] =
     [1] =
     {
         .freq_khz = 1125,
-		.cs = GPIOA,
+		.cs = &gpio_driver[4],
         .frame_length = spi_frame_16_bits,
         .frame_direction = spi_frame_lsb_first,
         .clock_phase = spi_clk_second,
@@ -46,7 +46,7 @@ struct t_spi_slave component[3] =
     [2] =
     {
         .freq_khz = 18000,
-		.cs = GPIOA,
+		.cs = &gpio_driver[4],
         .frame_length = spi_frame_8_bits,
         .frame_direction = spi_frame_msb_first,
         .clock_phase = spi_clk_first,
@@ -76,7 +76,7 @@ t_error_handling spi_test(void)
    	spi_record_slave(&component[2]);
 
 
-   	gpio_set(component[0].cs, 4);
+   	gpio_write(component[0].cs, true);
     error = spi_transfer(spi1, &component[0], &data);
     error = spi_transfer(spi1, &component[1], &data);
     error = spi_transfer(spi1, &component[2], &data);

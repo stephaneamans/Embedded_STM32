@@ -7,8 +7,7 @@
 
 /* SOC parameters:   */
 
-#define GPIO_PIN_NUMBER         36
-#define MAX_GPIO_PIN            8
+#define GPIO_PIN_NUMBER         37
 #define USART_IP_NUMBER         2
 #define DMA_IP_NUMBER           1
 #define DMA_CHANNELS_NUMBER     7
@@ -22,5 +21,26 @@
 #define APB1PERIPH_BASE    (PERIPH_BASE)
 #define APB2PERIPH_BASE    (PERIPH_BASE + 0x00010000U)
 #define RCC_BASE           (AHBPERIPH_BASE + 0x00001000U)
+
+
+/* SoC internal peripherals enumeration:        */
+enum t_peripheral
+{
+    DMA_1,
+    PORT_A,
+    PORT_B,
+    PORT_C,
+    PORT_D,
+    PORT_E,
+    PORT_F,
+    PORT_G,
+    SPI_0,
+    SPI_1,
+    TIM_1,
+    TIM_2,
+    TIM_3,
+    USART_1,
+    USART_2
+};
 
 #endif /* CONFIGURATION_SOC_H_ */

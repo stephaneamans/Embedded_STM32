@@ -2,62 +2,62 @@
 
 const struct t_clock_config clock_config =
 {
-	.sys_clk_freq = SYS_CLK,
-	.AHB_clk_freq = AHB_CLK,
-	.APB1_clk_freq = APB1_CLK,
-	.APB2_clk_freq = APB2_CLK,
-	.source = SOURCE,
+    .sys_clk_freq = SYS_CLK,
+    .AHB_clk_freq = AHB_CLK,
+    .APB1_clk_freq = APB1_CLK,
+    .APB2_clk_freq = APB2_CLK,
+    .source = SOURCE,
 };
 
 const struct t_usart_config usartx_cfg[USART_IP_NUMBER] =
 {
-	[0] =
-	{
-	    .reg = USART1_REGS,
-	    .baudrate = USART1_BAUDRATE,
-	    .length = USART1_LENGTH,
-	    .parity = USART1_PARITY,
-	    .stop = USART1_STOP_BITS,
-	    .mode = USART1_MODE,
-	    .irq_dma.priority = USART1_IRQ_DMA_PRIORITY,
-	    .irq_dma.tx_dma_channel = USART1_DMA_DRIVER_TX,
-	    .irq_dma.rx_dma_channel = USART1_DMA_DRIVER_RX,
-	},
+    [0] =
+    {
+        .reg = USART1_REGS,
+        .baudrate = USART1_BAUDRATE,
+        .length = USART1_LENGTH,
+        .parity = USART1_PARITY,
+        .stop = USART1_STOP_BITS,
+        .mode = USART1_MODE,
+        .irq_dma.priority = USART1_IRQ_DMA_PRIORITY,
+        .irq_dma.tx_dma_channel = USART1_DMA_DRIVER_TX,
+        .irq_dma.rx_dma_channel = USART1_DMA_DRIVER_RX,
+    },
 
-	[1] =
-	{
-		.reg = USART2_REGS,
-	    .baudrate = USART2_BAUDRATE,
-	    .length = USART2_LENGTH,
-	    .parity = USART2_PARITY,
-	    .stop = USART2_STOP_BITS,
-	    .mode = USART2_MODE,
-	    .irq_dma.priority = USART2_IRQ_DMA_PRIORITY,
-	    .irq_dma.tx_dma_channel = USART2_DMA_DRIVER_TX,
-	    .irq_dma.rx_dma_channel = USART2_DMA_DRIVER_RX,
-	},
+    [1] =
+    {
+        .reg = USART2_REGS,
+        .baudrate = USART2_BAUDRATE,
+        .length = USART2_LENGTH,
+        .parity = USART2_PARITY,
+        .stop = USART2_STOP_BITS,
+        .mode = USART2_MODE,
+        .irq_dma.priority = USART2_IRQ_DMA_PRIORITY,
+        .irq_dma.tx_dma_channel = USART2_DMA_DRIVER_TX,
+        .irq_dma.rx_dma_channel = USART2_DMA_DRIVER_RX,
+    },
 };
 
 const struct t_dma_channel_cfg dma1_chx_cfg[DMA_CHANNELS_NUMBER] =
 {
-	[0] =
-	{
-	    .reg                             = DMA1_Ch1,
-    	.mem2mem                         = DMA1_CH1_MEM2MEM,
-	    .dma_priority                    = DMA1_CH1_PRIORITY,
-    	.mem_data_type                   = DMA1_CH1_MEM_DATA_TYPE,
-	    .memory_zone_size                = DMA1_CH1_MEMORY_ZONE_SIZE,
-    	.memory_zone_address             = DMA1_CH1_MEMORY_ZONE_ADDRESS,
-//	    .peripheral_address              = (uint32_t)usartx_cfg[0].reg,
-    	.periph_data_type                = DMA1_CH1_PERIPH_DATA_TYPE,
-	    .memory_increment                = DMA1_CH1_MEMORY_INCREMENT,
-    	.peripheral_increment            = DMA1_CH1_PERIPHERAL_INCREMENT,
-	    .read_from_memory                = DMA1_CH1_READ_FROM_MEMORY,
-    	.irq.transfer_error_interrupt    = DMA1_CH1_IRQ_TRANSFER_ERROR,
-	    .irq.half_transfer_interrupt     = DMA1_CH1_IRQ_HALF_TRANSFER,
-    	.irq.transfer_complete_interrupt = DMA1_CH1_IRQ_TRANSFER_COMPLETE,
-		.irq.callback                    = 0,
-	},
+    [0] =
+    {
+        .reg                             = DMA1_Ch1,
+        .mem2mem                         = DMA1_CH1_MEM2MEM,
+        .dma_priority                    = DMA1_CH1_PRIORITY,
+        .mem_data_type                   = DMA1_CH1_MEM_DATA_TYPE,
+        .memory_zone_size                = DMA1_CH1_MEMORY_ZONE_SIZE,
+        .memory_zone_address             = DMA1_CH1_MEMORY_ZONE_ADDRESS,
+//      .peripheral_address              = (uint32_t)usartx_cfg[0].reg,
+        .periph_data_type                = DMA1_CH1_PERIPH_DATA_TYPE,
+        .memory_increment                = DMA1_CH1_MEMORY_INCREMENT,
+        .peripheral_increment            = DMA1_CH1_PERIPHERAL_INCREMENT,
+        .read_from_memory                = DMA1_CH1_READ_FROM_MEMORY,
+        .irq.transfer_error_interrupt    = DMA1_CH1_IRQ_TRANSFER_ERROR,
+        .irq.half_transfer_interrupt     = DMA1_CH1_IRQ_HALF_TRANSFER,
+        .irq.transfer_complete_interrupt = DMA1_CH1_IRQ_TRANSFER_COMPLETE,
+        .irq.callback                    = 0,
+    },
 
 	[1] =
 	{
@@ -67,7 +67,7 @@ const struct t_dma_channel_cfg dma1_chx_cfg[DMA_CHANNELS_NUMBER] =
     	.mem_data_type                   = DMA1_CH2_MEM_DATA_TYPE,
 	    .memory_zone_size                = DMA1_CH2_MEMORY_ZONE_SIZE,
     	.memory_zone_address             = DMA1_CH2_MEMORY_ZONE_ADDRESS,
-        .peripheral_address              = DMA1_CH2_PERIPHERAL_ADDRESS,
+      .peripheral_address              = DMA1_CH2_PERIPHERAL_ADDRESS,
     	.periph_data_type                = DMA1_CH2_PERIPH_DATA_TYPE,
 	    .memory_increment                = DMA1_CH2_MEMORY_INCREMENT,
     	.peripheral_increment            = DMA1_CH2_PERIPHERAL_INCREMENT,
@@ -76,7 +76,7 @@ const struct t_dma_channel_cfg dma1_chx_cfg[DMA_CHANNELS_NUMBER] =
 	    .irq.half_transfer_interrupt     = DMA1_CH2_IRQ_HALF_TRANSFER,
     	.irq.transfer_complete_interrupt = DMA1_CH2_IRQ_TRANSFER_COMPLETE,
 	    .irq.priority                    = DMA1_CH2_IRQ_PRIORITY,
-		.irq.callback                    = 0,
+  		.irq.callback                    = 0,
 	},
 
 	[2] =
@@ -176,18 +176,34 @@ const struct t_dma_channel_cfg dma1_chx_cfg[DMA_CHANNELS_NUMBER] =
 	    .irq.half_transfer_interrupt     = DMA1_CH7_IRQ_HALF_TRANSFER,
     	.irq.transfer_complete_interrupt = DMA1_CH7_IRQ_TRANSFER_COMPLETE,
 	    .irq.priority                    = DMA1_CH7_IRQ_PRIORITY,
-		.irq.callback                    = 0,
+  		.irq.callback                    = 0,
 	},
 };
 
-const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
+
+const struct t_exti_config exti_config =
+{
+    .base_address_exti = EXTI_BASE,
+};
+
+
+const struct t_afio_config afio_config =
+{
+    .base_address_afio = AFIO_BASE,
+};
+
+
+struct t_gpio_driver gpio_driver[GPIO_PIN_NUMBER] =
 {
 	[0] =
 	{
-        .gpio = PA0_GPIO_PORT,
+        .base_address_gpio = GPIOA_BASE,
+        .exti_config = &exti_config,
+        .afio_config = &afio_config,
         .pin = PA0_PIN,
-        .input_type = PA0_MODE,
-        .config = PA0_CONFIG,
+        .type = PA0_TYPE,
+        .peripheral = PORT_A,
+        .instance = 0,
         .irq.active = PA0_IRQ_ENABLE,
         .irq.rising = PA0_IRQ_RISING,
         .irq.priority = PA0_IRQ_PRIORITY,
@@ -196,10 +212,13 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
     [1] =
     {
-        .gpio = PA1_GPIO_PORT,
+        .base_address_gpio = GPIOA_BASE,
+        .exti_config = &exti_config,
+        .afio_config = &afio_config,
         .pin = PA1_PIN,
-        .input_type = PA1_MODE,
-        .config = PA1_CONFIG,
+        .type = PA1_TYPE,
+        .peripheral = PORT_A,
+        .instance = 1,
         .irq.active = PA1_IRQ_ENABLE,
         .irq.rising = PA1_IRQ_RISING,
         .irq.priority = PA1_IRQ_PRIORITY,
@@ -208,10 +227,13 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
     [2] =
     {
-        .gpio = PA2_GPIO_PORT,
+        .base_address_gpio = GPIOA_BASE,
+        .exti_config = &exti_config,
+        .afio_config = &afio_config,
         .pin = PA2_PIN,
-        .input_type = PA2_MODE,
-        .config = PA2_CONFIG,
+        .type = PA2_TYPE,
+        .peripheral = PORT_A,
+        .instance = 2,
         .irq.active = PA2_IRQ_ENABLE,
         .irq.rising = PA2_IRQ_RISING,
         .irq.priority = PA2_IRQ_PRIORITY,
@@ -220,10 +242,13 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
 	[3] =
     {
-      .gpio = PA3_GPIO_PORT,
+      .base_address_gpio = GPIOA_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PA3_PIN,
-      .input_type = PA3_MODE,
-      .config = PA3_CONFIG,
+      .type = PA3_TYPE,
+      .peripheral = PORT_A,
+      .instance = 3,
       .irq.active = PA3_IRQ_ENABLE,
       .irq.rising = PA3_IRQ_RISING,
       .irq.priority = PA3_IRQ_PRIORITY,
@@ -232,10 +257,13 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
 	[4] =
     {
-      .gpio = PA4_GPIO_PORT,
+      .base_address_gpio = GPIOA_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PA4_PIN,
-      .input_type = PA4_MODE,
-      .config = PA4_CONFIG,
+      .type = PA4_TYPE,
+      .peripheral = PORT_A,
+      .instance = 4,
       .irq.active = PA4_IRQ_ENABLE,
       .irq.rising = PA4_IRQ_RISING,
       .irq.priority = PA4_IRQ_PRIORITY,
@@ -244,10 +272,13 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
 	[5] =
     {
-      .gpio = PA5_GPIO_PORT,
+      .base_address_gpio = GPIOA_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PA5_PIN,
-      .input_type = PA5_MODE,
-      .config = PA5_CONFIG,
+      .type = PA5_TYPE,
+      .peripheral = PORT_A,
+      .instance = 5,
       .irq.active = PA5_IRQ_ENABLE,
       .irq.rising = PA5_IRQ_RISING,
       .irq.priority = PA5_IRQ_PRIORITY,
@@ -256,10 +287,13 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
 	[6] =
     {
-      .gpio = PA6_GPIO_PORT,
+      .base_address_gpio = GPIOA_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PA6_PIN,
-      .input_type = PA6_MODE,
-      .config = PA6_CONFIG,
+      .type = PA6_TYPE,
+      .peripheral = PORT_A,
+      .instance = 6,
       .irq.active = PA6_IRQ_ENABLE,
       .irq.rising = PA6_IRQ_RISING,
       .irq.priority = PA6_IRQ_PRIORITY,
@@ -268,10 +302,13 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
 	[7] =
     {
-      .gpio = PA7_GPIO_PORT,
+      .base_address_gpio = GPIOA_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PA7_PIN,
-      .input_type = PA7_MODE,
-      .config = PA7_CONFIG,
+      .type = PA7_TYPE,
+      .peripheral = PORT_A,
+      .instance = 7,
       .irq.active = PA7_IRQ_ENABLE,
       .irq.rising = PA7_IRQ_RISING,
       .irq.priority = PA7_IRQ_PRIORITY,
@@ -280,10 +317,13 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
 	[8] =
     {
-      .gpio = PA8_GPIO_PORT,
+      .base_address_gpio = GPIOA_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PA8_PIN,
-      .input_type = PA8_MODE,
-      .config = PA8_CONFIG,
+      .type = PA8_TYPE,
+      .peripheral = PORT_A,
+      .instance = 8,
       .irq.active = PA8_IRQ_ENABLE,
       .irq.rising = PA8_IRQ_RISING,
       .irq.priority = PA8_IRQ_PRIORITY,
@@ -292,10 +332,13 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
 	[9] =
     {
-      .gpio = PA9_GPIO_PORT,
+      .base_address_gpio = GPIOA_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PA9_PIN,
-      .input_type = PA9_MODE,
-      .config = PA9_CONFIG,
+      .type = PA9_TYPE,
+      .peripheral = PORT_A,
+      .instance = 9,
       .irq.active = PA9_IRQ_ENABLE,
       .irq.rising = PA9_IRQ_RISING,
       .irq.priority = PA9_IRQ_PRIORITY,
@@ -304,10 +347,13 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
 	[10] =
     {
-      .gpio = PA10_GPIO_PORT,
+      .base_address_gpio = GPIOA_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PA10_PIN,
-      .input_type = PA10_MODE,
-      .config = PA10_CONFIG,
+      .type = PA10_TYPE,
+      .peripheral = PORT_A,
+      .instance = 10,
       .irq.active = PA10_IRQ_ENABLE,
       .irq.rising = PA10_IRQ_RISING,
       .irq.priority = PA10_IRQ_PRIORITY,
@@ -316,10 +362,13 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
 	[11] =
     {
-      .gpio = PA11_GPIO_PORT,
+      .base_address_gpio = GPIOA_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PA11_PIN,
-      .input_type = PA11_MODE,
-      .config = PA11_CONFIG,
+      .type = PA11_TYPE,
+      .peripheral = PORT_A,
+      .instance = 11,
       .irq.active = PA11_IRQ_ENABLE,
       .irq.rising = PA11_IRQ_RISING,
       .irq.priority = PA11_IRQ_PRIORITY,
@@ -328,10 +377,13 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
 	[12] =
     {
-      .gpio = PA12_GPIO_PORT,
+      .base_address_gpio = GPIOA_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PA12_PIN,
-      .input_type = PA12_MODE,
-      .config = PA12_CONFIG,
+      .type = PA12_TYPE,
+      .peripheral = PORT_A,
+      .instance = 12,
       .irq.active = PA12_IRQ_ENABLE,
       .irq.rising = PA12_IRQ_RISING,
       .irq.priority = PA12_IRQ_PRIORITY,
@@ -340,10 +392,13 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
 	[13] =
     {
-      .gpio = PA13_GPIO_PORT,
+      .base_address_gpio = GPIOA_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PA13_PIN,
-      .input_type = PA13_MODE,
-      .config = PA13_CONFIG,
+      .type = PA13_TYPE,
+      .peripheral = PORT_A,
+      .instance = 13,
       .irq.active = PA13_IRQ_ENABLE,
       .irq.rising = PA13_IRQ_RISING,
       .irq.priority = PA13_IRQ_PRIORITY,
@@ -352,10 +407,13 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
 	[14] =
     {
-      .gpio = PA14_GPIO_PORT,
+      .base_address_gpio = GPIOA_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PA14_PIN,
-      .input_type = PA14_MODE,
-      .config = PA14_CONFIG,
+      .type = PA14_TYPE,
+      .peripheral = PORT_A,
+      .instance = 14,
       .irq.active = PA14_IRQ_ENABLE,
       .irq.rising = PA14_IRQ_RISING,
       .irq.priority = PA14_IRQ_PRIORITY,
@@ -364,10 +422,13 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
 	[15] =
     {
-      .gpio = PA15_GPIO_PORT,
+      .base_address_gpio = GPIOA_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PA15_PIN,
-      .input_type = PA15_MODE,
-      .config = PA15_CONFIG,
+      .type = PA15_TYPE,
+      .peripheral = PORT_A,
+      .instance = 15,
       .irq.active = PA15_IRQ_ENABLE,
       .irq.rising = PA15_IRQ_RISING,
       .irq.priority = PA15_IRQ_PRIORITY,
@@ -376,238 +437,314 @@ const struct t_gpio_config gpio_cfg[GPIO_PIN_NUMBER] =
 
 	[16] =
     {
-      .gpio = PB1_GPIO_PORT,
+      .base_address_gpio = GPIOB_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
+      .pin = PB0_PIN,
+      .type = PB0_TYPE,
+      .peripheral = PORT_B,
+      .instance = 16,
+      .irq.active = PB0_IRQ_ENABLE,
+      .irq.rising = PB0_IRQ_RISING,
+      .irq.priority = PB0_IRQ_PRIORITY,
+      .irq.callback = PB0_IRQ_CALLBACK,
+    },
+
+	[17] =
+    {
+      .base_address_gpio = GPIOB_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PB1_PIN,
-      .input_type = PB1_MODE,
-      .config = PB1_CONFIG,
+      .type = PB1_TYPE,
+      .peripheral = PORT_B,
+      .instance = 17,
       .irq.active = PB1_IRQ_ENABLE,
       .irq.rising = PB1_IRQ_RISING,
       .irq.priority = PB1_IRQ_PRIORITY,
       .irq.callback = PB1_IRQ_CALLBACK,
     },
 
-	[17] =
+	[18] =
     {
-      .gpio = PB2_GPIO_PORT,
+      .base_address_gpio = GPIOB_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PB2_PIN,
-      .input_type = PB2_MODE,
-      .config = PB2_CONFIG,
+      .type = PB2_TYPE,
+      .peripheral = PORT_B,
+      .instance = 18,
       .irq.active = PB2_IRQ_ENABLE,
       .irq.rising = PB2_IRQ_RISING,
       .irq.priority = PB2_IRQ_PRIORITY,
       .irq.callback = PB2_IRQ_CALLBACK,
     },
 
-	[18] =
+	[19] =
     {
-      .gpio = PB3_GPIO_PORT,
+      .base_address_gpio = GPIOB_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PB3_PIN,
-      .input_type = PB3_MODE,
-      .config = PB3_CONFIG,
+      .type = PB3_TYPE,
+      .peripheral = PORT_B,
+      .instance = 19,
       .irq.active = PB3_IRQ_ENABLE,
       .irq.rising = PB3_IRQ_RISING,
       .irq.priority = PB3_IRQ_PRIORITY,
       .irq.callback = PB3_IRQ_CALLBACK,
     },
 
-	[19] =
+	[20] =
     {
-      .gpio = PB4_GPIO_PORT,
+      .base_address_gpio = GPIOB_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PB4_PIN,
-      .input_type = PB4_MODE,
-      .config = PB4_CONFIG,
+      .type = PB4_TYPE,
+      .peripheral = PORT_B,
+      .instance = 20,
       .irq.active = PB4_IRQ_ENABLE,
       .irq.rising = PB4_IRQ_RISING,
       .irq.priority = PB4_IRQ_PRIORITY,
       .irq.callback = PB4_IRQ_CALLBACK,
     },
 
-	[20] =
+	[21] =
     {
-      .gpio = PB5_GPIO_PORT,
+      .base_address_gpio = GPIOB_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PB5_PIN,
-      .input_type = PB5_MODE,
-      .config = PB5_CONFIG,
+      .type = PB5_TYPE,
+      .peripheral = PORT_B,
+      .instance = 21,
       .irq.active = PB5_IRQ_ENABLE,
       .irq.rising = PB5_IRQ_RISING,
       .irq.priority = PB5_IRQ_PRIORITY,
       .irq.callback = PB5_IRQ_CALLBACK,
     },
 
-	[21] =
-    {
-      .gpio = PB6_GPIO_PORT,
-      .pin = PB6_PIN,
-      .input_type = PB6_MODE,
-      .config = PB6_CONFIG,
-      .irq.active = PB6_IRQ_ENABLE,
-      .irq.rising = PB6_IRQ_RISING,
-      .irq.priority = PB6_IRQ_PRIORITY,
-      .irq.callback = PB6_IRQ_CALLBACK,
-    },
-
     [22] =
     {
-     .gpio = PB7_GPIO_PORT,
-     .pin = PB7_PIN,
-     .input_type = PB7_MODE,
-     .config = PB7_CONFIG,
-     .irq.active = PB7_IRQ_ENABLE,
-     .irq.rising = PB7_IRQ_RISING,
-     .irq.priority = PB7_IRQ_PRIORITY,
-     .irq.callback = PB7_IRQ_CALLBACK,
+     .base_address_gpio = GPIOB_BASE,
+     .exti_config = &exti_config,
+     .afio_config = &afio_config,
+     .pin = PB6_PIN,
+     .type = PB6_TYPE,
+     .peripheral = PORT_B,
+     .instance = 22,
+     .irq.active = PB6_IRQ_ENABLE,
+     .irq.rising = PB6_IRQ_RISING,
+     .irq.priority = PB6_IRQ_PRIORITY,
+     .irq.callback = PB6_IRQ_CALLBACK,
     },
 
 	[23] =
     {
-      .gpio = PB8_GPIO_PORT,
+      .base_address_gpio = GPIOB_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
+      .pin = PB7_PIN,
+      .type = PB7_TYPE,
+      .peripheral = PORT_B,
+      .instance = 23,
+      .irq.active = PB7_IRQ_ENABLE,
+      .irq.rising = PB7_IRQ_RISING,
+      .irq.priority = PB7_IRQ_PRIORITY,
+      .irq.callback = PB7_IRQ_CALLBACK,
+    },
+
+	[24] =
+    {
+      .base_address_gpio = GPIOB_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PB8_PIN,
-      .input_type = PB8_MODE,
-      .config = PB8_CONFIG,
+      .type = PB8_TYPE,
+      .peripheral = PORT_B,
+      .instance = 24,
       .irq.active = PB8_IRQ_ENABLE,
       .irq.rising = PB8_IRQ_RISING,
       .irq.priority = PB8_IRQ_PRIORITY,
       .irq.callback = PB8_IRQ_CALLBACK,
     },
 
-	[24] =
+	[25] =
     {
-      .gpio = PB9_GPIO_PORT,
+      .base_address_gpio = GPIOB_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PB9_PIN,
-      .input_type = PB9_MODE,
-      .config = PB9_CONFIG,
+      .type = PB9_TYPE,
+      .peripheral = PORT_B,
+      .instance = 25,
       .irq.active = PB9_IRQ_ENABLE,
       .irq.rising = PB9_IRQ_RISING,
       .irq.priority = PB9_IRQ_PRIORITY,
       .irq.callback = PB9_IRQ_CALLBACK,
     },
 
-	[25] =
+	[26] =
     {
-      .gpio = PB10_GPIO_PORT,
+      .base_address_gpio = GPIOB_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PB10_PIN,
-      .input_type = PB10_MODE,
-      .config = PB10_CONFIG,
+      .type = PB10_TYPE,
+      .peripheral = PORT_B,
+      .instance = 26,
       .irq.active = PB10_IRQ_ENABLE,
       .irq.rising = PB10_IRQ_RISING,
       .irq.priority = PB10_IRQ_PRIORITY,
       .irq.callback = PB10_IRQ_CALLBACK,
     },
 
-	[26] =
+	[27] =
     {
-      .gpio = PB11_GPIO_PORT,
+      .base_address_gpio = GPIOB_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PB11_PIN,
-      .input_type = PB11_MODE,
-      .config = PB11_CONFIG,
+      .type = PB11_TYPE,
+      .peripheral = PORT_B,
+      .instance = 27,
       .irq.active = PB11_IRQ_ENABLE,
       .irq.rising = PB11_IRQ_RISING,
       .irq.priority = PB11_IRQ_PRIORITY,
       .irq.callback = PB11_IRQ_CALLBACK,
     },
 
-	[27] =
+	[28] =
     {
-      .gpio = PB12_GPIO_PORT,
+      .base_address_gpio = GPIOB_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PB12_PIN,
-      .input_type = PB12_MODE,
-      .config = PB12_CONFIG,
+      .type = PB12_TYPE,
+      .peripheral = PORT_B,
+      .instance = 28,
       .irq.active = PB12_IRQ_ENABLE,
       .irq.rising = PB12_IRQ_RISING,
       .irq.priority = PB12_IRQ_PRIORITY,
       .irq.callback = PB12_IRQ_CALLBACK,
     },
 
-	[28] =
+	[29] =
     {
-      .gpio = PB13_GPIO_PORT,
+      .base_address_gpio = GPIOB_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PB13_PIN,
-      .input_type = PB13_MODE,
-      .config = PB13_CONFIG,
+      .type = PB13_TYPE,
+      .peripheral = PORT_B,
+      .instance = 29,
       .irq.active = PB13_IRQ_ENABLE,
       .irq.rising = PB13_IRQ_RISING,
       .irq.priority = PB13_IRQ_PRIORITY,
       .irq.callback = PB13_IRQ_CALLBACK,
     },
 
-	[29] =
+	[30] =
     {
-      .gpio = PB14_GPIO_PORT,
+      .base_address_gpio = GPIOB_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PB14_PIN,
-      .input_type = PB14_MODE,
-      .config = PB14_CONFIG,
+      .type = PB14_TYPE,
+      .peripheral = PORT_B,
+      .instance = 30,
       .irq.active = PB14_IRQ_ENABLE,
       .irq.rising = PB14_IRQ_RISING,
       .irq.priority = PB14_IRQ_PRIORITY,
       .irq.callback = PB14_IRQ_CALLBACK,
     },
 
-	[30] =
+	[31] =
     {
-      .gpio = PB15_GPIO_PORT,
+      .base_address_gpio = GPIOB_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PB15_PIN,
-      .input_type = PB15_MODE,
-      .config = PB15_CONFIG,
+      .type = PB15_TYPE,
+      .peripheral = PORT_B,
+      .instance = 31,
       .irq.active = PB15_IRQ_ENABLE,
       .irq.rising = PB15_IRQ_RISING,
       .irq.priority = PB15_IRQ_PRIORITY,
       .irq.callback = PB15_IRQ_CALLBACK,
     },
 
-	[31] =
+	[32] =
     {
-      .gpio = PC13_GPIO_PORT,
+      .base_address_gpio = GPIOC_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PC13_PIN,
-      .input_type = PC13_MODE,
-      .config = PC13_CONFIG,
+      .type = PC13_TYPE,
+      .peripheral = PORT_C,
+      .instance = 32,
       .irq.active = PC13_IRQ_ENABLE,
       .irq.rising = PC13_IRQ_RISING,
       .irq.priority = PC13_IRQ_PRIORITY,
       .irq.callback = PC13_IRQ_CALLBACK,
     },
 
-	[32] =
+	[33] =
     {
-      .gpio = PC14_GPIO_PORT,
+      .base_address_gpio = GPIOC_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PC14_PIN,
-      .input_type = PC14_MODE,
-      .config = PC14_CONFIG,
+      .type = PC14_TYPE,
+      .peripheral = PORT_C,
+      .instance = 33,
       .irq.active = PC14_IRQ_ENABLE,
       .irq.rising = PC14_IRQ_RISING,
       .irq.priority = PC14_IRQ_PRIORITY,
       .irq.callback = PC14_IRQ_CALLBACK,
     },
 
-	[33] =
+	[34] =
     {
-      .gpio = PC15_GPIO_PORT,
+      .base_address_gpio = GPIOC_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PC15_PIN,
-      .input_type = PC15_MODE,
-      .config = PC15_CONFIG,
+      .type = PC15_TYPE,
+      .peripheral = PORT_C,
+      .instance = 34,
       .irq.active = PC15_IRQ_ENABLE,
       .irq.rising = PC15_IRQ_RISING,
       .irq.priority = PC15_IRQ_PRIORITY,
       .irq.callback = PC15_IRQ_CALLBACK,
     },
 
-	[34] =
+	[35] =
     {
-      .gpio = PD0_GPIO_PORT,
+      .base_address_gpio = GPIOD_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PD0_PIN,
-      .input_type = PD0_MODE,
-      .config = PD0_CONFIG,
+      .type = PD0_TYPE,
+      .peripheral = PORT_D,
+      .instance = 35,
       .irq.active = PD0_IRQ_ENABLE,
       .irq.rising = PD0_IRQ_RISING,
       .irq.priority = PD0_IRQ_PRIORITY,
       .irq.callback = PD0_IRQ_CALLBACK,
     },
 
-	[35] =
+
+  [36] =
     {
-      .gpio = PD1_GPIO_PORT,
+      .base_address_gpio = GPIOD_BASE,
+      .exti_config = &exti_config,
+      .afio_config = &afio_config,
       .pin = PD1_PIN,
-      .input_type = PD1_MODE,
-      .config = PD1_CONFIG,
+      .type = PD1_TYPE,
+      .peripheral = PORT_D,
+      .instance = 36,
       .irq.active = PD1_IRQ_ENABLE,
       .irq.rising = PD1_IRQ_RISING,
       .irq.priority = PD1_IRQ_PRIORITY,
@@ -794,21 +931,65 @@ static struct t_spi_config spi_config[SPI_IP_NUMBER] =
 {
     [0] =
     {
+        .base_address = SPI0_BASE,
+        .peripheral = SPI_0,
         .instance = 0,
-        .base_address = SPI1_BASE,
     },
 
     [1] =
     {
+        .base_address = SPI1_BASE,
+        .peripheral = SPI_1,
         .instance = 1,
-        .base_address = SPI2_BASE,
     },
 };
 
-/* Static driver structure. */
+/* Static driver structures. */
 struct t_spi_driver spi_driver[SPI_IP_NUMBER];
+struct t_gpio_driver gpio_driver[GPIO_PIN_NUMBER];
 
 
+/* Labels */
+struct t_gpio_driver *pa0  = &gpio_driver[0];
+struct t_gpio_driver *pa1  = &gpio_driver[1];
+struct t_gpio_driver *pa2  = &gpio_driver[2];
+struct t_gpio_driver *pa3  = &gpio_driver[3];
+struct t_gpio_driver *pa4  = &gpio_driver[4];
+struct t_gpio_driver *pa5  = &gpio_driver[5];
+struct t_gpio_driver *pa6  = &gpio_driver[6];
+struct t_gpio_driver *pa7  = &gpio_driver[7];
+struct t_gpio_driver *pa8  = &gpio_driver[8];
+struct t_gpio_driver *pa9  = &gpio_driver[9];
+struct t_gpio_driver *pa10 = &gpio_driver[10];
+struct t_gpio_driver *pa11 = &gpio_driver[11];
+struct t_gpio_driver *pa12 = &gpio_driver[12];
+struct t_gpio_driver *pa13 = &gpio_driver[13];
+struct t_gpio_driver *pa14 = &gpio_driver[14];
+struct t_gpio_driver *pa15 = &gpio_driver[15];
+
+struct t_gpio_driver *pbo  = &gpio_driver[16];
+struct t_gpio_driver *pb1  = &gpio_driver[17];
+struct t_gpio_driver *pb2  = &gpio_driver[18];
+struct t_gpio_driver *pb3  = &gpio_driver[19];
+struct t_gpio_driver *pb4  = &gpio_driver[20];
+struct t_gpio_driver *pb5  = &gpio_driver[21];
+struct t_gpio_driver *pb6  = &gpio_driver[22];
+struct t_gpio_driver *pb7  = &gpio_driver[23];
+struct t_gpio_driver *pb8  = &gpio_driver[24];
+struct t_gpio_driver *pb9  = &gpio_driver[25];
+struct t_gpio_driver *pb10 = &gpio_driver[26];
+struct t_gpio_driver *pb11 = &gpio_driver[27];
+struct t_gpio_driver *pb12 = &gpio_driver[28];
+struct t_gpio_driver *pb13 = &gpio_driver[29];
+struct t_gpio_driver *pb14 = &gpio_driver[30];
+struct t_gpio_driver *pb15 = &gpio_driver[31];
+
+struct t_gpio_driver *pc13 = &gpio_driver[32];
+struct t_gpio_driver *pc14 = &gpio_driver[33];
+struct t_gpio_driver *pc15 = &gpio_driver[34];
+
+struct t_gpio_driver *pd0  = &gpio_driver[35];
+struct t_gpio_driver *pd1  = &gpio_driver[36];
 
 void soc_core_configuration(void)
 {
@@ -824,21 +1005,20 @@ void soc_peripherals_configuration(void)
 
 	for(uint8_t index = 0; index < GPIO_PIN_NUMBER; index++)
 	{
-      gpio_init(&gpio_driver[index], &gpio_cfg[index]);
+      gpio_init(&gpio_driver[index]);
 	}
 
-	struct t_usart_driver *usart_driver = usart_get_driver(1);
-    usart_init(usart_driver, &usartx_cfg[0]);
-    usart_driver = usart_get_driver(2);
-    usart_init(usart_driver, &usartx_cfg[1]);
+//	struct t_usart_driver *usart_driver = usart_get_driver(1);
+//    usart_init(usart_driver, &usartx_cfg[0]);
+//    usart_driver = usart_get_driver(2);
+//    usart_init(usart_driver, &usartx_cfg[1]);
 
-    for(uint8_t index = 0; index < SPI_IP_NUMBER; index++)
-    {
-    	spi_init(&spi_driver[index], &spi_config[index]);
-    }
+//    for(uint8_t index = 0; index < SPI_IP_NUMBER; index++)
+//    {
+//    	spi_init(&spi_driver[index], &spi_config[index]);
+//    }
 
 //    timer_init(&timx_chanelx_cfg[0]);
 //    timer_init(&timx_chanelx_cfg[1]);
 //    timer_init(&timx_chanelx_cfg[2]);
 }
-

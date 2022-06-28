@@ -11,15 +11,20 @@
 #include "configuration_timer.h"
 #include "configuration_usart.h"
 
+#include "lld_afio.h"
 #include "lld_clock.h"
 #include "lld_dma.h"
+#include "lld_exti.h"
 
 #include "gpio.h"
 #include "lld_spi.h"
 #include "usart.h"
 #include "timer.h"
 
+
 extern struct t_spi_driver spi_driver[SPI_IP_NUMBER];
+extern struct t_gpio_driver gpio_driver[GPIO_PIN_NUMBER];
+
 
 /** Configure core elements of the SoC.
  *
