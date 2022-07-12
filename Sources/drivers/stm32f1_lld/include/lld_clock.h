@@ -10,8 +10,9 @@
 /* Include files:        */
 #include <stdint.h>
 
-#include "bsp.h"
 #include "error.h"
+
+#include "configuration_soc.h"
 
 /* Clock units defines        */
 #define  HZ  *1

@@ -53,7 +53,7 @@ struct t_spi_data
 
 struct t_spi_slave
 {
-    GPIO_TypeDef *cs;
+    struct t_gpio_driver *cs;
     uint16_t freq_khz;
     enum t_frame_length frame_length;
     enum t_frame_direction frame_direction;
@@ -67,6 +67,7 @@ struct t_spi_slave
 struct t_spi_config
 {
     uintptr_t base_address;
+    enum t_peripheral peripheral;
     uint8_t instance;
 };
 
