@@ -53,57 +53,92 @@ struct t_dma_channel_driver dma_channel_driver[DMA_CHANNEL_NUMBER] =
     [0] =
     {
         .base_address_dma_channel        = DMA1_CH1_BASE,
-        .channel_number                  = 1,
+        .channel_number                  = 0,
         .mem2mem                         = DMA1_CH1_MEM2MEM,
         .dma_priority_level              = DMA1_CH1_PRIORITY,
+        .irq.priority                    = DMA1_CH1_IRQ_PRIORITY,
+        .irq.transfer_complete           = DMA1_CH1_IRQ_TRANSFER_COMPLETE,
+        .irq.half_transfer_complete      = DMA1_CH1_IRQ_HALF_TRANSFER_COMPLETE,
+        .irq.transfer_error              = DMA1_CH1_IRQ_TRANSFER_ERROR,
+        .irq.callback                    = DMA1_CH1_IRQ_CALLBACK,
     },
 
     [1] =
     {
         .base_address_dma_channel        = DMA1_CH2_BASE,
-        .channel_number                  = 2,
+        .channel_number                  = 1,
         .mem2mem                         = DMA1_CH2_MEM2MEM,
         .dma_priority_level              = DMA1_CH2_PRIORITY,
+        .irq.priority                    = DMA1_CH2_IRQ_PRIORITY,
+        .irq.transfer_complete           = DMA1_CH2_IRQ_TRANSFER_COMPLETE,
+        .irq.half_transfer_complete      = DMA1_CH2_IRQ_HALF_TRANSFER_COMPLETE,
+        .irq.transfer_error              = DMA1_CH2_IRQ_TRANSFER_ERROR,
+        .irq.callback                    = DMA1_CH2_IRQ_CALLBACK,
     },
 
     [2] =
     {
         .base_address_dma_channel        = DMA1_CH3_BASE,
-        .channel_number                  = 3,
+        .channel_number                  = 2,
         .mem2mem                         = DMA1_CH3_MEM2MEM,
         .dma_priority_level              = DMA1_CH3_PRIORITY,
+        .irq.priority                    = DMA1_CH3_IRQ_PRIORITY,
+        .irq.transfer_complete           = DMA1_CH3_IRQ_TRANSFER_COMPLETE,
+        .irq.half_transfer_complete      = DMA1_CH3_IRQ_HALF_TRANSFER_COMPLETE,
+        .irq.transfer_error              = DMA1_CH3_IRQ_TRANSFER_ERROR,
+        .irq.callback                    = DMA1_CH3_IRQ_CALLBACK,
     },
 
     [3] =
     {
         .base_address_dma_channel        = DMA1_CH4_BASE,
-        .channel_number                  = 4,
+        .channel_number                  = 3,
         .mem2mem                         = DMA1_CH4_MEM2MEM,
         .dma_priority_level              = DMA1_CH4_PRIORITY,
+        .irq.priority                    = DMA1_CH4_IRQ_PRIORITY,
+        .irq.transfer_complete           = DMA1_CH4_IRQ_TRANSFER_COMPLETE,
+        .irq.half_transfer_complete      = DMA1_CH4_IRQ_HALF_TRANSFER_COMPLETE,
+        .irq.transfer_error              = DMA1_CH4_IRQ_TRANSFER_ERROR,
+        .irq.callback                    = DMA1_CH4_IRQ_CALLBACK,
     },
 
     [4] =
     {
         .base_address_dma_channel        = DMA1_CH5_BASE,
-        .channel_number                  = 5,
+        .channel_number                  = 4,
         .mem2mem                         = DMA1_CH5_MEM2MEM,
         .dma_priority_level              = DMA1_CH5_PRIORITY,
+        .irq.priority                    = DMA1_CH5_IRQ_PRIORITY,
+        .irq.transfer_complete           = DMA1_CH5_IRQ_TRANSFER_COMPLETE,
+        .irq.half_transfer_complete      = DMA1_CH5_IRQ_HALF_TRANSFER_COMPLETE,
+        .irq.transfer_error              = DMA1_CH5_IRQ_TRANSFER_ERROR,
+        .irq.callback                    = DMA1_CH5_IRQ_CALLBACK,
     },
 
     [5] =
     {
         .base_address_dma_channel        = DMA1_CH6_BASE,
-        .channel_number                  = 6,
+        .channel_number                  = 5,
         .mem2mem                         = DMA1_CH6_MEM2MEM,
         .dma_priority_level              = DMA1_CH6_PRIORITY,
+        .irq.priority                    = DMA1_CH6_IRQ_PRIORITY,
+        .irq.transfer_complete           = DMA1_CH6_IRQ_TRANSFER_COMPLETE,
+        .irq.half_transfer_complete      = DMA1_CH6_IRQ_HALF_TRANSFER_COMPLETE,
+        .irq.transfer_error              = DMA1_CH6_IRQ_TRANSFER_ERROR,
+        .irq.callback                    = DMA1_CH6_IRQ_CALLBACK,
     },
 
     [6] =
     {
         .base_address_dma_channel        = DMA1_CH7_BASE,
-        .channel_number                  = 7,
+        .channel_number                  = 6,
         .mem2mem                         = DMA1_CH7_MEM2MEM,
         .dma_priority_level              = DMA1_CH7_PRIORITY,
+        .irq.priority                    = DMA1_CH7_IRQ_PRIORITY,
+        .irq.transfer_complete           = DMA1_CH7_IRQ_TRANSFER_COMPLETE,
+        .irq.half_transfer_complete      = DMA1_CH7_IRQ_HALF_TRANSFER_COMPLETE,
+        .irq.transfer_error              = DMA1_CH7_IRQ_TRANSFER_ERROR,
+        .irq.callback                    = DMA1_CH7_IRQ_CALLBACK,
     },
 };
 
@@ -851,27 +886,37 @@ struct t_timer_cfg timx_chanelx_cfg [TIMER_IP_NUMBER] =
 	},
 };
 
-static struct t_spi_config spi_config[SPI_IP_NUMBER] =
+struct t_spi_driver spi_driver[SPI_IP_NUMBER] =
 {
     [0] =
     {
-        .base_address = SPI0_BASE,
-        .peripheral = SPI_0,
+        .base_address = SPI1_BASE,
+        .peripheral = SPI1,
         .instance = 0,
+        .irq.active = SPI1_IRQ_ENABLE,
+        .irq.priority = SPI1_IRQ_PRIORITY,
+        .dma.active = SPI1_DMA_ENABLE,
+        .dma.tx_channel = &dma_channel_driver[2],
+        .dma.rx_channel = &dma_channel_driver[1],
     },
 
     [1] =
     {
-        .base_address = SPI1_BASE,
-        .peripheral = SPI_1,
+        .base_address = SPI2_BASE,
+        .peripheral = SPI2,
         .instance = 1,
+        .irq.active = SPI2_IRQ_ENABLE,
+        .irq.priority = SPI2_IRQ_PRIORITY,
+        .dma.active = SPI2_DMA_ENABLE,
+        .dma.tx_channel = &dma_channel_driver[4],
+        .dma.rx_channel = &dma_channel_driver[3],
     },
 };
 
-/* Static driver structures. */
-struct t_spi_driver spi_driver[SPI_IP_NUMBER];
-struct t_gpio_driver gpio_driver[GPIO_PIN_NUMBER];
 
+/* Static driver structures. */
+struct t_gpio_driver gpio_driver[GPIO_PIN_NUMBER];
+struct t_spi_driver spi_driver[SPI_IP_NUMBER];
 
 /* Labels */
 struct t_gpio_driver *pa0  = &gpio_driver[0];
@@ -923,6 +968,10 @@ struct t_dma_channel_driver *dma_ch5  = &dma_channel_driver[4];
 struct t_dma_channel_driver *dma_ch6  = &dma_channel_driver[5];
 struct t_dma_channel_driver *dma_ch7  = &dma_channel_driver[6];
 
+struct t_spi_driver *nrf24l01 = &spi_driver[0];
+struct t_spi_driver *max_xxxx = &spi_driver[1];
+
+
 void soc_core_configuration(void)
 {
 	clock_init(&clock_driver, &clock_config);
@@ -948,10 +997,12 @@ void soc_peripherals_configuration(void)
 //    usart_driver = usart_get_driver(2);
 //    usart_init(usart_driver, &usartx_cfg[1]);
 
-//    for(uint8_t index = 0; index < SPI_IP_NUMBER; index++)
-//    {
-//    	spi_init(&spi_driver[index], &spi_config[index]);
-//    }
+    for(uint8_t index = 0; index < SPI_IP_NUMBER; index++)
+    {
+        spi_init(&spi_driver[index]);
+    }
+  
+//      extern struct t_dma_driver dma_driver[DMA_CHANNEL_NUMBER];
 
 //    timer_init(&timx_chanelx_cfg[0]);
 //    timer_init(&timx_chanelx_cfg[1]);

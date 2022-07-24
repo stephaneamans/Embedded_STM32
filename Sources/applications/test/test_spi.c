@@ -21,13 +21,15 @@
 /* Defines */
 #define BUFFER_LENGTH_256   256
 
+extern struct t_gpio_driver *pa8;
+
 struct t_spi_slave component[3] =
 {
     [0] =
     {
         .freq_khz = 4000,
 		.cs = &gpio_driver[4],
-        .frame_length = spi_frame_8_bits,
+        .data_length = spi_data_8_bits,
         .frame_direction = spi_frame_msb_first,
         .clock_phase = spi_clk_first,
         .clock_polarity = spi_clk_rising,
@@ -37,9 +39,9 @@ struct t_spi_slave component[3] =
     {
         .freq_khz = 1125,
 		.cs = &gpio_driver[4],
-        .frame_length = spi_frame_16_bits,
-        .frame_direction = spi_frame_lsb_first,
-        .clock_phase = spi_clk_second,
+        .data_length = spi_data_8_bits,
+        .frame_direction = spi_frame_msb_first,
+        .clock_phase = spi_clk_first,
         .clock_polarity = spi_clk_rising,
     },
 
@@ -47,13 +49,12 @@ struct t_spi_slave component[3] =
     {
         .freq_khz = 18000,
 		.cs = &gpio_driver[4],
-        .frame_length = spi_frame_8_bits,
+        .data_length = spi_data_8_bits,
         .frame_direction = spi_frame_msb_first,
         .clock_phase = spi_clk_first,
         .clock_polarity = spi_clk_rising,
     },
 };
-
 
 t_error_handling spi_test(void)
 {
@@ -63,25 +64,36 @@ t_error_handling spi_test(void)
     t_error_handling error = ERROR_OK;
     struct t_spi_data data;
 
-    buffer_write[0] = 0x2A;
+    for (uint16_t i = 0; i < BUFFER_LENGTH_256; i++)
+    {
+        buffer_write[i] = 0;
+        buffer_read[i] = 0;
+    }
+
+    buffer_write[0] = 0x02;
+    buffer_write[1] = 0xFF;
+    buffer_write[2] = 0xFF;
     data.write_buffer = &buffer_write[0];
     data.read_buffer = &buffer_read[0];
-    data.length = 1;
+    data.length = 3;
+
+
 
     struct t_spi_driver *spi1 = &spi_driver[0];
 
-   	spi_record_slave(&component[0]);
-   	spi_record_slave(&component[1]);
-   	spi_record_slave(&component[2]);
+   	spi_slave_register(&component[0]);
+   	spi_slave_register(&component[1]);
+   	spi_slave_register(&component[2]);
 
    	gpio_write(component[0].cs, true);
-    error = spi_transfer(spi1, &component[0], &data);
     error = spi_transfer(spi1, &component[1], &data);
-    error = spi_transfer(spi1, &component[2], &data);
-    error = spi_transfer(spi1, &component[0], &data);
+   
+    while(spi_transfer_status(spi1, &component[1]) != ERROR_OK){}
 
-    while(error != ERROR_OK){}
+    while(1)
+    {
+
+    }
 
     return error;
 }
-
