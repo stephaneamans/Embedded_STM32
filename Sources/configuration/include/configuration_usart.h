@@ -13,8 +13,8 @@
 #define USART1_STOP_BITS                     one
 #define USART1_MODE                          usart_dma
 #define USART1_IRQ_DMA_PRIORITY              prio4
-#define USART1_DMA_DRIVER_TX                 &dma_driver[3]
-#define USART1_DMA_DRIVER_RX                 &dma_driver[4]
+#define USART1_DMA_DRIVER_TX                 0
+#define USART1_DMA_DRIVER_RX                 0
 
 /* USART2 configuration                     */
 #define USART2_REGS                          USART2

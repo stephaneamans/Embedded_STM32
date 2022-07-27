@@ -68,13 +68,11 @@ t_error_handling spi_test(void)
     data.read_buffer = &buffer_read[0];
     data.length = 1;
 
-   	//struct t_spi_driver *spi1 = spi_get_driver(1);
     struct t_spi_driver *spi1 = &spi_driver[0];
 
    	spi_record_slave(&component[0]);
    	spi_record_slave(&component[1]);
    	spi_record_slave(&component[2]);
-
 
    	gpio_write(component[0].cs, true);
     error = spi_transfer(spi1, &component[0], &data);

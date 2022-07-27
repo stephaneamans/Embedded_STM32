@@ -7,137 +7,137 @@
 #ifndef LLD_DMA_H_
 #define LLD_DMA_H_
 
-
 /* Include files:        */
+#include <stdbool.h>
 #include <stdint.h>
 
 #include "configuration_soc.h"
-#include "lld_nvic.h"
-#include "regbase_dma.h"
-
-#define DMA_CHANNEL_ENABLE    0x01
-
-/* Option enable:        */
-typedef enum
-{
-    dma_disable = 0x00,
-    dma_enable = 0x01
-}mode_enable;
-
-/* DMA channel priority configuration: */
-typedef enum
-{
-    low = 0x00,
-    medium = 0x01,
-    hight = 0x02,
-    very_high = 0x03
-}dma_prio;
-
 
 /* Memory or peripheral data length. */
-typedef enum
+enum t_dma_data_type
 {
-    bits_8 = 0x00,
-    bits_16 = 0x01,
-    bits_32 = 0x02
-}dma_data_type;
-
-
-/* DMA initialization structure definition :        */
-
-struct t_dma_channel_cfg
-{
-    DMA_Channel_TypeDef *reg;
-    mode_enable mem2mem;
-    dma_prio dma_priority;
-    dma_data_type mem_data_type;
-    uint16_t memory_zone_size;
-    uintptr_t memory_zone_address;
-    uintptr_t peripheral_address;
-    dma_data_type periph_data_type;
-    mode_enable memory_increment;
-    mode_enable peripheral_increment;
-    mode_enable read_from_memory;
-    struct
-    {
-        mode_enable transfer_error_interrupt;
-        mode_enable half_transfer_interrupt;
-        mode_enable transfer_complete_interrupt;
-        irq_priority priority;
-        void(*callback)(uint8_t*);
-    }irq;
+    dma_8_bits,
+    dma_16_bits,
+    dma_32_bits
 };
 
+/* DMA driver structure definition :        */
 struct t_dma_driver
 {
-	DMA_Channel_TypeDef *reg;
-	uint16_t memory_zone_size;
-	uintptr_t memory_zone_address;
+    uintptr_t base_address_dma;
+    enum t_peripheral peripheral;
+    uint16_t instance;
+    struct t_dma_private *priv;
+};
+
+/* DMA channel driver structure definition :        */
+struct t_dma_channel_driver
+{
+    uintptr_t base_address_dma_channel;
+    uint8_t channel_number;
+    bool mem2mem;
+    uint8_t dma_priority_level;
+    struct t_dma_channel_private *priv;
+};
+
+/* DMA client structure definition :        */
+struct t_dma_client
+{
+    bool memory_increment;
+    bool peripheral_increment;
+    bool read_from_memory;
+    enum t_dma_data_type mem_data_type;
+    uint16_t transfer_length;
+    uintptr_t memory_address;
+    enum t_dma_data_type periph_data_type;
     uintptr_t peripheral_address;
 };
 
-/* Extern driver declaration. */
-extern struct t_dma_driver dma_driver[DMA_CHANNELS_NUMBER];
+/* DMA status structure definition :        */
+struct t_dma_status
+{
+    bool transfer_complete;
+    bool half_transfer_complete;
+    bool transfer_error;
+};
 
-
-/* Functions prototypes:                       */
-
-/** Configure DMA:
+/** Get the DMA half transfer complete flag:
  *
- * \param driver: DMA driver;
- * \param cfg: DMA configuration structure.
+ * \param driver: Pointer to the DMA channel driver structure.
  *
- * \return: Error code or 0 if ERROR_OK.
- *
- */
-t_error_handling dma_init(struct t_dma_driver *driver, const struct t_dma_channel_cfg *cfg);
-
-
-/** Memory copy with DMA
- *
- * \param dma_channel: DMA channel configuration structure.
- * \param address_destination: Pointer to the destination address.
- * \param address_source: Pointer to the source address.
- * \param memory_zone_size: Memory zone length.
- *
- * \return: Error code or 0 if ERROR_OK.
+ * \return: bool, half transfer boolean, true if it is half complete.
  *
  */
-t_error_handling dma_memcpy(struct t_dma_driver *driver, void *address_destination,
-                            void *address_source, uint16_t memory_zone_size);
+bool dma_get_half_transfer_complete(struct t_dma_channel_driver *driver);
 
+/** Get the DMA transfer complete flag:
+ *
+ * \param driver: Pointer to the DMA channel driver structure.
+ *
+ * \return: bool, half transfer boolean, true if it is complete.
+ *
+ */
+bool dma_get_transfer_complete(struct t_dma_channel_driver *driver);
+
+/** Get the DMA transfer error flag:
+ *
+ * \param driver: Pointer to the DMA channel driver structure.
+ *
+ * \return: bool, half transfer boolean, true if ithere was an error.
+ *
+ */
+bool dma_get_transfer_error(struct t_dma_channel_driver *driver);
+
+
+/** Set DMA parameter to prepare a new transfer
+ *
+ * \param driver: Pointer to the DMA channel driver structure.
+ * \param client: Pointer to the DMA client parameters structure.
+ * 
+ * \return: void.
+ *
+ */
+void dma_set_transfer(struct t_dma_channel_driver *driver, struct t_dma_client *client);
 
 /** Start DMA transfer:
  *
- * \param driver: DMA driver structure.
+ * \param driver: Pointer to the DMA channel driver structure.
  *
- * \return: Error code or 0 if ERROR_OK.
+ * \return: void.
  *
  */
-t_error_handling dma_start_transfer(struct t_dma_driver *driver);
+void dma_start_transfer(struct t_dma_channel_driver *driver);
 
 /** Stop DMA transfer:
  *
- * \param dma_channel: DMA channel configuration structure.
+ * \param driver: Pointer to the DMA channel driver structure.
  *
- * \return: Error code or 0 if ERROR_OK.
- *
- */
-t_error_handling dma_stop_transfer(struct t_dma_driver *driver);
-
-
-/** Start DMA with new parameters if any changes:
- *
- * \param driver: DMA driver.
- * \param mem_address: Memory address location.
- * \param length: Transfer length.
+ * \return: void.
  *
  */
-t_error_handling dma_transfer(struct t_dma_driver *driver, void *mem_address,void *periph_address, uint16_t length);
+void dma_stop_transfer(struct t_dma_channel_driver *driver);
 
+/** Get DMA transfer status:
+ *     - transfer complete flag,
+ *     - half transfer complete flag,
+ *     - transfer error flag,
+ *
+ * \param driver: Pointer to the DMA channel driver structure.
+ * \param client: Pointer to the DMA client parameters structure.
+ * 
+ * \return: void.
+ *
+ */
+void dma_transfer_status(struct t_dma_channel_driver *driver, struct t_dma_status *dma_status);
 
-/* Pointer callback function table prototype	*/
-//void(*dma_callback[7])(uint8_t *irq_source);
-
+/** Configure DMA:
+ *
+ * \param config         : Pointer to the DMA driver structure;
+ * \param channel_config : Pointer to the DMA channel driver structure.
+ *
+ * \return: void.
+ *
+ */
+void dma_init(struct t_dma_driver *config, struct t_dma_channel_driver *channel_config);
 
 #endif /* LLD_DMA_H_ */

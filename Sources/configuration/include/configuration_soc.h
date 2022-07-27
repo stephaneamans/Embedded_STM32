@@ -8,9 +8,10 @@
 /* SOC parameters:   */
 
 #define GPIO_PIN_NUMBER         37
+#define EXTI_CHANNEL_NUMBER     5
 #define USART_IP_NUMBER         2
 #define DMA_IP_NUMBER           1
-#define DMA_CHANNELS_NUMBER     7
+#define DMA_CHANNEL_NUMBER      7
 #define TIMER_IP_NUMBER         3
 #define TIMER_CHANNELS_NUMBER   4
 #define SPI_IP_NUMBER           2

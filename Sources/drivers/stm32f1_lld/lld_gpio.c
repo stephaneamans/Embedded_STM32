@@ -52,7 +52,7 @@ static struct t_gpio_private_global priv_g;
 static struct t_gpio_private priv[GPIO_PIN_NUMBER];
 
 /* Pointer callback function table prototype	*/
-void (*gpio_callback[5])(uint32_t pin_numb);
+void (*gpio_callback[EXTI_CHANNEL_NUMBER])(uint32_t pin_numb);
 
 static void set_gpio_irq(struct t_gpio_driver *config)
 {
@@ -122,9 +122,10 @@ void gpio_init(struct t_gpio_driver *config)
 {
     uint32_t local_mask = 0; /* Local variable for masks operations. */
 
+    /* Affects the private structure instance to the private driver pointer */
     config->priv = &priv[config->instance];
 
-    /* Initialize the privates structures instances */
+    /* Initializes the private structure instances */
     config->priv->gpio_reg = (struct t_gpio_regs*)config->base_address_gpio;
     priv_g.exti_reg = (struct t_exti_regs*)config->exti_config->base_address_exti;
     config->priv->gpio_pin_mask = 1 << config->pin;

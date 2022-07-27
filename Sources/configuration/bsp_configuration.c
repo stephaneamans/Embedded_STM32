@@ -38,160 +38,84 @@ const struct t_usart_config usartx_cfg[USART_IP_NUMBER] =
     },
 };
 
-const struct t_dma_channel_cfg dma1_chx_cfg[DMA_CHANNELS_NUMBER] =
+struct t_dma_driver dma_driver[DMA_IP_NUMBER] =
+{
+    [0] = 
+    {
+        .base_address_dma                   = DMA1_BASE,
+        .peripheral                         = DMA_1,
+        .instance                           = 0
+    },
+};
+
+struct t_dma_channel_driver dma_channel_driver[DMA_CHANNEL_NUMBER] = 
 {
     [0] =
     {
-        .reg                             = DMA1_Ch1,
+        .base_address_dma_channel        = DMA1_CH1_BASE,
+        .channel_number                  = 1,
         .mem2mem                         = DMA1_CH1_MEM2MEM,
-        .dma_priority                    = DMA1_CH1_PRIORITY,
-        .mem_data_type                   = DMA1_CH1_MEM_DATA_TYPE,
-        .memory_zone_size                = DMA1_CH1_MEMORY_ZONE_SIZE,
-        .memory_zone_address             = DMA1_CH1_MEMORY_ZONE_ADDRESS,
-//      .peripheral_address              = (uint32_t)usartx_cfg[0].reg,
-        .periph_data_type                = DMA1_CH1_PERIPH_DATA_TYPE,
-        .memory_increment                = DMA1_CH1_MEMORY_INCREMENT,
-        .peripheral_increment            = DMA1_CH1_PERIPHERAL_INCREMENT,
-        .read_from_memory                = DMA1_CH1_READ_FROM_MEMORY,
-        .irq.transfer_error_interrupt    = DMA1_CH1_IRQ_TRANSFER_ERROR,
-        .irq.half_transfer_interrupt     = DMA1_CH1_IRQ_HALF_TRANSFER,
-        .irq.transfer_complete_interrupt = DMA1_CH1_IRQ_TRANSFER_COMPLETE,
-        .irq.callback                    = 0,
+        .dma_priority_level              = DMA1_CH1_PRIORITY,
     },
 
-	[1] =
-	{
-        .reg                             = DMA1_Ch2,
-    	.mem2mem                         = DMA1_CH2_MEM2MEM,
-	    .dma_priority                    = DMA1_CH2_PRIORITY,
-    	.mem_data_type                   = DMA1_CH2_MEM_DATA_TYPE,
-	    .memory_zone_size                = DMA1_CH2_MEMORY_ZONE_SIZE,
-    	.memory_zone_address             = DMA1_CH2_MEMORY_ZONE_ADDRESS,
-      .peripheral_address              = DMA1_CH2_PERIPHERAL_ADDRESS,
-    	.periph_data_type                = DMA1_CH2_PERIPH_DATA_TYPE,
-	    .memory_increment                = DMA1_CH2_MEMORY_INCREMENT,
-    	.peripheral_increment            = DMA1_CH2_PERIPHERAL_INCREMENT,
-	    .read_from_memory                = DMA1_CH2_READ_FROM_MEMORY,
-    	.irq.transfer_error_interrupt    = DMA1_CH2_IRQ_TRANSFER_ERROR,
-	    .irq.half_transfer_interrupt     = DMA1_CH2_IRQ_HALF_TRANSFER,
-    	.irq.transfer_complete_interrupt = DMA1_CH2_IRQ_TRANSFER_COMPLETE,
-	    .irq.priority                    = DMA1_CH2_IRQ_PRIORITY,
-  		.irq.callback                    = 0,
-	},
+    [1] =
+    {
+        .base_address_dma_channel        = DMA1_CH2_BASE,
+        .channel_number                  = 2,
+        .mem2mem                         = DMA1_CH2_MEM2MEM,
+        .dma_priority_level              = DMA1_CH2_PRIORITY,
+    },
 
-	[2] =
-	{
-	    .reg                             = DMA1_Ch3,
-    	.mem2mem                         = DMA1_CH3_MEM2MEM,
-	    .dma_priority                    = DMA1_CH3_PRIORITY,
-    	.mem_data_type                   = DMA1_CH3_MEM_DATA_TYPE,
-	    .memory_zone_size                = DMA1_CH3_MEMORY_ZONE_SIZE,
-    	.memory_zone_address             = DMA1_CH3_MEMORY_ZONE_ADDRESS,
-	    .peripheral_address              = DMA1_CH3_PERIPHERAL_ADDRESS,
-    	.periph_data_type                = DMA1_CH3_PERIPH_DATA_TYPE,
-	    .memory_increment                = DMA1_CH3_MEMORY_INCREMENT,
-    	.peripheral_increment            = DMA1_CH3_PERIPHERAL_INCREMENT,
-	    .read_from_memory                = DMA1_CH3_READ_FROM_MEMORY,
-    	.irq.transfer_error_interrupt    = DMA1_CH3_IRQ_TRANSFER_ERROR,
-	    .irq.half_transfer_interrupt     = DMA1_CH3_IRQ_HALF_TRANSFER,
-    	.irq.transfer_complete_interrupt = DMA1_CH3_IRQ_TRANSFER_COMPLETE,
-	    .irq.priority                    = DMA1_CH3_IRQ_PRIORITY,
-		.irq.callback                    = 0,
-	},
+    [2] =
+    {
+        .base_address_dma_channel        = DMA1_CH3_BASE,
+        .channel_number                  = 3,
+        .mem2mem                         = DMA1_CH3_MEM2MEM,
+        .dma_priority_level              = DMA1_CH3_PRIORITY,
+    },
 
-	[3] =
-	{
-	    .reg                             = DMA1_Ch4,
+    [3] =
+    {
+        .base_address_dma_channel        = DMA1_CH4_BASE,
+        .channel_number                  = 4,
         .mem2mem                         = DMA1_CH4_MEM2MEM,
-        .dma_priority                    = DMA1_CH4_PRIORITY,
-    	.mem_data_type                   = DMA1_CH4_MEM_DATA_TYPE,
-	    .memory_zone_size                = DMA1_CH4_MEMORY_ZONE_SIZE,
-    	.memory_zone_address             = DMA1_CH4_MEMORY_ZONE_ADDRESS,
-	    .peripheral_address              = DMA1_CH4_PERIPHERAL_ADDRESS,
-    	.periph_data_type                = DMA1_CH4_PERIPH_DATA_TYPE,
-	    .memory_increment                = DMA1_CH4_MEMORY_INCREMENT,
-    	.peripheral_increment            = DMA1_CH4_PERIPHERAL_INCREMENT,
-	    .read_from_memory                = DMA1_CH4_READ_FROM_MEMORY,
-    	.irq.transfer_error_interrupt    = DMA1_CH4_IRQ_TRANSFER_ERROR,
-	    .irq.half_transfer_interrupt     = DMA1_CH4_IRQ_HALF_TRANSFER,
-    	.irq.transfer_complete_interrupt = DMA1_CH4_IRQ_TRANSFER_COMPLETE,
-	    .irq.priority                    = DMA1_CH4_IRQ_PRIORITY,
-		.irq.callback                    = 0,
-	},
+        .dma_priority_level              = DMA1_CH4_PRIORITY,
+    },
 
-	[4] =
-	{
-	    .reg                             = DMA1_Ch5,
-	    .mem2mem                         = DMA1_CH5_MEM2MEM,
-	    .dma_priority                    = DMA1_CH5_PRIORITY,
-	 	.mem_data_type                   = DMA1_CH5_MEM_DATA_TYPE,
-	    .memory_zone_size                = DMA1_CH5_MEMORY_ZONE_SIZE,
-	   	.memory_zone_address             = DMA1_CH5_MEMORY_ZONE_ADDRESS,
-	    .peripheral_address              = DMA1_CH5_PERIPHERAL_ADDRESS,
-	   	.periph_data_type                = DMA1_CH5_PERIPH_DATA_TYPE,
-	    .memory_increment                = DMA1_CH5_MEMORY_INCREMENT,
-	   	.peripheral_increment            = DMA1_CH5_PERIPHERAL_INCREMENT,
-	    .read_from_memory                = DMA1_CH5_READ_FROM_MEMORY,
-	   	.irq.transfer_error_interrupt    = DMA1_CH5_IRQ_TRANSFER_ERROR,
-	    .irq.half_transfer_interrupt     = DMA1_CH5_IRQ_HALF_TRANSFER,
-	   	.irq.transfer_complete_interrupt = DMA1_CH5_IRQ_TRANSFER_COMPLETE,
-	    .irq.priority                    = DMA1_CH5_IRQ_PRIORITY,
-		.irq.callback                    = 0,
-	},
+    [4] =
+    {
+        .base_address_dma_channel        = DMA1_CH5_BASE,
+        .channel_number                  = 5,
+        .mem2mem                         = DMA1_CH5_MEM2MEM,
+        .dma_priority_level              = DMA1_CH5_PRIORITY,
+    },
 
-	[5] =
-	{
-	    .reg                             = DMA1_Ch6,
-    	.mem2mem                         = DMA1_CH6_MEM2MEM,
-	    .dma_priority                    = DMA1_CH6_PRIORITY,
-    	.mem_data_type                   = DMA1_CH6_MEM_DATA_TYPE,
-	    .memory_zone_size                = DMA1_CH6_MEMORY_ZONE_SIZE,
-    	.memory_zone_address             = DMA1_CH6_MEMORY_ZONE_ADDRESS,
-	    .peripheral_address              = DMA1_CH6_PERIPHERAL_ADDRESS,
-    	.periph_data_type                = DMA1_CH6_PERIPH_DATA_TYPE,
-	    .memory_increment                = DMA1_CH6_MEMORY_INCREMENT,
-    	.peripheral_increment            = DMA1_CH6_PERIPHERAL_INCREMENT,
-	    .read_from_memory                = DMA1_CH6_READ_FROM_MEMORY,
-    	.irq.transfer_error_interrupt    = DMA1_CH6_IRQ_TRANSFER_ERROR,
-	    .irq.half_transfer_interrupt     = DMA1_CH6_IRQ_HALF_TRANSFER,
-    	.irq.transfer_complete_interrupt = DMA1_CH6_IRQ_TRANSFER_COMPLETE,
-	    .irq.priority                    = DMA1_CH6_IRQ_PRIORITY,
-		.irq.callback                    = 0,
-	},
+    [5] =
+    {
+        .base_address_dma_channel        = DMA1_CH6_BASE,
+        .channel_number                  = 6,
+        .mem2mem                         = DMA1_CH6_MEM2MEM,
+        .dma_priority_level              = DMA1_CH6_PRIORITY,
+    },
 
-	[6] =
-	{
-	    .reg                             = DMA1_Ch7,
-    	.mem2mem                         = DMA1_CH7_MEM2MEM,
-	    .dma_priority                    = DMA1_CH7_PRIORITY,
-    	.mem_data_type                   = DMA1_CH7_MEM_DATA_TYPE,
-	    .memory_zone_size                = DMA1_CH7_MEMORY_ZONE_SIZE,
-    	.memory_zone_address             = DMA1_CH7_MEMORY_ZONE_ADDRESS,
-	    .peripheral_address              = DMA1_CH7_PERIPHERAL_ADDRESS,
-    	.periph_data_type                = DMA1_CH7_PERIPH_DATA_TYPE,
-	    .memory_increment                = DMA1_CH7_MEMORY_INCREMENT,
-    	.peripheral_increment            = DMA1_CH7_PERIPHERAL_INCREMENT,
-	    .read_from_memory                = DMA1_CH7_READ_FROM_MEMORY,
-    	.irq.transfer_error_interrupt    = DMA1_CH7_IRQ_TRANSFER_ERROR,
-	    .irq.half_transfer_interrupt     = DMA1_CH7_IRQ_HALF_TRANSFER,
-    	.irq.transfer_complete_interrupt = DMA1_CH7_IRQ_TRANSFER_COMPLETE,
-	    .irq.priority                    = DMA1_CH7_IRQ_PRIORITY,
-  		.irq.callback                    = 0,
-	},
+    [6] =
+    {
+        .base_address_dma_channel        = DMA1_CH7_BASE,
+        .channel_number                  = 7,
+        .mem2mem                         = DMA1_CH7_MEM2MEM,
+        .dma_priority_level              = DMA1_CH7_PRIORITY,
+    },
 };
-
 
 const struct t_exti_config exti_config =
 {
     .base_address_exti = EXTI_BASE,
 };
 
-
 const struct t_afio_config afio_config =
 {
     .base_address_afio = AFIO_BASE,
 };
-
 
 struct t_gpio_driver gpio_driver[GPIO_PIN_NUMBER] =
 {
@@ -991,6 +915,14 @@ struct t_gpio_driver *pc15 = &gpio_driver[34];
 struct t_gpio_driver *pd0  = &gpio_driver[35];
 struct t_gpio_driver *pd1  = &gpio_driver[36];
 
+struct t_dma_channel_driver *dma_ch1  = &dma_channel_driver[0];
+struct t_dma_channel_driver *dma_ch2  = &dma_channel_driver[1];
+struct t_dma_channel_driver *dma_ch3  = &dma_channel_driver[2];
+struct t_dma_channel_driver *dma_ch4  = &dma_channel_driver[3];
+struct t_dma_channel_driver *dma_ch5  = &dma_channel_driver[4];
+struct t_dma_channel_driver *dma_ch6  = &dma_channel_driver[5];
+struct t_dma_channel_driver *dma_ch7  = &dma_channel_driver[6];
+
 void soc_core_configuration(void)
 {
 	clock_init(&clock_driver, &clock_config);
@@ -998,15 +930,18 @@ void soc_core_configuration(void)
 
 void soc_peripherals_configuration(void)
 {
-	for(uint8_t index = 0; index < DMA_CHANNELS_NUMBER; index++)
-	{
-	    dma_init(&dma_driver[index], &dma1_chx_cfg[index]);
-	}
+    for(uint8_t index = 0; index < GPIO_PIN_NUMBER; index++)
+    {
+        gpio_init(&gpio_driver[index]);
+    }
 
-	for(uint8_t index = 0; index < GPIO_PIN_NUMBER; index++)
-	{
-      gpio_init(&gpio_driver[index]);
-	}
+    for(uint8_t index = 0; index < DMA_IP_NUMBER; index++)
+    {
+        for(uint8_t index_channel = 0; index_channel < DMA_CHANNEL_NUMBER; index_channel++)
+        {
+            dma_init(&dma_driver[index], &dma_channel_driver[index_channel]);
+        }
+    }
 
 //	struct t_usart_driver *usart_driver = usart_get_driver(1);
 //    usart_init(usart_driver, &usartx_cfg[0]);
