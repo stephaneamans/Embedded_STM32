@@ -12,304 +12,64 @@
 #include "bsp.h"
 #include "queues.h"
 #include "usart.h"
-#if defined(USART_1) || defined(USART_2)
 
 /* Defines */
-#define ENABLE              0x2000
-#define TX_ENABLE           0x0008
-#define RX_ENABLE           0x0004
+#define USART_CR1_RE_BIT_MASK         0x4
+#define USART_CR1_TE_BIT_MASK         0x8
+#define USART_CR1_IDLEIE_BIT_MASK     0x10
+#define USART_CR1_RXNEIE_BIT_MASK     0x20
+#define USART_CR1_TCIE_BIT_MASK       0x40
+#define USART_CR1_TXEIE_BIT_MASK      0x80
+#define USART_CR1_PE_BIT_MASK         0x100
+#define USART_CR1_PCE_BIT_MASK        0x400
+#define USART_CR1_PS_BIT_MASK         0x200
+#define USART_CR1_M_BIT_MASK          0x1000
+#define USART_CR1_UE_BIT_MASK         0x2000
 
-#define ENABLE_IDLE_IRQ     0x0010
-#define ENABLE_RXNE_IRQ     0x0020
-#define ENABLE_TC_IRQ       0x0040
-#define ENABLE_TXE_IRQ      0x0080
-#define ENABLE_PE_IRQ       0x0100
-#define ENABLE_DMA          0x00C0
+#define USART_CR2_0_5_STOP_BIT_MASK   0x1000
+#define USART_CR2_2_STOP_BIT_MASK     0x2000
+#define USART_CR2_STOP_BIT_MASK       0x3000
 
-#define PARITY_ERROR_FLAG   0x0001
-#define FRAMING_ERROR_FLAG  0x0002
-#define NOISE_ERROR_FLAG    0x0004
-#define OVERRUN_ERROR_FLAG  0x0008
-#define IDLE_ERROR_FLAG     0x0010
-#define RX_NOT_EMPTY_FLAG   0x0020
-#define TC_FLAG             0x0040
-#define TXE_FLAG            0x0080
+#define USART_CR3_DMAR_BIT_MASK       0x40
+#define USART_CR3_DMAT_BIT_MASK       0x80
 
-#define RX_BUFFER_LENGTH    256
-#define TX_BUFFER_LENGTH    256
+#define USART_SR_PE_BIT_MASK          0x1
+#define USART_SR_FE_BIT_MASK          0x2
+#define USART_SR_NE_BIT_MASK          0x4
+#define USART_SR_ORE_BIT_MASK         0x8
+#define USART_SR_IDLE_BIT_MASK        0x10
+#define USART_SR_RXNE_BIT_MASK        0x20
+#define USART_SR_TC_BIT_MASK          0x40
+#define USART_SR_TXE_BIT_MASK         0x80
 
 /* USART private structure definition :        */
 struct t_usart_private
 {
-	bool write_end;
-	bool read_end;
-	uint8_t *data_buffer_tx;
-	uint32_t length_tx;
-	uint8_t *data_buffer_rx;
-	uint32_t length_rx;
-	t_error_handling error;
-	struct t_dma_driver *tx_dma;
-    struct t_dma_driver *rx_dma;
+    struct t_usart_regs *reg;
+
+    uint8_t *data_buffer_tx;
+    uint32_t length_tx;
+    uint32_t byte_counter_tx;
+
+    uint8_t *data_buffer_rx;
+    uint32_t length_rx;
+    uint32_t byte_counter_rx;
+
+    t_error_handling error;
+    struct
+    {
+        void (*rx)(struct t_usart_driver *driver);
+        void (*tx)(struct t_usart_driver *driver);
+    }methods;
+
+    struct t_dma_client client_rx;
+    struct t_dma_client client_tx;
+	struct t_dma_channel_driver *tx_dma;
+    struct t_dma_channel_driver *rx_dma;
 };
 
 /* Static driver structure. */
-static struct t_usart_driver usart_driver[USART_IP_NUMBER];
 static struct t_usart_private priv[USART_IP_NUMBER];
-
-
-/** Get transmission complete flag in interruption and DMA modes.
- *
-  * \param usart: Pointer to the USART driver.
- *
- *
- * \return: bool .
- *
- */
-static bool tx_complete_irq(struct t_usart_driver *driver)
-{
-    return driver->priv->write_end;
-}
-
-static bool tx_complete_dma(struct t_usart_driver *driver)
-{
-    bool status = true;
-    if(driver->priv->write_end == false)
-    {
-        status = false;
-        if(driver->priv->tx_dma->reg->CNDTR == 0)
-        {
-            status = true;
-            driver->priv->write_end = true;
-        }
-    }
-    return status;
-}
-
-
-/** Get reception complete flag in interruption and DMA modes.
- *
-  * \param usart: Pointer to the USART driver.
- *
- *
- * \return: bool.
- *
- */
-static bool rx_complete_irq(struct t_usart_driver *driver)
-{
-    return driver->priv->read_end;
-}
-
-static bool rx_complete_dma(struct t_usart_driver *driver)
-{
-  bool status = true;
-  if(driver->priv->read_end == false)
-  {
-        status = false;
-        if(driver->priv->rx_dma->reg->CNDTR == 0)
-        {
-            status = true;
-            driver->priv->read_end = true;
-        }
-    }
-    return status;
-}
-
-
-/** Function to receive bytes data with DMA.
- *
- * \param driver: Pointer to the USART driver.
- * \param data_buffer: Pointer to the data to send.
- * \param data_length: Length of the datas to send.
- *
- * \return: t_error_handling code or ERROR_OK.
- *
- */
-static t_error_handling receive_dma(struct t_usart_driver *driver, uint8_t *data_buffer, uint32_t data_length)
-{
-    t_error_handling error = ERROR_OK;
-    if(rx_complete_dma(driver))
-    {
-        error = dma_transfer(driver->priv->rx_dma, data_buffer, &driver->reg->DR, data_length);
-        driver->priv->length_rx = data_length;
-        driver->priv->read_end = false;
-        driver->reg->CR1 |= RX_ENABLE;
-        error = dma_start_transfer(driver->priv->rx_dma);
-    }
-    else
-    {
-        error = ERROR_USART_NOT_READY_TO_SEND;
-        driver->priv->error = ERROR_USART_NOT_READY_TO_SEND;
-    }
-    return error;
-}
-
-
-/** Function to receive bytes data with interrupts.
- *
- * \param driver: Pointer to the USART driver.
- * \param data_buffer: Pointer to the data to send.
- * \param data_length: Length of the datas to send.
- *
- * \return: t_error_handling code or ERROR_OK.
- *
- */
-static t_error_handling receive_irq(struct t_usart_driver *driver, uint8_t *data_buffer, uint32_t data_length)
-{
-    t_error_handling error = ERROR_OK;
-    if((driver->reg->CR1 & RX_ENABLE) != RX_ENABLE)
-    {
-        driver->priv->read_end = false;
-        driver->priv->data_buffer_rx = data_buffer;
-        driver->priv->length_rx = data_length;
-        driver->reg->SR &= ~RX_NOT_EMPTY_FLAG;
-        driver->reg->CR1 |= (ENABLE_IDLE_IRQ | ENABLE_RXNE_IRQ | ENABLE_PE_IRQ | RX_ENABLE);
-    }
-    else
-    {
-        error = ERROR_USART_NOT_READY_TO_SEND;
-        driver->priv->error = ERROR_USART_NOT_READY_TO_SEND;
-    }
-    return error;
-}
-
-
-/** Simple polling function to read bytes data by polling.
- *
- * \param driver: Pointer to the USART driver.
- * \param data_buffer: Pointer to the data to send.
- * \param data_length: Length of the datas to send.
- *
- * \return : Error code or ERROR_OK.
- *
- */
-static t_error_handling receive_poll(struct t_usart_driver *driver, uint8_t *data_buffer, uint32_t data_length)
-{
-    t_error_handling error = ERROR_OK;
-    driver->priv->error = ERROR_OK;
-    driver->priv->read_end = false;
-    driver->reg->CR1 |= RX_ENABLE;
-    for(uint32_t index = 0; index < data_length; index++)
-    {
-        while((driver->reg->SR & RX_NOT_EMPTY_FLAG) == 0){}
-        *data_buffer = driver->reg->DR;
-        if((driver->reg->SR & PARITY_ERROR_FLAG) == PARITY_ERROR_FLAG)
-        {
-            error = ERROR_USART_PARITY;
-            break;
-        }
-        else if((driver->reg->SR & FRAMING_ERROR_FLAG) == FRAMING_ERROR_FLAG)
-        {
-            error = ERROR_USART_FRAMING;
-            break;
-        }
-        else if((driver->reg->SR & NOISE_ERROR_FLAG) == NOISE_ERROR_FLAG)
-        {
-            error = ERROR_USART_NOISE;
-            break;
-        }
-        else if((driver->reg->SR & OVERRUN_ERROR_FLAG) == OVERRUN_ERROR_FLAG)
-        {
-            error = ERROR_USART_OVERRUN;
-            break;
-        }
-        else
-        {
-        }
-        data_buffer++;
-    }
-    driver->reg->CR1 &= ~RX_ENABLE;
-    driver->priv->read_end = true;
-    driver->priv->error = error;
-    return error;
-}
-
-
-/** Function to transmit a bytes data with DMA.
- *
- * \param usart: Pointer to the USART driver.
- * \param data_buffer: Pointer to the data location.
- * \param data_length: Length of the datas to send.
- *
-* \return: t_error_handling code or ERROR_OK.
- *
- */
-static t_error_handling transmit_dma(struct t_usart_driver *driver, uint8_t *data_buffer, uint32_t data_length)
-{
-    t_error_handling error = ERROR_OK;
-    if(tx_complete_dma(driver))
-    {
-        error = dma_transfer(driver->priv->tx_dma, data_buffer, &driver->reg->DR, data_length);
-        driver->priv->length_tx = data_length;
-        driver->priv->write_end = false;
-        driver->reg->CR1 |= TX_ENABLE;
-        error = dma_start_transfer(driver->priv->tx_dma);
-    }
-    else
-    {
-        error = ERROR_USART_NOT_READY_TO_SEND;
-        driver->priv->error = ERROR_USART_NOT_READY_TO_SEND;
-    }
-return error;
-}
-
-
-/** Function to transmit bytes data with interrupts.
- *
- * \param usart: Pointer to the USART driver.
- * \param data_buffer: Pointer to the data location.
- * \param data_length: Length of the datas to send.
- *
- * \return: t_error_handling code or ERROR_OK.
- *
- */
-static t_error_handling transmit_irq(struct t_usart_driver *driver, uint8_t *data_buffer, uint32_t data_length)
-{
-    t_error_handling error = ERROR_OK;
-    if((driver->reg->CR1 & TX_ENABLE) != TX_ENABLE)
-    {
-        driver->priv->write_end = false;
-        driver->priv->data_buffer_tx = data_buffer;
-        driver->priv->length_tx = data_length;
-        driver->reg->CR1 |= TX_ENABLE;
-        driver->reg->SR = 0x00;
-        driver->reg->DR = *data_buffer;
-        priv->data_buffer_tx++;
-        priv->length_tx--;
-        driver->reg->CR1 |= (ENABLE_IDLE_IRQ | ENABLE_TC_IRQ | ENABLE_TXE_IRQ | ENABLE_PE_IRQ);
-    }
-    else
-    {
-        error = ERROR_USART_NOT_READY_TO_SEND;
-        driver->priv->error = ERROR_USART_NOT_READY_TO_SEND;
-    }
-return error;
-}
-
-/** Simple blocking function to transmit bytes data.
- *
- * \param usart: Pointer to the USART driver.
- * \param data_buffer: Pointer to the data location.
- * \param data_length: Length of the datas to send.
- *
- * \return: t_error_handling code or ERROR_OK.
- *
- */
-static t_error_handling transmit_poll(struct t_usart_driver *driver, uint8_t *data_buffer, uint32_t data_length)
-{
-    t_error_handling error = ERROR_OK;
-    driver->priv->write_end = false;
-    driver->reg->CR1 |= TX_ENABLE;
-    for(uint32_t index = 0; index < data_length; index++)
-    {
-        driver->reg->DR = *data_buffer;
-        while((driver->reg->SR & TXE_FLAG) != TXE_FLAG){}
-        data_buffer++;
-    }
-    while((driver->reg->SR & TC_FLAG) != TC_FLAG){}
-    driver->reg->CR1 &= ~TX_ENABLE;
-    driver->priv->error = error;
-    return error;
-}
 
 /** Compute divider from the bus frequency.
  *
@@ -333,221 +93,410 @@ static uint16_t compute_baudrate_divider(uint32_t bus_frequency, uint32_t baudra
     return ((mantissa << 4) | (fraction & 0x0F));
 }
 
-
-t_error_handling usart_init(struct t_usart_driver *driver, const struct t_usart_config *config)
+/** Interrupt function management.
+ *
+ * \param priv: Pointer to the private structure.
+ *
+ *
+ * \return: void.
+ *
+ */
+static void irq_management(struct t_usart_private *priv)
 {
-    t_error_handling error  = ERROR_OK;
-    uint32_t clock_frequency = 0;
-
-    memset(driver, 0, sizeof(struct t_usart_driver));
-
-    driver->reg = config->reg;
-    if(driver->reg == USART1)
+    /* Test the error bits */
+    if((priv->reg->SR & USART_SR_PE_BIT_MASK) == USART_SR_PE_BIT_MASK)
     {
-   	    enable_clock(USART_01);
+        priv->error = ERROR_USART_PARITY;
     }
-    else if(driver->reg == USART2)
+    else if((priv->reg->SR & USART_SR_FE_BIT_MASK) == USART_SR_FE_BIT_MASK)
     {
-    	enable_clock(USART_02);
+        priv->error  = ERROR_USART_FRAMING;
     }
-    struct t_clock_driver *clock_driver = get_clock_driver();
-
-    if(driver->reg == USART1)
+    else if((priv->reg->SR & USART_SR_NE_BIT_MASK) == USART_SR_NE_BIT_MASK)
     {
-        driver->uart_number = 1;
-        clock_frequency = clock_driver->APB2_clk_freq; //get_apb2_clock(clock_driver);
-        driver->priv = &priv[0];
-        memset(driver->priv, 0, sizeof(struct t_usart_private));
+        priv->error  = ERROR_USART_NOISE;
     }
-    else if(driver->reg == USART2)
+    else if((priv->reg->SR & USART_SR_ORE_BIT_MASK) == USART_SR_ORE_BIT_MASK)
     {
-        driver->uart_number = 2;
-        clock_frequency = clock_driver->APB1_clk_freq; //get_apb1_clock(clock_driver);
-        driver->priv = &priv[1];
-        memset(driver->priv, 0, sizeof(struct t_usart_private));
+        priv->error  = ERROR_USART_OVERRUN;
     }
     else
     {
-        error = ERROR_DRIVER_NOT_INITIALIZED;
-    }
-
-    driver->priv->write_end = true;
-    driver->priv->read_end = true;
-
-    driver->reg->CR1 = 0;                  /* Reset the register         */
-    driver->reg->CR1 |= ENABLE;            /* Enables the module.        */
-    driver->reg->BRR = compute_baudrate_divider(clock_frequency, config->baudrate);
-
-    driver->reg->CR1 |= config->length;    /* Fix frame length.          */
-    driver->reg->CR1 |= config->parity;    /* Select parity. ;           */
-    driver->reg->CR2 |= config->stop;      /* Configure stop bit length. */
-
-    if(config->mode == usart_poll)
-    {
-        driver->methods.transmit = transmit_poll;
-        driver->methods.receive = receive_poll;
-    }
-    else if(config->mode == usart_irq)
-    {
-        if(driver->uart_number == 1)
+        /* If no error occured and RX interrupt arised */
+        if((priv->reg->SR & USART_SR_RXNE_BIT_MASK) == USART_SR_RXNE_BIT_MASK)
         {
-            enable_nvic_irq(IRQ_USART_1);
-            set_nvic_priority(IRQ_USART_1, config->irq_dma.priority);
+            /* Fill the buffer with the data received */
+            priv->data_buffer_rx[priv->byte_counter_rx] = (uint8_t)priv->reg->DR;
+
+            if(priv->length_rx == 0)
+            {
+                /* Deactivate interrupts if the data is received */
+                priv->reg->CR1 &= ~(USART_CR1_IDLEIE_BIT_MASK | USART_CR1_RXNEIE_BIT_MASK | USART_CR1_PE_BIT_MASK | USART_CR1_RE_BIT_MASK);
+            }
+            else
+            {
+                /* Go to the next buffer address if the transmission is not ended */ 
+                priv->length_rx--;
+                priv->byte_counter_rx++;
+            }
         }
-        else if(driver->uart_number == 2)
+        /* If no error occured and TX interrupt arised */
+        else if(((priv->reg->SR & USART_SR_TXE_BIT_MASK) == USART_SR_TXE_BIT_MASK) &&
+                 (priv->length_tx > 0))
         {
-            enable_nvic_irq(IRQ_USART_2);
-            set_nvic_priority(IRQ_USART_2, config->irq_dma.priority);
+            /* Transfer the data to send into the shift register and go to the next buffer address. */
+            priv->reg->DR = priv->data_buffer_tx[priv->byte_counter_tx];
+            priv->byte_counter_tx++;
+            priv->length_tx--;
         }
-        driver->methods.transmit = transmit_irq;
-        driver->methods.receive = receive_irq;
-        driver->methods.tx_complete = tx_complete_irq;
-        driver->methods.rx_complete = rx_complete_irq;
+        else if((priv->reg->SR & USART_SR_TC_BIT_MASK) == USART_SR_TC_BIT_MASK)
+        {
+            /* If the transmission has ended, Deactivate the interrupts */
+            priv->reg->CR1 &= ~(USART_CR1_IDLEIE_BIT_MASK | USART_CR1_TCIE_BIT_MASK | USART_CR1_TXEIE_BIT_MASK | USART_CR1_PE_BIT_MASK);
+        }
     }
-    else if(config->mode == usart_dma)
+}
+
+/** Function to receive bytes data with DMA.
+ *
+ * \param driver: Pointer to the USART driver.
+ *
+ * \return: void.
+ *
+ */
+static void receive_dma(struct t_usart_driver *driver)
+{
+    /* Set the lasts client paramleters needed */
+    driver->priv->client_rx.transfer_length = driver->priv->length_rx;
+    driver->priv->client_rx.memory_address = (uintptr_t) driver->priv->data_buffer_rx;
+
+    /* Set the the DMA channel and start the transfer */
+    dma_set_transfer(driver->priv->rx_dma, &driver->priv->client_rx);
+    driver->priv->reg->CR1 |= USART_CR1_RE_BIT_MASK;
+    dma_start_transfer(driver->priv->rx_dma);
+}  
+
+/** Function to receive bytes data with interrupts.
+ *
+ * \param driver: Pointer to the USART driver.
+ *
+ * \return: void.
+ *
+ */
+static void receive_irq(struct t_usart_driver *driver)
+{
+    /* Activate interruptions */
+    driver->priv->reg->SR &= ~USART_SR_RXNE_BIT_MASK;
+    driver->priv->reg->CR1 |= (USART_CR1_IDLEIE_BIT_MASK | USART_CR1_RXNEIE_BIT_MASK | USART_CR1_PE_BIT_MASK | USART_CR1_RE_BIT_MASK);
+}
+
+/** Polling function to read bytes data by polling.
+ *
+ * \param driver: Pointer to the USART driver.
+ *
+ * \return : void.
+ *
+ */
+static void receive_poll(struct t_usart_driver *driver)
+{
+    /* Loop until the transfer is finished */
+    while(driver->priv->byte_counter_rx < driver->priv->length_rx)
     {
-        driver->reg->CR3 = ENABLE_DMA;                          /* Enable DMA.               */
-        driver->priv->tx_dma = config->irq_dma.tx_dma_channel;  /* Pointer to TX DMA driver. */
-        driver->priv->rx_dma = config->irq_dma.rx_dma_channel;  /* Pointer to RX DMA driver. */
-        driver->methods.transmit = transmit_dma;
-        driver->methods.receive = receive_dma;
-        driver->methods.tx_complete = tx_complete_dma;
-        driver->methods.rx_complete = rx_complete_dma;
+        while((driver->priv->reg->SR & USART_SR_RXNE_BIT_MASK) == 0){}
+        driver->priv->data_buffer_rx[driver->priv->byte_counter_rx] = (uint8_t)driver->priv->reg->DR;
+        driver->priv->byte_counter_rx++;
+        driver->priv->length_rx--;
+    }
+}
+
+/** Function to transmit a bytes data with DMA.
+ *
+ * \param driver: Pointer to the USART driver.
+ *
+ * \return: void.
+ *
+ */
+static void transmit_dma(struct t_usart_driver *driver)
+{
+    /* Set the lasts client paramleters needed */
+    driver->priv->client_tx.transfer_length = driver->priv->length_tx;
+    driver->priv->client_tx.memory_address = (uintptr_t) driver->priv->data_buffer_tx;
+
+    /* Set the DMA channel and start the transfer */
+    dma_set_transfer(driver->priv->tx_dma, &driver->priv->client_tx);
+    dma_start_transfer(driver->priv->tx_dma);
+}
+
+/** Function to transmit bytes data with interrupts.
+ *
+ * \param driver: Pointer to the USART driver.
+ *
+ * \return: void.
+ *
+ */
+static void transmit_irq(struct t_usart_driver *driver)
+{
+    driver->priv->reg->DR = driver->priv->data_buffer_tx[priv->byte_counter_tx];
+    priv->length_tx--;
+    priv->byte_counter_tx++;
+    driver->priv->reg->CR1 |= (USART_CR1_IDLEIE_BIT_MASK | USART_CR1_TCIE_BIT_MASK | USART_CR1_TXEIE_BIT_MASK | USART_CR1_PE_BIT_MASK);
+}
+
+
+/** Blocking function to transmit bytes data.
+ *
+ * \param driver: Pointer to the USART driver.
+ *
+ * \return: void.
+ *
+ */
+static void transmit_poll(struct t_usart_driver *driver)
+{
+    /* Loop until the transfer is finished */
+    while(driver->priv->byte_counter_tx < driver->priv->length_tx)
+    {
+        driver->priv->reg->DR = driver->priv->data_buffer_tx[driver->priv->byte_counter_tx];
+        while((driver->priv->reg->SR & USART_SR_TXE_BIT_MASK) != USART_SR_TXE_BIT_MASK){}
+        driver->priv->byte_counter_tx++;
+    }
+    while((driver->priv->reg->SR & USART_SR_TC_BIT_MASK) != USART_SR_TC_BIT_MASK){}
+    driver->priv->length_tx = 0;
+}
+
+void usart1_dma_ch4_irq_management(struct t_dma_status *dma_status)
+{
+    if(dma_status->transfer_complete == true)
+    {
+        priv[0].length_tx = 0;
+    }
+}
+
+void usart1_dma_ch5_irq_management(struct t_dma_status *dma_status)
+{
+    if(dma_status->transfer_complete == true)
+    {
+        priv[0].length_rx = 0;
+    }
+}
+
+t_error_handling usart_status(struct t_usart_driver *driver, bool read)
+{
+    t_error_handling error;
+
+    /* Chack if the transmission ended */
+    if((read == false) && (driver->priv->length_tx > 0))
+    {
+        error = ERROR_BUSY_TX;
+    }
+
+    /* Check if the reception ended */
+    else if((read == true) && (driver->priv->length_rx > 0))  //(driver->priv->length_rx > 0))
+    {
+        error = ERROR_BUSY_RX;
+    }
+    else
+    {
+        /* If the transmission ended, check if any error occured */
+        if((priv->reg->SR & USART_SR_PE_BIT_MASK) == USART_SR_PE_BIT_MASK)
+        {
+            priv->error = ERROR_USART_PARITY;
+        }
+        else if((priv->reg->SR & USART_SR_FE_BIT_MASK) == USART_SR_FE_BIT_MASK)
+        {
+            priv->error  = ERROR_USART_FRAMING;
+        }
+        else if((priv->reg->SR & USART_SR_NE_BIT_MASK) == USART_SR_NE_BIT_MASK)
+        {
+            priv->error  = ERROR_USART_NOISE;
+        }
+        else if((priv->reg->SR & USART_SR_ORE_BIT_MASK) == USART_SR_ORE_BIT_MASK)
+        {
+            priv->error  = ERROR_USART_OVERRUN;
+        }
+        else if((driver->dma.active == true) &&
+               ((dma_get_transfer_error(driver->dma.tx_channel) == true) ||
+                (dma_get_transfer_error(driver->dma.rx_channel) == true)))
+        {
+            error = ERROR_DMA_ERROR;
+        }
+        else
+        {
+            error = ERROR_OK;
+        }
     }
     return error;
 }
 
-struct t_usart_driver *usart_get_driver(uint8_t usart_number)
+t_error_handling usart_receive(struct t_usart_driver *driver, uint8_t *data_buffer, uint32_t data_length)
 {
-    struct t_usart_driver *driver = 0;
-    if((usart_number > 0)  && (usart_number <= USART_IP_NUMBER))
-    {
-        driver = &usart_driver[usart_number - 1];
-    }
-    return driver;
-}
+    /* Check usart status */
+    driver->priv->error = usart_status(driver, true);
 
-t_error_handling usart_get_error_status(struct t_usart_driver *driver)
-{
+    /* If the peripheral is free */
+    if(driver->priv->error == ERROR_OK)
+    {
+        /* Set the communication parameters and run the reception */
+        driver->priv->length_rx = data_length;
+        driver->priv->byte_counter_rx = 0;
+        driver->priv->data_buffer_rx = data_buffer;
+        driver->priv->reg->CR1 |= USART_CR1_RE_BIT_MASK;
+        driver->priv->methods.rx(driver);
+    }
     return driver->priv->error;
 }
 
-
-void USART1_IRQHandler(void)        			/* USART1 global interrupt                          */
+t_error_handling usart_transmit(struct t_usart_driver *driver, uint8_t *data_buffer, uint32_t data_length)
 {
-    /**	USART1 IRQ handler.
-    *
-    * \param void : No parameter.
-    *
-    * \return : No return value.
-    */
-    uint8_t sr_register = usart_driver[0].reg->SR;
-    if((sr_register & PARITY_ERROR_FLAG) == PARITY_ERROR_FLAG)
+    /* Check usart status */
+    driver->priv->error = usart_status(driver, false);
+
+    /* If the peripheral is free */
+    if(driver->priv->error == ERROR_OK)
     {
-        usart_driver[0].priv->error = ERROR_USART_PARITY;
+        /* Set the communication parameters and run the transmission */
+        driver->priv->length_tx = data_length;
+        driver->priv->byte_counter_tx = 0;
+        driver->priv->data_buffer_tx = data_buffer;
+        driver->priv->reg->CR1 |= USART_CR1_TE_BIT_MASK;
+        driver->priv->methods.tx(driver);
     }
-    else if((sr_register & FRAMING_ERROR_FLAG) == FRAMING_ERROR_FLAG)
+    return driver->priv->error;
+}
+
+void usart_initialization(struct t_usart_driver *config)
+{
+    uint32_t clock_frequency;
+
+    /* Link private structure and clear it */
+    config->priv = &priv[config->instance];
+    memset(config->priv, 0, sizeof(struct t_usart_private));
+
+    /* Link the registers structure */
+    config->priv->reg = (struct t_usart_regs*)config->base_address;
+
+    /* Enable periperal clock and set the clock value */
+    enable_clock(config->peripheral);
+    struct t_clock_driver *clock_driver = get_clock_driver();
+
+    if(config->peripheral == USART1)
     {
-        usart_driver[0].priv->error  = ERROR_USART_FRAMING;
-    }
-    else if((sr_register & NOISE_ERROR_FLAG) == NOISE_ERROR_FLAG)
-    {
-        usart_driver[0].priv->error  = ERROR_USART_NOISE;
-    }
-    else if((sr_register & OVERRUN_ERROR_FLAG) == OVERRUN_ERROR_FLAG)
-    {
-        usart_driver[0].priv->error  = ERROR_USART_OVERRUN;
-    }
-    else if((sr_register & RX_NOT_EMPTY_FLAG) == RX_NOT_EMPTY_FLAG)
-    {
-        *usart_driver[0].priv->data_buffer_rx = usart_driver[0].reg->DR;
-        priv->length_rx--;
-        if(priv->length_rx == 0)
-        {
-            usart_driver[0].reg->CR1 &= ~(ENABLE_IDLE_IRQ | RX_NOT_EMPTY_FLAG | ENABLE_PE_IRQ | RX_ENABLE);
-            usart_driver[0].priv->read_end = true;
-        }
-        else
-        {
-            usart_driver[0].priv->data_buffer_rx++;
-        }
-    }
-    else if(((sr_register & TXE_FLAG) == TXE_FLAG) &&
-             (usart_driver[0].priv->length_tx > 0))
-    {
-        usart_driver[0].reg->DR = *usart_driver[0].priv->data_buffer_tx;
-        usart_driver[0].priv->data_buffer_tx++;
-        usart_driver[0].priv->length_tx--;
-    }
-    else if((sr_register & TC_FLAG) == TC_FLAG)
-    {
-        usart_driver[0].reg->CR1 &= ~TX_ENABLE;
-        usart_driver[0].reg->CR1 &= ~(ENABLE_IDLE_IRQ | ENABLE_TC_IRQ | ENABLE_TXE_IRQ | ENABLE_PE_IRQ);
-        usart_driver[0].priv->write_end = true;
+        clock_frequency = clock_driver->APB2_clk_freq;
     }
     else
     {
+        clock_frequency = clock_driver->APB1_clk_freq;
     }
+
+    /* Module configuration */
+    config->priv->reg->CR1 = USART_CR1_UE_BIT_MASK; /* Enables the module.        */
+    config->priv->reg->BRR = compute_baudrate_divider(clock_frequency, config->baudrate);
+
+    if(config->data_length == usart_data_9_bits)
+    {
+        config->priv->reg->CR1 |= USART_CR1_M_BIT_MASK;    /* Fix frame length.          */
+    }
+
+    if(config->parity == usart_parity_even)
+    {
+        config->priv->reg->CR1 |= USART_CR1_PCE_BIT_MASK;
+    }
+
+    else if(config->parity == usart_parity_odd)
+    {
+        config->priv->reg->CR1 |= (USART_CR1_PCE_BIT_MASK | USART_CR1_PS_BIT_MASK);
+    }
+
+    if(config->stop_bit == usart_one_stop_bit)
+    {
+        config->priv->reg->CR2 &= ~USART_CR2_STOP_BIT_MASK;
+    }
+    else if(config->stop_bit == usart_half_stop_bit)
+    {
+        config->priv->reg->CR2 |= USART_CR2_0_5_STOP_BIT_MASK;
+    }
+    else if(config->stop_bit == usart_two_stop_bit)
+    {
+        config->priv->reg->CR2 |= USART_CR2_2_STOP_BIT_MASK;
+    }
+    else if(config->stop_bit == usart_one_half_stop_bit)
+    {
+        config->priv->reg->CR2 |=  USART_CR2_STOP_BIT_MASK;
+    }
+
+    if(config->irq.active == true)
+    {
+        /* If IRQ mode is requested, enable IRQ and link TX/RX IRQ functions. */
+        enable_nvic_irq(config->instance + NVIC_USART_OFFSET);
+        set_nvic_priority(config->instance + NVIC_USART_OFFSET, config->irq.priority);
+        config->priv->methods.tx = transmit_irq;
+        config->priv->methods.rx = receive_irq;
+    }
+    else if(config->dma.active == true)
+    {
+        /* If DMA mode is requested, enable and parameter the DMA channel, link TX/RX DMA functions. */
+        config->priv->reg->CR3 = (USART_CR3_DMAR_BIT_MASK | USART_CR3_DMAT_BIT_MASK); /* Enable DMA. */
+        config->priv->tx_dma = config->dma.tx_channel;  /* Pointer to TX DMA driver. */
+        config->priv->rx_dma = config->dma.rx_channel;  /* Pointer to RX DMA driver. */
+
+        /* Set RX DMA client parameters */
+        config->priv->client_rx.memory_increment = true;
+        config->priv->client_rx.peripheral_increment = false;
+        config->priv->client_rx.read_from_memory = false;
+        config->priv->client_rx.mem_data_type = dma_8_bits;
+        config->priv->client_rx.periph_data_type = dma_8_bits;
+        config->priv->client_rx.peripheral_address = (uintptr_t)&config->priv->reg->DR;
+
+        /* Set RX DMA client parameters */
+        config->priv->client_tx.memory_increment = true;
+        config->priv->client_tx.peripheral_increment = false;
+        config->priv->client_tx.read_from_memory = true;
+        config->priv->client_tx.mem_data_type = dma_8_bits;
+        config->priv->client_tx.periph_data_type = dma_8_bits;
+        config->priv->client_tx.peripheral_address = (uintptr_t)&config->priv->reg->DR;
+        config->priv->methods.tx = transmit_dma;
+        config->priv->methods.rx = receive_dma;
+    }
+
+    else
+    {
+        /* Default, the poll mode is requested, link TX/RX poll functions. */
+        config->priv->methods.tx = transmit_poll;
+        config->priv->methods.rx = receive_poll;
+    }
+}   
+
+void usart_uninitialization(struct t_usart_driver *driver)
+{
+    /* Reset the module */
+    reset_module(driver->peripheral);
+
+    /* Disable periperal clock */
+    disable_clock(driver->peripheral);
+
+    /* Clear private structure */
+    memset(driver->priv, 0, sizeof(struct t_usart_private));
+}   
+
+/** USART1 IRQ handler.
+*
+* \param void : No parameter.
+*
+* \return : No return value.
+*/
+void USART1_IRQHandler(void)
+{
+    irq_management(&priv[0]);
     clear_pending_nvic_irq(IRQ_USART_1); /* Clear any USART 1 NVIC pending interrupt.   */
 }
 
+/** USART2 IRQ handler.
+*
+* \param void : No parameter.
+*
+* \return : No return value.
+*/
 void USART2_IRQHandler(void)
 {
-    /**	USART2 IRQ handler.
-    *
-    * \param void : No parameter.
-    *
-    * \return : No return value.
-    */
-
-    uint8_t sr_register = usart_driver[1].reg->SR;
-    if((sr_register & PARITY_ERROR_FLAG) == PARITY_ERROR_FLAG)
-    {
-        usart_driver[1].priv->error = ERROR_USART_PARITY;
-    }
-    else if((sr_register & FRAMING_ERROR_FLAG) == FRAMING_ERROR_FLAG)
-    {
-        usart_driver[1].priv->error  = ERROR_USART_FRAMING;
-    }
-    else if((sr_register & NOISE_ERROR_FLAG) == NOISE_ERROR_FLAG)
-    {
-        usart_driver[1].priv->error  = ERROR_USART_NOISE;
-    }
-    else if((sr_register & OVERRUN_ERROR_FLAG) == OVERRUN_ERROR_FLAG)
-    {
-        usart_driver[1].priv->error  = ERROR_USART_OVERRUN;
-    }
-    else if((sr_register & RX_NOT_EMPTY_FLAG) == RX_NOT_EMPTY_FLAG)
-    {
-        *usart_driver[1].priv->data_buffer_rx = usart_driver[1].reg->DR;
-        priv->length_rx--;
-        if(priv->length_rx == 0)
-        {
-            usart_driver[1].reg->CR1 &= ~(ENABLE_IDLE_IRQ | RX_NOT_EMPTY_FLAG | ENABLE_PE_IRQ | RX_ENABLE);
-            usart_driver[1].priv->read_end = true;
-        }
-        else
-        {
-            usart_driver[1].priv->data_buffer_rx++;
-        }
-    }
-    else if(((sr_register & TXE_FLAG) == TXE_FLAG) &&
-             (usart_driver[1].priv->length_tx > 0))
-    {
-        usart_driver[1].reg->DR = *usart_driver[1].priv->data_buffer_tx;
-        usart_driver[1].priv->data_buffer_tx++;
-        usart_driver[1].priv->length_tx--;
-    }
-    else if((sr_register & TC_FLAG) == TC_FLAG)
-    {
-        usart_driver[1].reg->CR1 &= ~TX_ENABLE;
-        usart_driver[1].reg->CR1 &= ~(ENABLE_IDLE_IRQ | ENABLE_TC_IRQ | ENABLE_TXE_IRQ | ENABLE_PE_IRQ);
-        usart_driver[1].priv->write_end = true;
-    }
-    else
-    {
-    }
+    irq_management(&priv[1]);
     clear_pending_nvic_irq(IRQ_USART_2); /* Clear any USART 1 NVIC pending interrupt.   */
 }
-
-#endif /* USART */

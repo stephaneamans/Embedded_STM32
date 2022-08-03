@@ -73,14 +73,14 @@
 #define PA8_IRQ_CALLBACK   0
 
 #define PA9_PIN            9
-#define PA9_TYPE           input_pullup
+#define PA9_TYPE           output_altpushpull_2MHz
 #define PA9_IRQ_ENABLE     false
 #define PA9_IRQ_RISING     false
 #define PA9_IRQ_PRIORITY   prio2
 #define PA9_IRQ_CALLBACK   0
 
 #define PA10_PIN            10
-#define PA10_TYPE           output_altpushpull_2MHz
+#define PA10_TYPE           input_floating
 #define PA10_IRQ_ENABLE     false
 #define PA10_IRQ_RISING     false
 #define PA10_IRQ_PRIORITY   prio2

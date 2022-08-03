@@ -6,25 +6,24 @@
  ********************************/
 
 /* USART1 configuration                     */
-#define USART1_REGS                          USART1
-#define USART1_BAUDRATE                      115200
-#define USART1_LENGTH                        bits_data_9
-#define USART1_PARITY                        parity_odd
-#define USART1_STOP_BITS                     one
-#define USART1_MODE                          usart_dma
-#define USART1_IRQ_DMA_PRIORITY              prio4
-#define USART1_DMA_DRIVER_TX                 0
-#define USART1_DMA_DRIVER_RX                 0
+#define USART1_BASE               (APB2PERIPH_BASE + 0x00003800U)
+#define USART1_BAUDRATE           115200
+#define USART1_LENGTH             usart_data_9_bits
+#define USART1_PARITY             usart_parity_odd
+#define USART1_STOP_BITS          usart_one_stop_bit
+#define USART1_IRQ_ACTIVE         true  
+#define USART1_IRQ_PRIORITY       prio4
+#define USART1_DMA_ACTIVE         false
+
 
 /* USART2 configuration                     */
-#define USART2_REGS                          USART2
-#define USART2_BAUDRATE                      115200
-#define USART2_LENGTH                        bits_data_8
-#define USART2_PARITY                        parity_odd
-#define USART2_STOP_BITS                     one
-#define USART2_MODE                          usart_poll
-#define USART2_IRQ_DMA_PRIORITY              prio4
-#define USART2_DMA_DRIVER_TX                 0
-#define USART2_DMA_DRIVER_RX                 0
+#define USART2_BASE               (APB1PERIPH_BASE + 0x00004400U)
+#define USART2_BAUDRATE           115200
+#define USART2_LENGTH             usart_data_8_bits
+#define USART2_PARITY             usart_parity_odd
+#define USART2_STOP_BITS          usart_one_stop_bit
+#define USART2_IRQ_ACTIVE         false
+#define USART2_IRQ_PRIORITY       prio4
+#define USART2_DMA_ACTIVE         false
 
 #endif /* CONFIGURATION_USART_H_ */

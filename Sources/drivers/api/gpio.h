@@ -62,15 +62,6 @@ extern struct t_gpio_driver gpio_driver[GPIO_PIN_NUMBER];
 
 /* Functions prototypes:                       */
 
-/** Configure GPIO (port, pin, in/out, mode, interruption):
- *
- * \param driver: Pointer to the driver structure.
- *
- * \return: void.
- *
- */
-void gpio_init(struct t_gpio_driver *driver);
-
 /** Disable GPIO interruption:
  *
  * \param exti_number: number of the interruption line (EXTI) to disable.
@@ -107,5 +98,14 @@ void gpio_toggle(struct t_gpio_driver *driver);
 *
 */
 void gpio_write(struct t_gpio_driver *driver, bool state);
+
+/** Configure GPIO (port, pin, in/out, mode, interruption):
+ *
+ * \param driver: Pointer to the driver structure.
+ *
+ * \return: void.
+ *
+ */
+void gpio_initialization(struct t_gpio_driver *driver);
 
 #endif /* GPIO_H_ */

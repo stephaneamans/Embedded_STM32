@@ -10,10 +10,12 @@
 typedef enum{
     ERROR_OK                      = 0,
     ERROR_BUSY                    = 1,
-    ERROR_WRONG_VALUE             = 2,
-    ERROR_WRONG_CLOCK_SET         = 3,
-    ERROR_DRIVER_NOT_INITIALIZED  = 4,
-	ERROR_WRITTEN_VALUE_CORRUPTED = 5,
+    ERROR_BUSY_RX                 = 2,
+    ERROR_BUSY_TX                 = 3,
+    ERROR_WRONG_VALUE             = 4,
+    ERROR_WRONG_CLOCK_SET         = 5,
+    ERROR_DRIVER_NOT_INITIALIZED  = 6,
+	ERROR_WRITTEN_VALUE_CORRUPTED = 7,
 
     ERROR_USART_NOT_READY_TO_SEND = 10,
     ERROR_USART_NO_DATA_RECEIVED  = 11,

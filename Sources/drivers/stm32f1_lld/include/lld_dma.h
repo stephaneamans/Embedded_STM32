@@ -148,6 +148,6 @@ void dma_transfer_status(struct t_dma_channel_driver *driver, struct t_dma_statu
  * \return: void.
  *
  */
-void dma_init(struct t_dma_driver *config, struct t_dma_channel_driver *channel_config);
+void dma_initialization(struct t_dma_driver *config, struct t_dma_channel_driver *channel_config);
 
 #endif /* LLD_DMA_H_ */

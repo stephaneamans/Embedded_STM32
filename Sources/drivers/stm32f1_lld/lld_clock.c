@@ -418,12 +418,12 @@ void disable_clock(enum t_peripheral peripheral)
         RCC->APB1ENR &= ~CLK_ENABLE_TIM3_BIT_MASK;
         break;
 
-    case USART_1:
-        RCC->APB2ENR &= (!CLK_ENABLE_USART1_BIT_MASK);
+    case USART1:
+        RCC->APB2ENR &= ~CLK_ENABLE_USART1_BIT_MASK;
         break;
 
-    case USART_2:
-        RCC->APB1ENR &= (!CLK_ENABLE_USART2_BIT_MASK);
+    case USART2:
+        RCC->APB1ENR &= ~CLK_ENABLE_USART2_BIT_MASK;
         break;
 	}
 }
@@ -533,7 +533,7 @@ t_error_handling enable_clock(enum t_peripheral peripheral)
         }
         break;
 
-    case USART_1:
+    case USART1:
         RCC->APB2ENR |= CLK_ENABLE_USART1_BIT_MASK;
         if((RCC->APB2ENR & CLK_ENABLE_USART1_BIT_MASK) != CLK_ENABLE_USART1_BIT_MASK)
         {
@@ -541,7 +541,7 @@ t_error_handling enable_clock(enum t_peripheral peripheral)
         }
         break;
 
-    case USART_2:
+    case USART2:
         RCC->APB1ENR |= CLK_ENABLE_USART2_BIT_MASK;
         if((RCC->APB1ENR & CLK_ENABLE_USART2_BIT_MASK) != CLK_ENABLE_USART2_BIT_MASK)
         {
@@ -550,6 +550,68 @@ t_error_handling enable_clock(enum t_peripheral peripheral)
         break;
     }
     return error;
+}
+
+void reset_module(enum t_peripheral peripheral)
+{
+    switch(peripheral)
+    {
+    case DMA_1:
+        break;
+
+    case PORT_A:
+        RCC->APB2RSTR |= CLK_ENABLE_PORTA_BIT_MASK | CLK_ENABLE_AFIO_BIT_MASK;
+        break;
+
+    case PORT_B:
+        RCC->APB2RSTR |= CLK_ENABLE_PORTB_BIT_MASK | CLK_ENABLE_AFIO_BIT_MASK;
+        break;
+
+    case PORT_C:
+        RCC->APB2RSTR |= CLK_ENABLE_PORTC_BIT_MASK | CLK_ENABLE_AFIO_BIT_MASK;
+        break;
+
+    case PORT_D:
+        RCC->APB2RSTR |= CLK_ENABLE_PORTD_BIT_MASK | CLK_ENABLE_AFIO_BIT_MASK;
+        break;
+
+    case PORT_E:
+        break;
+
+    case PORT_F:
+        break;
+
+    case PORT_G:
+        break;
+
+    case SPI1:
+        RCC->APB2RSTR |= CLK_ENABLE_SPI1_BIT_MASK;
+        break;
+
+    case SPI2:
+        RCC->APB1RSTR |= CLK_ENABLE_SPI2_BIT_MASK;
+        break;
+
+    case TIM_1:
+        RCC->APB2RSTR |= CLK_ENABLE_TIM1_BIT_MASK;
+        break;
+
+    case TIM_2:
+        RCC->APB1RSTR |= CLK_ENABLE_TIM2_BIT_MASK;
+        break;
+
+    case TIM_3:
+        RCC->APB1RSTR |= CLK_ENABLE_TIM3_BIT_MASK;
+        break;
+
+    case USART1:
+        RCC->APB2RSTR |= CLK_ENABLE_USART1_BIT_MASK;
+        break;
+
+    case USART2:
+        RCC->APB1RSTR |= CLK_ENABLE_USART2_BIT_MASK;
+        break;
+    }
 }
 
 struct t_clock_driver *get_clock_driver(void)

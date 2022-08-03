@@ -440,7 +440,19 @@ t_error_handling spi_transfer_status(struct t_spi_driver *driver, struct t_spi_s
     return error;
 }
 
-void spi_init(struct t_spi_driver *config)
+void spi_uninitialization(struct t_spi_driver *driver)
+{
+    /* Reset the module */
+    reset_module(driver->peripheral);
+
+    /* Disable periperal clock */
+    disable_clock(driver->peripheral);
+
+    /* Clear private structure */
+    memset(driver->priv, 0, sizeof(struct t_spi_private));
+}   
+
+void spi_initialization(struct t_spi_driver *config)
 {
     /* Get the SoC frequency parameters */
     struct t_clock_driver *clock_driver = get_clock_driver();

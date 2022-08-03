@@ -162,7 +162,7 @@ void gpio_write(struct t_gpio_driver *driver, bool state)
     }
 }
 
-void gpio_init(struct t_gpio_driver *config)
+void gpio_initialization(struct t_gpio_driver *config)
 {
     uint32_t local_mask = 0; /* Local variable for masks operations. */
 
