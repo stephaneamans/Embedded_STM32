@@ -3,7 +3,9 @@
  *
  * Created on: Jun 8, 2020
  * Author: Stephane Amans
+ *
  */
+
 #ifndef LLD_DMA_H_
 #define LLD_DMA_H_
 
@@ -19,25 +21,6 @@ enum t_dma_data_type
     dma_8_bits,
     dma_16_bits,
     dma_32_bits
-};
-
-/* DMA driver structure definition :        */
-struct t_dma_driver
-{
-    uintptr_t base_address_dma;
-    enum t_peripheral peripheral;
-    uint16_t instance;
-    struct t_dma_private *priv;
-};
-
-/* DMA channel driver structure definition :        */
-struct t_dma_channel_driver
-{
-    uintptr_t base_address_dma_channel;
-    uint8_t channel_number;
-    bool mem2mem;
-    uint8_t dma_priority_level;
-    struct t_dma_channel_private *priv;
 };
 
 /* DMA client structure definition :        */
@@ -59,6 +42,33 @@ struct t_dma_status
     bool transfer_complete;
     bool half_transfer_complete;
     bool transfer_error;
+};
+
+/* DMA driver structure definition :        */
+struct t_dma_driver
+{
+    uintptr_t base_address_dma;
+    enum t_peripheral peripheral;
+    uint16_t instance;
+    struct t_dma_private *priv;
+};
+
+/* DMA channel driver structure definition :        */
+struct t_dma_channel_driver
+{
+    uintptr_t base_address_dma_channel;
+    uint8_t channel_number;
+    bool mem2mem;
+    uint8_t dma_priority_level;
+    struct
+    {
+        uint8_t priority;
+        bool transfer_complete;
+        bool half_transfer_complete;
+        bool transfer_error;
+        void (*callback)(struct t_dma_status*);
+    }irq;
+    struct t_dma_channel_private *priv;
 };
 
 /** Get the DMA half transfer complete flag:

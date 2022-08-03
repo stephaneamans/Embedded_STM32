@@ -9,12 +9,11 @@
 
 typedef enum{
     ERROR_OK                      = 0,
-    ERROR_WRONG_VALUE             = 1,
-    ERROR_WRONG_CLOCK_SET         = 2,
-    ERROR_WRONG_DATA_TYPE         = 3,
+    ERROR_BUSY                    = 1,
+    ERROR_WRONG_VALUE             = 2,
+    ERROR_WRONG_CLOCK_SET         = 3,
     ERROR_DRIVER_NOT_INITIALIZED  = 4,
-    ERROR_UNDEFINED               = 5,
-	ERROR_WRITTEN_VALUE_CORRUPTED = 6,
+	ERROR_WRITTEN_VALUE_CORRUPTED = 5,
 
     ERROR_USART_NOT_READY_TO_SEND = 10,
     ERROR_USART_NO_DATA_RECEIVED  = 11,
@@ -23,8 +22,16 @@ typedef enum{
     ERROR_USART_NOISE             = 14,
     ERROR_USART_OVERRUN           = 15,
 
-    ERROR_QUEUE_FULL              = 20,
-    ERROR_QUEUE_EMPTY             = 21,
+    ERROR_SPI_PERIPH_UNKNOWN      = 20,
+    ERROR_SPI_OVERUN              = 21,
+    ERROR_SPI_MODE                = 22,
+    ERROR_SPI_CRC                 = 23,
+    ERROR_SPI_UNDERUN             = 24,
+
+    ERROR_DMA_ERROR               = 29,
+
+    ERROR_QUEUE_FULL              = 30,
+    ERROR_QUEUE_EMPTY             = 31,
 
 }t_error_handling;
 

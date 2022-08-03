@@ -13,7 +13,8 @@ int main(void)
 //    output_clock(SYSCLOCK);
 
 //    print_test_header();
-//    spi_test();
+
+    spi_test();
 
     while(1)
     {

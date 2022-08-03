@@ -398,11 +398,11 @@ void disable_clock(enum t_peripheral peripheral)
     case PORT_G:
         break;
 
-	case SPI_0:
+	case SPI1:
         RCC->APB2ENR &= ~CLK_ENABLE_SPI1_BIT_MASK;
 	    break;
 
-    case SPI_1:
+    case SPI2:
         RCC->APB1ENR &= ~CLK_ENABLE_SPI2_BIT_MASK;
         break;
 
@@ -493,7 +493,7 @@ t_error_handling enable_clock(enum t_peripheral peripheral)
     case PORT_G:
         break;
 
-    case SPI_0:
+    case SPI1:
         RCC->APB2ENR |= CLK_ENABLE_SPI1_BIT_MASK;
         if((RCC->APB2ENR & CLK_ENABLE_SPI1_BIT_MASK) != CLK_ENABLE_SPI1_BIT_MASK)
         {
@@ -501,7 +501,7 @@ t_error_handling enable_clock(enum t_peripheral peripheral)
         }
         break;
 
-    case SPI_1:
+    case SPI2:
         RCC->APB1ENR |= CLK_ENABLE_SPI2_BIT_MASK;
         if((RCC->APB1ENR & CLK_ENABLE_SPI2_BIT_MASK) != CLK_ENABLE_SPI2_BIT_MASK)
         {

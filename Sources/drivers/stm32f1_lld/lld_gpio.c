@@ -6,8 +6,7 @@
  *
  *    Change log:
  *
- *    29/01/2022:
- *        Refactor driver
+ *    29/01/2022: Refactor driver
  *
  */
 
@@ -98,8 +97,8 @@ static void set_gpio_irq(struct t_gpio_driver *config)
     /* Associate the callbacks references. */
     if(config->pin <= 4)
     {
-        enable_nvic_irq(config->pin + 6);
-        set_nvic_priority(config->pin + 6, config->irq.priority);
+        enable_nvic_irq(config->pin + NVIC_GPIO_OFFSET);
+        set_nvic_priority(config->pin + NVIC_GPIO_OFFSET, config->irq.priority);
         gpio_callback[config->pin] = config->irq.callback;
     }
 
@@ -115,6 +114,51 @@ static void set_gpio_irq(struct t_gpio_driver *config)
     {
         priv_g.exti_reg->RTSR &= ~config->priv->gpio_pin_mask;  /* Disable interrupt / event on rising edge. */
         priv_g.exti_reg->FTSR |= config->priv->gpio_pin_mask;   /* Interrupt / event on falling edge.        */
+    }
+}
+
+void gpio_disable_irq(uint8_t exti_number)
+{
+    uint32_t local_mask = 1 << exti_number;
+    priv_g.exti_reg->IMR &= ~local_mask;  /* Mask interrupt line.                       */
+    priv_g.exti_reg->EMR &= ~local_mask;  /* Mask event line.                           */
+    priv_g.exti_reg->FTSR &= ~local_mask; /* Disable interrupt / event on falling edge. */
+    priv_g.exti_reg->RTSR &= ~local_mask; /* Disable interrupt / event on rising edge.  */
+    disable_nvic_irq(exti_number + 6);
+    gpio_callback[exti_number] = 0;
+}
+
+bool gpio_read(struct t_gpio_driver *driver)
+{
+    bool ret_val = false;
+    if((driver->priv->gpio_reg->IDR & driver->priv->gpio_pin_mask) == driver->priv->gpio_pin_mask)
+    {
+        ret_val = true;
+    }
+    return (ret_val);
+}
+
+void gpio_toggle(struct t_gpio_driver *driver)
+{
+    if((driver->priv->gpio_reg->ODR & driver->priv->gpio_pin_mask) == driver->priv->gpio_pin_mask)      /* If the pin is high level */
+    {
+        driver->priv->gpio_reg->BRR |= driver->priv->gpio_pin_mask;                                     /* then clear the pin.      */
+    }
+    else if((driver->priv->gpio_reg->ODR & driver->priv->gpio_pin_mask) != driver->priv->gpio_pin_mask) /* If the pin is low level  */
+    {
+        driver->priv->gpio_reg->BSRR |= driver->priv->gpio_pin_mask;                                    /* then set the pin.        */
+    }
+}
+
+void gpio_write(struct t_gpio_driver *driver, bool state)
+{
+    if(state == true)
+    {
+        driver->priv->gpio_reg->BSRR |= driver->priv->gpio_pin_mask;
+    }
+    else
+    {
+        driver->priv->gpio_reg->BRR |= driver->priv->gpio_pin_mask;
     }
 }
 
@@ -232,60 +276,14 @@ void gpio_init(struct t_gpio_driver *config)
     }
 }
 
-void gpio_disable_irq(uint8_t exti_number)
-{
-    uint32_t local_mask = 1 << exti_number;
-    priv_g.exti_reg->IMR &= ~local_mask;  /* Mask interrupt line.                       */
-    priv_g.exti_reg->EMR &= ~local_mask;  /* Mask event line.                           */
-    priv_g.exti_reg->FTSR &= ~local_mask; /* Disable interrupt / event on falling edge. */
-    priv_g.exti_reg->RTSR &= ~local_mask; /* Disable interrupt / event on rising edge.  */
-    disable_nvic_irq(exti_number + 6);
-    gpio_callback[exti_number] = 0;
-}
-
-bool gpio_read(struct t_gpio_driver *driver)
-{
-    bool ret_val = false;
-    if((driver->priv->gpio_reg->IDR & driver->priv->gpio_pin_mask) == driver->priv->gpio_pin_mask)
-    {
-        ret_val = true;
-    }
-    return (ret_val);
-}
-
-void gpio_toggle(struct t_gpio_driver *driver)
-{
-    if((driver->priv->gpio_reg->ODR & driver->priv->gpio_pin_mask) == driver->priv->gpio_pin_mask)      /* If the pin is high level */
-    {
-        driver->priv->gpio_reg->BRR |= driver->priv->gpio_pin_mask;                                     /* then clear the pin.      */
-    }
-    else if((driver->priv->gpio_reg->ODR & driver->priv->gpio_pin_mask) != driver->priv->gpio_pin_mask) /* If the pin is low level  */
-    {
-        driver->priv->gpio_reg->BSRR |= driver->priv->gpio_pin_mask;                                    /* then set the pin.        */
-    }
-}
-
-void gpio_write(struct t_gpio_driver *driver, bool state)
-{
-    if(state == true)
-    {
-        driver->priv->gpio_reg->BSRR |= driver->priv->gpio_pin_mask;
-    }
-    else
-    {
-        driver->priv->gpio_reg->BRR |= driver->priv->gpio_pin_mask;
-    }
-}
-
+/** GPIO0 IRQ handler.
+*
+* \param void: No parameter.
+*
+* \return: No return value.
+*/
 extern void EXTI0_IRQHandler(void)
 {
-    /** GPIO0 IRQ handler.
-    *
-    * \param void: No parameter.
-    *
-    * \return: No return value.
-    */
-
     if(gpio_callback[0] != 0)
     {
         gpio_callback[0](priv_g.exti_reg->PR); /* Call the GPIO0 subroutine.                  */
@@ -294,15 +292,14 @@ extern void EXTI0_IRQHandler(void)
     priv_g.exti_reg->PR = 0xFFFFFFFF;          /* Clear all GPIO0 pending interrupt flags.    */
 }
 
+/** GPIO1 IRQ handler.
+*
+* \param void: No parameter.
+*
+* \return: No return value.
+*/
 extern void EXTI1_IRQHandler(void)
 {
-    /** GPIO1 IRQ handler.
-    *
-    * \param void: No parameter.
-    *
-    * \return: No return value.
-    */
-
     if(gpio_callback[1] != 0)
     {
         gpio_callback[1](priv_g.exti_reg->PR); /* Call the GPIO1 subroutine.                  */
@@ -311,15 +308,14 @@ extern void EXTI1_IRQHandler(void)
     priv_g.exti_reg->PR = 0xFFFFFFFF;          /* Clear all GPIO1 pending interrupt flags.    */
 }
 
+/** GPIO2 IRQ handler.
+*
+* \param void: No parameter.
+*
+* \return : No return value.
+*/
 extern void EXTI2_IRQHandler(void)
 {
-    /** GPIO2 IRQ handler.
-    *
-    * \param void: No parameter.
-    *
-    * \return : No return value.
-    */
-
     if(gpio_callback[2] != 0)
     {
         gpio_callback[2](priv_g.exti_reg->PR); /* Call the GPIO2 subroutine.                  */
@@ -328,15 +324,14 @@ extern void EXTI2_IRQHandler(void)
     priv_g.exti_reg->PR = 0xFFFFFFFF;          /* Clear all GPIO2 pending interrupt flags.    */
 }
 
+/** GPIO3 IRQ handler.
+*
+* \param void : No parameter.
+*
+* \return : No return value.
+*/
 extern void EXTI3_IRQHandler(void)
 {
-    /**	GPIO3 IRQ handler.
-    *
-    * \param void : No parameter.
-    *
-    * \return : No return value.
-    */
-
     if(gpio_callback[3] != 0)
     {
         gpio_callback[3](priv_g.exti_reg->PR); /* Call the GPIO3 subroutine.                  */
@@ -345,15 +340,14 @@ extern void EXTI3_IRQHandler(void)
     priv_g.exti_reg->PR = 0xFFFFFFFF;          /* Clear all GPIO3 pending interrupt flags.    */
 }
 
+/** GPIO4 IRQ handler.
+*
+* \param void : No parameter.
+*
+* \return : No return value.
+*/
 extern void EXTI4_IRQHandler(void)
 {
-    /**	GPIO4 IRQ handler.
-    *
-    * \param void : No parameter.
-    *
-    * \return : No return value.
-    */
-
     if(gpio_callback[4] != 0)
     {
         gpio_callback[4](priv_g.exti_reg->PR); /* Call the GPIO4 subroutine.                  */

@@ -2,6 +2,7 @@
 #define BSP_CONFIGURATION_H
 
 #include <stdint.h>
+#include <stdio.h>
 
 #include "configuration_module_activation.h"
 #include "configuration_clock.h"
@@ -20,7 +21,6 @@
 #include "lld_spi.h"
 #include "usart.h"
 #include "timer.h"
-
 
 extern struct t_spi_driver spi_driver[SPI_IP_NUMBER];
 extern struct t_gpio_driver gpio_driver[GPIO_PIN_NUMBER];

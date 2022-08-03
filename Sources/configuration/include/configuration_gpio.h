@@ -32,34 +32,34 @@
 
 #define PA3_PIN            3
 #define PA3_TYPE           input_pullup
-#define PA3_IRQ_ENABLE     true
+#define PA3_IRQ_ENABLE     false
 #define PA3_IRQ_RISING     false
 #define PA3_IRQ_PRIORITY   prio2
 #define PA3_IRQ_CALLBACK   0
 
 #define PA4_PIN            4
-#define PA4_TYPE           input_pullup
+#define PA4_TYPE           output_pushpull_10MHz
 #define PA4_IRQ_ENABLE     false
 #define PA4_IRQ_RISING     false
 #define PA4_IRQ_PRIORITY   prio2
 #define PA4_IRQ_CALLBACK   0
 
 #define PA5_PIN            5
-#define PA5_TYPE           output_pushpull_50MHz
+#define PA5_TYPE           output_altpushpull_2MHz
 #define PA5_IRQ_ENABLE     false
 #define PA5_IRQ_RISING     false
 #define PA5_IRQ_PRIORITY   prio2
 #define PA5_IRQ_CALLBACK   0
 
 #define PA6_PIN            6
-#define PA6_TYPE           output_pushpull_50MHz
+#define PA6_TYPE           input_floating
 #define PA6_IRQ_ENABLE     false
 #define PA6_IRQ_RISING     false
 #define PA6_IRQ_PRIORITY   prio2
 #define PA6_IRQ_CALLBACK   0
 
 #define PA7_PIN            7
-#define PA7_TYPE           output_pushpull_2MHz
+#define PA7_TYPE           output_altpushpull_2MHz
 #define PA7_IRQ_ENABLE     false
 #define PA7_IRQ_RISING     false
 #define PA7_IRQ_PRIORITY   prio2
@@ -125,15 +125,15 @@
 #define GPIOB_BASE          (APB2PERIPH_BASE + 0x00000C00U)
 
 #define PB0_PIN             0
-#define PB0_TYPE            input_pullup
-#define PB0_IRQ_ENABLE      true
+#define PB0_TYPE            output_opendrain_10MHz
+#define PB0_IRQ_ENABLE      false
 #define PB0_IRQ_RISING      false
 #define PB0_IRQ_PRIORITY    prio2
 #define PB0_IRQ_CALLBACK    0
 
 #define PB1_PIN             1
 #define PB1_TYPE            input_pullup
-#define PB1_IRQ_ENABLE      true
+#define PB1_IRQ_ENABLE      false
 #define PB1_IRQ_RISING      false
 #define PB1_IRQ_PRIORITY    prio2
 #define PB1_IRQ_CALLBACK    0
@@ -154,7 +154,7 @@
 
 #define PB4_PIN             4
 #define PB4_TYPE            input_pullup
-#define PB4_IRQ_ENABLE      true
+#define PB4_IRQ_ENABLE      false
 #define PB4_IRQ_RISING      false
 #define PB4_IRQ_PRIORITY    prio2
 #define PB4_IRQ_CALLBACK    0
@@ -216,21 +216,21 @@
 #define PB12_IRQ_CALLBACK   0
 
 #define PB13_PIN            13
-#define PB13_TYPE           output_pushpull_50MHz
+#define PB13_TYPE           output_altpushpull_2MHz
 #define PB13_IRQ_ENABLE     false
 #define PB13_IRQ_RISING     false
 #define PB13_IRQ_PRIORITY   prio2
 #define PB13_IRQ_CALLBACK   0
 
 #define PB14_PIN            14
-#define PB14_TYPE           output_pushpull_50MHz
+#define PB14_TYPE           input_pullup
 #define PB14_IRQ_ENABLE     false
 #define PB14_IRQ_RISING     false
 #define PB14_IRQ_PRIORITY   prio2
 #define PB14_IRQ_CALLBACK   0
 
 #define PB15_PIN            15
-#define PB15_TYPE           output_pushpull_50MHz
+#define PB15_TYPE           output_altpushpull_2MHz
 #define PB15_IRQ_ENABLE     false
 #define PB15_IRQ_RISING     false
 #define PB15_IRQ_PRIORITY   prio2
@@ -241,7 +241,7 @@
 
 #define PC13_PIN            13
 #define PC13_TYPE           input_pullup
-#define PC13_IRQ_ENABLE     true
+#define PC13_IRQ_ENABLE     false
 #define PC13_IRQ_RISING     false
 #define PC13_IRQ_PRIORITY   prio2
 #define PC13_IRQ_CALLBACK   0
