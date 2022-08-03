@@ -16,6 +16,7 @@
 //#define TIM_3
 //#define USART_1
 //#define USART_2
+//#define SPI_1
 
 #endif /* CONFIGURATION_MODULE_ACTIVATION_H_ */
 

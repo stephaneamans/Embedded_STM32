@@ -328,7 +328,7 @@ void spi_slave_register(struct t_spi_slave *slave)
     {
         idx_pos++;
     };
-
+    
     /* Record the peripheral if it is the first */
     if(idx_pos == 0)
     {
