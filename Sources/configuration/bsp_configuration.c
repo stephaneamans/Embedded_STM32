@@ -9,35 +9,6 @@ const struct t_clock_config clock_config =
     .source = SOURCE,
 };
 
-const struct t_usart_config usartx_cfg[USART_IP_NUMBER] =
-{
-    [0] =
-    {
-        .reg = USART1_REGS,
-        .baudrate = USART1_BAUDRATE,
-        .length = USART1_LENGTH,
-        .parity = USART1_PARITY,
-        .stop = USART1_STOP_BITS,
-        .mode = USART1_MODE,
-        .irq_dma.priority = USART1_IRQ_DMA_PRIORITY,
-        .irq_dma.tx_dma_channel = USART1_DMA_DRIVER_TX,
-        .irq_dma.rx_dma_channel = USART1_DMA_DRIVER_RX,
-    },
-
-    [1] =
-    {
-        .reg = USART2_REGS,
-        .baudrate = USART2_BAUDRATE,
-        .length = USART2_LENGTH,
-        .parity = USART2_PARITY,
-        .stop = USART2_STOP_BITS,
-        .mode = USART2_MODE,
-        .irq_dma.priority = USART2_IRQ_DMA_PRIORITY,
-        .irq_dma.tx_dma_channel = USART2_DMA_DRIVER_TX,
-        .irq_dma.rx_dma_channel = USART2_DMA_DRIVER_RX,
-    },
-};
-
 struct t_dma_driver dma_driver[DMA_IP_NUMBER] =
 {
     [0] = 
@@ -913,6 +884,41 @@ struct t_spi_driver spi_driver[SPI_IP_NUMBER] =
     },
 };
 
+struct t_usart_driver usart_driver[USART_IP_NUMBER] =
+{
+    [0] =
+    {
+        .base_address   = USART1_BASE,
+        .peripheral     = USART1,
+        .instance       = 0,
+        .baudrate       = USART1_BAUDRATE,
+        .data_length    = USART1_LENGTH,
+        .parity         = USART1_PARITY,
+        .stop_bit       = USART1_STOP_BITS,
+        .irq.active     = USART1_IRQ_ACTIVE,
+        .irq.priority   = USART1_IRQ_PRIORITY,
+        .dma.active     = USART1_DMA_ACTIVE,
+        .dma.tx_channel = &dma_channel_driver[3],
+        .dma.rx_channel = &dma_channel_driver[4],
+    },
+
+    [1] =
+    {
+        .base_address   = USART2_BASE,
+        .peripheral     = USART2,
+        .instance       = 1,
+        .baudrate       = USART2_BAUDRATE,
+        .data_length    = USART2_LENGTH,
+        .parity         = USART2_PARITY,
+        .stop_bit       = USART2_STOP_BITS,
+        .irq.active     = USART2_IRQ_ACTIVE,
+        .irq.priority   = USART2_IRQ_PRIORITY,
+        .dma.active     = USART2_DMA_ACTIVE,
+        .dma.tx_channel = 0,
+        .dma.rx_channel = 0,
+    },
+};
+
 
 /* Static driver structures. */
 struct t_gpio_driver gpio_driver[GPIO_PIN_NUMBER];
@@ -971,6 +977,9 @@ struct t_dma_channel_driver *dma_ch7  = &dma_channel_driver[6];
 struct t_spi_driver *nrf24l01 = &spi_driver[0];
 struct t_spi_driver *max_xxxx = &spi_driver[1];
 
+struct t_usart_driver *usart1 = &usart_driver[0];
+struct t_usart_driver *usart2 = &usart_driver[1];
+
 
 void soc_core_configuration(void)
 {
@@ -981,28 +990,26 @@ void soc_peripherals_configuration(void)
 {
     for(uint8_t index = 0; index < GPIO_PIN_NUMBER; index++)
     {
-        gpio_init(&gpio_driver[index]);
+        gpio_initialization(&gpio_driver[index]);
     }
 
     for(uint8_t index = 0; index < DMA_IP_NUMBER; index++)
     {
         for(uint8_t index_channel = 0; index_channel < DMA_CHANNEL_NUMBER; index_channel++)
         {
-            dma_init(&dma_driver[index], &dma_channel_driver[index_channel]);
+            dma_initialization(&dma_driver[index], &dma_channel_driver[index_channel]);
         }
     }
 
-//	struct t_usart_driver *usart_driver = usart_get_driver(1);
-//    usart_init(usart_driver, &usartx_cfg[0]);
-//    usart_driver = usart_get_driver(2);
-//    usart_init(usart_driver, &usartx_cfg[1]);
-
     for(uint8_t index = 0; index < SPI_IP_NUMBER; index++)
     {
-        spi_init(&spi_driver[index]);
+        spi_initialization(&spi_driver[index]);
     }
-  
-//      extern struct t_dma_driver dma_driver[DMA_CHANNEL_NUMBER];
+
+    for(uint8_t index = 0; index < USART_IP_NUMBER; index++)
+    {
+        usart_initialization(&usart_driver[index]);
+    }
 
 //    timer_init(&timx_chanelx_cfg[0]);
 //    timer_init(&timx_chanelx_cfg[1]);

@@ -107,5 +107,7 @@ struct t_clock_driver *get_clock_driver(void);
  */
 void output_clock(enum t_clock_sources source);
 
+void reset_module(enum t_peripheral peripheral);
+
 
 #endif /* LLD_CLOCK_H_ */

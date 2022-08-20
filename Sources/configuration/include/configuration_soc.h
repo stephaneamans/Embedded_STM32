@@ -60,8 +60,8 @@ enum t_peripheral
     TIM_1,
     TIM_2,
     TIM_3,
-    USART_1,
-    USART_2
+    USART1,
+    USART2
 };
 
 #endif /* CONFIGURATION_SOC_H_ */

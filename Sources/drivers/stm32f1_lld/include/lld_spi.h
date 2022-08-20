@@ -128,6 +128,15 @@ t_error_handling spi_transfer(struct t_spi_driver *driver, struct t_spi_slave *s
  */
 t_error_handling spi_transfer_status(struct t_spi_driver *driver, struct t_spi_slave *slave);
 
+/** SPI uninitialization, reset the module and clear the private structure.
+ *
+ * \param driver: Pointer to the SPI driver structure.
+ *
+ * \return void.
+ *
+ */
+void spi_uninitialization(struct t_spi_driver *driver);
+
 /** SPI initialization.
  *
  * \param driver: Pointer to the SPI driver structure.
@@ -135,6 +144,6 @@ t_error_handling spi_transfer_status(struct t_spi_driver *driver, struct t_spi_s
  * \return void.
  *
  */
-void spi_init(struct t_spi_driver *driver);
+void spi_initialization(struct t_spi_driver *driver);
 
 #endif /* SPI_H_ */

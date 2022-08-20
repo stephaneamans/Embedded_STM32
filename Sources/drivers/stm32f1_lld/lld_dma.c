@@ -249,7 +249,7 @@ void dma_transfer_status(struct t_dma_channel_driver *driver, struct t_dma_statu
     driver->priv->dma->priv->reg->IFCR = DMA_ISR_IFCR_CH1_MASK << (driver->channel_number * 4);
 }
 
-void dma_init(struct t_dma_driver *config, struct t_dma_channel_driver *channel_config)
+void dma_initialization(struct t_dma_driver *config, struct t_dma_channel_driver *channel_config)
 {
     /* Affects the private structure instance to the private driver pointer */
     config->priv = &priv[config->instance];
