@@ -13,7 +13,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "configuration_soc.h"
+#include "driver_common.h"
 
 /* Memory or peripheral data length. */
 enum t_dma_data_type

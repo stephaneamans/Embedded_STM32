@@ -12,7 +12,6 @@
 #include <stdint.h>
 
 #include "error.h"
-#include "configuration_module_activation.h"
 
 /* Interruptions number enumeration definition:        */
 enum irq_id{

@@ -20,7 +20,7 @@
 
 #include "regbase_spi.h"
 
-#include "configuration_soc.h"
+#include "soc_configuration.h"
 
 /* Defines */
 #define SPI_CR1_CPHA_BIT_MASK       0x1

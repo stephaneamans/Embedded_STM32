@@ -14,8 +14,7 @@
 #include "regbase_flash.h"
 #include "regbase_reset_clock.h"
 
-#include "configuration_clock.h"
-#include "configuration_soc.h"
+#include "soc_configuration.h"
 
 /* Bits masks */
 #define RCC_CR_HSION_BIT_MASK             0x1
@@ -646,7 +645,7 @@ void output_clock(enum t_clock_sources source)
     }
 }
 
-t_error_handling clock_init(struct t_clock_driver *driver, const struct t_clock_config *config)
+t_error_handling clock_init(struct t_clock_driver *driver, struct t_clock_config *config)
 {
     uint8_t error = ERROR_OK;
 

@@ -1,7 +1,7 @@
 SRC = configuration/
 
 OBJS += \
-$(BUILD_OBJ_DIR)bsp_configuration.o
+$(BUILD_OBJ_DIR)soc_configuration.o
 
 C_INCLUDE += \
 -I$(ROOT_DIR)/configuration/include \

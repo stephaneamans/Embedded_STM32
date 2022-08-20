@@ -12,10 +12,13 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "driver_common.h"
 #include "lld_clock.h"
 #include "lld_nvic.h"
 #include "lld_exti.h"
 #include "regbase_gpio.h"
+
+#include "soc_configuration.h"
 
 /* MODE, GPIO configuration mode and configuration:  */
 enum t_gpio_type
@@ -57,8 +60,6 @@ struct t_gpio_driver
     }irq;
     struct t_gpio_private *priv;
 };
-
-extern struct t_gpio_driver gpio_driver[GPIO_PIN_NUMBER];
 
 /* Functions prototypes:                       */
 

@@ -8,6 +8,7 @@
 #define TEST_H_
 
 /* Include files:        */
+#include "soc_configuration.h"
 #include "error.h"
 
 /** Print test header welcome message.
