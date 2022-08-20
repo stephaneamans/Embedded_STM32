@@ -12,7 +12,7 @@
 
 #include "error.h"
 
-#include "configuration_soc.h"
+#include "driver_common.h"
 
 /* Clock units defines        */
 #define  HZ  *1
@@ -69,7 +69,7 @@ extern struct t_clock_driver clock_driver;
  * \return: Error code or ERROR_OK.
  *
  */
-t_error_handling clock_init(struct t_clock_driver *driver, const struct t_clock_config *config);
+t_error_handling clock_init(struct t_clock_driver *driver, struct t_clock_config *config);
 
 
 /** Disable the peripherak clock.

@@ -8,8 +8,6 @@
 /* Include files.        */
 #include "timer.h"
 
-#if defined(TIM_1) || defined(TIM_2) || defined(TIM_3)
-
 
 /** Enable an TIM port clock.
  *
@@ -392,8 +390,3 @@ extern void TIM1_IRQHandler(void)
         tim1_callback[3](TIM1->CCR4);
     }
 }
-
-#endif /* TIM */
-
-
-

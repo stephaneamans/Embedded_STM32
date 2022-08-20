@@ -11,12 +11,12 @@
 /* Include files:        */
 #include <stdint.h>
 
-#include "configuration_module_activation.h"
-#include "configuration_soc.h"
+#include "driver_common.h"
 #include "lld_clock.h"
 #include "lld_nvic.h"
 #include "regbase_tim.h"
 
+#include "soc_configuration.h"
 
 /* MISSING: ENABLE CAPTURE INTERRUPT  */
 
