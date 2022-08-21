@@ -12,16 +12,11 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "configuration_usart.h"
+#include "driver_common.h"
 #include "lld_clock.h"
 #include "lld_dma.h"
 #include "lld_nvic.h"
 #include "regbase_usart.h"
-
-#define USART_BUFFER_TX_LENGTH 256
-#define USART_BUFFER_RX_LENGTH 256
-
-#define USART_BUFFER_LENGTH 256
 
 enum t_usart_data_length
 {

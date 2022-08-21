@@ -13,9 +13,9 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "configuration_spi.h"
-
+#include "driver_common.h"
 #include "lld_dma.h"
+#include "lld_nvic.h"
 #include "gpio.h"
 
 /* Enum used to configure data type 8 or 16 bits. */

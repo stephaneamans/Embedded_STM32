@@ -9,9 +9,11 @@
  */
 
 /* Include files        */
-#include "bsp.h"
-#include "queues.h"
+#include <string.h>
+
 #include "usart.h"
+
+#include "soc_configuration.h"
 
 /* Defines */
 #define USART_CR1_RE_BIT_MASK         0x4

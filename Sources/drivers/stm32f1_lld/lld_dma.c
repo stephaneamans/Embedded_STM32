@@ -16,6 +16,8 @@
 #include "lld_nvic.h"
 #include "regbase_dma.h"
 
+#include "soc_configuration.h"
+
 /* Bits masks */
 #define DMA_CCR_EN_BIT_MASK        0x1U
 #define DMA_CCR_TCIE_BIT_MASK      0x2U

@@ -16,19 +16,14 @@
 #include "test.h"
 #include "lld_spi.h"
 
-#include "bsp_configuration.h"
-
 /* Defines */
 #define BUFFER_LENGTH_256   256
-
-extern struct t_gpio_driver *pa8;
 
 struct t_spi_slave component[3] =
 {
     [0] =
     {
         .freq_khz = 4000,
-		.cs = &gpio_driver[4],
         .data_length = spi_data_8_bits,
         .frame_direction = spi_frame_msb_first,
         .clock_phase = spi_clk_first,
@@ -38,7 +33,6 @@ struct t_spi_slave component[3] =
     [1] =
     {
         .freq_khz = 1125,
-		.cs = &gpio_driver[4],
         .data_length = spi_data_8_bits,
         .frame_direction = spi_frame_msb_first,
         .clock_phase = spi_clk_first,
@@ -48,7 +42,6 @@ struct t_spi_slave component[3] =
     [2] =
     {
         .freq_khz = 18000,
-		.cs = &gpio_driver[4],
         .data_length = spi_data_8_bits,
         .frame_direction = spi_frame_msb_first,
         .clock_phase = spi_clk_first,
@@ -58,6 +51,11 @@ struct t_spi_slave component[3] =
 
 t_error_handling spi_test(void)
 {
+
+    component[0].cs = &pa8;
+    component[1].cs = &pa8;
+    component[2].cs = &pa8;
+
     /* Declarations. */
     uint16_t buffer_write[BUFFER_LENGTH_256];
     uint16_t buffer_read[BUFFER_LENGTH_256];
@@ -79,16 +77,16 @@ t_error_handling spi_test(void)
 
 
 
-    struct t_spi_driver *spi1 = &spi_driver[0];
+    //struct t_spi_driver *spi1 = &spi_driver[0];
 
    	spi_slave_register(&component[0]);
    	spi_slave_register(&component[1]);
    	spi_slave_register(&component[2]);
 
-   	gpio_write(component[0].cs, true);
-    error = spi_transfer(spi1, &component[1], &data);
+   	gpio_write(component[1].cs, true);
+    error = spi_transfer(&spi1, &component[1], &data);
    
-    while(spi_transfer_status(spi1, &component[1]) != ERROR_OK){}
+    while(spi_transfer_status(&spi1, &component[1]) != ERROR_OK){}
 
     while(1)
     {
