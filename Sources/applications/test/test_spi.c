@@ -71,8 +71,8 @@ t_error_handling spi_test(void)
     buffer_write[0] = 0x02;
     buffer_write[1] = 0xFF;
     buffer_write[2] = 0xFF;
-    data.write_buffer = &buffer_write[0];
-    data.read_buffer = &buffer_read[0];
+    data.buffer_write = &buffer_write[0];
+    data.buffer_read = &buffer_read[0];
     data.length = 3;
 
 

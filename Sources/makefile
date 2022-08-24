@@ -13,6 +13,7 @@ TOOL_CHAIN = arm-none-eabi
 -include target/stm32f103c8tx/makefile.mk
 -include applications/test/makefile.mk
 -include drivers/makefile.mk
+-include drivers/platform/makefile.mk
 -include drivers/stm32f1_lld/makefile.mk
 -include drivers/stm32f1_lld/cpu/makefile.mk
 -include services/makefile.mk

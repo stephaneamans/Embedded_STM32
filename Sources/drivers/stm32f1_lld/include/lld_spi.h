@@ -49,8 +49,8 @@ enum t_spi_clock_polarity
 /* SPI data structure definition, this structure is used to encapsulate the data parameters. */
 struct t_spi_data
 {
-    uint16_t *write_buffer;
-    uint16_t *read_buffer;
+    uint16_t *buffer_write;
+    uint16_t *buffer_read;
     uint32_t length;
 };
 

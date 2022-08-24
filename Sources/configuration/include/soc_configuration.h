@@ -1,5 +1,5 @@
-#ifndef CONFIGURATION_SOC_H
-#define CONFIGURATION_SOC_H
+#ifndef SOC_CONFIGURATION_H_
+#define SOC_CONFIGURATION_H_
 
 #include "lld_afio.h"
 #include "lld_clock.h"
@@ -12,19 +12,11 @@
 #include "usart.h"
 #include "timer.h"
 
-/*********************************
- * Clock definitions
- ********************************/
-
 /* SOC parameters:   */
-
-#define MAX_SPI1_PERIPHERALS       2
-#define MAX_SPI2_PERIPHERALS       2
 
 #define SYSTICK_PERIOD_NS          28
 
 #define CLOCK_FREQ_MHZ 8 MHZ
-
 #define GPIO_PIN_NUMBER         37
 #define EXTI_CHANNEL_NUMBER     5
 #define USART_IP_NUMBER         2
@@ -187,4 +179,4 @@ usart_initialization(&usart1);      \
 usart_initialization(&usart2);      \
                                    \
 
-#endif /* CONFIGURATION_SOC_H_ */
+#endif /* SOC_CONFIGURATION_H_ */

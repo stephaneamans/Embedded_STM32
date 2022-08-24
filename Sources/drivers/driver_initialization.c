@@ -21,5 +21,5 @@ void soc_configuration(void)
 
 void platform_configuration(void)
 {
-
+    INIT_NRF24L01()
 }

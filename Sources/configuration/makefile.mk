@@ -1,6 +1,7 @@
 SRC = configuration/
 
 OBJS += \
+$(BUILD_OBJ_DIR)platform_configuration.o \
 $(BUILD_OBJ_DIR)soc_configuration.o
 
 C_INCLUDE += \

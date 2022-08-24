@@ -161,7 +161,7 @@ struct t_gpio_driver pa2 =
     .exti_config = &exti_config,
     .afio_config = &afio_config,
     .pin = 2,
-    .type = output_pushpull_50MHz,
+    .type = input_floating,
     .peripheral = PORT_A,
     .instance = 2,
     .irq.active = false,
@@ -176,7 +176,7 @@ struct t_gpio_driver pa3 =
   .exti_config = &exti_config,
   .afio_config = &afio_config,
   .pin = 3,
-  .type = input_pullup,
+  .type = output_pushpull_2MHz,
   .peripheral = PORT_A,
   .instance = 3,
   .irq.active = false,
@@ -191,7 +191,7 @@ struct t_gpio_driver pa4 =
   .exti_config = &exti_config,
   .afio_config = &afio_config,
   .pin = 4,
-  .type = output_pushpull_10MHz,
+  .type = output_pushpull_2MHz,
   .peripheral = PORT_A,
   .instance = 4,
   .irq.active = false,
@@ -200,13 +200,13 @@ struct t_gpio_driver pa4 =
   .irq.callback = 0,
 };
 
-struct t_gpio_driver pa5 =
+struct t_gpio_driver pa5 =                                      /* SCK */
 {
   .base_address_gpio = (APB2PERIPH_BASE + 0x00000800U),
   .exti_config = &exti_config,
   .afio_config = &afio_config,
   .pin = 5,
-  .type = output_altpushpull_2MHz,
+  .type = output_altpushpull_50MHz,
   .peripheral = PORT_A,
   .instance = 5,
   .irq.active = false,
@@ -215,7 +215,7 @@ struct t_gpio_driver pa5 =
   .irq.callback = 0,
 };
 
-struct t_gpio_driver pa6 =
+struct t_gpio_driver pa6 =                                          /* MISO */
 {
   .base_address_gpio = (APB2PERIPH_BASE + 0x00000800U),
   .exti_config = &exti_config,
@@ -230,13 +230,13 @@ struct t_gpio_driver pa6 =
   .irq.callback = 0,
 };
 
-struct t_gpio_driver pa7 =
+struct t_gpio_driver pa7 =                                         /* MOSI */
 {
   .base_address_gpio = (APB2PERIPH_BASE + 0x00000800U),
   .exti_config = &exti_config,
   .afio_config = &afio_config,
   .pin = 7,
-  .type = output_altpushpull_2MHz,
+  .type = output_altpushpull_50MHz,
   .peripheral = PORT_A,
   .instance = 7,
   .irq.active = false,

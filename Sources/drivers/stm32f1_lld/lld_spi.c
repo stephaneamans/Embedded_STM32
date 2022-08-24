@@ -21,6 +21,7 @@
 #include "regbase_spi.h"
 
 #include "soc_configuration.h"
+#include "platform_configuration.h"
 
 /* Defines */
 #define SPI_CR1_CPHA_BIT_MASK       0x1
@@ -55,8 +56,8 @@ struct t_spi_private
     uint32_t clock_frequency;
     uint16_t freq_khz;
     uint8_t last_config;
-    uint16_t *write_buffer;
-    uint16_t *read_buffer;
+    uint16_t *buffer_write;
+    uint16_t *buffer_read;
     uint32_t buffer_length;
     uint16_t buffer_index;
     struct t_dma_client spi_dma_tx;
@@ -182,8 +183,8 @@ static void spi_transfer_dma (struct t_spi_driver *driver, struct t_spi_slave *s
     driver->priv->spi_dma_tx.transfer_length = driver->priv->buffer_length;
     driver->priv->spi_dma_rx.transfer_length = driver->priv->buffer_length;
 
-    driver->priv->spi_dma_tx.memory_address = (uintptr_t)driver->priv->write_buffer;
-    driver->priv->spi_dma_rx.memory_address = (uintptr_t)driver->priv->read_buffer;
+    driver->priv->spi_dma_tx.memory_address = (uintptr_t)driver->priv->buffer_write;
+    driver->priv->spi_dma_rx.memory_address = (uintptr_t)driver->priv->buffer_read;
 
     driver->priv->spi_dma_tx.peripheral_address = (uintptr_t)&driver->priv->reg->DR;
     driver->priv->spi_dma_rx.peripheral_address = (uintptr_t)&driver->priv->reg->DR;
@@ -211,7 +212,7 @@ static void spi_transfer_irq(struct t_spi_driver *driver, struct t_spi_slave *sl
     driver->priv->slave = slave;
 
     /* Load buffer with data */
-    driver->priv->reg->DR = driver->priv->write_buffer[0];
+    driver->priv->reg->DR = driver->priv->buffer_write[0];
 
     /* Enable TX buffer empty and RX buffer not empty interrupts */
     driver->priv->reg->CR2 |= SPI_CR2_TXEIE_BIT_MASK | SPI_CR2_RXNEIE_BIT_MASK;
@@ -232,10 +233,10 @@ static void spi_transfer_poll(struct t_spi_driver *driver, struct t_spi_slave *s
 
     while(driver->priv->buffer_length > 0)
     {
-        driver->priv->reg->DR = driver->priv->write_buffer[driver->priv->buffer_index];
+        driver->priv->reg->DR = driver->priv->buffer_write[driver->priv->buffer_index];
         while((driver->priv->reg->SR & SPI_SR_TXE_BIT_MASK) != SPI_SR_TXE_BIT_MASK){}
         while((driver->priv->reg->SR & SPI_SR_RXNE_BIT_MASK) != SPI_SR_RXNE_BIT_MASK){}
-        driver->priv->read_buffer[driver->priv->buffer_index] = driver->priv->reg->DR;
+        driver->priv->buffer_read[driver->priv->buffer_index] = driver->priv->reg->DR;
         driver->priv->buffer_index++;
         driver->priv->buffer_length--;
     };
@@ -364,8 +365,8 @@ t_error_handling spi_transfer(struct t_spi_driver *driver, struct t_spi_slave *s
     t_error_handling error = ERROR_OK;
 
     /* Save transfer's SPI data parameters */
-    driver->priv->write_buffer = data->write_buffer;
-    driver->priv->read_buffer = data->read_buffer;
+    driver->priv->buffer_write = data->buffer_write;
+    driver->priv->buffer_read = data->buffer_read;
     driver->priv->buffer_length = data->length;
 
     /* If the slave is not the same, change slave configuration, the peripheral must be registered in the local base */
@@ -542,10 +543,10 @@ void SPI1_IRQHandler(void)
     {
         if(priv[0].buffer_length > 0)
         {
-            priv[0].read_buffer[priv[0].buffer_index] = priv[0].reg->DR;
+            priv[0].buffer_read[priv[0].buffer_index] = priv[0].reg->DR;
             priv[0].buffer_length--;
             priv[0].buffer_index++;
-            priv[0].reg->DR = priv[0].write_buffer[priv[0].buffer_index];
+            priv[0].reg->DR = priv[0].buffer_write[priv[0].buffer_index];
         }
         else
         {
@@ -570,10 +571,10 @@ void SPI2_IRQHandler(void)
     {
         if(priv[1].buffer_length > 0)
         {
-            priv[1].read_buffer[priv[0].buffer_index] = priv[1].reg->DR;
+            priv[1].buffer_read[priv[0].buffer_index] = priv[1].reg->DR;
             priv[1].buffer_length--;
             priv[1].buffer_index++;
-            priv[1].reg->DR = priv[0].write_buffer[priv[1].buffer_index];
+            priv[1].reg->DR = priv[0].buffer_write[priv[1].buffer_index];
         }
         else
         {

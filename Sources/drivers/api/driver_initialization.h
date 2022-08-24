@@ -10,6 +10,7 @@
 #define DRIVER_INITIALIZATION_H_
 
 /* Include files:        */
+#include "platform_configuration.h"
 #include "soc_configuration.h"
 
 /** Configure elements of the SoC.
