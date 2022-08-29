@@ -14,6 +14,7 @@ TOOL_CHAIN = arm-none-eabi
 -include applications/test/makefile.mk
 -include drivers/makefile.mk
 -include drivers/stm32f1_lld/makefile.mk
+-include drivers/stm32f1_lld/cpu/makefile.mk
 -include services/makefile.mk
 -include configuration/makefile.mk
 

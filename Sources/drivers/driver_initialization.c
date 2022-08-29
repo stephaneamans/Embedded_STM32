@@ -12,6 +12,7 @@
 void soc_configuration(void)
 {
     clock_init(&clock_driver, &clock_config);
+    INIT_SYSTICK()
     INIT_DMA()
     INIT_GPTO()
     INIT_SPI()
