@@ -9,6 +9,14 @@ struct t_clock_config clock_config =
     .source = PLL_HSE,
 };
 
+struct t_systick_driver systick =
+{
+    .systick_on_processor_clock = true,
+    .reload_value = 0xFFFFFF,
+    .irq.active = false,
+    .irq.callback = 0,
+};
+
 struct t_dma_driver dma1 =
 {
     .base_address_dma                   = (AHBPERIPH_BASE + 0x00000000U),
@@ -243,7 +251,7 @@ struct t_gpio_driver pa8 =
   .exti_config = &exti_config,
   .afio_config = &afio_config,
   .pin = 8,
-  .type = output_opendrain_10MHz,
+  .type = output_altpushpull_50MHz,
   .peripheral = PORT_A,
   .instance = 8,
   .irq.active = false,
@@ -438,7 +446,7 @@ struct t_gpio_driver pb5 =
   .exti_config = &exti_config,
   .afio_config = &afio_config,
   .pin = 5,
-  .type = input_pullup,
+  .type = output_pushpull_50MHz,
   .peripheral = PORT_B,
   .instance = 21,
   .irq.active = false,
@@ -603,7 +611,7 @@ struct t_gpio_driver pc13 =
   .exti_config = &exti_config,
   .afio_config = &afio_config,
   .pin = 13,
-  .type = input_pullup,
+  .type = output_pushpull_50MHz,
   .peripheral = PORT_C,
   .instance = 32,
   .irq.active = false,
