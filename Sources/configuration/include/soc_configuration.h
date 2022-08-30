@@ -5,9 +5,10 @@
 #include "lld_clock.h"
 #include "lld_dma.h"
 #include "lld_exti.h"
+#include "lld_spi.h"
 
 #include "gpio.h"
-#include "lld_spi.h"
+#include "systick.h"
 #include "usart.h"
 #include "timer.h"
 
@@ -19,6 +20,8 @@
 
 #define MAX_SPI1_PERIPHERALS       2
 #define MAX_SPI2_PERIPHERALS       2
+
+#define SYSTICK_PERIOD_NS          28
 
 #define CLOCK_FREQ_MHZ 8 MHZ
 
@@ -59,6 +62,8 @@
 #define NVIC_USART_OFFSET     37
 
 extern struct t_clock_config clock_config;
+
+extern struct t_systick_driver systick;
 
 extern struct t_gpio_driver pa0;
 extern struct t_gpio_driver pa1;
@@ -112,6 +117,11 @@ extern struct t_spi_driver spi2;
 
 extern struct t_usart_driver usart1;
 extern struct t_usart_driver usart2;
+
+#define INIT_SYSTICK()             \
+                                   \
+systick_initialization(&systick);  \
+                                   \
 
 #define INIT_GPTO()        \
 gpio_initialization(&pa0);  \
