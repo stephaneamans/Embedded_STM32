@@ -56,8 +56,8 @@ struct t_spi_private
     uint32_t clock_frequency;
     uint16_t freq_khz;
     uint8_t last_config;
-    uint16_t *buffer_write;
-    uint16_t *buffer_read;
+    uint8_t *buffer_write;
+    uint8_t *buffer_read;
     uint32_t buffer_length;
     uint16_t buffer_index;
     struct t_dma_client spi_dma_tx;
@@ -230,7 +230,6 @@ static void spi_transfer_irq(struct t_spi_driver *driver, struct t_spi_slave *sl
 static void spi_transfer_poll(struct t_spi_driver *driver, struct t_spi_slave *slave)
 {
     driver->priv->buffer_index = 0;
-
     while(driver->priv->buffer_length > 0)
     {
         driver->priv->reg->DR = driver->priv->buffer_write[driver->priv->buffer_index];
@@ -468,8 +467,7 @@ void spi_initialization(struct t_spi_driver *config)
     config->priv->reg = (struct t_spi_regs*)config->base_address;
 
     /* Clear the record table. */
-    memset(slaves_record, 0,
-           sizeof(struct t_spi_slave[MAX_SPI1_PERIPHERALS + MAX_SPI2_PERIPHERALS]));
+    memset(slaves_record, 0, (MAX_SPI1_PERIPHERALS + MAX_SPI2_PERIPHERALS) * 4);
 
     /* For any SPI instance */
     if(config->instance == 0)

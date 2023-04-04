@@ -57,8 +57,8 @@ t_error_handling spi_test(void)
     component[2].cs = &pa8;
 
     /* Declarations. */
-    uint16_t buffer_write[BUFFER_LENGTH_256];
-    uint16_t buffer_read[BUFFER_LENGTH_256];
+    uint8_t buffer_write[BUFFER_LENGTH_256];
+    uint8_t buffer_read[BUFFER_LENGTH_256];
     t_error_handling error = ERROR_OK;
     struct t_spi_data data;
 
