@@ -15,6 +15,10 @@
 
 #include "lld_spi.h"
 
+#include "gpio.h"
+extern struct t_gpio_driver pb9;
+
+void test(void);
 
 /* Enum used to configure the CRC size. */
 enum e_crc_size
@@ -92,13 +96,19 @@ t_error_handling nrf24l01_read_register_request(struct t_nrf24l01_driver *driver
 
 t_error_handling nrf24l01_write_register_request(struct t_nrf24l01_driver *driver,
                                                  uint8_t periph_reg,
-                                                 uint8_t value,
+                                                 uint8_t *value,
                                                  uint8_t byte_number);
 
 
 t_error_handling nrf24l01_read_write_status(struct t_nrf24l01_driver *driver,
                                             uint8_t *read_value,
                                             uint8_t *status);
+
+
+
+//t_error_handling nrf24l01_transmit(struct t_nrf24l01_driver *driver, uint8_t address, uint8_t *data, uint8_t length);
+void nrf24l01_transmit(struct t_nrf24l01_driver *driver);
+void nrf24l01_receive(struct t_nrf24l01_driver *driver);
 
 
 /** Configure NRF24L01 with the generated parameters.

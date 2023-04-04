@@ -8,8 +8,8 @@
 #define MAX_SPI1_PERIPHERALS       2
 #define MAX_SPI2_PERIPHERALS       2
 
-#define NRF24L01_BUFFER_TX_LENGTH  32
-#define NRF24L01_BUFFER_RX_LENGTH  32
+#define NRF24L01_BUFFER_TX_LENGTH  7
+#define NRF24L01_BUFFER_RX_LENGTH  7
 
 extern struct t_nrf24l01_driver nrf24l01;
 

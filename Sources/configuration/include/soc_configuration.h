@@ -13,8 +13,10 @@
 #include "timer.h"
 
 /* SOC parameters:   */
-
-#define SYSTICK_PERIOD_NS          28
+#define SYSTICK_PERIOD_NS          224
+#define DELAY_10_MS                44643
+#define DELAY_1_5_MS               6697
+#define DELAY_500_US               2232
 
 #define CLOCK_FREQ_MHZ 8 MHZ
 #define GPIO_PIN_NUMBER         37
