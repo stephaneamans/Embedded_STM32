@@ -368,6 +368,9 @@ void disable_clock(enum t_peripheral peripheral)
 {
 	switch(peripheral)
 	{
+    case SYSTICK:
+        break;
+
 	case DMA_1:
 		RCC->AHBENR &= ~CLK_ENABLE_DMA1_BIT_MASK;
 		break;
@@ -432,6 +435,9 @@ t_error_handling enable_clock(enum t_peripheral peripheral)
 	t_error_handling error = ERROR_OK;
     switch(peripheral)
     {
+    case SYSTICK:
+        break;
+
     case DMA_1:
     	RCC->AHBENR |= CLK_ENABLE_DMA1_BIT_MASK;
     	if((RCC->AHBENR & CLK_ENABLE_DMA1_BIT_MASK) != CLK_ENABLE_DMA1_BIT_MASK)
@@ -555,6 +561,9 @@ void reset_module(enum t_peripheral peripheral)
 {
     switch(peripheral)
     {
+    case SYSTICK:
+        break;
+
     case DMA_1:
         break;
 

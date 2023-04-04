@@ -55,6 +55,8 @@
 #define NVIC_SPI_OFFSET       35
 #define NVIC_USART_OFFSET     37
 
+extern void test(void);
+
 extern struct t_clock_config clock_config;
 
 extern struct t_systick_driver systick;

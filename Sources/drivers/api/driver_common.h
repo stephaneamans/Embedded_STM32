@@ -11,6 +11,7 @@
 /* SoC internal peripherals enumeration:        */
 enum t_peripheral
 {
+    SYSTICK,
     DMA_1,
     PORT_A,
     PORT_B,

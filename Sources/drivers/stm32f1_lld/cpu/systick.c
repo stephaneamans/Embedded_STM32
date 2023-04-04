@@ -7,6 +7,8 @@
  */
 
 /* Include files        */
+#include <stdio.h>
+
 #include "systick.h"
 
 /* Peripheral SYSTICK base pointer address */
@@ -43,7 +45,12 @@ void systick_enable_irq(void)
 bool systick_get_parameters(uint32_t *current_value)
 {
     bool zero = false;
-    *current_value = SYSTICK->CVR;
+
+    if(current_value != NULL)
+    {
+        *current_value = SYSTICK->CVR;
+    }
+
     if((SYSTICK->CVR & SYSTICK_CSR_COUNTFLAG_BIT_MASK) == SYSTICK_CSR_COUNTFLAG_BIT_MASK)
     {
         zero = true;

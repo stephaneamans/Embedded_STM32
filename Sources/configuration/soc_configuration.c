@@ -11,9 +11,9 @@ struct t_clock_config clock_config =
 
 struct t_systick_driver systick =
 {
-    .systick_on_processor_clock = true,
+    .systick_on_processor_clock = false,
     .reload_value = 0xFFFFFF,
-    .irq.active = false,
+    .irq.active = true,
     .irq.callback = 0,
 };
 
