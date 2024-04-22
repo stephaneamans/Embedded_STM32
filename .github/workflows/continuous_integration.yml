@@ -1,0 +1,23 @@
+name: C CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: update arm_none_eabi_gcc
+      run: |
+        sudo apt-get -y install gcc-arm-none-eabi
+    - name: make
+      run: |
+        cd 02-software
+        make clean
+        make
+        echo "Build directory :"
+        ls build
+        echo "Build objects directory :"
+        ls build/objects
