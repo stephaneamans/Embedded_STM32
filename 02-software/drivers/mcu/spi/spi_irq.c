@@ -31,8 +31,6 @@
 #define SPI_CR1_SSE_BIT_MASK        0x200
 #define SPI_CR1_DFF_BIT_MASK        0x800
 
-#define SPI_CR2_RXDMAEN_BIT_MASK    0x1
-#define SPI_CR2_TXDMAEN_BIT_MASK    0x2
 #define SPI_CR2_SSOE_BIT_MASK       0x4
 #define SPI_CR2_RXNEIE_BIT_MASK     0x40
 #define SPI_CR2_TXEIE_BIT_MASK      0x80
@@ -393,7 +391,7 @@ void spi_initialization(struct t_spi_driver *config)
     config->priv->last_config = UINT8_MAX;
 
     enable_nvic_irq(config->instance + NVIC_SPI_OFFSET);
-    set_nvic_priority(config->instance + NVIC_SPI_OFFSET, config->irq.priority);
+    set_nvic_priority(config->instance + NVIC_SPI_OFFSET, config->irq_priority);
 }
 
 /** SPI1 IRQ handler.
