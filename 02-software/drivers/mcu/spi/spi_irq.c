@@ -48,8 +48,6 @@ struct t_spi_private
 {
     struct t_spi_regs *reg;
     struct t_spi_slave *slave;
-    uint32_t clock_frequency;
-    uint16_t freq_khz;
     uint8_t last_config;
     uint16_t *write_buffer;
     uint16_t *read_buffer;
@@ -155,25 +153,34 @@ static t_error_handling compute_frequency_divider(uint32_t bus_frequency, uint16
  */
 static t_error_handling update_spi_configuration(const struct t_spi_driver *driver, struct t_spi_slave *slave)
 {
+    uint16_t local_mask;
+    uint32_t bus_frequency;
     t_error_handling error = ERROR_OK;
 
-    if(slave->freq_khz != driver->priv->freq_khz)
+    /* Get the SoC frequency parameters */
+    struct t_clock_driver *clock_driver = get_clock_driver();
+
+    if(config->instance == 0)
     {
-        uint16_t local_mask;
-        if(compute_frequency_divider(driver->priv->clock_frequency,
-                                     slave->freq_khz,
-                                     (uint8_t*)&local_mask) == ERROR_OK)
-        {
-            driver->priv->reg->CR1 &= ~SPI_CR1_BR_BIT_MASK;
-            driver->priv->reg->CR1 |= local_mask;
-            driver->priv->freq_khz = slave->freq_khz;
-        }
-        else
-        {
-            error = ERROR_WRONG_CLOCK_SET;
-        }
+   	    bus_frequency = clock_driver->APB2_clk_freq;
+    }
+    else if(config->instance == 1)
+    {
+    	bus_frequency = clock_driver->APB1_clk_freq;
     }
 
+    if(compute_frequency_divider(bus_frequency,
+                                 slave->freq_khz,
+                                 (uint8_t*)&local_mask) == ERROR_OK)
+    {
+        driver->priv->reg->CR1 &= ~SPI_CR1_BR_BIT_MASK;
+        driver->priv->reg->CR1 |= local_mask;
+    }
+    else
+    {
+        error = ERROR_WRONG_CLOCK_SET;
+    }
+    
     if(slave->clock_phase == spi_clk_first)
     {
         driver->priv->reg->CR1 &= ~SPI_CR1_CPHA_BIT_MASK;
@@ -350,9 +357,6 @@ void spi_uninitialization(struct t_spi_driver *driver)
 
 void spi_initialization(struct t_spi_driver *config)
 {
-    /* Get the SoC frequency parameters */
-    struct t_clock_driver *clock_driver = get_clock_driver();
-
     /* Associate private instance to the driver */
     config->priv = &priv[config->instance];
 
@@ -365,16 +369,6 @@ void spi_initialization(struct t_spi_driver *config)
     /* Clear the record table. */
     memset(slaves_record, 0,
            sizeof(struct t_spi_slave[MAX_SPI1_PERIPHERALS + MAX_SPI2_PERIPHERALS]));
-
-    /* For any SPI instance */
-    if(config->instance == 0)
-    {
-   	    config->priv->clock_frequency = clock_driver->APB2_clk_freq;
-    }
-    else if(config->instance == 1)
-    {
-    	config->priv->clock_frequency = clock_driver->APB1_clk_freq;
-    }
 
     enable_clock(config->peripheral);
 
