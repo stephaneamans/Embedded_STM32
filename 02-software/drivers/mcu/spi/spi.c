@@ -52,7 +52,6 @@ struct t_spi_private
 {
     struct t_spi_regs *reg;
     struct t_spi_slave *slave;
-    uint32_t clock_frequency;
     uint16_t freq_khz;
     uint8_t last_config;
     uint16_t *write_buffer;
@@ -62,9 +61,6 @@ struct t_spi_private
     struct t_dma_client spi_dma_tx;
     struct t_dma_client spi_dma_rx;
     struct
-    {
-        void (*transfer)(struct t_spi_driver *driver, struct t_spi_slave *slave);
-    }methods;
 };
 
 /* Static SPI private and slaves record structure instances. */
@@ -145,9 +141,21 @@ static t_error_handling compute_frequency_divider(uint32_t bus_frequency, uint16
 static t_error_handling update_spi_configuration(const struct t_spi_driver *driver, struct t_spi_slave *slave)
 {
     t_error_handling error = ERROR_OK;
-//    if(slave->freq_khz != driver->priv->freq_khz) REMOVE
+    struct t_clock_driver *clock_driver = get_clock_driver(); /* Get the SoC frequency parameters */
     uint16_t local_mask;
-    if(compute_frequency_divider(driver->priv->clock_frequency,
+    uint32_t clock_frequency;
+
+    /* For any SPI instance */
+    if(driver->instance == 0)
+    {
+   	    clock_frequency = clock_driver->APB2_clk_freq;
+    }
+    else if(driver->instance == 1)
+    {
+    	clock_frequency = clock_driver->APB1_clk_freq;
+    }
+
+    if(compute_frequency_divider(clock_frequency,
                                  slave->freq_khz,
                                  (uint8_t*)&local_mask) == ERROR_OK)
     {
@@ -335,9 +343,6 @@ void spi_uninitialization(struct t_spi_driver *driver)
 
 void spi_initialization(struct t_spi_driver *config)
 {
-    /* Get the SoC frequency parameters */
-    struct t_clock_driver *clock_driver = get_clock_driver();
-
     /* Associate private instance to the driver */
     config->priv = &priv[config->instance];
 
@@ -350,16 +355,6 @@ void spi_initialization(struct t_spi_driver *config)
     /* Clear the record table. */
     memset(slaves_record, 0,
            sizeof(struct t_spi_slave[MAX_SPI1_PERIPHERALS + MAX_SPI2_PERIPHERALS]));
-
-    /* For any SPI instance */
-    if(config->instance == 0)
-    {
-   	    config->priv->clock_frequency = clock_driver->APB2_clk_freq;
-    }
-    else if(config->instance == 1)
-    {
-    	config->priv->clock_frequency = clock_driver->APB1_clk_freq;
-    }
 
     enable_clock(config->peripheral);
 
