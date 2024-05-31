@@ -71,29 +71,8 @@ struct t_spi_private
 static struct t_spi_private priv[SPI_IP_NUMBER];
 static struct t_spi_slave *slaves_record[MAX_SPI1_PERIPHERALS + MAX_SPI2_PERIPHERALS];
 
-/** Chip select pin control low state.
- *
- * \param slave: Pointer to the slave parameters.
- *
- * \return void;
- *
- */
-static void cs_low(struct t_spi_slave *slave)
-{
-    gpio_write(slave->cs, false);
-};
-
-/** Chip select pin control high state.
- *
- * \param slave: Pointer to the slave parameters.
- *
- * \return void;
- *
- */
-static void cs_high(struct t_spi_slave *slave)
-{
-     gpio_write(slave->cs, true);
-};
+#define CS_LOW   gpio_write(slave->cs, false);  /* Chip select pin control low state  */
+#define CS_HIGH  gpio_write(slave->cs, true);   /* Chip select pin control high state */
 
 /** Compute frequency divider code.
  *
@@ -155,93 +134,6 @@ static t_error_handling compute_frequency_divider(uint32_t bus_frequency, uint16
     return error;
 };
 
-/** Start a SPI transfer by DMA.
- *
- * \param driver: Pointer to the SPI driver.
- * \param slave: Pointer to the slave instance.
- *
- * \return : void.
- *
- */
-static void spi_transfer_dma (struct t_spi_driver *driver, struct t_spi_slave *slave)
-{
-    driver->priv->slave = slave;
-    if(slave->data_length == spi_data_8_bits)
-    {
-        driver->priv->spi_dma_tx.mem_data_type = dma_8_bits;
-    }
-
-    else
-    {
-        driver->priv->spi_dma_tx.mem_data_type = dma_16_bits;
-    }
-
-    /* Save transfer parameters. */
-    driver->priv->spi_dma_rx.mem_data_type = dma_16_bits;
-
-    driver->priv->spi_dma_tx.transfer_length = driver->priv->buffer_length;
-    driver->priv->spi_dma_rx.transfer_length = driver->priv->buffer_length;
-
-    driver->priv->spi_dma_tx.memory_address = (uintptr_t)driver->priv->write_buffer;
-    driver->priv->spi_dma_rx.memory_address = (uintptr_t)driver->priv->read_buffer;
-
-    driver->priv->spi_dma_tx.peripheral_address = (uintptr_t)&driver->priv->reg->DR;
-    driver->priv->spi_dma_rx.peripheral_address = (uintptr_t)&driver->priv->reg->DR;
-
-    /* Set DMA channels transfer parameters */
-    dma_set_transfer(driver->dma.tx_channel, &driver->priv->spi_dma_tx);
-    dma_set_transfer(driver->dma.rx_channel, &driver->priv->spi_dma_rx);
-
-    /* Activate DMA transfers */
-    dma_start_transfer(driver->dma.tx_channel);
-    dma_start_transfer(driver->dma.rx_channel);
-}
-
-/** Start a SPI transfer by interrupt.
- *
- * \param driver: Pointer to the SPI driver.
- * \param slave: Pointer to the slave instance.
- *
- * \return : void.
- *
- */
-static void spi_transfer_irq(struct t_spi_driver *driver, struct t_spi_slave *slave)
-{
-    driver->priv->buffer_index = 0;
-    driver->priv->slave = slave;
-
-    /* Load buffer with data */
-    driver->priv->reg->DR = driver->priv->write_buffer[0];
-
-    /* Enable TX buffer empty and RX buffer not empty interrupts */
-    driver->priv->reg->CR2 |= SPI_CR2_TXEIE_BIT_MASK | SPI_CR2_RXNEIE_BIT_MASK;
-}
-
-/** Start a SPI transfer by polling.
- *
- * \param driver: Pointer to the SPI driver.
- * \param slave: Pointer to the slave instance.
- * \param data: Pointer to the data structure
- *
- * \return : void.
- *
- */
-static void spi_transfer_poll(struct t_spi_driver *driver, struct t_spi_slave *slave)
-{
-    driver->priv->buffer_index = 0;
-
-    while(driver->priv->buffer_length > 0)
-    {
-        driver->priv->reg->DR = driver->priv->write_buffer[driver->priv->buffer_index];
-        while((driver->priv->reg->SR & SPI_SR_TXE_BIT_MASK) != SPI_SR_TXE_BIT_MASK){}
-        while((driver->priv->reg->SR & SPI_SR_RXNE_BIT_MASK) != SPI_SR_RXNE_BIT_MASK){}
-        driver->priv->read_buffer[driver->priv->buffer_index] = driver->priv->reg->DR;
-        driver->priv->buffer_index++;
-        driver->priv->buffer_length--;
-    };
-    cs_high(slave);
-}
-
 /** Update the peripheral configuration.
  *
  * \param driver: Pointer to the SPI driver.
@@ -253,24 +145,21 @@ static void spi_transfer_poll(struct t_spi_driver *driver, struct t_spi_slave *s
 static t_error_handling update_spi_configuration(const struct t_spi_driver *driver, struct t_spi_slave *slave)
 {
     t_error_handling error = ERROR_OK;
-
-    if(slave->freq_khz != driver->priv->freq_khz)
+//    if(slave->freq_khz != driver->priv->freq_khz) REMOVE
+    uint16_t local_mask;
+    if(compute_frequency_divider(driver->priv->clock_frequency,
+                                 slave->freq_khz,
+                                 (uint8_t*)&local_mask) == ERROR_OK)
     {
-        uint16_t local_mask;
-        if(compute_frequency_divider(driver->priv->clock_frequency,
-                                     slave->freq_khz,
-                                     (uint8_t*)&local_mask) == ERROR_OK)
-        {
-            driver->priv->reg->CR1 &= ~SPI_CR1_BR_BIT_MASK;
-            driver->priv->reg->CR1 |= local_mask;
-            driver->priv->freq_khz = slave->freq_khz;
-        }
-        else
-        {
-            error = ERROR_WRONG_CLOCK_SET;
-        }
+        driver->priv->reg->CR1 &= ~SPI_CR1_BR_BIT_MASK;
+        driver->priv->reg->CR1 |= local_mask;
+        driver->priv->freq_khz = slave->freq_khz;
     }
-
+    else
+    {
+        error = ERROR_WRONG_CLOCK_SET;
+    }
+    
     if(slave->clock_phase == spi_clk_first)
     {
         driver->priv->reg->CR1 &= ~SPI_CR1_CPHA_BIT_MASK;
@@ -308,14 +197,6 @@ static t_error_handling update_spi_configuration(const struct t_spi_driver *driv
     }
     return error;
 };
-
-void spi_dma_ch2_irq_management(struct t_dma_status *dma_status)
-{
-    if(dma_status->transfer_complete == true)
-    {
-        cs_high(priv[0].slave);
-    }
-}
 
 void spi_slave_register(struct t_spi_slave *slave)
 {
@@ -394,7 +275,7 @@ t_error_handling spi_transfer(struct t_spi_driver *driver, struct t_spi_slave *s
         error = ERROR_BUSY;
         cs_low(slave);
 
-        driver->priv->methods.transfer(driver, slave);
+//  CALL SPI TRANSFER
     }
     return error;
 }
@@ -493,39 +374,7 @@ void spi_initialization(struct t_spi_driver *config)
 
     /* Initialize last_config to force a configuration initializastion at the first start */
     config->priv->last_config = UINT8_MAX;
-
-    if(config->irq.active == true)
-    {
-        enable_nvic_irq(config->instance + NVIC_SPI_OFFSET);
-        set_nvic_priority(config->instance + NVIC_SPI_OFFSET, config->irq.priority);
-
-        /* Point to the IRQ dedicated transfer method */
-        config->priv->methods.transfer = &spi_transfer_irq;
-    }
-
-    else if(config->dma.active == true)
-    {
-        /* Set DMA client parameters */
-        config->priv->spi_dma_tx.memory_increment = true;
-        config->priv->spi_dma_tx.peripheral_increment = false;
-        config->priv->spi_dma_tx.read_from_memory = true;
-
-        config->priv->spi_dma_rx.memory_increment = true;
-        config->priv->spi_dma_rx.peripheral_increment = false;
-        config->priv->spi_dma_rx.read_from_memory = false;
-
-        /* Enable TX and RX DMA transmission */
-        config->priv->reg->CR2 |= SPI_CR2_RXDMAEN_BIT_MASK | SPI_CR2_TXDMAEN_BIT_MASK;
-
-        /* Point to the DMA dedicated transfer method */
-        config->priv->methods.transfer = &spi_transfer_dma;
-    }
-
-    else
-    {
-        /* Point to the polling dedicated transfer method */
-        config->priv->methods.transfer = &spi_transfer_poll;
-    }
+   // CALL INIT SPECIFIC
 }
 
 /** SPI1 IRQ handler.
