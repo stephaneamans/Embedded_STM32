@@ -52,7 +52,6 @@ struct t_spi_private
 {
     struct t_spi_regs *reg;
     struct t_spi_slave *slave;
-    uint16_t freq_khz;
     uint8_t last_config;
     uint16_t *write_buffer;
     uint16_t *read_buffer;
@@ -161,7 +160,6 @@ static t_error_handling update_spi_configuration(const struct t_spi_driver *driv
     {
         driver->priv->reg->CR1 &= ~SPI_CR1_BR_BIT_MASK;
         driver->priv->reg->CR1 |= local_mask;
-        driver->priv->freq_khz = slave->freq_khz;
     }
     else
     {
