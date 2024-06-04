@@ -30,18 +30,11 @@ struct t_spi_private
 {
     struct t_spi_regs *reg;
     struct t_spi_slave *slave;
-    uint32_t clock_frequency;
     uint8_t last_config;
     uint16_t *write_buffer;
     uint16_t *read_buffer;
     uint32_t buffer_length;
     uint16_t buffer_index;
-    struct t_dma_client spi_dma_tx;
-    struct t_dma_client spi_dma_rx;
-    struct
-    {
-        void (*transfer)(struct t_spi_driver *driver, struct t_spi_slave *slave);
-    }methods;
 };
 
 /* Static SPI private and slaves record structure instances. */
