@@ -59,7 +59,6 @@ struct t_spi_private
     uint16_t buffer_index;
     struct t_dma_client spi_dma_tx;
     struct t_dma_client spi_dma_rx;
-    struct
 };
 
 /* Static SPI private and slaves record structure instances. */
