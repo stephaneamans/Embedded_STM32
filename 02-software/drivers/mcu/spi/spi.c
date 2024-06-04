@@ -546,3 +546,186 @@ void SPI2_IRQHandler(void)
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Start a SPI transfer by DMA.
+ *
+ * \param driver: Pointer to the SPI driver.
+ * \param slave: Pointer to the slave instance.
+ *
+ * \return : void.
+ *
+ */
+static void spi_transfer_dma (struct t_spi_driver *driver, struct t_spi_slave *slave)
+{
+    driver->priv->slave = slave;
+    if(slave->data_length == spi_data_8_bits)
+    {
+        driver->priv->spi_dma_tx.mem_data_type = dma_8_bits;
+    }
+
+    else
+    {
+        driver->priv->spi_dma_tx.mem_data_type = dma_16_bits;
+    }
+
+    /* Save transfer parameters. */
+    driver->priv->spi_dma_rx.mem_data_type = dma_16_bits;
+
+    driver->priv->spi_dma_tx.transfer_length = driver->priv->buffer_length;
+    driver->priv->spi_dma_rx.transfer_length = driver->priv->buffer_length;
+
+    driver->priv->spi_dma_tx.memory_address = (uintptr_t)driver->priv->write_buffer;
+    driver->priv->spi_dma_rx.memory_address = (uintptr_t)driver->priv->read_buffer;
+
+    driver->priv->spi_dma_tx.peripheral_address = (uintptr_t)&driver->priv->reg->DR;
+    driver->priv->spi_dma_rx.peripheral_address = (uintptr_t)&driver->priv->reg->DR;
+
+    /* Set DMA channels transfer parameters */
+    dma_set_transfer(driver->dma.tx_channel, &driver->priv->spi_dma_tx);
+    dma_set_transfer(driver->dma.rx_channel, &driver->priv->spi_dma_rx);
+
+    /* Activate DMA transfers */
+    dma_start_transfer(driver->dma.tx_channel);
+    dma_start_transfer(driver->dma.rx_channel);
+}
+
+/** Start a SPI transfer by interrupt.
+ *
+ * \param driver: Pointer to the SPI driver.
+ * \param slave: Pointer to the slave instance.
+ *
+ * \return : void.
+ *
+ */
+static void spi_transfer_irq(struct t_spi_driver *driver, struct t_spi_slave *slave)
+{
+    driver->priv->buffer_index = 0;
+    driver->priv->slave = slave;
+
+    /* Load buffer with data */
+    driver->priv->reg->DR = driver->priv->write_buffer[0];
+
+    /* Enable TX buffer empty and RX buffer not empty interrupts */
+    driver->priv->reg->CR2 |= SPI_CR2_TXEIE_BIT_MASK | SPI_CR2_RXNEIE_BIT_MASK;
+}
+
+/** Start a SPI transfer by polling.
+ *
+ * \param driver: Pointer to the SPI driver.
+ * \param slave: Pointer to the slave instance.
+ * \param data: Pointer to the data structure
+ *
+ * \return : void.
+ *
+ */
+static void spi_transfer_poll(struct t_spi_driver *driver, struct t_spi_slave *slave)
+{
+    driver->priv->buffer_index = 0;
+
+    while(driver->priv->buffer_length > 0)
+    {
+        driver->priv->reg->DR = driver->priv->write_buffer[driver->priv->buffer_index];
+        while((driver->priv->reg->SR & SPI_SR_TXE_BIT_MASK) != SPI_SR_TXE_BIT_MASK){}
+        while((driver->priv->reg->SR & SPI_SR_RXNE_BIT_MASK) != SPI_SR_RXNE_BIT_MASK){}
+        driver->priv->read_buffer[driver->priv->buffer_index] = driver->priv->reg->DR;
+        driver->priv->buffer_index++;
+        driver->priv->buffer_length--;
+    };
+    cs_high(slave);
+}
+
+void spi_dma_ch2_irq_management(struct t_dma_status *dma_status)
+{
+    if(dma_status->transfer_complete == true)
+    {
+        cs_high(priv[0].slave);
+    }
+}
+
+t_error_handling spi_transfer(struct t_spi_driver *driver, struct t_spi_slave *slave, struct t_spi_data *data)
+{
+    uint8_t index = 0;
+    t_error_handling error = ERROR_OK;
+
+    /* Save transfer's SPI data parameters */
+    driver->priv->write_buffer = data->write_buffer;
+    driver->priv->read_buffer = data->read_buffer;
+    driver->priv->buffer_length = data->length;
+
+    /* If the slave is not the same, change slave configuration, the peripheral must be registered in the local base */
+    if(slave->id != driver->priv->last_config)
+    {
+        while((slave->id != slaves_record[index]->id) && (index < (MAX_SPI1_PERIPHERALS + MAX_SPI2_PERIPHERALS)))
+        {
+            index++;
+        };
+
+        if(index >= (MAX_SPI1_PERIPHERALS + MAX_SPI2_PERIPHERALS))
+        {
+            error = ERROR_SPI_PERIPH_UNKNOWN;
+        }
+
+        else
+        {
+            update_spi_configuration(driver, slave);
+            driver->priv->last_config = slave->id;
+        }
+    }
+
+    /* IF the CS pin is high (no transfer started yet), then perform the new transfer request. */
+    if(gpio_read(slave->cs) == true)
+    {
+        error = ERROR_BUSY;
+        cs_low(slave);
+
+        driver->priv->methods.transfer(driver, slave);
+    }
+    return error;
+}
