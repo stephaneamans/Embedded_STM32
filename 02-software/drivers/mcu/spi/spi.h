@@ -54,18 +54,6 @@ struct t_spi_data
     uint32_t length;
 };
 
-/* SPI slave structure definition, this structure is used to encapsulate the slaves parameters .*/
-struct t_spi_slave
-{
-    struct t_gpio_driver *cs;
-    uint16_t freq_khz;
-    enum t_spi_data_length data_length;
-    enum t_spi_frame_direction frame_direction;
-    enum t_spi_clock_phase clock_phase;
-    enum t_spi_clock_polarity clock_polarity;
-    uint8_t id;
-};
-
 /* SPI driver structure definition, it contains the global configuration setting fields of the SPI. */
 struct t_spi_driver
 {
@@ -75,6 +63,19 @@ struct t_spi_driver
     struct t_dma_channel_driver *dma_tx_channel;
     struct t_dma_channel_driver *dma_rx_channel;
     struct t_spi_private *priv;
+};
+
+/* SPI slave structure definition, this structure is used to encapsulate the slaves parameters .*/
+struct t_spi_slave
+{
+    struct t_spi_driver *spi;
+    struct t_gpio_driver *cs;
+    uint16_t freq_khz;
+    enum t_spi_data_length data_length;
+    enum t_spi_frame_direction frame_direction;
+    enum t_spi_clock_phase clock_phase;
+    enum t_spi_clock_polarity clock_polarity;
+    uint8_t id;
 };
 
 /* Functions prototypes:                */
