@@ -59,10 +59,13 @@ struct t_spi_driver
 {
     uintptr_t base_address;
     enum t_peripheral peripheral;
+    struct t_spi_private *priv;
+#IF (SPI == IRQ)
     enum irq_priority irq_priority;
+#ELSE IF (SPI == DMA)
     struct t_dma_channel_driver *dma_tx_channel;
     struct t_dma_channel_driver *dma_rx_channel;
-    struct t_spi_private *priv;
+#ENDIF
 };
 
 /* SPI slave structure definition, this structure is used to encapsulate the slaves parameters .*/
