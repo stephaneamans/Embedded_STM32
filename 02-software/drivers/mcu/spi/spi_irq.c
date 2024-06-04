@@ -63,8 +63,16 @@ void spi_transfer(struct t_spi_driver *driver, struct t_spi_slave *slave)
 
 void spi_init_specific(struct t_spi_driver *config)
 {
-    enable_nvic_irq(config->instance + NVIC_SPI_OFFSET);
-    set_nvic_priority(config->instance + NVIC_SPI_OFFSET, config->irq.priority);
+    if (config->peripheral == SPI1)
+    {
+        enable_nvic_irq(NVIC_SPI_OFFSET);
+        set_nvic_priority(NVIC_SPI_OFFSET, config->irq.priority);
+    }
+    else
+    {
+        enable_nvic_irq(NVIC_SPI_OFFSET + 1);
+        set_nvic_priority(NVIC_SPI_OFFSET + 1, config->irq.priority);
+    }
 }
 
 /** SPI1 IRQ handler.
