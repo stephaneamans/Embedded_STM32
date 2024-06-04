@@ -47,6 +47,20 @@
 #define SPI_SR_MODF_BIT_MASK        0x20
 #define SPI_SR_OVR_BIT_MASK         0x40
 
+
+
+
+#IF (SPI == IRQ)
+    enum irq_priority irq_priority;
+#ELSE IF (SPI == DMA)
+    struct t_dma_channel_driver *dma_tx_channel;
+    struct t_dma_channel_driver *dma_rx_channel;
+#ENDIF
+
+
+
+
+
 /* SPI private structure definition :        */
 struct t_spi_private
 {
