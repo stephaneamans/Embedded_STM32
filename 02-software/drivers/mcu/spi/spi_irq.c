@@ -31,7 +31,6 @@ struct t_spi_private
     struct t_spi_regs *reg;
     struct t_spi_slave *slave;
     uint32_t clock_frequency;
-    uint16_t freq_khz;
     uint8_t last_config;
     uint16_t *write_buffer;
     uint16_t *read_buffer;
