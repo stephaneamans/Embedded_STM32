@@ -144,11 +144,11 @@ static t_error_handling update_spi_configuration(const struct t_spi_driver *driv
     uint32_t clock_frequency;
 
     /* For any SPI instance */
-    if(driver->instance == 0)
+    if(driver->peripheral == SPI1)
     {
    	    clock_frequency = clock_driver->APB2_clk_freq;
     }
-    else if(driver->instance == 1)
+    else if(driver->peripheral == SPI2)
     {
     	clock_frequency = clock_driver->APB1_clk_freq;
     }
@@ -341,7 +341,14 @@ void spi_uninitialization(struct t_spi_driver *driver)
 void spi_initialization(struct t_spi_driver *config)
 {
     /* Associate private instance to the driver */
-    config->priv = &priv[config->instance];
+    if (config->peripheral == SPI1)
+    {
+        config->priv = &priv[0];
+    }
+    else
+    {
+        config->priv = &priv[1];
+    }
 
     /* Clear the private structure instance */
     memset(config->priv, 0, sizeof(struct t_spi_private));
