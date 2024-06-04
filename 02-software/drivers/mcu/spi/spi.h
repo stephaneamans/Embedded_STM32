@@ -71,7 +71,6 @@ struct t_spi_driver
 {
     uintptr_t base_address;
     enum t_peripheral peripheral;
-    uint8_t instance;
     enum irq_priority irq_priority;
     struct t_dma_channel_driver *dma_tx_channel;
     struct t_dma_channel_driver *dma_rx_channel;
