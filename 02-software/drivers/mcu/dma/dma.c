@@ -429,3 +429,4 @@ extern void DMA1_Channel7_IRQHandler(void)
     }
     clear_pending_nvic_irq(IRQ_DMA1_CHANNEL7); /* Clear any DMA0 NVIC pending interrupt. */
 }
+

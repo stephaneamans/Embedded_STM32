@@ -76,7 +76,7 @@ enum irq_id{
     // Reserved           = 42,    /* Reserved                                         */
     IRQ_IM8_BRK           = 43,    /* TIM8 Break interrupt                             */
     IRQ_IM8_UP            = 44,    /* TIM8 Update interrupt                            */
-    IRQ_IM8_TRG_COM	  = 45,        /* TIM8 Trigger and Commutation interrupts          */
+    IRQ_IM8_TRG_COM	      = 45,    /* TIM8 Trigger and Commutation interrupts          */
     IRQ_TIM8_CC           = 46,    /* TIM8 Capture Compare interrupt                   */
     IRQ_ADC3              = 47,    /* ADC3 global interrupt                            */
     IRQ_FSMC              = 48,    /* FSMC global interrupt                            */
@@ -158,4 +158,4 @@ t_error_handling clear_pending_nvic_irq(uint8_t irq);
 */
 t_error_handling set_nvic_priority(uint8_t irq, uint8_t priority);
 
-#endif /* LLD_NVIC_H_ */
+#endif /* LLD_NVIC

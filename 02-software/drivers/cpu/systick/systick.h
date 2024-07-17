@@ -89,3 +89,4 @@ void systick_stop(void);
 void systick_initialization(struct t_systick_driver *config);
 
 #endif /* SYSTICK_H_ */
+
