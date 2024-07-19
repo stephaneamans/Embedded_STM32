@@ -14,6 +14,6 @@ jobs:
         sudo apt-get -y install gcc-arm-none-eabi
     - name: make
       run: |
-        cd Sources
+        cd 02-software/project_side
         make clean
         make
