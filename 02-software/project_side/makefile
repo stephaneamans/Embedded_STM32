@@ -7,6 +7,8 @@
 # CMSIS can be found at https://github.com/ARM-software/CMSIS_5
 
 # Specify project name, build directory and linker script
+ROOT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+SOURCES_FOLDER := $(subst project_side/,,$(ROOT_DIR))
 TARGET = test
 BUILDDIR = ./build
 LDSCRIPT = LinkerScript.ld
@@ -18,8 +20,43 @@ LD  = arm-none-eabi-gcc
 OBJCOPY = arm-none-eabi-objcopy
 SIZETOOL = arm-none-eabi-size
 
+
+
+
+
+
+
+
+
+
+
+#SRC = drivers/stm32f1_lld/
+
+#OBJS += \
+#$(BUILD_OBJ_DIR)lld_clock.o \
+#$(BUILD_OBJ_DIR)lld_dma.o \
+#$(BUILD_OBJ_DIR)lld_gpio.o \
+#$(BUILD_OBJ_DIR)lld_nvic.o \
+#$(BUILD_OBJ_DIR)lld_spi.o \
+#$(BUILD_OBJ_DIR)lld_usart.o
+
+#C_INCLUDE += \
+#-I$(ROOT_DIR)/configuration/include \
+#-I$(ROOT_DIR)/drivers/api \
+#-I$(ROOT_DIR)/drivers/stm32f1_lld/include \
+#-I$(ROOT_DIR)/drivers/stm32f1_lld/include/regbase \
+#-I$(ROOT_DIR)/drivers/library/include 
+
+#$(BUILD_OBJ_DIR)%.o: $(SRC)%.c
+#	@$(CC) $(CFLAGS) $(C_INCLUDE) -o "$@" "$<"
+
+
+
+
+
+
 # List of source files for the application
-SOURCES = \
+SOURCES := \
     drivers/cpu/nvic/nvic.c \
     drivers/cpu/systick/systick.c \
     drivers/mcu/clock/clock.c \
@@ -68,10 +105,14 @@ else
 endif
 
 # Construct list of object files by appending the suffix .o to all source files
-OBJECTS := $(addsuffix .o,$(SOURCES))
+OBJECTS := $(notdir $(subst .c,.o,$(SOURCES)))
 
 # Finally, add build directory prefix
-OBJECTS := $(addprefix $(BUILDDIR)/,$(OBJECTS))
+OBJECTS := $(addprefix $(BUILDDIR)/objects/bsw/,$(OBJECTS))
+
+#SOURCES := $(addprefix $(SOURCES_FOLDER),$(SOURCES))
+#SOURCES_PATH := $(foreach path, $(SOURCES), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path))))
+SOURCES_PATH := $(foreach path, $(SOURCES), $(addprefix $(SOURCES_FOLDER), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
 
 # Add -I prefix to INCLUDEDIRS and insert them into CFLAGS, CPPFLAGS and AFLAGS
 CFLAGS := $(CFLAGS) $(addprefix -I,$(INCLUDEDIRS)) 
@@ -107,12 +148,15 @@ $(BUILDDIR)/$(TARGET).elf: $(OBJECTS)
 #	@$(AS) $(SFLAGS) $(AFLAGS) -c $< -o $@
 
 # Recipe for building C objects in the application
-$(BUILDDIR)/app/%.c.o: app/%.c
+$(BUILDDIR)/app/%.o: $(SOURCE_FOLDER)%.c
 	@echo "at c phase = Objects = $(SOURCES)"
 	@echo "at c phase = Objects = $(OBJECTS)"
 	@echo "[CC] $< -> $@"
 	@mkdir -p $(@D)
-	@$(CC) $(NSFLAGS) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+#$(BUILD_OBJ_DIR)%.o: $(SRC)%.c
+#	@$(CC) $(CFLAGS) $(C_INCLUDE) -o "$@" "$<"
 	
 # Recipe for assembling objects in the application
 #$(BUILDDIR)/app/%.o: app/%
@@ -120,9 +164,18 @@ $(BUILDDIR)/app/%.c.o: app/%.c
 #	@echo "at as phase = Objects = $(OBJECTS)"
 #	@echo "[AS] $< -> $@"
 #	@mkdir -p $(@D)
-#	@$(AS) $(NSFLAGS) $(AFLAGS) -c $< -o $@
+#	@$(AS) $(AFLAGS) -c $< -o $@
 
-.PHONY: clean debug
+print:
+	@echo "sources path = $(SOURCES_PATH)"
+	@echo ""
+	@echo "Objects = $(OBJECTS)"
+	@echo ""
+	@echo "Sources = $(SOURCES)"
+	@$(CC) $(CFLAGS) -c $(SOURCES) -o $(OBJECTS)
+
+
+.PHONY: clean print
 
 # Remove all build files
 clean:
