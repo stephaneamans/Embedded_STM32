@@ -117,8 +117,11 @@ SOURCES := $(addprefix $(SOURCES_FOLDER),$(SOURCES))
 #OK fonctionne
 #SOURCES_PATH := $(foreach path, $(SOURCES), $(addprefix $(SOURCES_FOLDER), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
 
-#le meme mais sans source folder fait plus haut
-SOURCES_PATH := $(foreach path, $(SOURCES), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
+#le meme mais sans source folder fait plus haut, ok fonctionne
+#SOURCES_PATH := $(foreach path, $(SOURCES), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
+
+#le meme mais avec retrait des espaces.
+SOURCES_PATH := $(foreach path, $(SOURCES), $(string $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
 
 
 
