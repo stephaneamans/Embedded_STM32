@@ -68,6 +68,30 @@ SOURCES = \
     drivers/mcu/driver_initialization.c \
     library/fault/fault.c
 
+SOURCES_REP = \
+    drivers/cpu/nvic/ \
+    drivers/cpu/systick/ \
+    drivers/mcu/clock/ \
+    drivers/mcu/dma/ \
+    drivers/mcu/gpio/ \
+    drivers/mcu/spi/ \
+    drivers/mcu/timer/ \
+    drivers/mcu/usart/ \
+    drivers/mcu/ \
+    library/fault/
+
+OBJS = \
+    $(BUILDDIR)/objects/bsw//nvic.o \
+    $(BUILDDIR)/objects/bsw//systick.o \
+    $(BUILDDIR)/objects/bsw//clock.o \
+    $(BUILDDIR)/objects/bsw//dma.o \
+    $(BUILDDIR)/objects/bsw//gpio.o \
+    $(BUILDDIR)/objects/bsw//spi.o \
+    $(BUILDDIR)/objects/bsw//timer.o \
+    $(BUILDDIR)/objects/bsw//usart.o \
+    $(BUILDDIR)/objects/bsw//driver_initialization.o \
+    $(BUILDDIR)/objects/bsw//fault.o
+
 # List of include directories
 INCLUDEDIRS = \
     drivers/cpu/nvic \
@@ -175,7 +199,8 @@ LDFLAGS := $(addprefix -L,$(LDDIRS)) $(LIBS) $(LDFLAGS)  # !!!! LDDIRS, LIBS rem
 
 all: $(OBJECTS)nvic.o
 #$(OBJECTS)%.o: $(SOURCES_PATH)%.c print
-$(OBJECTS)nvic.o: $(SOURCES_PATH)nvic.c print
+#$(OBJECTS)nvic.o: $(SOURCES_PATH)nvic.c print
+$(OBJS)nvic.o: $(SOURCE_REP)nvic.c print
 	@echo "at c phase = Objects = $(SOURCES)"
 	@echo "at c phase = Objects = $(OBJECTS)"
 	@echo "[CC] $< -> $@"
@@ -207,7 +232,9 @@ print:
 	@echo ""
 	@echo "Sources = $(SOURCES)"
 	@echo ""
+	@echo "Sources rep = $(SOURCE_REP)"
 	@echo ""
+	@echo "Objs = $(OBJS)"
 	@echo "Print finished"
 	@echo ""
 	@echo ""
