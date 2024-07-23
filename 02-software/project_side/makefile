@@ -113,7 +113,15 @@ OBJECTS := $(addprefix $(BUILDDIR)/objects/bsw/,$(OBJECTS))
 
 SOURCES := $(addprefix $(SOURCES_FOLDER),$(SOURCES))
 #SOURCES_PATH := $(foreach path, $(SOURCES), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path))))
-SOURCES_PATH := $(foreach path, $(SOURCES), $(addprefix $(SOURCES_FOLDER), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
+
+#OK fonctionne
+#SOURCES_PATH := $(foreach path, $(SOURCES), $(addprefix $(SOURCES_FOLDER), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
+
+#le meme mais sans source folder fait plus haut
+#SOURCES_PATH := $(foreach path, $(SOURCES), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
+
+
+
 
 # Add -I prefix to INCLUDEDIRS and insert them into CFLAGS, CPPFLAGS and AFLAGS
 CFLAGS := $(CFLAGS) $(addprefix -I,$(INCLUDEDIRS)) 
