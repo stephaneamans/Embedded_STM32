@@ -121,7 +121,7 @@ SOURCES := $(addprefix $(SOURCES_FOLDER),$(SOURCES))
 #SOURCES_PATH := $(foreach path, $(SOURCES), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
 
 #le meme mais avec retrait des espaces.
-SOURCES_PATH := $(foreach path, $(SOURCES), $(string $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
+SOURCES_PATH := $(foreach path, $(SOURCES), $(strip $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
 
 
 
