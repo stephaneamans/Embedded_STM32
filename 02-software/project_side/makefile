@@ -118,7 +118,7 @@ SOURCES := $(addprefix $(SOURCES_FOLDER),$(SOURCES))
 #SOURCES_PATH := $(foreach path, $(SOURCES), $(addprefix $(SOURCES_FOLDER), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
 
 #le meme mais sans source folder fait plus haut
-SOURCES_PATH := $(foreach path, $(SOURCES), $(strip $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path))))))
+SOURCES_PATH := $(foreach path, $(SOURCES), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
 
 
 
