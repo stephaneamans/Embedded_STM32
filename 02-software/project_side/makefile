@@ -69,16 +69,16 @@ SOURCES = \
     library/fault/fault.c
 
 SOURCES_REP = \
-    drivers/cpu/nvic/ \
-    drivers/cpu/systick/ \
-    drivers/mcu/clock/ \
-    drivers/mcu/dma/ \
-    drivers/mcu/gpio/ \
-    drivers/mcu/spi/ \
-    drivers/mcu/timer/ \
-    drivers/mcu/usart/ \
-    drivers/mcu/ \
-    library/fault/
+    $(SOURCES_FOLDER)drivers/cpu/nvic/ \
+    $(SOURCES_FOLDER)drivers/cpu/systick/ \
+    $(SOURCES_FOLDER)drivers/mcu/clock/ \
+    $(SOURCES_FOLDER)drivers/mcu/dma/ \
+    $(SOURCES_FOLDER)drivers/mcu/gpio/ \
+    $(SOURCES_FOLDER)drivers/mcu/spi/ \
+    $(SOURCES_FOLDER)drivers/mcu/timer/ \
+    $(SOURCES_FOLDER)drivers/mcu/usart/ \
+    $(SOURCES_FOLDER)drivers/mcu/ \
+    $(SOURCES_FOLDER)library/fault/
 
 OBJS = \
     $(BUILDDIR)/objects/bsw//nvic.o \
