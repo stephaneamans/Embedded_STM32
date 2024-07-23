@@ -177,7 +177,7 @@ $(BUILDDIR)/$(TARGET).elf: $(OBJECTS)
 
 
 
-$(OBJECTS)nvic.o: $(SOURCES_PATH)nvic.c
+$(OBJECTS)%.o: $(SOURCES_PATH)%.c
 	@echo "at c phase = Objects = $(SOURCES)"
 	@echo "at c phase = Objects = $(OBJECTS)"
 	@echo "[CC] $< -> $@"
