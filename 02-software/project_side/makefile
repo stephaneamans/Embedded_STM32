@@ -214,6 +214,11 @@ print:
 	@echo "Objects = $(OBJECTS)"
 	@echo ""
 	@echo "Sources = $(SOURCES)"
+	@echo ""
+	@echo ""
+	@echo "Print finished"
+	@echo ""
+	@echo ""
 
 
 .PHONY: clean print
