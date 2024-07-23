@@ -16,4 +16,5 @@ jobs:
       run: |
         cd 02-software/project_side
         make clean
+        make print
         make
