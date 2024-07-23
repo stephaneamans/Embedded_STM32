@@ -182,16 +182,7 @@ $(OBJECTS)%.o: $(SOURCES_PATH)%.c print
 	@echo "at c phase = Objects = $(OBJECTS)"
 	@echo "[CC] $< -> $@"
 	@mkdir -p $(@D)
-
-
-
-
-#	@$(CC) $(CFLAGS) $(INCLUDEDIRS) -o "$@" "$<"
-
-
-#$(BUILD_OBJ_DIR)%.o: $(SRC)%.c
-#	@$(CC) $(CFLAGS) $(INCLUDEDIRS) -o "$@" "$<"
-
+	@$(CC) $(CFLAGS) $(INCLUDEDIRS) -o "$@" "$<"
 
 
 
@@ -223,7 +214,6 @@ print:
 	@echo "Objects = $(OBJECTS)"
 	@echo ""
 	@echo "Sources = $(SOURCES)"
-	@$(CC) $(CFLAGS) -c $(SOURCES) -o $(OBJECTS)
 
 
 .PHONY: clean print
