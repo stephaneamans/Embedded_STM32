@@ -232,7 +232,7 @@ print:
 	@echo ""
 	@echo "Sources = $(SOURCES)"
 	@echo ""
-	@echo "Sources rep = $(SOURCE_REP)"
+	@echo "Sources rep = $(SOURCES_REP)"
 	@echo ""
 	@echo "Objs = $(OBJS)"
 	@echo "Print finished"
