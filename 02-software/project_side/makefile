@@ -136,12 +136,12 @@ LDFLAGS := $(addprefix -L,$(LDDIRS)) $(LIBS) $(LDFLAGS)  # !!!! LDDIRS, LIBS rem
 
 #SOURCE_PATH = ../drivers/cpu/nvic/
 
-all: $(BUILDDIR)/$(TARGET).elf
+#all: $(BUILDDIR)/$(TARGET).elf
 	
-$(BUILDDIR)/$(TARGET).elf: $(OBJECTS) 
-	@echo "[LD] Linking app image $@"
-	@echo "at link phase = Objects = $(SOURCES)"
-	@echo "at link phase = Objects = $(OBJECTS)"
+#$(BUILDDIR)/$(TARGET).elf: $(OBJECTS) 
+#	@echo "[LD] Linking app image $@"
+#	@echo "at link phase = Objects = $(SOURCES)"
+#	@echo "at link phase = Objects = $(OBJECTS)"
 #	@$(LD) $(LDFLAGS) -DNRF_TRUSTZONE_NONSECURE -o $@ $(OBJECTS) $(LIBS)   LIBS removed
 #	@echo "[OBJCOPY] $@ -> $(BUILDDIR)/$(TARGET)_app.hex"
 #	@objcopy -O ihex $@ $(BUILDDIR)/$(TARGET)_app.hex
@@ -173,22 +173,14 @@ $(BUILDDIR)/$(TARGET).elf: $(OBJECTS)
 
 
 
-
-
-
-
-$(OBJECTS)%.o: $(SOURCES_PATH)%.c print
+all:
+#$(OBJECTS)%.o: $(SOURCES_PATH)%.c print
+$(OBJECTS)nvic.o: $(SOURCES_PATH)nvic.c print
 	@echo "at c phase = Objects = $(SOURCES)"
 	@echo "at c phase = Objects = $(OBJECTS)"
 	@echo "[CC] $< -> $@"
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) $(INCLUDEDIRS) -o "$@" "$<"
-
-
-
-
-
-
 
 
 
