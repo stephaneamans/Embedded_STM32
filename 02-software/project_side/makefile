@@ -56,7 +56,7 @@ SIZETOOL = arm-none-eabi-size
 
 
 # List of source files for the application
-SOURCES := \
+SOURCES = \
     drivers/cpu/nvic/nvic.c \
     drivers/cpu/systick/systick.c \
     drivers/mcu/clock/clock.c \
