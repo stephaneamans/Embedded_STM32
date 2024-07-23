@@ -66,7 +66,7 @@ SOURCES := \
     drivers/mcu/timer/timer.c \
     drivers/mcu/usart/usart.c \
     drivers/mcu/driver_initialization.c \
-    library/fault/fault.c \
+    library/fault/fault.c
 
 # List of include directories
 INCLUDEDIRS = \
@@ -81,7 +81,7 @@ INCLUDEDIRS = \
     drivers \
     library/error \
     library/fault \
-    library/queues \
+    library/queues
 
 # Common flags for CC, CPP, AS and LD
 FLAGS = -mcpu=cortex-m3 -mthumb
