@@ -163,8 +163,9 @@ $(OBJECTS)%.o: $(SOURCE_PATH)%.c
 	@echo "at c phase = Objects = $(OBJECTS)"
 	@echo "[CC] $< -> $@"
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) $(INCLUDEDIRS) -o "$@" "$<"
-#	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
+#	@$(CC) $(CFLAGS) $(INCLUDEDIRS) -o "$@" "$<"
+
 
 #$(BUILD_OBJ_DIR)%.o: $(SRC)%.c
 #	@$(CC) $(CFLAGS) $(INCLUDEDIRS) -o "$@" "$<"
