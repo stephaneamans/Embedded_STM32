@@ -105,14 +105,15 @@ else
 endif
 
 # Construct list of object files by appending the suffix .o to all source files
-OBJECTS := $(notdir $(subst .c,.o,$(SOURCES)))
+#OBJECTS := $(notdir $(subst .c,.o,$(SOURCES)))
 
 # Finally, add build directory prefix
-OBJECTS := $(addprefix $(BUILDDIR)/objects/bsw/,$(OBJECTS))
+#OBJECTS := $(addprefix $(BUILDDIR)/objects/bsw/,$(OBJECTS))
+OBJECTS := $(BUILDDIR)/objects/bsw/
 
-#SOURCES := $(addprefix $(SOURCES_FOLDER),$(SOURCES))
+SOURCES := $(addprefix $(SOURCES_FOLDER),$(SOURCES))
 #SOURCES_PATH := $(foreach path, $(SOURCES), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path))))
-SOURCES_PATH := $(foreach path, $(SOURCES), $(addprefix $(SOURCES_FOLDER), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
+#SOURCES_PATH := $(foreach path, $(SOURCES), $(addprefix $(SOURCES_FOLDER), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
 
 # Add -I prefix to INCLUDEDIRS and insert them into CFLAGS, CPPFLAGS and AFLAGS
 CFLAGS := $(CFLAGS) $(addprefix -I,$(INCLUDEDIRS)) 
@@ -157,7 +158,7 @@ $(BUILDDIR)/$(TARGET).elf: $(OBJECTS)
 #	@mkdir -p $(@D)
 #	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJECTS): $(SOURCE_PATH)nvic.c
+$(OBJECTS)%.o: $(SOURCES)%.c
 	@echo "at c phase = Objects = $(SOURCES)"
 	@echo "at c phase = Objects = $(OBJECTS)"
 	@echo "[CC] $< -> $@"
