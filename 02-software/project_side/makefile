@@ -122,6 +122,8 @@ AFLAGS := $(AFLAGS) $(addprefix -I,$(INCLUDEDIRS))
 # Add -L prefix to LDDIRS and and insert them into LDFLAGS along with LIBS
 LDFLAGS := $(addprefix -L,$(LDDIRS)) $(LIBS) $(LDFLAGS)  # !!!! LDDIRS, LIBS removed
 
+SOURCE_PATH = ../drivers/cpu/nvic/
+
 all: $(BUILDDIR)/$(TARGET).elf
 	
 $(BUILDDIR)/$(TARGET).elf: $(OBJECTS) 
