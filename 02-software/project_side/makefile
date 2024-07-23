@@ -200,7 +200,7 @@ LDFLAGS := $(addprefix -L,$(LDDIRS)) $(LIBS) $(LDFLAGS)  # !!!! LDDIRS, LIBS rem
 all: $(OBJS)nvic.o
 #$(OBJECTS)%.o: $(SOURCES_PATH)%.c print
 #$(OBJECTS)nvic.o: $(SOURCES_PATH)nvic.c print
-$(OBJS)nvic.o: $(SOURCE_REP)nvic.c print
+$(OBJS)nvic.o: $(SOURCES_REP)nvic.c print
 	@echo "at c phase = Objects = $(SOURCES)"
 	@echo "at c phase = Objects = $(OBJECTS)"
 	@echo "[CC] $< -> $@"
