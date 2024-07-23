@@ -197,7 +197,7 @@ LDFLAGS := $(addprefix -L,$(LDDIRS)) $(LIBS) $(LDFLAGS)  # !!!! LDDIRS, LIBS rem
 
 
 
-all: $(OBJECTS)nvic.o
+all: $(OBJS)nvic.o
 #$(OBJECTS)%.o: $(SOURCES_PATH)%.c print
 #$(OBJECTS)nvic.o: $(SOURCES_PATH)nvic.c print
 $(OBJS)nvic.o: $(SOURCE_REP)nvic.c print
