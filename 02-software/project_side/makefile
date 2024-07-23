@@ -105,15 +105,15 @@ else
 endif
 
 # Construct list of object files by appending the suffix .o to all source files
-#OBJECTS := $(notdir $(subst .c,.o,$(SOURCES)))
+OBJECTS := $(notdir $(subst .c,.o,$(SOURCES)))
 
 # Finally, add build directory prefix
-#OBJECTS := $(addprefix $(BUILDDIR)/objects/bsw/,$(OBJECTS))
-OBJECTS := $(BUILDDIR)/objects/bsw/
+OBJECTS := $(addprefix $(BUILDDIR)/objects/bsw/,$(OBJECTS))
+
 
 SOURCES := $(addprefix $(SOURCES_FOLDER),$(SOURCES))
 #SOURCES_PATH := $(foreach path, $(SOURCES), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path))))
-#SOURCES_PATH := $(foreach path, $(SOURCES), $(addprefix $(SOURCES_FOLDER), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
+SOURCES_PATH := $(foreach path, $(SOURCES), $(addprefix $(SOURCES_FOLDER), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
 
 # Add -I prefix to INCLUDEDIRS and insert them into CFLAGS, CPPFLAGS and AFLAGS
 CFLAGS := $(CFLAGS) $(addprefix -I,$(INCLUDEDIRS)) 
@@ -123,7 +123,7 @@ AFLAGS := $(AFLAGS) $(addprefix -I,$(INCLUDEDIRS))
 # Add -L prefix to LDDIRS and and insert them into LDFLAGS along with LIBS
 LDFLAGS := $(addprefix -L,$(LDDIRS)) $(LIBS) $(LDFLAGS)  # !!!! LDDIRS, LIBS removed
 
-SOURCE_PATH = ../drivers/cpu/nvic/
+#SOURCE_PATH = ../drivers/cpu/nvic/
 
 all: $(BUILDDIR)/$(TARGET).elf
 	
@@ -158,7 +158,7 @@ $(BUILDDIR)/$(TARGET).elf: $(OBJECTS)
 #	@mkdir -p $(@D)
 #	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJECTS)%.o: $(SOURCES)%.c
+$(OBJECTS)%.o: $(SOURCE_PATH)%.c
 	@echo "at c phase = Objects = $(SOURCES)"
 	@echo "at c phase = Objects = $(OBJECTS)"
 	@echo "[CC] $< -> $@"
