@@ -148,7 +148,7 @@ $(BUILDDIR)/$(TARGET).elf: $(OBJECTS)
 #	@$(AS) $(SFLAGS) $(AFLAGS) -c $< -o $@
 
 # Recipe for building C objects in the application
-$(BUILDDIR)/app/%.o: $(SOURCE_FOLDER)%.c
+$(BUILDDIR)/app/%.o: $(SOURCE_PATH)%.c
 	@echo "at c phase = Objects = $(SOURCES)"
 	@echo "at c phase = Objects = $(OBJECTS)"
 	@echo "[CC] $< -> $@"
