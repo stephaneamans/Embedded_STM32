@@ -14,8 +14,6 @@
 #include "regbase_flash.h"
 #include "regbase_reset_clock.h"
 
-#include "soc_configuration.h"
-
 /* Bits masks */
 #define RCC_CR_HSION_BIT_MASK             0x1
 #define RCC_CR_HSIRDY_BIT_MASK            0x2
@@ -74,25 +72,8 @@ static t_error_handling init_activate_PLL(uint32_t sys_clk, enum t_clock_sources
 {
     uint8_t PLL_mult[15] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
     uint32_t temp_Pll_mul = 0;                     /* Local variable: compute the PLL multiplier coefficient.     */
-    uint32_t temp_clk_freq_MHZ = CLOCK_FREQ_MHZ;
+    uint32_t temp_clk_freq_MHZ = 0;
     uint8_t error = ERROR_WRONG_CLOCK_SET;
-
-    /* Disable PLL and wait for PLL is disabled. */
-    RCC->CR &= ~RCC_CR_PLLON_BIT_MASK;
-    while((RCC->CR & RCC_CR_PLLRDY_BIT_MASK) != 0){}
-
-    /* Clear the PLL multiplier, the PLL HSE divider and the PLL source fields.  */
-    RCC->CFGR &= 0xFFC0FFFF;
-
-    if((((sys_clk % CLOCK_FREQ_MHZ) != 0)          /* Branch if sysclk is not a multiple of the ext crystal,        */
-      || (sys_clk == CLOCK_FREQ_MHZ)) &&           /* Or if sysclk is equal to the ext crystal,                     */
-         (source == PLL_HSE))                      /* And the clock is from HSE (bypassed or not) oscillator,       */
-    {
-        RCC->CFGR |= RCC_CFGR_PLLXTPRE_BIT_MASK;   /* PLLXTPRE = 1, divide the HSE input oscillator by 2.           */
-        temp_clk_freq_MHZ /= 2;
-    }
-
-    if((source == HSI_OSC) || (source == PLL_HSI)){temp_clk_freq_MHZ /= 2;}
 
     temp_Pll_mul = sys_clk / temp_clk_freq_MHZ;    /* Compute the coefficient to load into the PLL multiplier.      */
     for(uint8_t index = 0; index <= 14; index++)   /* Screen the PLL multiplier table.                              */
@@ -101,19 +82,6 @@ static t_error_handling init_activate_PLL(uint32_t sys_clk, enum t_clock_sources
         {
             temp_Pll_mul = PLL_mult[index] - 2;
             temp_Pll_mul = (temp_Pll_mul & 0x000000FF) << 18;
-
-            RCC->CFGR |= temp_Pll_mul;
-
-            /* If HSE oscillator is selected, select the HSE PLL source.     */
-            if((source == PLL_HSE) || (source == PLL_HSE_BYP))
-            {
-                RCC->CFGR |= RCC_CFGR_PLL_SRC_BIT_MASK;
-            }
-            /* Enable PLL and wait for PLL ready. */
-            RCC->CR |= RCC_CR_PLLON_BIT_MASK;
-            while((RCC->CR & RCC_CR_PLLRDY_BIT_MASK) != RCC_CR_PLLRDY_BIT_MASK){}
-            error = ERROR_OK;
-            break;
         }
     }
     return error;
@@ -149,8 +117,6 @@ static t_error_handling init_AHB(uint32_t sys_clk, uint32_t AHB_clk)
             	local_AHB_div = index + 7;
             }
             local_AHB_div = (local_AHB_div & 0x000000FF) << 4;
-            RCC->CFGR &= ~RCC_CFGR_HPRE_FIELD_MASK;
-            RCC->CFGR |= local_AHB_div;
             error = ERROR_OK;
             break; /* Exit the loop, the value has been found. */
         }
@@ -188,8 +154,6 @@ static t_error_handling init_APB1(uint32_t AHB_clk, uint32_t APB1_clk)
             	local_APB1_div = index + 3;
             }
             local_APB1_div = (local_APB1_div & 0x000000FF) << 8;
-            RCC->CFGR &= ~RCC_CFGR_PPRE1_FIELD_MASK;
-            RCC->CFGR |= local_APB1_div;
             error = ERROR_OK;
             break; /* Exit the loop, the value has been found. */
         }
@@ -227,8 +191,6 @@ static t_error_handling init_APB2(uint32_t AHB_clk, uint32_t APB2_clk)
             	local_APB2_div = index + 3;
             }
             local_APB2_div = (local_APB2_div & 0x000000FF) << 11;
-            RCC->CFGR &= ~RCC_CFGR_PPRE2_FIELD_MASK;
-            RCC->CFGR |= local_APB2_div;
             error = ERROR_OK;
             break; /* Exit the loop, the value has been found. */
         }
@@ -245,18 +207,12 @@ static void start_oscillator(enum t_clock_sources source)
 {
     if((source == HSI_OSC) || (source == PLL_HSI))
     {
-        RCC->CR |= RCC_CR_HSION_BIT_MASK;
-        while((RCC->CR & RCC_CR_HSIRDY_BIT_MASK) != RCC_CR_HSIRDY_BIT_MASK){}
     }
     else if((source == HSE_OSC) || (source == PLL_HSE))
     {
-        RCC->CR |= RCC_CR_HSEON_BIT_MASK;
-        while((RCC->CR & RCC_CR_HSERDY_BIT_MASK) != RCC_CR_HSERDY_BIT_MASK){}
     }
     else if((source == HSE_BYP) || (source == PLL_HSE_BYP))
     {
-        RCC->CR |= (RCC_CR_HSEBYP_BIT_MASK | RCC_CR_HSEON_BIT_MASK);
-        while((RCC->CR & RCC_CR_HSIRDY_BIT_MASK) != RCC_CR_HSIRDY_BIT_MASK){}
     }
 }
 
@@ -307,15 +263,12 @@ static void stop_oscillator(enum t_clock_sources source)
 {
     if(source == HSI_OSC)
     {
-        RCC->CR &= ~RCC_CR_HSEON_BIT_MASK; /* Clear HSION bit. */
     }
     else if(source == HSE_OSC)
     {
-        RCC->CR &= ~RCC_CR_HSEON_BIT_MASK; /* Clear HSEON bit. */
     }
     else if(source == HSE_BYP)
     {
-        RCC->CR &= ~(RCC_CR_HSEON_BIT_MASK | RCC_CR_HSEBYP_BIT_MASK); /* Clear HSEON and HSEBYP bits. */
     }
 }
 
@@ -326,11 +279,10 @@ static void stop_oscillator(enum t_clock_sources source)
  */
 static void switch_system_clk(enum t_clock_sources source)
 {
-    uint8_t local_source = (RCC->CFGR & RCC_CFGR_SWS_FIELD_MASK) >> 2;
+    uint8_t local_source = 0;
 
     if((local_source != source) && (source == HSI_OSC))
     {
-        RCC->CFGR &= ~RCC_CFGR_SW_FIELD_MASK; /* SW = 0, Select the HSI oscillator. */
     }
     else if((local_source != source) && (source == HSE_OSC))
     {
@@ -338,13 +290,11 @@ static void switch_system_clk(enum t_clock_sources source)
         /* SW = 1, Disable HSI oscillator, LSB is set. */
         if(local_source == 0x00)
         {
-            RCC->CFGR |= RCC_CFGR_HSE_BIT_MASK;
         }
         /* If local source is PLL.                 */
         /* SW = 1, Disable PLL, invert the 2 bits. */
         else if(local_source == 0x02)
         {
-            RCC->CFGR ^= RCC_CFGR_SW_FIELD_MASK;
         }
     }
     else if((local_source != source) && ((source >= PLL_HSI) && (source <= PLL_HSE_BYP)))
@@ -353,13 +303,11 @@ static void switch_system_clk(enum t_clock_sources source)
     	/* SW = 2, Disable HSI oscillator , MSB is set. */
         if(local_source == 0x00)
         {
-            RCC->CFGR |= RCC_CFGR_PLL_FIELD_MASK;
         }
         /* If local source is HSE oscillator.      */
         /* SW = 2, Disable PLL, invert the 2 bits. */
         else if(local_source == 0x01)
         {
-            RCC->CFGR ^= RCC_CFGR_SW_FIELD_MASK;
         }
     }
 }
@@ -369,23 +317,18 @@ void disable_clock(enum t_peripheral peripheral)
 	switch(peripheral)
 	{
 	case DMA_1:
-		RCC->AHBENR &= ~CLK_ENABLE_DMA1_BIT_MASK;
 		break;
 
 	case PORT_A:
-        RCC->APB2ENR &= ~CLK_ENABLE_PORTA_BIT_MASK;
         break;
 
 	case PORT_B:
-		RCC->APB2ENR &= ~CLK_ENABLE_PORTB_BIT_MASK;
 	    break;
 
 	case PORT_C:
-        RCC->APB2ENR &= ~CLK_ENABLE_PORTC_BIT_MASK;
 	    break;
 
 	case PORT_D:
-        RCC->APB2ENR &= ~CLK_ENABLE_PORTD_BIT_MASK;
         break;
 
     case PORT_E:
@@ -398,31 +341,24 @@ void disable_clock(enum t_peripheral peripheral)
         break;
 
 	case SPI1:
-        RCC->APB2ENR &= ~CLK_ENABLE_SPI1_BIT_MASK;
 	    break;
 
     case SPI2:
-        RCC->APB1ENR &= ~CLK_ENABLE_SPI2_BIT_MASK;
         break;
 
 	case TIM_1:
-        RCC->APB2ENR &= ~CLK_ENABLE_TIM1_BIT_MASK;
         break;
 
     case TIM_2:
-        RCC->APB1ENR &= ~CLK_ENABLE_TIM2_BIT_MASK;
         break;
 
     case TIM_3:
-        RCC->APB1ENR &= ~CLK_ENABLE_TIM3_BIT_MASK;
         break;
 
     case USART1:
-        RCC->APB2ENR &= ~CLK_ENABLE_USART1_BIT_MASK;
         break;
 
     case USART2:
-        RCC->APB1ENR &= ~CLK_ENABLE_USART2_BIT_MASK;
         break;
 	}
 }
@@ -433,55 +369,24 @@ t_error_handling enable_clock(enum t_peripheral peripheral)
     switch(peripheral)
     {
     case DMA_1:
-    	RCC->AHBENR |= CLK_ENABLE_DMA1_BIT_MASK;
-    	if((RCC->AHBENR & CLK_ENABLE_DMA1_BIT_MASK) != CLK_ENABLE_DMA1_BIT_MASK)
-    	{
-    		error = ERROR_WRITTEN_VALUE_CORRUPTED;
-    	}
-    	break;
+  		error = ERROR_WRITTEN_VALUE_CORRUPTED;
+       	break;
 
     case PORT_A:
-    	RCC->APB2ENR |= CLK_ENABLE_PORTA_BIT_MASK;
-        RCC->APB2ENR |= CLK_ENABLE_AFIO_BIT_MASK;
-    	if(((RCC->APB2ENR & CLK_ENABLE_PORTA_BIT_MASK) != CLK_ENABLE_PORTA_BIT_MASK) ||
-           ((RCC->APB2ENR & CLK_ENABLE_AFIO_BIT_MASK) != CLK_ENABLE_AFIO_BIT_MASK))
-    	{
-    	    error = ERROR_WRITTEN_VALUE_CORRUPTED;
-    	}
+        error = ERROR_WRITTEN_VALUE_CORRUPTED;
         break;
 
     case PORT_B:
-        RCC->APB2ENR |= CLK_ENABLE_PORTB_BIT_MASK;
-        RCC->APB2ENR |= CLK_ENABLE_AFIO_BIT_MASK;
-        if(((RCC->APB2ENR & CLK_ENABLE_PORTB_BIT_MASK) != CLK_ENABLE_PORTB_BIT_MASK) ||
-           ((RCC->APB2ENR & CLK_ENABLE_AFIO_BIT_MASK) != CLK_ENABLE_AFIO_BIT_MASK))
-    
-        {
-            error = ERROR_WRITTEN_VALUE_CORRUPTED;
-        }
-        break;
+        error = ERROR_WRITTEN_VALUE_CORRUPTED;
+         break;
 
     case PORT_C:
-        RCC->APB2ENR |= CLK_ENABLE_PORTC_BIT_MASK;
-        RCC->APB2ENR |= CLK_ENABLE_AFIO_BIT_MASK;
-        if(((RCC->APB2ENR & CLK_ENABLE_PORTC_BIT_MASK) != CLK_ENABLE_PORTC_BIT_MASK) ||
-           ((RCC->APB2ENR & CLK_ENABLE_AFIO_BIT_MASK) != CLK_ENABLE_AFIO_BIT_MASK))
-    
-        {
-            error = ERROR_WRITTEN_VALUE_CORRUPTED;
-        }
+        error = ERROR_WRITTEN_VALUE_CORRUPTED;
         break;
 
     case PORT_D:
-        RCC->APB2ENR |= CLK_ENABLE_PORTD_BIT_MASK;
-        RCC->APB2ENR |= CLK_ENABLE_AFIO_BIT_MASK;
-        if(((RCC->APB2ENR & CLK_ENABLE_PORTD_BIT_MASK) != CLK_ENABLE_PORTD_BIT_MASK) ||
-           ((RCC->APB2ENR & CLK_ENABLE_AFIO_BIT_MASK) != CLK_ENABLE_AFIO_BIT_MASK))
-    
-        {
-            error = ERROR_WRITTEN_VALUE_CORRUPTED;
-        }
-        break;
+        error = ERROR_WRITTEN_VALUE_CORRUPTED;
+         break;
 
     case PORT_E:
         break;
@@ -493,59 +398,31 @@ t_error_handling enable_clock(enum t_peripheral peripheral)
         break;
 
     case SPI1:
-        RCC->APB2ENR |= CLK_ENABLE_SPI1_BIT_MASK;
-        if((RCC->APB2ENR & CLK_ENABLE_SPI1_BIT_MASK) != CLK_ENABLE_SPI1_BIT_MASK)
-        {
-            error = ERROR_WRITTEN_VALUE_CORRUPTED;
-        }
+        error = ERROR_WRITTEN_VALUE_CORRUPTED;
         break;
 
     case SPI2:
-        RCC->APB1ENR |= CLK_ENABLE_SPI2_BIT_MASK;
-        if((RCC->APB1ENR & CLK_ENABLE_SPI2_BIT_MASK) != CLK_ENABLE_SPI2_BIT_MASK)
-        {
-            error = ERROR_WRITTEN_VALUE_CORRUPTED;
-        }
+        error = ERROR_WRITTEN_VALUE_CORRUPTED;
         break;
 
     case TIM_1:
-        RCC->APB2ENR |= CLK_ENABLE_TIM1_BIT_MASK;
-        if((RCC->APB2ENR & CLK_ENABLE_TIM1_BIT_MASK) != CLK_ENABLE_TIM1_BIT_MASK)
-        {
-            error = ERROR_WRITTEN_VALUE_CORRUPTED;
-        }
+        error = ERROR_WRITTEN_VALUE_CORRUPTED;
         break;
 
     case TIM_2:
-        RCC->APB1ENR |= CLK_ENABLE_TIM2_BIT_MASK;
-        if((RCC->APB1ENR & CLK_ENABLE_TIM2_BIT_MASK) != CLK_ENABLE_TIM2_BIT_MASK)
-        {
-            error = ERROR_WRITTEN_VALUE_CORRUPTED;
-        }
+        error = ERROR_WRITTEN_VALUE_CORRUPTED;
         break;
 
     case TIM_3:
-        RCC->APB1ENR |= CLK_ENABLE_TIM3_BIT_MASK;
-        if((RCC->APB1ENR & CLK_ENABLE_TIM3_BIT_MASK) != CLK_ENABLE_TIM3_BIT_MASK)
-        {
-            error = ERROR_WRITTEN_VALUE_CORRUPTED;
-        }
+        error = ERROR_WRITTEN_VALUE_CORRUPTED;
         break;
 
     case USART1:
-        RCC->APB2ENR |= CLK_ENABLE_USART1_BIT_MASK;
-        if((RCC->APB2ENR & CLK_ENABLE_USART1_BIT_MASK) != CLK_ENABLE_USART1_BIT_MASK)
-        {
-            error = ERROR_WRITTEN_VALUE_CORRUPTED;
-        }
+        error = ERROR_WRITTEN_VALUE_CORRUPTED;
         break;
 
     case USART2:
-        RCC->APB1ENR |= CLK_ENABLE_USART2_BIT_MASK;
-        if((RCC->APB1ENR & CLK_ENABLE_USART2_BIT_MASK) != CLK_ENABLE_USART2_BIT_MASK)
-        {
-            error = ERROR_WRITTEN_VALUE_CORRUPTED;
-        }
+        error = ERROR_WRITTEN_VALUE_CORRUPTED;
         break;
     }
     return error;
@@ -559,19 +436,15 @@ void reset_module(enum t_peripheral peripheral)
         break;
 
     case PORT_A:
-        RCC->APB2RSTR |= CLK_ENABLE_PORTA_BIT_MASK | CLK_ENABLE_AFIO_BIT_MASK;
         break;
 
     case PORT_B:
-        RCC->APB2RSTR |= CLK_ENABLE_PORTB_BIT_MASK | CLK_ENABLE_AFIO_BIT_MASK;
         break;
 
     case PORT_C:
-        RCC->APB2RSTR |= CLK_ENABLE_PORTC_BIT_MASK | CLK_ENABLE_AFIO_BIT_MASK;
         break;
 
     case PORT_D:
-        RCC->APB2RSTR |= CLK_ENABLE_PORTD_BIT_MASK | CLK_ENABLE_AFIO_BIT_MASK;
         break;
 
     case PORT_E:
@@ -584,31 +457,24 @@ void reset_module(enum t_peripheral peripheral)
         break;
 
     case SPI1:
-        RCC->APB2RSTR |= CLK_ENABLE_SPI1_BIT_MASK;
         break;
 
     case SPI2:
-        RCC->APB1RSTR |= CLK_ENABLE_SPI2_BIT_MASK;
         break;
 
     case TIM_1:
-        RCC->APB2RSTR |= CLK_ENABLE_TIM1_BIT_MASK;
         break;
 
     case TIM_2:
-        RCC->APB1RSTR |= CLK_ENABLE_TIM2_BIT_MASK;
         break;
 
     case TIM_3:
-        RCC->APB1RSTR |= CLK_ENABLE_TIM3_BIT_MASK;
         break;
 
     case USART1:
-        RCC->APB2RSTR |= CLK_ENABLE_USART1_BIT_MASK;
         break;
 
     case USART2:
-        RCC->APB1RSTR |= CLK_ENABLE_USART2_BIT_MASK;
         break;
     }
 }
@@ -621,28 +487,6 @@ struct t_clock_driver *get_clock_driver(void)
 void output_clock(enum t_clock_sources source)
 {
     uint32_t local_MCO_mask = 0x07000000;
-    RCC->CFGR &= ~local_MCO_mask;
-    if(source == SYSCLOCK)
-    {
-    	RCC->CFGR |= RCC_CFGR_SYCLK_OUT_BIT_MASK;
-    }
-    else if(source == HSI_OSC)
-    {
-    	RCC->CFGR |= RCC_CFGR_HSI_OUT_BIT_MASK;
-    }
-    else if(source == HSE_OSC)
-    {
-    	RCC->CFGR |= RCC_CFGR_HSE_OUT_BIT_MASK;
-    }
-    else if((source >= PLL_HSI) &&
-            (source <= PLL_HSE_BYP))
-    {
-    	RCC->CFGR |= RCC_CFGR_PLL_OUT_BIT_MASK;
-    }
-    else
-    {
-    	RCC->CFGR &= ~local_MCO_mask;
-    }
 }
 
 t_error_handling clock_init(struct t_clock_driver *driver, struct t_clock_config *config)
@@ -689,13 +533,6 @@ t_error_handling clock_init(struct t_clock_driver *driver, struct t_clock_config
                                          || (driver->source == PLL_HSE_BYP))
     {
         stop_oscillator(HSI_OSC);
-
-        /* If High Speed External Oscillator (HSE) is selected,         */
-        /* And deactivate the bypass.                                   */
-        if((driver->source == HSE_OSC) || (driver->source == PLL_HSE))
-        {
-            RCC->CR &= ~(RCC_CR_HSEON_BIT_MASK | RCC_CR_HSERDY_BIT_MASK | RCC_CR_CSSON_BIT_MASK);
-        }
     }
     error = init_AHB(driver->sys_clk_freq, driver->AHB_clk_freq);   /* Set AHB prescaler.     */
     if(error != ERROR_OK)

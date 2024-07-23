@@ -48,10 +48,10 @@ struct t_gpio_private
 
 /* Static GPIO private structure instances. */
 static struct t_gpio_private_global priv_g;
-static struct t_gpio_private priv[GPIO_PIN_NUMBER];
+static struct t_gpio_private priv[150];
 
 /* Pointer callback function table prototype	*/
-void (*gpio_callback[EXTI_CHANNEL_NUMBER])(uint32_t pin_numb);
+void (*gpio_callback[3])(uint32_t pin_numb);
 
 static void set_gpio_irq(struct t_gpio_driver *config)
 {
@@ -97,8 +97,8 @@ static void set_gpio_irq(struct t_gpio_driver *config)
     /* Associate the callbacks references. */
     if(config->pin <= 4)
     {
-        enable_nvic_irq(config->pin + NVIC_GPIO_OFFSET);
-        set_nvic_priority(config->pin + NVIC_GPIO_OFFSET, config->irq.priority);
+        enable_nvic_irq(config->pin);
+        set_nvic_priority(config->pin, config->irq.priority);
         gpio_callback[config->pin] = config->irq.callback;
     }
 

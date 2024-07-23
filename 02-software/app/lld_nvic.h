@@ -158,4 +158,4 @@ t_error_handling clear_pending_nvic_irq(uint8_t irq);
 */
 t_error_handling set_nvic_priority(uint8_t irq, uint8_t priority);
 
-#endif /* LLD_NVIC
+#endif /* LLD_NVIC */

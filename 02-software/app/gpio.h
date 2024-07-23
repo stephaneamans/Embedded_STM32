@@ -18,8 +18,6 @@
 #include "lld_exti.h"
 #include "regbase_gpio.h"
 
-#include "soc_configuration.h"
-
 /* MODE, GPIO configuration mode and configuration:  */
 enum t_gpio_type
 {

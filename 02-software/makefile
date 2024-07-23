@@ -31,24 +31,14 @@ SOURCES = \
     app/startup_stm32.s \
     app/clock.c \
     app/dma.c \
-    app/driver_initialization.c \
+    app/fault.c \
     app/gpio.c \
     app/nvic.c \
 	app/spi.c \
-	app/systick.c \
-	app/timer.c \
-	app/usart.c
+	app/systick.c
     
 # List of include directories
 INCLUDEDIRS = app
-
-
-
-
-
-
-
-
 
 # Common flags for CC, CPP, AS and LD
 FLAGS = -mcpu=cortex-m3 -mthumb
@@ -58,7 +48,7 @@ CFLAGS = ${FLAGS} -std=c99 -Wall -Wextra -fmessage-length=0 -ffunction-sections 
 
 # Linker flags
 LDFLAGS = ${FLAGS} -T "$(LDSCRIPT)"
-LDFLAGS += --gc-sections -Xlinker -Map="$(BUILDDIR)/$(TARGET)_app.map" 
+LDFLAGS += -Xlinker -Map="$(BUILDDIR)/$(TARGET)_app.map" 
 LDFLAGS += --specs=nano.specs
 
 # Check whether to optimize or build for debugging
@@ -77,63 +67,12 @@ OBJECTS = $(notdir $(subst .c,.o,$(SOURCES)))
 # Finally, add build directory prefix
 OBJECTS := $(addprefix $(BUILDDIR)/objects/bsw/,$(OBJECTS))
 
-
 SOURCES := $(addprefix $(SOURCES_FOLDER),$(SOURCES))
-#SOURCES_PATH := $(foreach path, $(SOURCES), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path))))
-
-#OK fonctionne
-#SOURCES_PATH := $(foreach path, $(SOURCES), $(addprefix $(SOURCES_FOLDER), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
-
-#le meme mais sans source folder fait plus haut, ok fonctionne
-#SOURCES_PATH := $(foreach path, $(SOURCES), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
-
-#le meme mais avec retrait des espaces.
-SOURCES_PATH += $(strip $(foreach path, $(SOURCES), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
-
-
-
 
 # Add -I prefix to INCLUDEDIRS and insert them into CFLAGS, CPPFLAGS and AFLAGS
 CFLAGS := $(CFLAGS) $(addprefix -I,$(INCLUDEDIRS)) 
 CPPFLAGS := $(CPPFLAGS) $(addprefix -I,$(INCLUDEDIRS))
 AFLAGS := $(AFLAGS) $(addprefix -I,$(INCLUDEDIRS)) 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # Flags for the assembler

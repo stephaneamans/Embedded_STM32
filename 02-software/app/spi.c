@@ -20,8 +20,6 @@
 
 #include "regbase_spi.h"
 
-#include "soc_configuration.h"
-
 /* Defines */
 #define SPI_CR1_CPHA_BIT_MASK       0x1
 #define SPI_CR1_CPOL_BIT_MASK       0x2
@@ -68,8 +66,8 @@ struct t_spi_private
 };
 
 /* Static SPI private and slaves record structure instances. */
-static struct t_spi_private priv[SPI_IP_NUMBER];
-static struct t_spi_slave *slaves_record[MAX_SPI1_PERIPHERALS + MAX_SPI2_PERIPHERALS];
+static struct t_spi_private priv[2];
+static struct t_spi_slave *slaves_record[2];
 
 /** Chip select pin control low state.
  *
@@ -324,7 +322,7 @@ void spi_slave_register(struct t_spi_slave *slave)
 
     /* Scan the slave peripherals table to find a free location */
     while((slaves_record[idx_pos] != 0) &&
-          (idx_pos < (MAX_SPI1_PERIPHERALS + MAX_SPI2_PERIPHERALS)))
+          (idx_pos < (2)))
     {
         idx_pos++;
     };
@@ -371,12 +369,12 @@ t_error_handling spi_transfer(struct t_spi_driver *driver, struct t_spi_slave *s
     /* If the slave is not the same, change slave configuration, the peripheral must be registered in the local base */
     if(slave->id != driver->priv->last_config)
     {
-        while((slave->id != slaves_record[index]->id) && (index < (MAX_SPI1_PERIPHERALS + MAX_SPI2_PERIPHERALS)))
+        while((slave->id != slaves_record[index]->id) && (index < (2)))
         {
             index++;
         };
 
-        if(index >= (MAX_SPI1_PERIPHERALS + MAX_SPI2_PERIPHERALS))
+        if(index >= (2))
         {
             error = ERROR_SPI_PERIPH_UNKNOWN;
         }
@@ -468,7 +466,7 @@ void spi_initialization(struct t_spi_driver *config)
 
     /* Clear the record table. */
     memset(slaves_record, 0,
-           sizeof(struct t_spi_slave[MAX_SPI1_PERIPHERALS + MAX_SPI2_PERIPHERALS]));
+           sizeof(struct t_spi_slave[2]));
 
     /* For any SPI instance */
     if(config->instance == 0)
@@ -496,8 +494,8 @@ void spi_initialization(struct t_spi_driver *config)
 
     if(config->irq.active == true)
     {
-        enable_nvic_irq(config->instance + NVIC_SPI_OFFSET);
-        set_nvic_priority(config->instance + NVIC_SPI_OFFSET, config->irq.priority);
+        enable_nvic_irq(config->instance);
+        set_nvic_priority(config->instance, config->irq.priority);
 
         /* Point to the IRQ dedicated transfer method */
         config->priv->methods.transfer = &spi_transfer_irq;
