@@ -18,3 +18,5 @@ jobs:
         make clean
         make print
         make
+        ls
+        ls ..
