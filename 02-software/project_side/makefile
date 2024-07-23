@@ -105,10 +105,10 @@ else
 endif
 
 # Construct list of object files by appending the suffix .o to all source files
-OBJECTS := $(notdir $(subst .c,.o,$(SOURCES)))
+OBJECTS = $(notdir $(subst .c,.o,$(SOURCES)))
 
 # Finally, add build directory prefix
-OBJECTS := $(addprefix $(BUILDDIR)/objects/bsw/,$(OBJECTS))
+OBJECTS = $(addprefix $(BUILDDIR)/objects/bsw/,$(OBJECTS))
 
 
 SOURCES := $(addprefix $(SOURCES_FOLDER),$(SOURCES))
@@ -121,7 +121,7 @@ SOURCES := $(addprefix $(SOURCES_FOLDER),$(SOURCES))
 #SOURCES_PATH := $(foreach path, $(SOURCES), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
 
 #le meme mais avec retrait des espaces.
-SOURCES_PATH := $(strip $(foreach path, $(SOURCES), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
+SOURCES_PATH += $(strip $(foreach path, $(SOURCES), $(subst $(lastword $(subst /, ,$(firstword $(path)))),,$(firstword $(path)))))
 
 
 
