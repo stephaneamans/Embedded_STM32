@@ -158,17 +158,37 @@ $(BUILDDIR)/$(TARGET).elf: $(OBJECTS)
 #	@mkdir -p $(@D)
 #	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJECTS)nvic.o: $(SOURCES_PATH)nvic.c
-	@echo "at c phase = Objects = $(SOURCES)"
-	@echo "at c phase = Objects = $(OBJECTS)"
-	@echo "[CC] $< -> $@"
-	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -c $< -o $@
+
+
+
+
+
+
+
+
+#$(OBJECTS)nvic.o: $(SOURCES_PATH)nvic.c
+#	@echo "at c phase = Objects = $(SOURCES)"
+#	@echo "at c phase = Objects = $(OBJECTS)"
+#	@echo "[CC] $< -> $@"
+#	@mkdir -p $(@D)
+#	@$(CC) $(CFLAGS) -c $< -o $@
+
+
+
+
 #	@$(CC) $(CFLAGS) $(INCLUDEDIRS) -o "$@" "$<"
 
 
 #$(BUILD_OBJ_DIR)%.o: $(SRC)%.c
 #	@$(CC) $(CFLAGS) $(INCLUDEDIRS) -o "$@" "$<"
+
+
+
+
+
+
+
+
 
 
 
