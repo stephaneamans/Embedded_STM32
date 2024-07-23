@@ -12,8 +12,8 @@ jobs:
     - name: update arm_none_eabi_gcc
       run: |
         sudo apt-get -y install gcc-arm-none-eabi
-    - name: make print
+    - name: make
       run: |
         cd 02-software/project_side
         make clean
-        make
+        make print
