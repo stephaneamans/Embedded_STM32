@@ -71,7 +71,6 @@ SOURCES := $(addprefix $(SOURCES_FOLDER),$(SOURCES))
 
 # Add -I prefix to INCLUDEDIRS and insert them into CFLAGS, CPPFLAGS and AFLAGS
 CFLAGS := $(CFLAGS) $(addprefix -I,$(INCLUDEDIRS)) 
-CPPFLAGS := $(CPPFLAGS) $(addprefix -I,$(INCLUDEDIRS))
 AFLAGS := $(AFLAGS) $(addprefix -I,$(INCLUDEDIRS)) 
 
 
@@ -97,7 +96,7 @@ $(BUILDDIR)/$(TARGET).hex: $(BUILDDIR)/$(TARGET)_app.axf
 	@echo "[OBJCOPY] $@ -> $(BUILDDIR)/$(TARGET).bin"
 	@objcopy -I ihex -O binary $@ $(BUILDDIR)/$(TARGET).bin
 		
-$(BUILDDIR)/$(TARGET)_app.axf: $(OBJECTS) 
+$(BUILDDIR)/$(TARGET)_app.axf: $(OBJECTS) print
 	@echo "[LD] Linking app image $@"
 	@$(LD) $(LDFLAGS) -DNRF_TRUSTZONE_NONSECURE -o $@ $(OBJECTS) $(LIBS)
 	@echo "[OBJCOPY] $@ -> $(BUILDDIR)/$(TARGET)_app.hex"
@@ -119,7 +118,16 @@ $(BUILDDIR)/app/%.s.o: app/%.s
 	@$(AS) $(NSFLAGS) $(AFLAGS) -c $< -o $@
 
 
-.PHONY: clean
+.PHONY: clean print
+
+print:
+	@echo "objects $(OBJECTS)"
+	@echo "builsdir $(BUILDDIR)"
+	@echo "sources $(SOURCES)"
+	@echo "sources folder $(SOURCES_FOLDER)"
+	@echo "cflags $(CFLAGS)"
+	@echo "aflags $(AFLAGS)"
+	@echo "includir $(INCLUDEDIRS)" 
 
 # Remove all build files
 clean:
