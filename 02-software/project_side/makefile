@@ -187,6 +187,7 @@ $(OBJECTS)nvic.o: $(SOURCES_PATH)nvic.c
 #	@$(AS) $(AFLAGS) -c $< -o $@
 
 print:
+	@echo "local = $(shell pwd)"
 	@echo "sources path = $(SOURCES_PATH)"
 	@echo ""
 	@echo "Objects = $(OBJECTS)"
