@@ -108,7 +108,7 @@ endif
 OBJECTS = $(notdir $(subst .c,.o,$(SOURCES)))
 
 # Finally, add build directory prefix
-OBJECTS = $(addprefix $(BUILDDIR)/objects/bsw/,$(OBJECTS))
+OBJECTS := $(addprefix $(BUILDDIR)/objects/bsw/,$(OBJECTS))
 
 
 SOURCES := $(addprefix $(SOURCES_FOLDER),$(SOURCES))
