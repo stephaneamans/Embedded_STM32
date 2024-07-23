@@ -158,7 +158,7 @@ $(BUILDDIR)/$(TARGET).elf: $(OBJECTS)
 #	@mkdir -p $(@D)
 #	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJECTS)%.o: $(SOURCES_PATH)%.c
+$(OBJECTS)%.o: $(SOURCES_PATH)nvic.c
 	@echo "at c phase = Objects = $(SOURCES)"
 	@echo "at c phase = Objects = $(OBJECTS)"
 	@echo "[CC] $< -> $@"
