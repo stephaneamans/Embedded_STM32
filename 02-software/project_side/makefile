@@ -64,7 +64,7 @@ SOURCES := \
     drivers/mcu/gpio/gpio.c \
     drivers/mcu/spi/spi.c \
     drivers/mcu/timer/timer.c \
-    drivers/usart/usart.c \
+    drivers/mcu/usart/usart.c \
     drivers/mcu/driver_initialization.c \
     library/fault/fault.c \
 
