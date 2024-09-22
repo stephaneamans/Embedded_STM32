@@ -48,6 +48,15 @@ ifeq (${FIND_TARGET}, $(findstring ${FIND_TARGET}, ${TARGET_LIST}))
   $(eval $(RUN_ARGS):;@:)
 endif
 
+# If the debug mode is found as argument, then
+ifeq (debug, $(findstring ${RUN_ARGS}, debug))
+
+  # Debug mode is switched to active.
+  DEBUG = 1
+
+endif
+
+
 ###########
 # Targets #
 ###########
@@ -63,7 +72,7 @@ target3.elf : print ${OBJ}
 .PHONY: clean print
 
 print:
-	@echo $(RUN_ARGS)
+	@echo $(DEBUG)
 	@echo ${PRINT_BUILD} ${PRINT_DIRECTORY}
 	@mkdir -p ${BUILD_FOLDER}
 	@echo ${PRINT_BUILD} ${PRINT_BSW_OBJECTS} ${PRINT_DIRECTORY}

@@ -35,6 +35,14 @@ BSW_BUILD_FOLDER := ${BUILD_FOLDER}${BSW}
 BSW_BUILD_OBJ_FOLDER := ${BSW_BUILD_FOLDER}objects/
 
 
+##############################
+# Environement configuration #
+##############################
+
+# Debug mode inactive
+DEBUG = 0
+
+
 #############################
 # Different prompts display #
 #############################
